@@ -1,0 +1,22 @@
+<!--BEGIN .hentry -->
+<div <?php echo 'class="' . implode(' ', $post_class) . '"'; ?> id="post-<?php echo $post_id; ?>">
+
+	<div class="post-thumb clearfix">
+		<a class="lightbox" title="<?php echo $title; ?>" href="<?php echo $large_image; ?>">
+			<span class="overlay">
+				<span class="icon"></span>
+			</span>
+
+			<?php echo $thumb; ?>
+		</a>
+	</div>
+
+	<h2 class="entry-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h2>
+
+	<div class="entry-excerpt">
+		<?php echo $excerpt; ?>
+		<?php the_author_posts_link(); ?>
+	</div>
+
+<!--END .hentry-->
+</div>
