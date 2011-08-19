@@ -9,8 +9,8 @@
 
 			<?php echo $thumb; ?>
 
-			<div class="tab"></div>
 		</a>
+		<div class="tab"></div>
 	</div>
 
 	<h2 class="entry-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h2>
@@ -18,7 +18,6 @@
 	<div class="entry-excerpt">
 		<?php 
 		$words = explode( ' ', $excerpt );
-		array_splice( $words, 30 );
 		echo implode( ' ', $words ); ?>
 	</div>
 

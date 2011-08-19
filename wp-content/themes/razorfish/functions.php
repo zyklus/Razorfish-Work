@@ -173,12 +173,14 @@ function tz_register_js() {
 		// comment out the next two lines to load the local copy of jQuery
 		wp_deregister_script('jquery');
 		wp_register_script('jquery'          , 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'               );
+		wp_register_script('jquery-inactive' , get_template_directory_uri() . '/js/jquery-inactivetext/jquery.inactive-text.min.js', 'jquery');
 		wp_register_script('tz_custom'       , get_template_directory_uri() . '/js/jquery.custom.js'             , 'jquery', '1.0', TRUE);
-		wp_register_script('jquery-ui-custom', get_template_directory_uri() . '/js/jquery-ui-1.8.5.custom.min.js', 'jquery');
+		wp_register_script('jquery-ui-custom', get_template_directory_uri() . '/js/jquery-ui-1.8.16.custom.min.js', 'jquery');
 		wp_register_script('tz_shortcodes'   , get_template_directory_uri() . '/js/jquery.shortcodes.js'         , 'jquery');
 		wp_register_script('site'            , get_template_directory_uri() . '/js/site.js'                                );
 
 		wp_enqueue_script('jquery');
+		wp_enqueue_script('jquery-inactive');
 		wp_enqueue_script('site');
 		wp_enqueue_script('jquery-ui-custom');
 		wp_enqueue_script('tz_shortcodes');

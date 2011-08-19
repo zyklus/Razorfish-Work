@@ -40,6 +40,10 @@ if (have_posts()){
 			$thumb = get_the_post_thumbnail($post_id, 'gallery-format-thumb');
 		}
 
+		if( !$thumb ){
+			$post_class[] = 'text-only';
+		}
+
 		$large_image = $large_image[0];
 		$excerpt     = get_the_excerpt();
 		$title       = get_the_title();

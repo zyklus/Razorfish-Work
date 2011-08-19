@@ -341,4 +341,19 @@ jQuery(document).ready(function() {
 	
 	tz_likeInit();
 
+/*-----------------------------------------------------------------------------------*/
+/*	Search
+/*-----------------------------------------------------------------------------------*/
+	$( '#search' ).inactiveText( 'inactive', 'Search' );
+
+/*-----------------------------------------------------------------------------------*/
+/*	Post Hover
+/*-----------------------------------------------------------------------------------*/
+	var animSpeed = 250;
+	$( '#content' ).delegate( '.hentry:not(.text-only)', 'mouseenter', function(ev){
+		$( this ).find( '.post-thumb' ).addClass( 'hover', animSpeed );
+	}).delegate( '.hentry:not(.text-only)', 'mouseleave', function(){
+		$( this ).find( '.post-thumb' ).removeClass( 'hover', animSpeed );
+	});
+
 });

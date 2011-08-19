@@ -184,67 +184,6 @@ td {
 a img {
   border: none;
 }
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-pre,
-a,
-abbr,
-acronym,
-address,
-code,
-del,
-dfn,
-em,
-img,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-caption,
-tbody,
-tfoot,
-thead,
-tr {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-family: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  vertical-align: middle;
-}
-caption,
-th,
-td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-a img {
-  border: none;
-}
 article,
 aside,
 canvas,
@@ -354,8 +293,9 @@ form,
   color: #a8acb1;
 }
 .hentry .entry-title {
-  padding: 0 15px;
+  padding: 0 15px 10px 15px;
   margin: 0px;
+  line-height: 16px;
 }
 .hentry .entry-title a {
   color: #d2d6db;
@@ -373,12 +313,23 @@ form,
   width: 360px;
   height: 415px;
 }
-.hentry .lightbox {
+.hentry.text-only .entry-title {
+  padding-top: 15px;
+}
+.hentry.text-only .post-thumb {
+  display: none;
+}
+.hentry .post-thumb {
   display: block;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+  margin-bottom: 5px;
 }
-.hentry .lightbox .tab {
+.hentry .post-thumb.hover {
+  height: 50px;
+}
+.hentry .post-thumb .tab {
   position: absolute;
   z-index: 1;
   bottom: 0px;
@@ -386,15 +337,14 @@ form,
   background: url("images/sprites/sprite-0.png");
   width: 22px;
   height: 11px;
-  background-position: -32px 0;
+  background-position: -109px 0;
 }
-.hentry .lightbox img {
+.hentry .post-thumb img {
   display: block;
-  margin-bottom: 5px;
 }
-.hentry:hover .lightbox .tab {
+.hentry:hover .post-thumb .tab {
   background: url("images/sprites/sprite-0.png");
-  background-position: -63px -93px;
+  background-position: -81px -78px;
 }
 .hentry .entry-footer {
   color: #30c9f2;
@@ -422,7 +372,7 @@ form,
   vertical-align: middle;
   width: 14px;
   height: 13px;
-  background-position: -77px -15px;
+  background-position: -95px 0;
 }
 .hentry .entry-footer .favorites {
   line-height: 15px;
@@ -436,7 +386,7 @@ form,
   vertical-align: middle;
   width: 14px;
   height: 13px;
-  background-position: -18px 0;
+  background-position: 0 -30px;
 }
 .hentry:hover,
 .hentry:hover .entry-footer {
@@ -528,7 +478,7 @@ form,
   background: url("images/sprites/sprite-0.png") no-repeat;
   width: 63px;
   height: 93px;
-  background-position: 0 -93px;
+  background-position: -18px -78px;
 }
 #speckle-bg .bg {
   background: url("images/sprites/speckle_bg.png") repeat-y;
@@ -616,7 +566,7 @@ body.admin-bar #widget-overlay-container {
   background: url("images/sprites/sprite-0.png");
   width: 168px;
   height: 40px;
-  background-position: 0 -53px;
+  background-position: -18px -38px;
 }
 .fish-school {
   position: relative;
@@ -636,7 +586,7 @@ body.admin-bar #widget-overlay-container {
   background: url("images/sprites/sprite-0.png");
   width: 77px;
   height: 38px;
-  background-position: 0 -15px;
+  background-position: -18px 0;
 }
 .left-content,
 .right-content {
@@ -650,6 +600,10 @@ body.admin-bar #widget-overlay-container {
   width: 100%;
   height: 100%;
   padding: 0 25px;
+}
+.right-content .search-container,
+.right-content .fish-school {
+  float: left;
 }
 .left-content .hentry.portfolio {
   float: right;
@@ -670,11 +624,22 @@ body.admin-bar #widget-overlay-container {
   margin: -1px -2px;
 }
 .input {
-  width: 229px;
+  width: 219px;
   height: 21px;
-  background: #343445;
   border: 1px solid #000;
-  padding: 0;
+  margin: 3px 0;
+  padding: 0 5px;
+  line-height: 21px;
+}
+.input#search {
+  background: #343445 url("images/sprites/search_magnify.png") no-repeat 210px center;
+}
+.input#search.inactive {
+  color: #242430;
+}
+.input#categories {
+  background: #343445 url("images/sprites/categories_down_arrow.png") no-repeat 212px center;
+  color: #30c9f2;
 }
 /*-----------------------------------------------------------------------------------*/
 /*	5.	Main Content Styles
@@ -1396,11 +1361,11 @@ label.error {
   margin: 5px 5px 4px 5px;
   width: 18px;
   height: 15px;
-  background-position: 0 0;
+  background-position: 0 -15px;
 }
 #ticker-bar .twitter-link:hover {
   background: url("images/sprites/sprite-0.png");
-  background-position: -85px -93px;
+  background-position: 0 0;
 }
 #ticker-bar .rss-link {
   display: block;
@@ -1410,11 +1375,11 @@ label.error {
   margin: 5px 5px 4px 5px;
   width: 15px;
   height: 15px;
-  background-position: -91px -15px;
+  background-position: 0 -43px;
 }
 #ticker-bar .rss-link:hover {
   background: url("images/sprites/sprite-0.png");
-  background-position: -63px -104px;
+  background-position: -95px -13px;
 }
 .admin-bar #ticker-bar {
   top: 28px;

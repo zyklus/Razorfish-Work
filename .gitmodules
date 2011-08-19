@@ -1,0 +1,3 @@
+[submodule "wp-content/themes/razorfish/js/jquery-inactivetext"]
+	path = wp-content/themes/razorfish/js/jquery-inactivetext
+	url = https://github.com/cwolves/jQuery-inactiveText

@@ -56,7 +56,6 @@ color_input_border       = #000000
 /*-----------------------------------------------------------------------------------*/
 
 global-reset()
-nested-reset()
 reset-html5()
 
 .clearfix
@@ -134,12 +133,13 @@ form,
 	color      color_block_text
 
 	.entry-title {
-		padding   0 15px
-		margin    0px
+		padding     0 15px 10px 15px
+		margin      0px
+		line-height 16px
 
 		a {
-			color     color_block_title
-			font-size 12px
+			color       color_block_title
+			font-size   12px
 		}
 	}
 
@@ -155,10 +155,24 @@ form,
 		}
 	}
 
-	.lightbox {
-		display  block
-		position relative
-		
+	&.text-only .entry-title {
+		padding-top : 15px;
+	}
+	
+	&.text-only .post-thumb {
+		display : none;
+	}
+
+	.post-thumb {
+		display       block
+		position      relative
+		overflow      hidden
+		margin-bottom 5px
+
+		&.hover {
+			height 50px
+		}
+
 		.tab {
 			position   absolute
 			bottom     0px
@@ -169,11 +183,10 @@ form,
 
 		img {
 			display       block
-			margin-bottom 5px
 		}
 	}
 
-	&:hover .lightbox .tab {
+	&:hover .post-thumb .tab {
 		background sprite( 'images/sprites/up_article_arrow_dark.png' )
 	}
 
@@ -429,6 +442,9 @@ body.admin-bar #widget-overlay-container {
 		size    100% 100%
 		padding 0 25px
 
+.right-content .search-container, .right-content .fish-school
+	float left
+
 .left-content .hentry.portfolio
 	float right
 
@@ -451,11 +467,21 @@ body.admin-bar #widget-overlay-container {
 }
 
 .input
-	size       229 21
-	background color_input_bg
-	border     1px solid color_input_border
-	padding    0
+	size             219 21
+	border           1px solid color_input_border
+	margin           3px 0
+	padding          0 5px
+	line-height      21px
 
+	&#search
+		background color_input_bg url( 'images/sprites/search_magnify.png' ) no-repeat 210px center
+
+		&.inactive
+			color color_input_txt_disabled
+
+	&#categories
+		background color_input_bg url( 'images/sprites/categories_down_arrow.png' ) no-repeat 212px center
+		color      color_link
 
 /*-----------------------------------------------------------------------------------*/
 /*	5.	Main Content Styles

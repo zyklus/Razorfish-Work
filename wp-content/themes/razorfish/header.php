@@ -59,8 +59,11 @@
 
 		<div class="right-content">
 			<div class="padding-box">
-				<input class="input" id="search">
-				<select class="input" id="categories"></select>
+				<span class="search-container">
+					<input class="input" id="search">
+					<br />
+					<div class="input" id="categories">Categories</div>
+				</span>
 				<span class="fish-school"><span class="fishies"></span></span>
 			</div>
 		</div>
