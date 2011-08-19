@@ -21,10 +21,18 @@ $meta_box = array(
 	'priority' => 'high',
 	'fields'   => array(
 	array(
+			'name'    =>  __('Featured Post', 'framework'),
+			'desc'    => __('Check this to feature this post.', 'framework'),
+			'id'      => $prefix.'portfolio_featured',
+			'type'    => 'select',
+			'std'     => 'no',
+			'options' => array('no', 'yes')
+		),
+	array(
 			'name'    =>  __('Enable Lightbox', 'framework'),
 			'desc'    => __('Check this to enable the lightbox.', 'framework'),
 			'id'      => $prefix.'portfolio_lightbox',
-			"type"    => "select",
+			'type'    => 'select',
 			'std'     => 'no',
 			'options' => array('yes', 'no')
 		),

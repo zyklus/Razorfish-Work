@@ -18,37 +18,63 @@ query_posts( array(
 	'posts_per_page' => -1
 ) );
 
-if (have_posts()){ ?>
+if (have_posts()){
 
-<!--BEGIN #primary .hfeed-->
-<div id="primary" class="hfeed">
-	<!--BEGIN #masonry-->
-	<div id="masonry-portfolio">
+	$left_posts  = array();
+	$right_posts = array();
 
-		<?php
-		while (have_posts()) {
-			the_post();
+	while (have_posts()) {
+		the_post();
 
-			$post_id     = get_the_id();
-			$post_class  = get_post_class();
-			$thumb	     = get_post_meta( $post_id, 'tz_portfolio_thumb', true );
-			$large_image = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'fullsize', false, '' );
+		$post_id     = get_the_id();
+		$post_class  = get_post_class();
+		$thumb	     = get_post_meta( $post_id, 'tz_portfolio_thumb'   , true );
+		$featured    = get_post_meta( $post_id, 'tz_portfolio_featured', true );
+		$large_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'fullsize', false, '' );
 
-			if($thumb == '')
-				$thumb = get_the_post_thumbnail($post_id, 'portfolio-thumb');
+		if($thumb == '')
+			$thumb = get_the_post_thumbnail($post_id, 'portfolio-thumb');
 
-			$large_image = $large_image[0];
-			$excerpt     = get_the_excerpt();
-			$title       = get_the_title();
-			$permalink   = get_permalink();
-
-			include('template-image-block.php');
+		if( $featured === 'yes' ){
+			$post_class[] = 'featured';
+			$thumb = get_the_post_thumbnail($post_id, 'gallery-format-thumb');
 		}
-		?>
-	</div>
-	<!--END #masonry-->
 
-<!--END #primary .hfeed-->
+		$large_image = $large_image[0];
+		$excerpt     = get_the_excerpt();
+		$title       = get_the_title();
+		$permalink   = get_permalink();
+
+		ob_start();
+		include('template-image-block.php');
+		$contents = ob_get_contents();
+
+		if( $featured === 'yes' ){
+			$left_posts[] = $contents;
+		}else{
+			$right_posts[] = $contents;
+		}
+		ob_end_clean();
+	}
+?>
+
+
+<div class="left-content"> &nbsp;
+	<?php echo implode( ' ', $left_posts ) ?>
+</div>
+
+<div class="right-content">
+	<!--BEGIN #primary .hfeed-->
+	<div id="primary" class="hfeed">
+		<!--BEGIN #masonry-->
+		<div id="masonry-portfolio">
+
+			<?php echo implode( ' ', $right_posts ) ?>
+		</div>
+		<!--END #masonry-->
+
+	<!--END #primary .hfeed-->
+	</div>
 </div>
 
 <?php

@@ -33,13 +33,38 @@
 	<div id="fish-tank"></div>
 
 	<div id="ticker-bar">
-		<?php
-		if ( function_exists( 'dynamic_sidebar' ) ){  dynamic_sidebar('Ticker Bar'); }
-		?>
+		<div id="ticker-bar-content">
+			<?php
+			if ( function_exists( 'dynamic_sidebar' ) ){  dynamic_sidebar('Ticker Bar'); }
+			?>
+			<a class="rss-link"></a>
+			<a class="twitter-link"></a>
+		</div>
 	</div>
 
 	<!-- BEGIN #container -->
 	<div id="container" class="clearfix js-disabled">
+
+		<div id="speckle-bg">
+			<div class="top"></div>
+			<div class="bg"></div>
+		</div>
+
+		<!-- Razorfish logo -->
+		<div class="left-content logo-container">
+			<a href="<?php echo home_url(); ?>">
+				<span class="razorfish-logo"></span>
+			</a>
+		</div>
+
+		<div class="right-content">
+			<div class="padding-box">
+				<input class="input" id="search">
+				<select class="input" id="categories"></select>
+				<span class="fish-school"><span class="fishies"></span></span>
+			</div>
+		</div>
+
 
 		<!--BEGIN #content -->
 		<div id="content">
@@ -81,4 +106,3 @@
 			</div>
 
 			<?php endif; ?>
-			<?php get_sidebar(); ?>

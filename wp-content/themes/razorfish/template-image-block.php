@@ -8,15 +8,21 @@
 			</span>
 
 			<?php echo $thumb; ?>
+
+			<div class="tab"></div>
 		</a>
 	</div>
 
 	<h2 class="entry-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h2>
 
 	<div class="entry-excerpt">
-		<?php echo $excerpt; ?>
-		<?php the_author_posts_link(); ?>
+		<?php 
+		$words = explode( ' ', $excerpt );
+		array_splice( $words, 30 );
+		echo implode( ' ', $words ); ?>
 	</div>
+
+	<?php include( 'template-block-footer.php' ); ?>
 
 <!--END .hentry-->
 </div>

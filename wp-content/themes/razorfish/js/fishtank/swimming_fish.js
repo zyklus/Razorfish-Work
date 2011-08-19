@@ -5,7 +5,7 @@ $(function(){
 		                _width = 500,
 		               _height = 500,
 		                _depth = 200,
-		   _neighborhoodRadius = 100,
+		   _neighborhoodRadius = 1000,
 		             _maxSpeed = 4,
 		        _maxSteerForce = 0.1,
 		           _avoidWalls = false,
@@ -268,7 +268,7 @@ $(function(){
 	    boid, boids,
 	    lastUpdate,
 
-		     maxFish = 30,
+		     maxFish = 10,
         minFramerate = 50,
 	           $tank = $('#fish-tank');
 
@@ -285,10 +285,10 @@ $(function(){
 		boids.push( boid = new Boid() );
 		boid.position.x = Math.random() * 400 - 200;
 		boid.position.y = Math.random() * 400 - 200;
-		boid.position.z = Math.random() * 400 - 200;
+//		boid.position.z = Math.random() * 400 - 200;
 		boid.velocity.x = Math.random() * 2 - 1;
 		boid.velocity.y = Math.random() * 2 - 1;
-		boid.velocity.z = Math.random() * 2 - 1;
+//		boid.velocity.z = Math.random() * 2 - 1;
 		boid.setAvoidWalls( true );
 		boid.setWorldSize( 500, 500, 400 );
 

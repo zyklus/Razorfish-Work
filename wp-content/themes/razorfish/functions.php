@@ -129,8 +129,8 @@ add_image_size( 'medium'              , 250,  '', true ); // Medium thumbnails
 add_image_size( 'small'               , 125,  '', true ); // Small thumbnails
 add_image_size( 'archive-thumb'       , 360,  '', true ); // Thumbnails that appear on any archive like page
 add_image_size( 'single-thumb'        , 550,  '', true ); // Thumbnails that appear on any single page
-add_image_size( 'portfolio-thumb'     , 212, 110, true ); // Thumbnails that appear on any single page
-add_image_size( 'gallery-format-thumb', 360, 270, true ); // Thumbnails that appear on gallery formats
+add_image_size( 'portfolio-thumb'     , 230, 170, true ); // Thumbnails that appear on any single page
+add_image_size( 'gallery-format-thumb', 360, 273, true ); // Thumbnails that appear on gallery formats
 add_image_size( 'fullsize'            ,  '',  '', true ); // Fullsize
 
 
