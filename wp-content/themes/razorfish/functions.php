@@ -151,7 +151,8 @@ add_filter( 'avatar_defaults', 'tz_custom_gravatar' );
 /*-----------------------------------------------------------------------------------*/
 
 function tz_excerpt_length($length) {
-return 17; }
+	return 50;
+}
 add_filter('excerpt_length', 'tz_excerpt_length');
 
 
@@ -159,9 +160,11 @@ add_filter('excerpt_length', 'tz_excerpt_length');
 /*	Configure Excerpt String
 /*-----------------------------------------------------------------------------------*/
 
-function tz_excerpt_more($excerpt) {
-return str_replace('[...]', '...', $excerpt); }
-add_filter('wp_trim_excerpt', 'tz_excerpt_more');
+function tz_excerpt_more($more) {
+	return ' ...';
+}
+
+add_filter('excerpt_more'  , 'tz_excerpt_more');
 
 
 /*-----------------------------------------------------------------------------------*/
