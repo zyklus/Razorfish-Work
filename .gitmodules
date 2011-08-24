@@ -1,6 +1,6 @@
-[submodule "wp-content/themes/razorfish/js/jquery-inactivetext"]
-	path = wp-content/themes/razorfish/js/jquery-inactivetext
+[submodule "design_blog/wp-content/themes/razorfish/js/jquery-inactivetext"]
+	path = design_blog/wp-content/themes/razorfish/js/jquery-inactivetext
 	url = https://github.com/cwolves/jQuery-inactiveText
-[submodule "wp-content/plugins/coreylib"]
-	path = wp-content/plugins/coreylib
+[submodule "design_blog/wp-content/plugins/coreylib"]
+	path = design_blog/wp-content/plugins/coreylib
 	url = https://github.com/collegeman/coreylib.git
