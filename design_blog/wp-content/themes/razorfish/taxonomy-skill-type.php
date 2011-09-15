@@ -6,7 +6,7 @@
 			<div id="primary" class="hfeed">
             
             	<!--BEGIN #masonry-->
-            	<div id="masonry-portfolio">
+            	<div class="masonry-portfolio">
               
               	<?php 
 				query_posts(array( 

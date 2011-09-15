@@ -128,7 +128,7 @@ function zillaframework_options_page(){
           <?php echo $return[1] ?>
         </ul>
       </div>
-      <div id="content"> <?php echo $return[0]; /* Settings */ ?> </div>
+      <div id="content" class="clearfix"> <?php echo $return[0]; /* Settings */ ?> </div>
       <div class="clear"></div>
     </div>
     <div class="save_bar_top">

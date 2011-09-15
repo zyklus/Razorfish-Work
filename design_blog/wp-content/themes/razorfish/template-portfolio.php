@@ -63,7 +63,7 @@ if (have_posts()){
 ?>
 
 
-<div class="left-content"> &nbsp;
+<div class="left-content masonry-portfolio"> &nbsp;
 	<?php echo implode( ' ', $left_posts ) ?>
 </div>
 
@@ -71,7 +71,7 @@ if (have_posts()){
 	<!--BEGIN #primary .hfeed-->
 	<div id="primary" class="hfeed">
 		<!--BEGIN #masonry-->
-		<div id="masonry-portfolio">
+		<div class="masonry-portfolio">
 
 			<?php echo implode( ' ', $right_posts ) ?>
 		</div>

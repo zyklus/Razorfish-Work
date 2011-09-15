@@ -7,7 +7,7 @@
 	});
 
 	$.extend(Number.prototype, {
-		  times     : function(cb){ for(var i=0; i<this; i++){ cb(i); } }
+		  times     : function(cb){ var res = ''; for(var i=0; i<this; i++){ res += (cb(i) || ''); } }
 		, interval  : tmp = function(cb){ return setInterval(cb, this); }
 		, every     : tmp
 		, timeout   : function(cb){ return setTimeout(cb, this); }

@@ -23,7 +23,7 @@ if (have_posts()){ ?>
 <!--BEGIN #primary .hfeed-->
 <div id="primary" class="hfeed">
 	<!--BEGIN #masonry-->
-	<div id="masonry-portfolio">
+	<div class="masonry-portfolio">
 
 		<?php
 		while (have_posts()) {

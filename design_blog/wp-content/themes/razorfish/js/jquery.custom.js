@@ -56,35 +56,48 @@ jQuery(document).ready(function() {
 	if(jQuery().masonry) {
 		
 		// cache masonry wrap
-		var $wall = jQuery('#masonry');
+		var $wall = jQuery('.masonry');
 		
 		$wall.masonry({
-			columnWidth: 380, 
-			animate: true,
-			animationOptions: {
-				duration: 500,
-				easing: 'easeInOutCirc',
-				queue: false
-			} ,
-			itemSelector: '.hentry'
+			        isAnimated : true
+			, animationOptions : {
+				duration : 500
+				, easing : 'easeInOutCirc'
+				,  queue : false
+			}
+			,     itemSelector : '.hentry'
 		}, function() {
 			jQuery('#load-more-link').fadeIn(200);	
 		});
 		
 		// cache masonry wrap
-		var $port = jQuery('#masonry-portfolio');
-		
-		$port.masonry({
-			singleMode: true,
-			animate: true,
-			animationOptions: {
-				duration: 500,
-				easing: 'easeInOutCirc',
-				queue: false
-			} ,
-			itemSelector: '.hentry'
+		var $port = jQuery('.masonry-portfolio');
+		$port.each(function( id, node ){
+			var $node = $( node )
+			  ,  opts = {
+				        isAnimated : true
+				,     itemSelector : '.hentry'
+				, animationOptions : {
+					duration : 500
+					, easing : 'easeInOutCirc'
+					,  queue : false
+				}
+			};
+
+			$node.is( '.left-content' ) && (opts.isRTL = true);
+
+			$node.masonry( opts );
 		});
-		
+
+		$port.masonry({
+			           animate : true
+			, animationOptions : {
+				duration : 500
+				, easing : 'easeInOutCirc'
+				,  queue : false
+			}
+			, itemSelector: '.hentry'
+		});
 	}
 	
 /*-----------------------------------------------------------------------------------*/
@@ -188,14 +201,14 @@ jQuery(document).ready(function() {
 	tz_loadMore();
 	
 	jQuery(window).resize( function () {
-		loadMoreWidth();
-		contentHeight();
+//		loadMoreWidth();
+//		contentHeight();
 	});
 	
 	function loadMoreWidth() {
 		
 		var loadMoreLink = jQuery('#load-more-link a');
-		var masonryWrap = jQuery('#masonry').width();
+		var masonryWrap = jQuery('.masonry').width();
 		
 		if(masonryWrap > 380 && masonryWrap < 760) {
 			animateWidth(loadMoreLink, 340);

@@ -40,16 +40,36 @@
 /*	-1.	Stylus Helpers
 /*-----------------------------------------------------------------------------------*/
 
-// COLORS
-color_link               = #30C9F2
-color_block_bg           = #3A3C3D
-color_block_bg_hover     = #2A2B2C
-color_block_title        = #D2D6DB
-color_block_text         = #A8ACB1
+.foo
+	background transparentify( #666666 );
 
-color_input_bg           = #343445
-color_input_txt_disabled = #242430
-color_input_border       = #000000
+// COLORS
+color_link                  = #30C9F2
+color_block_bg              = #3A3C3D
+color_block_bg_hover        = #2A2B2C
+color_block_title           = #D2D6DB
+color_block_text            = #A8ACB1
+
+color_input_bg              = #343445
+color_input_txt_disabled    = #242430
+color_input_border          = #000000
+
+color_ticker_background     = #242430
+
+// SIZES
+size_sm_box                 = 230px 280px
+size_lg_box                 = 360px 415px
+
+size_ticker_height          = 24px
+size_post_hover_img_height  = 50px
+
+// MARGINS
+margin_blocks_content_left  = 100px
+margin_blocks_content_right = 100px
+
+margin_post_content         =    0 15px    0 15px
+margin_post_title           = 15px 15px 10px 15px
+margin_text_post_title      = 15px 15px 10px 15px
 
 /*-----------------------------------------------------------------------------------*/
 /*	0.	CSS Reset & Clearfix - http://meyerweb.com/eric/tools/css/reset/
@@ -126,14 +146,13 @@ form,
 /* Entries */
 .hentry {
 	position   relative
-	width      360px
 	margin     0 0 20px 20px
 	float      left
 	background color_block_bg
 	color      color_block_text
 
 	.entry-title {
-		padding     0 15px 10px 15px
+		padding     margin_post_title
 		margin      0px
 		line-height 16px
 
@@ -156,7 +175,7 @@ form,
 	}
 
 	&.text-only .entry-title {
-		padding-top : 15px;
+		padding : margin_text_post_title;
 	}
 	
 	&.text-only .post-thumb {
@@ -167,10 +186,9 @@ form,
 		display       block
 		position      relative
 		overflow      hidden
-		margin-bottom 5px
 
 		&.hover {
-			height 50px
+			height size_post_hover_img_height
 		}
 
 		.tab {
@@ -273,8 +291,8 @@ form,
 	float: none;
 }
 
-#masonry-portfolio,
-#masonry {
+.masonry-portfolio,
+.masonry {
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -282,8 +300,7 @@ form,
 }
 
 #content { 
-	float: left;
-	width: 100%;
+	margin : 0 margin_blocks_content_right 0 margin_blocks_content_left;
 }
 
 #bg-line {
@@ -307,10 +324,9 @@ form,
 }
 
 #speckle-bg {
-	position absolute
-	width    image-size( 'images/sprites/speckle_top.png' )[1]
-	height   100%
+	position fixed
 	top      35px
+	bottom   0px
 	left     50%
 
 	div {
@@ -439,7 +455,7 @@ body.admin-bar #widget-overlay-container {
 	position relative
 
 	.padding-box
-		size    100% 100%
+		height  100%
 		padding 0 25px
 
 .right-content .search-container, .right-content .fish-school
@@ -1175,7 +1191,8 @@ label.error { color: red; }
 	position    : fixed;
 	top         : 0px;
 	left        : 0px;
-	width       : 100%;
+	right       : 0px;
+	padding     : 0 margin_blocks_content_right 0 margin_blocks_content_left;
 	font-size   : 8px;
 	line-height : 22px;
 	font-family : '5x5_Square', sans-serif;
@@ -1190,16 +1207,19 @@ label.error { color: red; }
 	text-align : right;
 
 dark_sprite( dark, light ) {
-	display    : block;
 	background : sprite( dark );
-	cursor     : pointer;
-	float      : right;
-	margin     : 5px 5px 4px 5px;
 	spriteSize();
 
 	&:hover {
 		background : sprite( light );
 	}
+}
+
+#ticker-bar .twitter-link, #ticker-bar .rss-link {
+	display : block;
+	cursor  : pointer;
+	float   : right;
+	margin  : 5px 5px 4px 5px;
 }
 
 #ticker-bar .twitter-link {
@@ -1215,58 +1235,51 @@ dark_sprite( dark, light ) {
 }
 
 .rss-ticker {
-	color : #85CDDC;
-	float : right;
-}
+	color #85CDDC
+	float right
 
-.rss-ticker .title {
-	padding : 0 5px 0 20px;
-}
-
-.rss-ticker .ticker {
-	width       : 344px;
-	position    : relative;
-	display     : inline-block;
-	padding     : 0 0 2px 0;
-	margin      : 0px;
-	background  : #242430;
-}
-
-.rss-ticker .ticker .shadow {
-	width      : 5px;
-	height     : 100%;
-	position   : absolute;
-	top        : 0px;
-
-	&.left {
-		background : sprite( 'images/sprites_v/ticker_left_shadow.png' ) repeat-y;
-		left       : 0px;
+	.title {
+		padding 0 5px 0 20px
 	}
 
-	&.right {
-		background : sprite( 'images/sprites_v/ticker_right_shadow.png' ) repeat-y;
-		right      : 0px;
+	.ticker {
+		width       344px
+		position    relative
+		display     inline-block
+		padding     0 0 2px 0
+		margin      0px
+		background  color_ticker_background
+		
+		.shadow {
+			width      5px
+			height     100%
+			position   absolute
+			top        0px
+
+			&.left {
+				background sprite( 'images/sprites_v/ticker_left_shadow.png' ) repeat-y
+				left       0px
+			}
+
+			&.right {
+				background sprite( 'images/sprites_v/ticker_right_shadow.png' ) repeat-y
+				right      0px
+			}
+		}
 	}
-}
 
-.rss-ticker.sf-creative .content {
-	color : #DC0273;
-}
+	.content {
+		white-space nowrap
+		overflow    hidden
+		width       100%
+		display     inline-block
+		line-height 8px
+	}
 
-.rss-ticker.quote-blog .content {
-	color : #61AA97;
-}
-
-.rss-ticker .content {
-	white-space : nowrap;
-	overflow    : hidden;
-	width       : 100%;
-	display     : inline-block;
-}
-
-.rss-ticker .ticker-item {
-	display : inline-block;
-	margin  : 0 30px 0 0;
+	.ticker-item {
+		display inline-block
+		margin  0 30px 0 0
+	}
 }
 
 /*-----------------------------------------------------------------------------------*/

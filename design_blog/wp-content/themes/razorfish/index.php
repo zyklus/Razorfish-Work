@@ -4,7 +4,7 @@
 			<div id="primary" class="hfeed">
 				
                 <!--BEGIN #masonry-->
-            	<div id="masonry">
+            	<div class="masonry">
                 
                 	<?php 
 					
