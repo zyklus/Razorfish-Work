@@ -449,14 +449,17 @@ body.admin-bar #widget-overlay-container {
 	spriteSize();
 }
 
-.left-content, .right-content
-	float     left
-	width     50%
-	position  relative
+.left-content, .right-content{
+	float    : left;
+	width    : 50%;
+	position : relative;
+	overflow : visible !important;
 
-	.padding-box
-		height  100%
-		padding 0 25px
+	.padding-box {
+		height  : 100%;
+		padding : 0 25px;
+	}
+}
 
 .left-content
 	min-width min_screen_width

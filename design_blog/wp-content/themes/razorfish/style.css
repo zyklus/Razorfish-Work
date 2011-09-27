@@ -318,14 +318,14 @@ form,
   background: url("images/sprites/sprite-1.png");
   width: 22px;
   height: 11px;
-  background-position: 0 -43px;
+  background-position: -93px -78px;
 }
 .hentry .post-thumb img {
   display: block;
 }
 .hentry:hover .post-thumb .tab {
   background: url("images/sprites/sprite-1.png");
-  background-position: -93px -78px;
+  background-position: -107px 0;
 }
 .hentry .entry-footer {
   color: #30c9f2;
@@ -353,7 +353,7 @@ form,
   vertical-align: middle;
   width: 14px;
   height: 13px;
-  background-position: -107px 0;
+  background-position: 0 -30px;
 }
 .hentry .entry-footer .favorites {
   line-height: 15px;
@@ -367,7 +367,7 @@ form,
   vertical-align: middle;
   width: 14px;
   height: 13px;
-  background-position: 0 -30px;
+  background-position: -14px -30px;
 }
 .hentry:hover,
 .hentry:hover .entry-footer {
@@ -573,6 +573,7 @@ body.admin-bar #widget-overlay-container {
   width: 50%;
   position: relative;
   z-index: 1;
+  overflow: visible !important;
 }
 .left-content .padding-box,
 .right-content .padding-box {
@@ -1346,11 +1347,11 @@ label.error {
   background: url("images/sprites/sprite-1.png");
   width: 18px;
   height: 15px;
-  background-position: -121px 0;
+  background-position: 0 -15px;
 }
 #ticker-bar .twitter-link:hover {
   background: url("images/sprites/sprite-1.png");
-  background-position: 0 -15px;
+  background-position: 0 -43px;
 }
 #ticker-bar .rss-link {
   background: url("images/sprites/sprite-1.png");
