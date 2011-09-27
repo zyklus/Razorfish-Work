@@ -1,4 +1,4 @@
-(function(){
+(function( $ ){
 	var tmp;
 
 	$.extend(String.prototype, {
@@ -89,4 +89,4 @@
 					: false;
 			}
 	});
-})();
+})( jQuery );

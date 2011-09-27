@@ -376,4 +376,22 @@ jQuery(document).ready(function( $ ) {
 		$( this ).find( '.post-thumb' ).removeClass( 'hover', animSpeed );
 	});
 
+/*-----------------------------------------------------------------------------------*/
+/*	Slideshows
+/*-----------------------------------------------------------------------------------*/
+	$( '.slides .slides_container' ).each( function(){
+		var $this = $(this)
+		  , $imgs = $this.find( '.img' );
+		
+		if( $imgs.length < 2 ){ return; }
+
+		$this.closest( '.slides' ).slides({
+		          play : 5000
+		  ,      pause : 2500
+		  , hoverPause : true
+		})
+			.closest( '.hentry' )
+				.addClass( 'slideshow' );
+	} )
+
 });

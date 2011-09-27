@@ -145,32 +145,36 @@ form,
 
 /* Entries */
 .hentry {
-	position   relative
-	margin     0 0 20px 20px
-	float      left
-	background color_block_bg
-	color      color_block_text
+	position   : relative;
+	margin     : 0 0 20px 20px;
+	float      : left;
+	background : color_block_bg;
+	color      : color_block_text;
 
 	.entry-title {
-		padding     margin_post_title
-		margin      0px
-		line-height 16px
+		padding     : margin_post_title;
+		margin      : 0px;
+		line-height : 16px;
 
 		a {
-			color       color_block_title
-			font-size   12px
+			color     : color_block_title;
+			font-size : 12px;
 		}
 	}
 
+	&.slideshow .entry-title {
+		padding-right : 70px;
+	}
+
 	&.portfolio {
-		size     230 280
-		overflow hidden
-		margin   0 0 20px 25px
-		padding  0
-		float    left
+		size     : 230 280;
+		overflow : hidden;
+		margin   : 0 0 20px 25px;
+		padding  : 0;
+		float    : left;
 
 		&.featured {
-			size 360 415
+			size : size_lg_box[0] size_lg_box[1];
 		}
 	}
 
@@ -183,70 +187,91 @@ form,
 	}
 
 	.post-thumb {
-		display       block
-		position      relative
-		overflow      hidden
+		display  : block;
+		position : relative;
 
 		&.hover {
-			height size_post_hover_img_height
+			height   : size_post_hover_img_height;
+			overflow : hidden;
 		}
 
 		.tab {
-			position   absolute
-			bottom     0px
-			right      15px
-			background sprite( 'images/sprites/up_article_arrow.png' )
-			spriteSize()
+			position   : absolute;
+			bottom     : 0px;
+			right      : 15px;
+			background : sprite( 'images/sprites/up_article_arrow.png' );
+			z-index    : 6;
+			spriteSize();
 		}
 
 		img {
-			display       block
+			display : block
+		}
+	}
+
+	.pagination {
+		position : absolute;
+		bottom   : -50px;
+		right    : 10px;
+
+		li {
+			background  : sprite( 'images/sprites/img_dot_unselected.png' );
+			float       : left;
+			padding     : 2px;
+			overflow    : hidden;
+			text-indent : 100px;
+			spriteSize();
+		
+			&.current {
+				background : sprite( 'images/sprites/img_dot_selected.png' )
+				spriteSize();
+			}
 		}
 	}
 
 	&:hover .post-thumb .tab {
-		background sprite( 'images/sprites/up_article_arrow_dark.png' )
+		background : sprite( 'images/sprites/up_article_arrow_dark.png' );
 	}
 
 	.entry-footer {
-		color      color_link
-		margin     0 15px
-		position   absolute
-		bottom     0px
-		left       0px
-		right      0px
-		background color_block_bg
-		padding    6px 0
+		color      : color_link;
+		margin     : 0 15px;
+		position   : absolute;
+		bottom     : 0px;
+		left       : 0px;
+		right      : 0px;
+		background : color_block_bg;
+		padding    : 6px 0;
 
 		a {
-			color color_link
+			color : color_link;
 		}
 
 		spriteWithText( src ) {
-			line-height 15px
-			margin      0 3px
-			float       right
+			line-height : 15px;
+			margin      : 0 3px;
+			float       : right;
 
 			span {
-				background     sprite( src )
-				display        inline-block
-				margin-right   5px
-				vertical-align middle
-				spriteSize()
+				background     : sprite( src );
+				display        : inline-block;
+				margin-right   : 5px;
+				vertical-align : middle;
+				spriteSize();
 			}
 		}
 
 		.comments {
-			spriteWithText( 'images/sprites/comments.png' )
+			spriteWithText( 'images/sprites/comments.png' );
 		}
 
 		.favorites {
-			spriteWithText( 'images/sprites/favorites.png' )
+			spriteWithText( 'images/sprites/favorites.png' );
 		}
 	}
 
 	&:hover, &:hover .entry-footer {
-		background color_block_bg_hover
+		background : color_block_bg_hover;
 	}
 }
 

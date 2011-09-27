@@ -2,18 +2,25 @@
 <div <?php echo 'class="' . implode(' ', $post_class) . '"'; ?> id="post-<?php echo $post_id; ?>">
 
 	<div class="post-thumb clearfix">
-		<a class="lightbox" title="<?php echo $title; ?>" href="<?php echo $large_image; ?>">
-			<span class="overlay">
-				<span class="icon"></span>
-			</span>
+		<div class="slides">
+			<div class="slides_container">
+				<?php
+				if( !$images || !count( $images ) ){
+					$images = array( $thumb );
+				}
+				$shown  = false;
+				foreach( $images as $img ){
+					echo '<div class="img" style="' . ( $shown ? 'display:none;' : '' ) . '">' . $img . '</div>';
 
-			<?php echo $thumb; ?>
-
-		</a>
+					$shown = true;
+				} ?>
+			</div>
+		</div>
 		<div class="tab"></div>
 	</div>
 
 	<h2 class="entry-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h2>
+	<div class="entry-img-navigator"></div>
 
 	<div class="entry-excerpt">
 		<?php 

@@ -18,6 +18,19 @@ query_posts( array(
 	'posts_per_page' => -1
 ) );
 
+function push_image( &$images, $post_id, $name, $size ){
+	$meta  = get_post_meta( $post_id, $name );
+	$imgId = $meta[0];
+
+	if( !$imgId ){ return; }
+
+	$image = wp_get_attachment_image( $imgId, $size, false, '' );
+
+	if( $image != '' ){
+		$images[] = $image;
+	}
+}
+
 if (have_posts()){
 
 	$left_posts  = array();
@@ -31,23 +44,31 @@ if (have_posts()){
 		$thumb	     = get_post_meta( $post_id, 'tz_portfolio_thumb'   , true );
 		$featured    = get_post_meta( $post_id, 'tz_portfolio_featured', true );
 
-		$image1      = get_post_meta( $post_id, 'tz_portfolio_image'   , true );
-		$image2      = get_post_meta( $post_id, 'tz_portfolio_image2'  , true );
-		$image3      = get_post_meta( $post_id, 'tz_portfolio_image3'  , true );
-		$image4      = get_post_meta( $post_id, 'tz_portfolio_image4'  , true );
-		$image5      = get_post_meta( $post_id, 'tz_portfolio_image5'  , true );
-		
 		$large_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'fullsize', false, '' );
 
+		$images = array();
+
+		$imgSize = ( $featured === 'yes' ) ? 'gallery-format-thumb' : 'portfolio-thumb';
+
 		if($thumb == '')
-			$thumb = get_the_post_thumbnail($post_id, 'portfolio-thumb');
+			$thumb = get_the_post_thumbnail( $post_id, $imgSize );
+
+		if( $thumb !== '' ){
+			$images[] = $thumb;
+			$thumb = '';
+		}
+
+		push_image( $images, $post_id, 'tz_portfolio_image' , $imgSize );
+		push_image( $images, $post_id, 'tz_portfolio_image2', $imgSize );
+		push_image( $images, $post_id, 'tz_portfolio_image3', $imgSize );
+		push_image( $images, $post_id, 'tz_portfolio_image4', $imgSize );
+		push_image( $images, $post_id, 'tz_portfolio_image5', $imgSize );
 
 		if( $featured === 'yes' ){
 			$post_class[] = 'featured';
-			$thumb = get_the_post_thumbnail($post_id, 'gallery-format-thumb');
 		}
 
-		if( !$thumb ){
+		if( !count( $images ) ){
 			$post_class[] = 'text-only';
 		}
 
