@@ -62,6 +62,7 @@
 	12.	Shortcode Styles
 	13.	Post Formats
 	14.	Fish Tank
+	15. Screen Resizing
 
 -----------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------*/
@@ -317,14 +318,14 @@ form,
   background: url("images/sprites/sprite-1.png");
   width: 22px;
   height: 11px;
-  background-position: -44px 0;
+  background-position: 0 -43px;
 }
 .hentry .post-thumb img {
   display: block;
 }
 .hentry:hover .post-thumb .tab {
   background: url("images/sprites/sprite-1.png");
-  background-position: 0 -68px;
+  background-position: -93px -78px;
 }
 .hentry .entry-footer {
   color: #30c9f2;
@@ -352,7 +353,7 @@ form,
   vertical-align: middle;
   width: 14px;
   height: 13px;
-  background-position: -36px -15px;
+  background-position: -107px 0;
 }
 .hentry .entry-footer .favorites {
   line-height: 15px;
@@ -366,7 +367,7 @@ form,
   vertical-align: middle;
   width: 14px;
   height: 13px;
-  background-position: -30px 0;
+  background-position: 0 -30px;
 }
 .hentry:hover,
 .hentry:hover .entry-footer {
@@ -456,7 +457,7 @@ form,
   background: url("images/sprites/sprite-1.png") no-repeat;
   width: 63px;
   height: 93px;
-  background-position: -77px -30px;
+  background-position: -30px -78px;
 }
 #speckle-bg .bg {
   background: url("images/sprites/speckle_bg.png") repeat-y;
@@ -544,7 +545,7 @@ body.admin-bar #widget-overlay-container {
   background: url("images/sprites/sprite-1.png");
   width: 168px;
   height: 40px;
-  background-position: -77px -123px;
+  background-position: -30px -38px;
 }
 .fish-school {
   position: relative;
@@ -564,7 +565,7 @@ body.admin-bar #widget-overlay-container {
   background: url("images/sprites/sprite-1.png");
   width: 77px;
   height: 38px;
-  background-position: 0 -30px;
+  background-position: -30px 0;
 }
 .left-content,
 .right-content {
@@ -577,6 +578,9 @@ body.admin-bar #widget-overlay-container {
 .right-content .padding-box {
   height: 100%;
   padding: 0 25px;
+}
+.left-content {
+  min-width: 360px;
 }
 .right-content .search-container,
 .right-content .fish-school {
@@ -1342,7 +1346,7 @@ label.error {
   background: url("images/sprites/sprite-1.png");
   width: 18px;
   height: 15px;
-  background-position: -18px -15px;
+  background-position: -121px 0;
 }
 #ticker-bar .twitter-link:hover {
   background: url("images/sprites/sprite-1.png");
@@ -2198,4 +2202,35 @@ div.jp-jplayer {
   bottom: 0px;
   left: 0px;
   z-index: -1;
+}
+/*-----------------------------------------------------------------------------------*/
+/*	15.	Screen Resizing
+/*-----------------------------------------------------------------------------------*/
+body.sub-950 .right-content {
+  width: 230px;
+}
+body.sub-800 #content {
+  margin: 0 0 0 12.5%;
+}
+body.sub-800 #ticker-bar {
+  padding: 0 12.5%;
+}
+body.sub-600 .logo-container {
+  text-align: left;
+  padding: 0 0 10px 30px;
+}
+body.sub-500 .rss-ticker .ticker {
+  width: 200px;
+}
+body.sub-400 #content {
+  margin: 0;
+}
+body.sub-400 #ticker-bar {
+  padding: 0;
+}
+body.narrow .right-content {
+  width: 230px;
+}
+body.narrow .content {
+  margin: 0;
 }

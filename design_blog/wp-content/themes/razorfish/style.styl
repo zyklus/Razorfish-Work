@@ -27,6 +27,7 @@
 	12.	Shortcode Styles
 	13.	Post Formats
 	14.	Fish Tank
+	15. Screen Resizing
 
 -----------------------------------------------------------------------------------*/
 
@@ -59,6 +60,8 @@ size_lg_box                 = 360px 415px
 
 size_ticker_height          = 24px
 size_post_hover_img_height  = 50px
+
+min_screen_width            = 360px
 
 // MARGINS
 margin_blocks_content_left  = 100px
@@ -296,7 +299,7 @@ form,
 	list-style: none;
 }
 
-#content { 
+#content {
 	margin : 0 margin_blocks_content_right 0 margin_blocks_content_left;
 }
 
@@ -447,13 +450,16 @@ body.admin-bar #widget-overlay-container {
 }
 
 .left-content, .right-content
-	float    left
-	width    50%
-	position relative
+	float     left
+	width     50%
+	position  relative
 
 	.padding-box
 		height  100%
 		padding 0 25px
+
+.left-content
+	min-width min_screen_width
 
 .right-content .search-container, .right-content .fish-school
 	float left
@@ -2051,4 +2057,54 @@ div.jp-jplayer { background-color: #292a2b; }
 	bottom   : 0px;
 	left     : 0px;
 	z-index  : -1;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	15.	Screen Resizing
+/*-----------------------------------------------------------------------------------*/
+body.sub-950 {
+	.right-content {
+		width : size_sm_box[0];
+	}
+}
+
+body.sub-800 {
+	#content {
+		margin : 0 0 0 12.5%;
+	}
+	
+	#ticker-bar {
+		padding : 0 12.5%;
+	}
+}
+
+body.sub-600 {
+	.logo-container {
+		text-align : left;
+		padding    : 0 0 10px 30px;
+	}
+}
+
+body.sub-500 {
+	.rss-ticker .ticker {
+		width : 200px;
+	}
+}
+
+body.sub-400 {
+	#content {
+		margin : 0;
+	}
+
+	#ticker-bar {
+		padding : 0;
+	}
+}
+
+body.narrow .right-content{
+	width : size_sm_box[0]
+}
+
+body.narrow .content {
+	margin : 0;
 }

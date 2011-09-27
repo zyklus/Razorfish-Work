@@ -51,20 +51,22 @@
 		</div>
 
 		<!-- Razorfish logo -->
-		<div class="left-content logo-container">
-			<a href="<?php echo home_url(); ?>">
-				<span class="razorfish-logo"></span>
-			</a>
-		</div>
+		<div class="header-content">
+			<div class="left-content logo-container">
+				<a href="<?php echo home_url(); ?>">
+					<span class="razorfish-logo"></span>
+				</a>
+			</div>
 
-		<div class="right-content">
-			<div class="padding-box">
-				<span class="search-container">
-					<input class="input" id="search">
-					<br />
-					<div class="input" id="categories">Categories</div>
-				</span>
-				<span class="fish-school"><span class="fishies"></span></span>
+			<div class="right-content">
+				<div class="padding-box">
+					<span class="search-container">
+						<input class="input" id="search">
+						<br />
+						<div class="input" id="categories">Categories</div>
+					</span>
+					<span class="fish-school"><span class="fishies"></span></span>
+				</div>
 			</div>
 		</div>
 

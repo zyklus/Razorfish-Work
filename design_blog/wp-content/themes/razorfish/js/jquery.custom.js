@@ -14,8 +14,7 @@ jQuery('#container').removeClass('js-disabled');
 /*	Let's get ready!
 /*-----------------------------------------------------------------------------------*/
 
-jQuery(document).ready(function() {
-
+jQuery(document).ready(function( $ ) {
 
 /*-----------------------------------------------------------------------------------*/
 /*	Widget Overlay Stuff
@@ -201,8 +200,9 @@ jQuery(document).ready(function() {
 	tz_loadMore();
 	
 	jQuery(window).resize( function () {
-//		loadMoreWidth();
-//		contentHeight();
+		loadMoreWidth();
+		contentHeight();
+		
 	});
 	
 	function loadMoreWidth() {
@@ -309,7 +309,14 @@ jQuery(document).ready(function() {
 		var footerHeight = jQuery('#footer').height();
 		
 		jQuery('#content').css('min-height', windowHeight - footerHeight - 150);
-		
+		$( '#container' ).css( 'padding-top', ( $( '#ticker-bar' ).height() || 0 ) + 6 );
+
+		var bSizes = [ 950, 800, 600, 500, 400 ];
+		for( var i=0, l=bSizes.length; i<l; i++ ){
+			var w = bSizes[ i ];
+
+			$( 'body' )[ $( 'body' ).width() < w ? 'addClass' : 'removeClass' ]( 'sub-' + w );
+		}
 	}
 	
 	contentHeight(); 

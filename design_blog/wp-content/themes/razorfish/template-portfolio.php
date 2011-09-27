@@ -30,6 +30,13 @@ if (have_posts()){
 		$post_class  = get_post_class();
 		$thumb	     = get_post_meta( $post_id, 'tz_portfolio_thumb'   , true );
 		$featured    = get_post_meta( $post_id, 'tz_portfolio_featured', true );
+
+		$image1      = get_post_meta( $post_id, 'tz_portfolio_image'   , true );
+		$image2      = get_post_meta( $post_id, 'tz_portfolio_image2'  , true );
+		$image3      = get_post_meta( $post_id, 'tz_portfolio_image3'  , true );
+		$image4      = get_post_meta( $post_id, 'tz_portfolio_image4'  , true );
+		$image5      = get_post_meta( $post_id, 'tz_portfolio_image5'  , true );
+		
 		$large_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'fullsize', false, '' );
 
 		if($thumb == '')
@@ -50,7 +57,7 @@ if (have_posts()){
 		$permalink   = get_permalink();
 
 		ob_start();
-		include('template-image-block.php');
+		include( 'template-image-block.php' );
 		$contents = ob_get_contents();
 
 		if( $featured === 'yes' ){
@@ -67,18 +74,8 @@ if (have_posts()){
 	<?php echo implode( ' ', $left_posts ) ?>
 </div>
 
-<div class="right-content">
-	<!--BEGIN #primary .hfeed-->
-	<div id="primary" class="hfeed">
-		<!--BEGIN #masonry-->
-		<div class="masonry-portfolio">
-
-			<?php echo implode( ' ', $right_posts ) ?>
-		</div>
-		<!--END #masonry-->
-
-	<!--END #primary .hfeed-->
-	</div>
+<div class="right-content masonry-portfolio">
+	<?php echo implode( ' ', $right_posts ) ?>
 </div>
 
 <?php
