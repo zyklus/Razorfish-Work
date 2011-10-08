@@ -1,6 +1,6 @@
 # Javascript OO Development
 
-One of the key problems in large-scale web development is a general lack of OO practices being applied to browser-side code.  Many applications take the approach of creating DOM elements (HTML) then applying CSS – some of which is on a site-wide level, some of which applies to very localized elements – and JS chaotically as-needed.  E.G. A new piece of functionality is needed, so new HTML code gets thrown in, new CSS gets tacked on to the end of a `site.css` file, new JS gets thrown in to a `site.js` file.
+One of the key problems in large-scale web development is a general lack of OO practices being applied to browser-side code.  Many applications take the approach of creating DOM elements (HTML) then applying CSS &mdash; some of which is on a site-wide level, some of which applies to very localized elements &mdash; and JS chaotically as-needed.  E.G. A new piece of functionality is needed, so new HTML code gets thrown in, new CSS gets tacked on to the end of a `site.css` file, new JS gets thrown in to a `site.js` file.
 
 Although this approach works fine for smaller sites – and on those with few changes – it quickly falls apart or becomes difficult to maintain as the complexity of the site increases.  The solution is to adopt OO practices that regularly are applied in languages such as C, Java, PHP, Ruby, etc to browser-side JS and even CSS.
 
