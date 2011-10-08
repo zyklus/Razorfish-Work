@@ -29,7 +29,7 @@ There are numerous ways to speed up the general loading of a page.  The key poin
 		- Deliver all content via gzip when applicable (server config)
 
 - Use a CDN to serve static content
-	- If possible, serve images from multiple sub-domains.  Since many browsers cap the number of simultaneous connections to a single domain, you can achieve faster page load times by referencing imgs1.your-cdn.com, imgs2.your-cdn.com, imgs3.your-cdn.com, etc.  Don’t go over-board here, however, as DNS lookups are also expensive.  2-4 subdomains should provide a good speed increase without adding significant DNS lookup overhead.
+	- If possible, serve images from multiple sub-domains.  Since many browsers cap the number of simultaneous connections to a single domain, you can achieve faster page load times by referencing `imgs1.your-cdn.com`, `imgs2.your-cdn.com`, `imgs3.your-cdn.com`, etc.  Don't go over-board here, however, as DNS lookups are also expensive.  2-4 subdomains should provide a good speed increase without adding significant DNS lookup overhead.
 
 - Add caching on static content
 	- All static resources (images, css, javascript) should have a “Never Expire” cache set (in reality, this is usually “1 year”).  These assets should be version controlled and renamed when changed.  E.g. `page-v5.js`
