@@ -1,0 +1,11 @@
+.widget {
+  border: widget-border-color;
+  background: #00f;
+}
+.widget .titlebar {
+  font-size: 18px;
+  background: #008080;
+}
+.widget:hover .titlebar {
+  background: #004040;
+}

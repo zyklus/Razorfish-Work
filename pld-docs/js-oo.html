@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><link href="site.css" rel="stylesheet" type="text/css"></head><body><div id="navigation"><li><a href="index.html">Home</a></li><li><a href="browser-support.html">Browser Support</a></li><li><a href="browser.html">Browser Best Practices</a></li><li><a href="layouts.html">Page Layout</a></li><li><a href="css-structure.html">CSS Structure</a></li><li><a href="jquery.html">jQuery</a></li><li><a href="js-oo.html">Javascript OO</a></li><li><a href="jq-events.html">jQuery Events</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="mobile.html">Mobile Support</a></li><li><a href="fonts.html">Fonts</a></li><li><a href="video.html">Video</a></li><hr><li><a href="templates.html">Template Languages</a></li><li><a href="frameworks.html">Frameworks</a></li><hr><li><a href="about.html">Revision History</a></li></div><div class="content"><h1>Javascript OO Development</h1>
+
+<p>One of the key problems in large-scale web development is a general lack of OO practices being applied to browser-side code.  Many applications take the approach of creating DOM elements (HTML) then applying CSS – some of which is on a site-wide level, some of which applies to very localized elements – and JS chaotically as-needed.  E.G. A new piece of functionality is needed, so new HTML code gets thrown in, new CSS gets tacked on to the end of a <code>site.css</code> file, new JS gets thrown in to a <code>site.js</code> file.</p>
+
+<p>Although this approach works fine for smaller sites – and on those with few changes – it quickly falls apart or becomes difficult to maintain as the complexity of the site increases.  The solution is to adopt OO practices that regularly are applied in languages such as C, Java, PHP, Ruby, etc to browser-side JS and even CSS.</p>
+
+<h2>JavaScript Classes</h2>
+
+<p>Although the notion of a <code>class</code> is not inheriently native to JavaScript, every <code>function</code> in JS acts as a <code>constructor</code> and so class-based programming is possible.  There are even techniques and libraries available to add <code>inheritance</code> to your classes.</p>
+
+<p>If you are interested in a low-level understanding of JS Classes, I will refer you to <a href="http://mark-article">this article</a> that I wrote around 2005.</p>
+
+<h3>Classes in jQuery</h3>
+
+<p>jQuery does not provide a class structure, but a popular one available from jQuery's author, John Resig, is available: <a href="http://resig-class">Link</a>.  If you are interested in developing classes from this low-level, I have a <a href="http://foo">modified</a> version of this class that adds Namespace and property support, along with an <a href="http://foo">Observable</a> class that inherits from this that adds class-level events.</p>
+
+<h4>Backbone.js</h4>
+
+<p><a href="http://documentcloud.github.com/backbone/">Backbone</a> is a JavaScript library that provides an in-browser MVC layer.</p>
+</div></body></html>

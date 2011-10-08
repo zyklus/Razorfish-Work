@@ -1,0 +1,130 @@
+<!DOCTYPE html><html><head><link href="site.css" rel="stylesheet" type="text/css"></head><body><div id="navigation"><li><a href="index.html">Home</a></li><li><a href="browser-support.html">Browser Support</a></li><li><a href="browser.html">Browser Best Practices</a></li><li><a href="layouts.html">Page Layout</a></li><li><a href="css-structure.html">CSS Structure</a></li><li><a href="jquery.html">jQuery</a></li><li><a href="js-oo.html">Javascript OO</a></li><li><a href="jq-events.html">jQuery Events</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="mobile.html">Mobile Support</a></li><li><a href="fonts.html">Fonts</a></li><li><a href="video.html">Video</a></li><hr><li><a href="templates.html">Template Languages</a></li><li><a href="frameworks.html">Frameworks</a></li><hr><li><a href="about.html">Revision History</a></li></div><div class="content"><h1>CSS Structure</h1>
+
+<p>Keeping CSS structured and organized is always a headache and requires self discipline to keep your files from becoming an un-managable mess.  This document will provide some general tips to help you, however.</p>
+
+<h3>Templates</h3>
+
+<p>The best tool I've found to keep CSS organized is, put simply, to not use CSS.  I find that with a template language that compiles down to CSS, that has proper nesting &amp; includes, structure becomes much easier to organize:</p>
+
+<pre><code>widget-boder-color      = red
+widget-background-color = blue
+widget-title-size       = 18px
+widget-title-color      = teal
+
+.widget
+    border     widget-border-color
+    background widget-background-color
+
+    .titlebar
+        font-size  widget-title-size
+        background widget-title-color
+
+    &amp;:hover .titlebar
+        background darken( widget-title-color, 50% )
+</code></pre>
+
+<p>can get rendered into:</p>
+
+<pre><code>.widget {
+    border     : widget-border-color;
+    background : #00f;
+}
+.widget .titlebar {
+    font-size  : 18px;
+    background : #008080;
+}
+.widget:hover .titlebar {
+    background : #004040;
+}
+</code></pre>
+
+<p>Obviously this is a simplistic example, but the organizational benefits of such a template language should be clear.</p>
+
+<h3>Indentation</h3>
+
+<p>Without using a templating language, a useful tool to keep CSS organized is to still indent code.  Taking the above example:</p>
+
+<pre><code>.widget {
+    border     : widget-border-color;
+    background : #00f;
+}
+    .widget .titlebar {
+        font-size  : 18px;
+        background : #008080;
+    }
+    .widget:hover .titlebar {
+        background : #004040;
+    }
+</code></pre>
+
+<p>It is clear that the 2nd &amp; 3rd rules are directly related to the 1st.</p>
+
+<h3>Organization by HTML Structure</h3>
+
+<p>One of the most common ways to organize CSS is by feature.  It is helpful to add large block comments to your CSS code so that it is perfectly clear where code belongs:</p>
+
+<pre><code>/*********************
+ * HEADER NAVIGATION *
+ *********************/
+.header ul li {
+    float           : left;
+    list-style-type : none;
+    padding         : 0 10px;
+}
+.header .homeLink {
+    background : url( /images/logo.png );
+}
+
+/***********
+ * Widgets *
+ ***********/
+.widget {
+    background-color : blue;
+}
+
+/******************
+ * Weather Widget *
+ ******************/
+.widget.weather {
+    min-width : 200px;
+}
+
+.widget.weather .title {
+    background-image : url( /images/weather.png );
+}
+</code></pre>
+
+<h3>Organization by CSS Feature</h3>
+
+<p>Another, although somewhat less commmon, approach is to organize your CSS by specific design aspects, e.g.:</p>
+
+<pre><code>/**********
+ * Layout *
+ **********
+.title { width : 100%; height : 100px; }
+.widget { min-width : 200px; min-height : 200px; }
+.widget.weather { min-width : 300px; }
+</code></pre>
+
+<p>/<strong><em>*</em><em>*</em><em>*</em><em></strong><br />    * Typography *<br />    <strong></em><em>*</em><em>*</em><em>*</em></strong>/<br />    html { font-family: verdana; }<br />    .widget { font-family: tahoma; }<br />    .widget.title { font-size: 18px; }</p>
+
+<pre><code>/**********
+ * Colors *
+ **********/
+</code></pre>
+
+<h3>Breaking CSS Files Apart</h3>
+
+<p>A very good approach for organizing CSS is to place separate funtionality in entirely separate files.</p>
+
+<p><strong>Note:</strong> This approach should only seriously be used if there is a build process that stitches these files back together as it can increase page load time.</p>
+
+<p>Most template languages have this feature built in as well.</p>
+
+<pre><code>@import url( reset.css )
+@import url( top-nav.css )
+@import url( left-nav.css )
+@import url( widget.css )
+@import url( weather-widget.css )
+</code></pre>
+</div></body></html>

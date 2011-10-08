@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><link href="site.css" rel="stylesheet" type="text/css"></head><body><div id="navigation"><li><a href="index.html">Home</a></li><li><a href="browser-support.html">Browser Support</a></li><li><a href="browser.html">Browser Best Practices</a></li><li><a href="layouts.html">Page Layout</a></li><li><a href="css-structure.html">CSS Structure</a></li><li><a href="jquery.html">jQuery</a></li><li><a href="js-oo.html">Javascript OO</a></li><li><a href="jq-events.html">jQuery Events</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="mobile.html">Mobile Support</a></li><li><a href="fonts.html">Fonts</a></li><li><a href="video.html">Video</a></li><hr><li><a href="templates.html">Template Languages</a></li><li><a href="frameworks.html">Frameworks</a></li><hr><li><a href="about.html">Revision History</a></li></div><div class="content"><h1>Video</h1>
+
+<h2>Formats</h2>
+
+<p>There is one thing that should be made clear when talking about video formats.  There are video <code>containers</code> and there are video <code>codecs</code>.  A <code>container</code> is the video file itself, e.g. an <code>.avi</code>, <code>.mov</code>, <code>.mp4</code>, <code>.flv</code>, etc.  A <code>codec</code> describes <em>how</em> the video in that file is encoded.  For the most part, when you are <em>serving</em> video content, you only have to worry about the <code>container</code>.  When you are <em>encoding</em> video content, you care more about the <code>codec</code> as it has a direct effect on which browsers/devices will be able to play back your video.</p>
+
+<h2>Containers</h2>
+
+<h3>FLV</h3>
+
+<p>Flash video, the <code>.flv</code> container, is still the de-facto video format for web-content.  <code>.flv</code>s can be in numerous codecs, but as the <a href="http://flash">Flash Player</a> has all necessary codecs, you do not need to worry about which codec is used and can generally encode in the best one available [TODO: note on multiple video streams]</p>
+
+<h3>MP4</h3>
+
+<p>As many mobile devices (Notably iOS devices) do not support <code>.flv</code> video, <code>.mp4</code> video must be used if you wish to support mobile devices.  In addition, many desktop browsers (such as Chrome, Firefox and Safari) now support mp4 video, negating the requirement to have flash installed in these browsers.</p>
+
+<p>The <code>mp4</code> container almost always wraps an <code>h264</code> (or <code>x264</code> is the open source version of the same codec) codec.  This codec supports numerous encoding levels and the general rule is that the higher the compression the more powerful the computer playing it needs to be.</p>
+
+<p>As far as iOS (iPhone, iPad, iPods, etc) and android devices go, all modern phones / tablets will support most versions of the <code>h264</code> codec.  You will only really run into issues if you turn on just about every encoding option available.</p>
+
+<p>If you need to support iPods, however, such as for podcasts, older iPods do not support nearly the same <code>h264</code> level as other devices so you will need to account for this when encoding your video.</p>
+
+<hr />
+
+<h2>Encoding</h2>
+
+<h3>Encoding FLV</h3>
+
+<p>Generally, an FLV should be encoded using the on2VP6 codec, the Sorenson Spark codec, or similar.  FLV files also support the h264 codec, but there can be performance and compatibility issues in some circumstances, so VP6 and Spark are the recommended codecs.</p>
+
+<p>An ideal solution for encoding FLV files is Adobe Media Encoder, which is generally shipped with Adobe video tools, and sometimes Photoshop.  A demo of Adobe Media Encoder for Windows may be downloaded here:<br /><a href='http://www.adobe.com/support/downloads/product.jsp?product=160&amp;platform=Windows'>http://www.adobe.com/support/downloads/product.jsp?product=160&amp;platform=Windows</a><br />For Mac:<br /><a href='http://www.adobe.com/support/downloads/product.jsp?platform=Macintosh&amp;product=160'>http://www.adobe.com/support/downloads/product.jsp?platform=Macintosh&amp;product=160</a></p>
+
+<p>Adobe Media Encoder produces high quality, low file-size videos, and is probably the easiest solution to use when it comes to encoding FLV video.</p>
+
+<p>If, for some reason, Adobe Media Encoder is not a viable option, there are highly reliable freeware options for both Mac and PC, though they are much more complex to use than Adobe Media Encoder.</p>
+
+<p>For Windows, there is ffdshow - a multiple codec encoder/decoder.<br /><a href='http://ffdshow-tryout.sourceforge.net'>http://ffdshow-tryout.sourceforge.net</a></p>
+
+<p>For Mac, there is ffmpegX - a freeware video encoder built on the same base as ffdshow. There are many guides on the site for encoding with different requirements.<br /><a href='http://www.ffmpegx.com/'>http://www.ffmpegx.com/</a></p>
+
+<p>In a pinch, you can upload a video to youtube (provided it's in a format youtube supports), and youtube will convert it to flv automatically.</p>
+
+<hr />
+
+<h3>Encoding mp4</h3>
+
+<p><a href="http://handbrake">Handbrake</a> is an excellent open-source <code>mp4</code>/<code>h264</code> video encoder.  It has presets for various devices such as the iPad &amp; iPhone and in general can encode videos with one-click.</p>
+
+<p>In most cases, you will want to make sure the <code>Web Optimized</code> box is checked in Handbrake.  This optiom makes sure that the important information is included at the beginning of the video file and allows videos to be easily streamed from a server to a device / browser.</p>
+
+<p>Without this option checked, some devices / browsers will need to download the entire video file before they can start to play it.</p>
+
+<hr />
+
+<h2>Serving</h2>
+</div></body></html>

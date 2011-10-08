@@ -1,0 +1,15 @@
+widget-boder-color      = red
+widget-background-color = blue
+widget-title-size       = 18px
+widget-title-color      = teal
+
+.widget
+    border     widget-border-color
+    background widget-background-color
+
+    .titlebar
+        font-size  widget-title-size
+        background widget-title-color
+
+    &:hover .titlebar
+        background darken( widget-title-color, 50% )
