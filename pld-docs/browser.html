@@ -20,28 +20,35 @@
 <p>There are numerous ways to speed up the general loading of a page.  The key points are as follows:</p>
 
 <ul>
-<li>Reduce the # of HTTP Requests
+<li><p>Reduce the # of HTTP Requests</p>
+
 <ul><li>Combine multiple <code>.js</code> and <code>.css</code> files into one</li>
 <li>Combine multiple images into one using CSS Sprites
 <ul><li>Be wary of using this technique on mobile browsers as the performance overhead of significantly large sprites can actually have more of a negative impact on some 1st / 2nd generation smart phones than the extra HTTP overhead.</li></ul></li></ul></li>
-<li>Reduce the size of served content
+<li><p>Reduce the size of served content</p>
+
 <ul><li>Minify all served <code>HTML</code>, <code>CSS</code>, <code>JS</code>
 <ul><li><code>CSS</code>, <code>JS</code> can usually be minified in a build process or in some cases this can be left to the web-server.</li>
 <li>HTML is often dynamically generated and so needs to be compressed at runtime.  There are IIS &amp; Apache filters to do this.</li>
 <li>Deliver all content via gzip when applicable (server config)</li></ul></li></ul></li>
-<li>Use a CDN to serve static content
+<li><p>Use a CDN to serve static content</p>
+
 <ul><li>If possible, serve images from multiple sub-domains.  Since many browsers cap the number of simultaneous connections to a single domain, you can achieve faster page load times by referencing imgs1.your-cdn.com, imgs2.your-cdn.com, imgs3.your-cdn.com, etc.  Don’t go over-board here, however, as DNS lookups are also expensive.  2-4 subdomains should provide a good speed increase without adding significant DNS lookup overhead.</li></ul></li>
-<li>Add caching on static content
+<li><p>Add caching on static content</p>
+
 <ul><li>All static resources (images, css, javascript) should have a “Never Expire” cache set (in reality, this is usually “1 year”).  These assets should be version controlled and renamed when changed.  E.g. <code>page-v5.js</code></li>
 <li>Use ETags</li>
 <li>Cache AJAX assets when possible: Add eTag or Timestamp parameters to AJAX assets, e.g. <code>get-top-users.aspx?last-modified=12346789</code></li></ul></li>
-<li>Stylesheets belong at the top of your page
+<li><p>Stylesheets belong at the top of your page</p>
+
 <ul><li>This prevents re-rendering of the page once the stylesheets have been downloaded.</li></ul></li>
-<li>Scripts belong at the bottom of your page
+<li><p>Scripts belong at the bottom of your page</p>
+
 <ul><li>Scripts block parallel  downloads of other assets</li>
 <li>Unless functionality is needed to load part of the page.</li>
 <li>An exception to this is putting a <em>“loader.js”</em> file at the top of your page which asynchronously loads other script assets.</li></ul></li>
-<li>Expansion on many of these points, along with more general tips available at:
+<li><p>Expansion on many of these points, along with more general tips available at:</p>
+
 <ul><li><a href='http://developer.yahoo.com/performance/rules.html'>http://developer.yahoo.com/performance/rules.html</a></li></ul></li>
 </ul>
 </div></body></html>

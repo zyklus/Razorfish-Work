@@ -310,7 +310,7 @@ form,
   z-index: 1;
 }
 .hentry .post-thumb.hover {
-  height: 50px;
+  height: 30px;
   overflow: hidden;
 }
 .hentry .post-thumb .tab {
@@ -321,7 +321,7 @@ form,
   z-index: 6;
   width: 22px;
   height: 11px;
-  background-position: -44px 0;
+  background-position: -85px -70px;
 }
 .hentry .post-thumb img {
   display: block;
@@ -340,17 +340,17 @@ form,
   text-indent: 100px;
   width: 6px;
   height: 6px;
-  background-position: -63px -108px;
+  background-position: -33px -13px;
 }
 .hentry .pagination li.current {
   background: url("images/sprites/sprite-1.png");
   width: 6px;
   height: 6px;
-  background-position: -77px -30px;
+  background-position: -47px 0;
 }
 .hentry:hover .post-thumb .tab {
   background: url("images/sprites/sprite-1.png");
-  background-position: -36px -15px;
+  background-position: -63px -70px;
 }
 .hentry .entry-footer {
   color: #30c9f2;
@@ -378,7 +378,7 @@ form,
   vertical-align: middle;
   width: 14px;
   height: 13px;
-  background-position: -58px -15px;
+  background-position: -18px -15px;
 }
 .hentry .entry-footer .favorites {
   line-height: 15px;
@@ -392,7 +392,7 @@ form,
   vertical-align: middle;
   width: 14px;
   height: 13px;
-  background-position: -30px 0;
+  background-position: -33px 0;
 }
 .hentry:hover,
 .hentry:hover .entry-footer {
@@ -482,7 +482,7 @@ form,
   background: url("images/sprites/sprite-1.png") no-repeat;
   width: 63px;
   height: 93px;
-  background-position: 0 -108px;
+  background-position: 0 -70px;
 }
 #speckle-bg .bg {
   background: url("images/sprites/speckle_bg.png") repeat-y;
@@ -570,7 +570,7 @@ body.admin-bar #widget-overlay-container {
   background: url("images/sprites/sprite-1.png");
   width: 168px;
   height: 40px;
-  background-position: 0 -68px;
+  background-position: 0 -30px;
 }
 .fish-school {
   position: relative;
@@ -590,7 +590,7 @@ body.admin-bar #widget-overlay-container {
   background: url("images/sprites/sprite-1.png");
   width: 77px;
   height: 38px;
-  background-position: 0 -30px;
+  background-position: -85px -81px;
 }
 .left-content,
 .right-content {
@@ -1372,21 +1372,21 @@ label.error {
   background: url("images/sprites/sprite-1.png");
   width: 18px;
   height: 15px;
-  background-position: -18px -15px;
+  background-position: 0 -15px;
 }
 #ticker-bar .twitter-link:hover {
   background: url("images/sprites/sprite-1.png");
-  background-position: 0 -15px;
+  background-position: -15px 0;
 }
 #ticker-bar .rss-link {
   background: url("images/sprites/sprite-1.png");
   width: 15px;
   height: 15px;
-  background-position: -15px 0;
+  background-position: 0 0;
 }
 #ticker-bar .rss-link:hover {
   background: url("images/sprites/sprite-1.png");
-  background-position: 0 0;
+  background-position: -63px -81px;
 }
 .admin-bar #ticker-bar {
   top: 28px;

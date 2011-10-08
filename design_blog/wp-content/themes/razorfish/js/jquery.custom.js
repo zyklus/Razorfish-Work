@@ -388,7 +388,6 @@ jQuery(document).ready(function( $ ) {
 		$this.closest( '.slides' ).slides({
 		          play : 5000
 		  ,      pause : 2500
-		  , hoverPause : true
 		})
 			.closest( '.hentry' )
 				.addClass( 'slideshow' );

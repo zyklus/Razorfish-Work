@@ -101,9 +101,9 @@ Another, although somewhat less commmon, approach is to organize your CSS by spe
     .widget { min-width : 200px; min-height : 200px; }
     .widget.weather { min-width : 300px; }
 
-   /**************
-    * Typography *
-    **************/
+    /**************
+     * Typography *
+     **************/
     html { font-family: verdana; }
     .widget { font-family: tahoma; }
     .widget.title { font-size: 18px; }
