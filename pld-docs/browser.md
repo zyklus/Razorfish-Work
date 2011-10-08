@@ -32,7 +32,7 @@ There are numerous ways to speed up the general loading of a page.  The key poin
 	- If possible, serve images from multiple sub-domains.  Since many browsers cap the number of simultaneous connections to a single domain, you can achieve faster page load times by referencing `imgs1.your-cdn.com`, `imgs2.your-cdn.com`, `imgs3.your-cdn.com`, etc.  Don't go over-board here, however, as DNS lookups are also expensive.  2-4 subdomains should provide a good speed increase without adding significant DNS lookup overhead.
 
 - Add caching on static content
-	- All static resources (images, css, javascript) should have a “Never Expire” cache set (in reality, this is usually “1 year”).  These assets should be version controlled and renamed when changed.  E.g. `page-v5.js`
+	- All static resources (images, css, javascript) should have a "Never Expire" cache set (in reality, this is usually "1 year").  These assets should be version controlled and renamed when changed.  E.g. `page-v5.js`
 	- Use ETags
 	- Cache AJAX assets when possible: Add eTag or Timestamp parameters to AJAX assets, e.g. `get-top-users.aspx?last-modified=12346789`
 
@@ -42,7 +42,7 @@ There are numerous ways to speed up the general loading of a page.  The key poin
 - Scripts belong at the bottom of your page
 	- Scripts block parallel  downloads of other assets
 	- Unless functionality is needed to load part of the page.
-	- An exception to this is putting a _“loader.js”_ file at the top of your page which asynchronously loads other script assets.
+	- An exception to this is putting a _"loader.js"_ file at the top of your page which asynchronously loads other script assets.
 
 - Expansion on many of these points, along with more general tips available at:
 	- http://developer.yahoo.com/performance/rules.html

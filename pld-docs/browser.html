@@ -36,7 +36,7 @@
 <ul><li>If possible, serve images from multiple sub-domains.  Since many browsers cap the number of simultaneous connections to a single domain, you can achieve faster page load times by referencing <code>imgs1.your-cdn.com</code>, <code>imgs2.your-cdn.com</code>, <code>imgs3.your-cdn.com</code>, etc.  Don't go over-board here, however, as DNS lookups are also expensive.  2-4 subdomains should provide a good speed increase without adding significant DNS lookup overhead.</li></ul></li>
 <li><p>Add caching on static content</p>
 
-<ul><li>All static resources (images, css, javascript) should have a “Never Expire” cache set (in reality, this is usually “1 year”).  These assets should be version controlled and renamed when changed.  E.g. <code>page-v5.js</code></li>
+<ul><li>All static resources (images, css, javascript) should have a "Never Expire" cache set (in reality, this is usually "1 year").  These assets should be version controlled and renamed when changed.  E.g. <code>page-v5.js</code></li>
 <li>Use ETags</li>
 <li>Cache AJAX assets when possible: Add eTag or Timestamp parameters to AJAX assets, e.g. <code>get-top-users.aspx?last-modified=12346789</code></li></ul></li>
 <li><p>Stylesheets belong at the top of your page</p>
@@ -46,7 +46,7 @@
 
 <ul><li>Scripts block parallel  downloads of other assets</li>
 <li>Unless functionality is needed to load part of the page.</li>
-<li>An exception to this is putting a <em>“loader.js”</em> file at the top of your page which asynchronously loads other script assets.</li></ul></li>
+<li>An exception to this is putting a <em>"loader.js"</em> file at the top of your page which asynchronously loads other script assets.</li></ul></li>
 <li><p>Expansion on many of these points, along with more general tips available at:</p>
 
 <ul><li><a href='http://developer.yahoo.com/performance/rules.html'>http://developer.yahoo.com/performance/rules.html</a></li></ul></li>
