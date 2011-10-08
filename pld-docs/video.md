@@ -26,8 +26,11 @@ If you need to support iPods, however, such as for podcasts, older iPods do not 
 Generally, an FLV should be encoded using the on2VP6 codec, the Sorenson Spark codec, or similar.  FLV files also support the h264 codec, but there can be performance and compatibility issues in some circumstances, so VP6 and Spark are the recommended codecs.
 
 An ideal solution for encoding FLV files is Adobe Media Encoder, which is generally shipped with Adobe video tools, and sometimes Photoshop.  A demo of Adobe Media Encoder for Windows may be downloaded here:
+
 http://www.adobe.com/support/downloads/product.jsp?product=160&platform=Windows
+
 For Mac:
+
 http://www.adobe.com/support/downloads/product.jsp?platform=Macintosh&product=160
 
 Adobe Media Encoder produces high quality, low file-size videos, and is probably the easiest solution to use when it comes to encoding FLV video.
@@ -35,9 +38,11 @@ Adobe Media Encoder produces high quality, low file-size videos, and is probably
 If, for some reason, Adobe Media Encoder is not a viable option, there are highly reliable freeware options for both Mac and PC, though they are much more complex to use than Adobe Media Encoder.
 
 For Windows, there is ffdshow - a multiple codec encoder/decoder.
+
 http://ffdshow-tryout.sourceforge.net
 
 For Mac, there is ffmpegX - a freeware video encoder built on the same base as ffdshow. There are many guides on the site for encoding with different requirements.
+
 http://www.ffmpegx.com/
 
 In a pinch, you can upload a video to youtube (provided it's in a format youtube supports), and youtube will convert it to flv automatically.
