@@ -124,4 +124,3 @@ Most template languages have this feature built in as well.
     @import url( top-nav.css )
     @import url( left-nav.css )
     @import url( widget.css )
-    @import url( weather-widget.css )
