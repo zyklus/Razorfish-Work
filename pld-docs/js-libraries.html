@@ -1,4 +1,4 @@
-<h1>JavaScript Libraries</h1>
+<!DOCTYPE html><html><head><link href="site.css" rel="stylesheet" type="text/css"></head><body><div id="navigation"><li><a href="index.html">Home</a></li><li><a href="browser-support.html">Browser Support</a></li><li><a href="browser.html">Browser Best Practices</a></li><li><a href="css-structure.html">CSS Structure</a></li><li><a href="jquery.html">jQuery</a></li><li><a href="js-oo.html">Javascript OO</a></li><li><a href="jq-events.html">jQuery Events</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mobile.html">Mobile Support</a></li><li><a href="fonts.html">Fonts</a></li><li><a href="video.html">Video</a></li><hr><li><a href="templates.html">Template Languages</a></li><li><a href="frameworks.html">Frameworks</a></li><hr><li><a href="about.html">Revision History</a></li></div><div class="content"><h1>JavaScript Libraries</h1>
 
 <p>A brief comparison of some of the more popular JavaScript libraries available.  It should be noted that just about every common JavaScript library under the sun provides the same core functionality:</p>
 
@@ -14,13 +14,16 @@
 <h3>In the jQuery universe:</h3>
 
 <ul>
-<li><p><a href="http://www.jquery.com/">jQuery</a> is currently the most popular JavaScript library in the world.  It allows for quick development of relatively simple tasks and there are thousands of available plugins for it.  The jQuery coding style is focused around the concept of <em>chaining</em>, that is commands run off of one-another:<br /><code><br />$( '.selector' ).hide().appendTo( '.newParent' ).fadeIn();<br /></code></p>
+<li><p><a href="http://www.jquery.com/">jQuery</a> is currently the most popular JavaScript library in the world.  It allows for quick development of relatively simple tasks and there are thousands of available plugins for it.  The jQuery coding style is focused around the concept of <em>chaining</em>, that is commands run off of one-another:</p>
+
+<pre><code>$( '.selector' ).hide().appendTo( '.newParent' ).fadeIn();
+</code></pre>
 
 <p>The main draw-back to jQuery is, in this author's opinion, the fact that it allows and even encourages a sloppy coding style.  Developers are often led to doing things the quick way instead of the correct way.  ALthough in many circumstances this has very little impact on the final site, when apps start to grow it can have a large impact on both the usability and speed of a web application.</p>
 
 <p>That being said, jQuery is an excellent choice as a core library in just about any situation, though in situations with larger code bases, you may want to supplement it with a more structured base such as:</p></li>
 <li><p><a href="http://documentcloud.github.com/backbone/">Backbone</a> provides somewhat of an MVC framework to front-end development.  It requires the <a href="http://documentcloud.github.com/underscore/">Underscore</a> library.</p></li>
-<li><p><a href="http://jqueryui.com/">jQueryUI</a></p></li>
+<li><p><a href="http://jqueryui.com/">jQueryUI</a> provides UI elements like a <a href="http://jqueryui.com/demos/datepicker/">Calendar</a>, <a href="http://jqueryui.com/demos/accordion/">Accordion</a> and <a href="http://jqueryui.com/demos/tabs/">Tabs</a>, along with some more core functionality like <a href="http://jqueryui.com/demos/draggable/">drag</a> and <a href="http://jqueryui.com/demos/droppable/">drop</a>.</p></li>
 <li><p><a href="http://documentcloud.github.com/underscore/">Underscore</a></p></li>
 </ul>
 
@@ -39,3 +42,4 @@
 <li><p><a href="http://dojotoolkit.org/">Dojo</a></p></li>
 <li><p><a href="http://developer.yahoo.com/yui/">YUI</a></p></li>
 </ul>
+</div></body></html>

@@ -1,2 +1,70 @@
-<!DOCTYPE html><html><head><link href="site.css" rel="stylesheet" type="text/css"></head><body><div id="navigation"><li><a href="index.html">Home</a></li><li><a href="browser-support.html">Browser Support</a></li><li><a href="browser.html">Browser Best Practices</a></li><li><a href="layouts.html">Page Layout</a></li><li><a href="css-structure.html">CSS Structure</a></li><li><a href="jquery.html">jQuery</a></li><li><a href="js-oo.html">Javascript OO</a></li><li><a href="jq-events.html">jQuery Events</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mobile.html">Mobile Support</a></li><li><a href="fonts.html">Fonts</a></li><li><a href="video.html">Video</a></li><hr><li><a href="templates.html">Template Languages</a></li><li><a href="frameworks.html">Frameworks</a></li><hr><li><a href="about.html">Revision History</a></li></div><div class="content">
+<!DOCTYPE html><html><head><link href="site.css" rel="stylesheet" type="text/css"></head><body><div id="navigation"><li><a href="index.html">Home</a></li><li><a href="browser-support.html">Browser Support</a></li><li><a href="browser.html">Browser Best Practices</a></li><li><a href="css-structure.html">CSS Structure</a></li><li><a href="jquery.html">jQuery</a></li><li><a href="js-oo.html">Javascript OO</a></li><li><a href="jq-events.html">jQuery Events</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mobile.html">Mobile Support</a></li><li><a href="fonts.html">Fonts</a></li><li><a href="video.html">Video</a></li><hr><li><a href="templates.html">Template Languages</a></li><li><a href="frameworks.html">Frameworks</a></li><hr><li><a href="about.html">Revision History</a></li></div><div class="content"><h1>Browser Support</h1>
+
+<p>The current list (as of this writing) of common browsers to be tested includes:</p>
+
+<ul>
+<li>Internet Explorer 7, 8, 9, 10 (Soon, not yet released) and 6 if necessary.</li>
+<li>Google Chrome (Due to Chrome's self-update behavior, only the newest version generally needs to be tested)</li>
+<li>Firefox 3.6 &amp; newest (7.0 as of this writing).  The reason for the gap is that FireFox has recently changed it's release cycle.  3.6 is still a fairly recent version and the numbers after that have less of a rendering impact and are geared more towards new browser features.</li>
+<li>Safari (newest version)</li>
+<li>Opera (Rarely tested, but is the only other browser with any real market share, around 2%)</li>
+</ul>
+
+<h2>General Techniques for good cross-browser code</h2>
+
+<p>It is inevitable that browser-specific code will eventually need to be written, but there are a few ways to minimize the impact and possible issues that such code has or causes.</p>
+
+<h3>JavaScript</h3>
+
+<p><strong><em>Never</em></strong> use browser-detection in JavaScript to branch code.  Use <em>feature detection</em> instead.  The difference between these two is most easily explained using an example:</p>
+
+<pre><code>// bad
+if( isIE6 ){
+    document.getElementsByClassName = function(){ ... }
+}
+
+// good
+if( !document.getElementsByClassName ){
+    document.getElementsByClassName = function(){ ... }
+}
+</code></pre>
+
+<p>Most common JavaScript libraries take care of most of this functionality for you, but in cases where you need to add core functionality, keep this in mind.</p>
+
+<h3>CSS</h3>
+
+<p>Although there are a slew of browser-specific CSS hacks out there, they take advantage of obscure browser rendering problems, and are often impossible to read ( or figure out which browser they are supposed to be targeting ) without proper code comments.</p>
+
+<p>Because of this, and because most of the CSS hacks are often targeted at a single version of a single browser anyway, browser detection is actually suggested here.  Using JavaScript (or via server-side code) add appropriate class names to your <code>html</code> or <code>body</code> element:</p>
+
+<pre><code>&lt;html class="IE v6 v6_2 lt7 lt8 lt9"&gt;
+</code></pre>
+
+<p>The <code>v6_2</code>, <code>lt7</code>, <code>lt8</code>, <code>lt9</code> classes are optional, but may make development easier.  Your general CSS code for a browser-specific patch then looks like:</p>
+
+<pre><code>.IE.v6 { ... }
+.FF.v3 { ... }
+.Chrome { ... }
+</code></pre>
+
+<h2>IE6</h2>
+
+<p><em>Internet Explorer 6</em> is the bane of many developer's lives.  There are more bugs and inconsistencies in this browser than in every other browser on the above list put together, so often a very large chunk of the debugging time and effort go into supporting this browser.  Since current stats show the IE6 market share to be <em>below 2%</em>, it is suggested to ignore or at least de-prioritize this browser unless there is a specific need to support it.</p>
+
+<p>A few of the common IE6 pit-falls:</p>
+
+<ul>
+<li><p>PNG-24 transparency does not work.  There is a script called the <a href="http://www.twinhelix.com/css/iepngfix/">PNG htc fix</a> that cures this issue in many (but usually not all) circumstances.  The version linked is one of many available.</p></li>
+<li><p><code>hasLayout</code> is the cause of many IE6 rendering issues.  You can google the issue in detail (there are thousands of pages on the topic), but if something is displaying in an odd way on your page, try triggering <code>hasLayout</code> by adding one of the many fixes to the CSS for that element, such as <code>height: 1%</code> or <code>zoom: 1</code>.</p></li>
+<li><p>IE6, in quirks mode, has a box model that is different than every other browser (though in this author's opinion it actually makes more sense, a moot point).  To prevent this, make sure you include a doctype that triggers standards mode such as the HTML5 doctype <code>&lt;!DOCTYPE html&gt;</code></p></li>
+<li><p>The Z-Index problem: Every browser other than IE6 layers items with a z-index the same way.  IE6 does things differently.  To properly explain this, we must first explain something called <em>stacking context</em>.  Items that have a z-index are only stacked relative to the first parent element with a <em>stacking context</em>.  Most browsers define something to start a new <em>stacking context</em> if it meets one of the following conditions:</p>
+
+<ul><li>It has <code>position</code> set to anything other than <code>static</code> <strong>and</strong> it has a <code>z-index</code> set.</li>
+<li><code>opacity</code> &lt; 1</li></ul>
+
+<p>IE6 adds to this the condition that any element with <code>position</code> set creates a <em>stacking context</em> regardless of whether or not it also has a <code>z-index</code> set.</p>
+
+<p>A good work-around to this is to manually (or via a CSS template) add <code>z-index:1</code> to <strong><em>every</em></strong> element that has <code>position</code> set.  This will cause all browsers to behave the same way that IE6 behaves, thus reducing your cross-browser testing.</p></li>
+<li><p>A long list of <a href="http://www.virtuosimedia.com/dev/css/ultimate-ie6-cheatsheet-how-to-fix-25-internet-explorer-6-bugs">more fixes</a> is available.</p></li>
+</ul>
 </div></body></html>

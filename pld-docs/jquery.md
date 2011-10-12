@@ -1,11 +1,35 @@
 # jQuery
 
-[jQuery] has quickly become the defacto standard for general cross-browser JavaScript development.
+[jQuery] has quickly become the de facto standard for general cross-browser JavaScript development.  It is the reccomended library for all development unless you need/want something more structured (see the [libraries] page)
 
+## General Best Practices
 
-### Underscore.js -- For those familiar with Prototype.js
+### Cache elements
 
-[Underscore] is a 3rd party library accessed through, what else, the `_` variable.  This can be a very useful tool as it provides utility methods such as: `map`, `reduce`, `first`, `last`, etc.  _jQuery_ only includes `each` and `map`, so if you are used to a programming style that commonly uses these methods, such as the one _Prototype.js_ encourages, this will be a handy addition.
+Code like the following is all too common:
+
+    $( '.some_class' ).click    ( ... );
+    $( '.some_class' ).mouseover( ... );
+    $( '.some_class' ).mouseout ( ... );
+
+The problem with this is that the `$( '.some_class' )` selector is run multiple times.  If this selector happens to be longer and slower, this can cause your code to slow down.  Cache the jQuery object instead:
+
+    var $someClass = $( '.some_class' );
+
+    $someClass.click    ( ... );
+    $someClass.mouseover( ... );
+    $someClass.mouseout ( ... );
+
+### Chaining
+
+And while you're at it, you can simplify the above code to:
+
+    var $someClass = $( '.some_class' );
+
+    $someClass
+        .click    ( ... )
+        .mouseover( ... )
+        .mouseout ( ... );
 
 [jQuery]: http://www.jquery.com
-[underscore]: http://documentcloud.github.com/underscore/
+[libraries]: js-libraries.html

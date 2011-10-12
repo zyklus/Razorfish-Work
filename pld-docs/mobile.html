@@ -1,11 +1,20 @@
-<!DOCTYPE html><html><head><link href="site.css" rel="stylesheet" type="text/css"></head><body><div id="navigation"><li><a href="index.html">Home</a></li><li><a href="browser-support.html">Browser Support</a></li><li><a href="browser.html">Browser Best Practices</a></li><li><a href="layouts.html">Page Layout</a></li><li><a href="css-structure.html">CSS Structure</a></li><li><a href="jquery.html">jQuery</a></li><li><a href="js-oo.html">Javascript OO</a></li><li><a href="jq-events.html">jQuery Events</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mobile.html">Mobile Support</a></li><li><a href="fonts.html">Fonts</a></li><li><a href="video.html">Video</a></li><hr><li><a href="templates.html">Template Languages</a></li><li><a href="frameworks.html">Frameworks</a></li><hr><li><a href="about.html">Revision History</a></li></div><div class="content"><h1>Mobile Development</h1>
+<!DOCTYPE html><html><head><link href="site.css" rel="stylesheet" type="text/css"></head><body><div id="navigation"><li><a href="index.html">Home</a></li><li><a href="browser-support.html">Browser Support</a></li><li><a href="browser.html">Browser Best Practices</a></li><li><a href="css-structure.html">CSS Structure</a></li><li><a href="jquery.html">jQuery</a></li><li><a href="js-oo.html">Javascript OO</a></li><li><a href="jq-events.html">jQuery Events</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="cookies.html">Cookies</a></li><li><a href="mobile.html">Mobile Support</a></li><li><a href="fonts.html">Fonts</a></li><li><a href="video.html">Video</a></li><hr><li><a href="templates.html">Template Languages</a></li><li><a href="frameworks.html">Frameworks</a></li><hr><li><a href="about.html">Revision History</a></li></div><div class="content"><h1>Mobile Development</h1>
 
 <h2>JavaScript Libraries</h2>
 
 <p>It should be noted that <a href="http://www.jquery.com">jQuery</a> is a very heavy library for mobile development.  A good chunk of the jQuery core is devoted to doing away with cross-browser issues.  Since the vast majority of mobile devices use <code>WebKit</code> for their rendering, all of this cross-browser code is unnecessary bloat for a mobile device.</p>
 
 <ul>
-<li><a href="http://zeptojs.com/">ZeptoJS</a> is a jQuery-like library that only works on webkit browsers.</li>
-<li><a href="http://www.sencha.com/products/touch/">Sencha Touch</a> is a mobile framework targeted more towards mobile apps than traditional sites.  A good choice if that is the target.  Note that like other Sencha products, it is a very heavy library compared to others.</li>
+<li><a href="http://zeptojs.com/">ZeptoJS</a> is a jQuery-like library that only works on webkit browsers.  An excellent choice for any situation where you would normally use jQuery.</li>
+<li><a href="http://www.sencha.com/products/touch/">Sencha Touch</a> is a mobile framework targeted more towards mobile apps than traditional sites (i.e. data-heavy with appropriate UI).  it is an excellent choice if that is the target.  Note that like other Sencha products, it is a very heavy library (large file-size) compared to others.</li>
+</ul>
+
+<h3>Pseudo-Native Development</h3>
+
+<p>These libraries allow you to build apps that are native to iOS (iPhone, etc), Android and others, but build with JavaScript at the core.</p>
+
+<ul>
+<li><a href="http://www.phonegap.com/">PhoneGap</a> wraps your code in a native web-shell so you use HTML, CSS &amp; JavaScript as your normally would.  An extra API is provided that bridges functionality like the GPS, Camera, Contact List, Accelerometer, etc.</li>
+<li><a href="http://www.appcelerator.com/">TitaniumUI</a> takes a drastically different approach than <a href="http://www.phonegap.com/">PhoneGap</a>.  Instead of providing a web-view, all of your JavaScript ends up creating and controlling native objects &amp; views.  The benefit of this is that you can have drastically improved performance.  The downside is that you have somewhat a lack of control over the look/feel of your app, but they look &amp; feel like native apps -- because they are!</li>
 </ul>
 </div></body></html>
