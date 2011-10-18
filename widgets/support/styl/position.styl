@@ -1,0 +1,45 @@
+position()
+	position arguments
+	z-index  1 unless @z-index
+
+width( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	width params
+
+height( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	height params
+
+top( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	top params
+
+right( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	right params
+
+bottom( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	bottom params
+
+left( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	left params

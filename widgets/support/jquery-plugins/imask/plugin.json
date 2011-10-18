@@ -1,0 +1,9 @@
+{
+	  "version"      : "0.7.0"
+	, "description"  : "Plugin to allow character & numeric masking of inputs"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "files"        : [ "imask.js" ]
+}

@@ -1,0 +1,47 @@
+{
+	"versions" : [{
+		           "version" : "1.8.16"
+		, "minJQueryVersion" : "1.3.2"
+	}]
+
+	, "files" : [
+		"/\/themes\/#{theme}\/images\/*/"
+	]
+
+	, "subPlugins" : [
+		  { "name" : "core"        , "files" : [ "js/jquery.ui.core.js"        , "themes/#{theme}/jquery.ui.core.css"         ]                                                                                  }
+		, { "name" : "widget"      , "files" : [ "js/jquery.ui.widget.js"                                                     ]                                                                                  }
+		, { "name" : "mouse"       , "files" : [ "js/jquery.ui.mouse.js"                                                      ], "dependencies" : [ "jquery-ui/core", "jquery-ui/widget"                       ] }
+		, { "name" : "position"    , "files" : [ "js/jquery.ui.position.js"                                                   ]                                                                                  }
+
+		, { "name" : "draggable"   , "files" : [ "js/jquery.ui.draggable.js"                                                  ], "dependencies" : [ "jquery-ui/mouse"                                          ] }
+		, { "name" : "droppable"   , "files" : [ "js/jquery.ui.droppable.js"                                                  ], "dependencies" : [ "jquery-ui/draggable"                                      ] }
+		, { "name" : "resizable"   , "files" : [ "js/jquery.ui.resizable.js"   , "themes/#{theme}/jquery.ui.resizable.css"    ], "dependencies" : [ "jquery-ui/mouse"                                          ] }
+		, { "name" : "selectable"  , "files" : [ "js/jquery.ui.selectable.js"  , "themes/#{theme}/jquery.ui.selectable.css"   ], "dependencies" : [ "jquery-ui/mouse"                                          ] }
+		, { "name" : "sortable"    , "files" : [ "js/jquery.ui.sortable.js"    , "themes/#{theme}/jquery.ui.sortable.css"     ], "dependencies" : [ "jquery-ui/mouse"                                          ] }
+
+		, { "name" : "accordion"   , "files" : [ "js/jquery.ui.accordion.js"   , "themes/#{theme}/jquery.ui.accordion.css"    ], "dependencies" : [ "jquery-ui/core", "jquery-ui/widget"                       ] }
+		, { "name" : "autocomplete", "files" : [ "js/jquery.ui.autocomplete.js", "themes/#{theme}/jquery.ui.autocomplete.css" ], "dependencies" : [ "jquery-ui/core", "jquery-ui/widget", "jquery-ui/position" ] }
+		, { "name" : "button"      , "files" : [ "js/jquery.ui.button.js"      , "themes/#{theme}/jquery.ui.button.css"       ], "dependencies" : [ "jquery-ui/core", "jquery-ui/widget"                       ] }
+		, { "name" : "dialog"      , "files" : [ "js/jquery.ui.dialog.js"      , "themes/#{theme}/jquery.ui.dialog.css"       ], "dependencies" : [ "jquery-ui/core", "jquery-ui/widget", "jquery-ui/position" ] }
+		, { "name" : "slider"      , "files" : [ "js/jquery.ui.slider.js"      , "themes/#{theme}/jquery.ui.slider.css"       ], "dependencies" : [ "jquery-ui/core", "jquery-ui/widget", "jquery-ui/mouse"    ] }
+		, { "name" : "tabs"        , "files" : [ "js/jquery.ui.tabs.js"        , "themes/#{theme}/jquery.ui.tabs.css"         ], "dependencies" : [ "jquery-ui/core", "jquery-ui/widget"                       ] }
+		, { "name" : "datepicker"  , "files" : [ "js/jquery.ui.datepicker.js"  , "themes/#{theme}/jquery.ui.datepicker.css"   ], "dependencies" : [ "jquery-ui/core"                                           ] }
+		, { "name" : "progressbar" , "files" : [ "js/jquery.ui.progressbar.js" , "themes/#{theme}/jquery.ui.progressbar.css"  ], "dependencies" : [ "jquery-ui/core", "jquery-ui/widget"                       ] }
+
+		, { "name" : "effect.core"      , "files" : [ "js/jquery.effects.core.js"      ]                                               }
+		, { "name" : "effect.blind"     , "files" : [ "js/jquery.effects.blind.js"     ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.bounce"    , "files" : [ "js/jquery.effects.bounce.js"    ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.clip"      , "files" : [ "js/jquery.effects.clip.js"      ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.drop"      , "files" : [ "js/jquery.effects.drop.js"      ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.explode"   , "files" : [ "js/jquery.effects.explode.js"   ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.fade"      , "files" : [ "js/jquery.effects.fade.js"      ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.fold"      , "files" : [ "js/jquery.effects.fold.js"      ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.highlight" , "files" : [ "js/jquery.effects.highlight.js" ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.pulsate"   , "files" : [ "js/jquery.effects.pulsate.js"   ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.scale"     , "files" : [ "js/jquery.effects.scale.js"     ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.shake"     , "files" : [ "js/jquery.effects.shake.js"     ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.slide"     , "files" : [ "js/jquery.effects.slide.js"     ], "dependencies" : [ "jquery-ui/effect.core" ] }
+		, { "name" : "effect.transfer"  , "files" : [ "js/jquery.effects.transfer.js"  ], "dependencies" : [ "jquery-ui/effect.core" ] }
+	]
+}

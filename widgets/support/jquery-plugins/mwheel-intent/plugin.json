@@ -1,0 +1,8 @@
+{
+	  "version"            : "1.2"
+	, "author"             : "trixta"
+	, "uri"                : "http://www.protofunc.com/scripts/jquery/mwheelIntent/"
+	, "license"            : [ "MIT", "GPL" ]
+	
+	, "files"              : [ "mwheel-intent.js" ]
+}

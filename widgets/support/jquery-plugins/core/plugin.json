@@ -1,0 +1,9 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "Core helper functions"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "files"        : [ "core.js" ]
+}

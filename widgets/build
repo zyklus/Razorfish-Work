@@ -1,0 +1,616 @@
+#!/usr/bin/env node
+
+// Native includes
+var           fs = require( 'fs' )
+  ,         path = require( 'path' )
+  ,        spawn = require( 'child_process' ).spawn
+  ,         exec = require( 'child_process' ).exec
+
+// NPM includes
+  ,       colors = require( 'colors' )
+  ,      program = require( 'commander')
+  ,       uglify = require( 'uglify-js' )
+  ,          jsp = uglify.parser
+  ,          pro = uglify.uglify
+  ,         jade = require( 'jade' )
+  ,       stylus = require( 'stylus' )
+  , stylusImages = require( 'stylus-images' )
+  ,         step = require( 'step' )
+  ,       jslint = require( 'jslint' )
+
+// Config
+  ,      dirFile = 'files.json'
+  ,         root = process.cwd()
+  ,   supportDir = path.join( root, 'support' )
+  ,    pluginDir = path.join( root, 'support', 'jquery-plugins' )
+  ,   widgetsDir = path.join( root, 'widgets' )
+  ,    deployDir = path.join( root, 'deploy' )
+
+// Static Stuffs
+  ,        chrOk = String.fromCharCode( 10003 )
+  ,      chrFail = String.fromCharCode( 10007 )
+  ,        extRx = /(.*?)\.([^\.]+)$/
+  ,    fileNegRx = /\.(styl(us)?|jade|md|markdown)$/i
+  ,         jQRx =  /^jquery[-._]?[.0-9]*[-._]?(min)?.js$/
+  ,         jsRx = /\.js$/
+  ,        cssRx = /\.css$/
+  ,         rmRx = /(\.(styl(us)?|jade|md|markdown|css|js)|widget.json)$/i
+
+  ,     templates = {
+	  'styl' : { ext: 'css' , compiler: stylusCompiler }
+	, 'jade' : { ext: 'html', compiler: jadeCompiler   }
+	, 'js'   : {              compiler: jsLint         }
+  }
+
+  ,   jsLintOpts = {
+		      devel : true
+		,   bitwise : true
+		,    regexp : true
+		,   browser : true
+		, confusion : true
+		,     undef : true
+		,      node : true
+		,  continue : true
+		,    sloppy : true
+		,      eqeq : true
+		,       sub : true
+		,       es5 : true
+		,      vars : true
+		,     white : true
+		,       css : true
+		,    newcap : true
+		,  plusplus : true
+		,     undef : true
+		,     forin : true // I don't like this, but since jslint stupidly doesn't allow `continue` statements...
+		,    maxerr : 50
+		,    indent : 4
+  }
+  , preLint = '/*global $, widgetSettings*/'
+
+// lint options I disagree with
+  ,  allowedLint = {
+	  "Don\'t make functions within a loop."                                   : 1
+	, "The '&&' subexpression should be wrapped in parens."                    : 1
+	, "Expected a conditional expression and instead saw an assignment."       : 1 // allows `foo || (foo = 1);`
+	, "Expected an assignment or function call and instead saw an expression." : 1 // same as above
+	, "Unexpected dangling '_' in '__dirname'."                                : 1
+  }
+
+  ,   watchFiles = {}
+
+  , widgets, growlNotify;
+
+
+/**
+ * If on a windows system, wipe the colors functions (they produce garbage)
+ **/
+
+if( ~(process.env.OS || '').indexOf( 'Windows' ) ){
+	[ 'bold', 'underline', 'italic', 'inverse', 'grey', 'black', 'yellow', 'red', 'green', 'blue', 'white', 'cyan', 'magenta' ].forEach( function ( style ) {
+		String.prototype.__defineGetter__( style, function(){ return this; } );
+	} );
+}
+
+
+/**
+ * Program Options
+ **/
+program
+	.version( '0.1' )
+	.usage  ( '\
+\n\
+\n\
+    [options] widget1 widget2 ...\n\
+\n\
+  Example:\n\
+\n\
+    build -b widget_1 widget_2 widget_3\n\
+    build -n widget_foo' )
+
+	.option ( '-n, --new'              , 'Create a new widget' )
+	.option ( '-b, --build'            , 'Builds template files for the specified widget' )
+	.option ( '-d, --develop'          , 'Watches a specified widget in development mode' )
+	.option ( '-y, --deploy'           , 'Build a deployment package' )
+	.option ( '-S, --rebuild-support'  , 'Rebuilds all support files, mostly for plugins (Automatically done in many cases)' )
+	.option ( '-f, --outfile <path>'   , 'Path to save generated files.  Defaults to ./deploy/[widget_names]_[date_time]' )
+//	.option ( '-Z, --no-zip'           , 'Do not create a .zip archive of the widgets' )
+//	.option ( '-M, --no-merge'         , 'Do not merge CSS/JS files' )
+//	.option ( '-U, --no-uglify'        , 'Do not uglify (obsficate) the JavaScript' )
+//	.option ( '-C, --no-minify'        , 'Do not minify the CSS' )
+//	.option ( '-i, --ignore <files>'   , 'List of files to not include in the package.  .jade & .styl files are always ignored.' )
+//	.option ( '-I, --ignore-rx <regex>', 'Regular expression of files to ignore' )
+
+	.parse  ( process.argv );
+
+
+/**
+ * Leftover arguments are assumed to be widgets
+ **/
+widgets = program.args;
+
+
+/**
+ * Detect growl, then init
+ **/
+exec( 'which growlnotify', function( err, cmd ){
+	if( cmd ){
+		growlNotify = function( err ){
+			exec( 'growlnotify -m"' + err.message.replace( /"/g, '\\"' ) + '" ' + err.name );
+		};
+	}
+
+	init();
+});
+
+
+/**
+ * Generic error function
+ **/
+function err( msg ){
+	console.log( 'ERROR: '.red + '\n  ' + msg.message.replace( /\n/g, '\n  ') );
+}
+
+
+/**
+ * Display a notification, via growl or console
+ **/
+function notifyError( msg ){
+	msg = new Error( msg );
+	growlNotify && growlNotify( msg );
+	err( msg );
+}
+
+
+/**
+ * Display help when invalid arguments are passed in
+ **/
+function validateArguments(){
+	if( !program.new && !program.build && !program.develop && !program.deploy && !program.rebuildSupport ){
+		console.error( '\nOne of: [ '.red + '--build, --new, --develop, --deploy, --rebuild-support'.red.bold + ' ] expected'.red );
+		console.error( program.helpInformation() );
+		process.exit();
+
+	}else if( ( program.new || program.build ) && !widgets.length ){
+		console.error( program.helpInformation() );
+		process.exit();
+	}
+}
+
+
+/**
+ * Process arguments
+ **/
+function init(){
+	validateArguments();
+	( program.new || program.build || program.deploy ) && ( program.rebuildSupport = true );
+
+	( program.deploy ) && ( program.build = true );
+
+	step( function(){
+		if( program.rebuildSupport ){
+			// build jquery-plugins directory listings
+			fs.writeFileSync(
+				path.join( pluginDir, 'files.json' ),
+				JSON.stringify( buildDirectoryListing( path.join( root, 'support', 'jquery-plugins' ), fileNegRx ) )
+			);
+			success( 'Building Plugin File Index' );
+
+			buildFolder( path.join( supportDir, 'new-widget' ) );
+			success( 'Compiling Support Directory' );
+		}
+		this();
+
+	}, function(){
+		var self = this;
+
+		// create a new widget
+		if( program.new ){
+			widgets.forEach( function( widget ){
+				var dstDir = path.join( widgetsDir, widget )
+				  , steppr = self.parallel();
+
+				if( path.existsSync( path.join( widgetsDir, widget ) ) ){
+					failure( 'Widget "' + widget + '" already exists' );
+				}else{
+					// copy `new-widget` directory
+					copyResource( path.join( supportDir, 'new-widget' ), dstDir, function(){
+						// include the dev loader
+						copyResource( path.join( supportDir, 'loaders', 'dev.js' ), path.join( dstDir, 'js', 'loader.js' ), function(){
+							success( 'Widget "' + widget + '" created' );
+							buildFolder( dstDir );
+							success( 'Widget "' + widget + '" dev compile done' );
+
+							steppr();
+						})
+					});
+				}
+			} );
+		}else{
+			this();
+		}
+
+	}, function(){
+
+		// build widget(s)
+		if( program.build ){
+			widgets.forEach( function( widget ){
+				buildFolder( path.join( widgetsDir, widget ) );
+				success( 'Compiled widget "' + widget + '"' );
+			} );
+		}
+		this();
+
+	}, function(){
+
+		// build deployment package
+		if( program.deploy ){
+			var         now = new Date()
+			  , packageName = program.outfile || ( widgets.join( '_' ) + '-' +  now.getFullYear() + '-' + ( now.getMonth()+1 ) + '-' + now.getDate() + '-' + now.getHours() + '-' + now.getMinutes() + '-' + now.getSeconds() )
+			  ,  packageDir = path.join( deployDir, packageName );
+			
+			fs.mkdirSync( packageDir, 0775 );
+//			fs.mkdirSync( path.join( packageDir, 'support' ), 0775 );
+//			
+//			copyResource( path.join( supportDir, 'loaders', 'widget-loader.js' ), path.join( packageDir, 'widget-loader.js' ) );
+//			createWidgetBundle( 'client-widget-ui', packageDir );
+			
+			step( function(){
+				widgets.forEach( function( widget ){
+					createWidgetBundle( widget, packageDir );
+				} );
+			} );
+		}
+		this();
+
+	}, function(){
+
+		// kick into developer mode
+		if( program.develop ){
+			widgets.forEach( function( widget ){
+				watchFolder( path.join( widgetsDir, widget ) );
+
+				success( 'Monitoring widget: ' + widget );
+			} );
+		}
+		this();
+	} );
+}
+
+
+/**
+ * Logs a success message
+ **/
+function success( msg ){
+	console.error( ( msg + ' ' + chrOk ).green );
+}
+
+
+/**
+ * Logs a failure message
+ **/
+function failure( msg ){
+	console.error( ( msg + ' ' + chrFail ).red );
+}
+
+
+/**
+ * Builds a recursive directory listing
+ **/
+function buildDirectoryListing( dir, inValidRx ){
+	var files = fs.readdirSync( dir )
+	  ,   obj = {}
+	  , i, l, p, stat;
+
+	for( i=0, l=files.length; i<l; i++ ){
+		p    = path.join( dir, files[i] );
+
+		stat = fs.statSync( p );
+
+		if( stat.isDirectory() ){
+			obj[ files[ i ] ] = buildDirectoryListing( p, inValidRx );
+		}else if( stat.isFile ){
+			if( inValidRx && inValidRx.test( p ) ){ continue; }
+			obj[ files[ i ] ] = 1;
+		}
+	}
+
+	return obj;
+}
+
+
+/**
+ * Copies one directory to another
+ **/
+function copyResource( src, dst, cb ){
+	var stat = fs.statSync( src )
+	  , files, i, l;
+
+	if( stat.isFile() ){
+		fs.writeFileSync( dst, fs.readFileSync( src ) );
+	} else if( stat.isDirectory() ){
+		files = fs.readdirSync( src );
+		fs.mkdirSync( dst, 0775 );
+
+		for( i=0, l=files.length; i<l; i++ ){
+			copyResource( path.join( src, files[i] ), path.join( dst, files[i] ) );
+		}
+	}
+	cb && cb();
+}
+
+
+/**
+ * Compile a template file into it's final version
+ **/
+function compileFile( fPath ){
+	var splPath = extRx.exec( fPath )
+	  ,     ext = splPath[ 2 ]
+	  ,     tpl = templates[ ext ]
+	  , outPath = splPath[1] + '.' + tpl.ext
+	  , file, outPath;
+
+	if( !tpl ){ return notifyError( 'Template does not exist for file extension ' + ext + '.  This should not be possible.' ); }
+
+	file    = fs.readFileSync( fPath ).toString();
+
+	// these are currently all sync callbacks -- may need to change some flow if that changes
+	outFile = tpl.compiler( file, fPath, function( err, outFile ){
+		if( err ){
+			notifyError( err );
+
+		}else if( tpl.ext ){
+			// only generate new file if an extension is defined
+			fs.writeFileSync( outPath, outFile );
+		}
+	} );
+}
+
+
+/*************************************
+ * Normalize all compiler interfaces *
+ *************************************/
+{
+	/**
+	 * Stylus Processor
+	 **/
+	function stylusCompiler( stylStr, fPath, cb ){
+		var stylImgs = new stylusImages()
+
+		  , styl = stylus( stylStr + '' )
+			.set( 'compress', false ) // !!program.deploy ) TODO: fix this
+			.set( 'filename', fPath.replace( '.styl', '.css' ) )
+			.set( 'imgPath' , '-first-image-dir');
+
+		process.chdir( fPath.replace( /[\/\\][^\/\\]+$/, '' ) );
+
+		// import each helper styl
+		fs.readdirSync( path.join( __dirname, 'support', 'styl' ) )
+			.forEach( function( file ){
+				if( file[0] === '_' ){ return; }
+
+				var fPath = path.join( __dirname, 'support', 'styl', file );
+				if( !fs.statSync( fPath ).isFile() ){ return; }
+
+				styl.import( fPath );
+			});
+
+		styl
+			.use   ( stylImgs.use )
+			.render( stylImgs.render( cb ) )
+	}
+
+
+	/**
+	 * Jade Processor
+	 **/
+	function jadeCompiler( jadeStr, fPath, cb ){
+		try{
+			// {} references locals, which may be used in the future?
+			cb( null, jade.compile( jadeStr )( {} ) )
+		}catch( err ){
+			cb( err );
+		}
+	}
+
+
+	/**
+	 * Runs code through jslint
+	 **/
+	function jsLint( code, fPath ){
+		var lintOpts = {}
+		  , prop;
+
+		// clone jsLintOpts into a local var so we can manipulate it if necessary
+		for( prop in jsLintOpts ){
+			if( !jsLintOpts.hasOwnProperty( prop ) ){ continue; }
+
+			lintOpts[ prop ] = jsLintOpts[ prop ];
+		}
+
+		// allow eval in the loader only
+		// loader uses node.js stuffs
+		if( /loader.js$/.test( fPath ) ){
+			lintOpts.evil = true;
+			lintOpts.node = true;
+		}
+
+		var  res = jslint( preLint + code, lintOpts )
+		  , data = jslint.data()
+		  , errs = []
+		  , err;
+
+		data.errors    || (data.errors    = []);
+	//	data.unused    || (data.unused    = []);
+		data.undefined || (data.undefined = []);
+
+		for( i=0, l=data.errors.length; i<l; i++ ){
+			err = data.errors[ i ];
+			if( !err ){ continue; }
+
+			if( !allowedLint[ err.reason ] ){
+				errs.push( 'File: ' + fPath + ' Line ' + err.line + ' char ' + err.character + '\n\n' + err.reason );
+			}
+		}
+
+		for( i=0, l=data.undefined.length; i<l; i++ ){
+			err = data.undefined[ i ];
+
+			// ignore the error if the var is an exposed global
+			if( !err || ~( ' ' + data.globals.join(' ') ).indexOf( ' ' + err.name ) ){ continue; }
+
+			errs.push( 'File: ' + fPath + ' Line ' + err.line + '\n\nUndefined variable: ' + err.name );
+		}
+
+		for( i=0, l=errs.length; i<l; i++ ){
+			notifyError( errs[ i ] );
+		}
+	}
+}
+
+
+/**
+ * Gets all template files in a directory
+ **/
+function getTemplateFiles( folder ){
+	var    files = fs.readdirSync( folder )
+	  , outFiles = []
+	  , stats;
+
+	for( var i=0, l=files.length; i<l; i++ ){
+		with({ fPath : path.join( folder, files[i] ) }){
+			stats = fs.statSync( fPath );
+
+			if( stats.isDirectory() ){
+				outFiles = outFiles.concat( getTemplateFiles( fPath ) );
+				continue;
+			}
+
+			// ignore non-files (sym-links, etc)
+			if( !stats.isFile() ){ continue; }
+
+			if( templates[ extRx.exec( fPath )[ 2 ] ] ){
+				outFiles.push( fPath );
+			}
+		}
+	}
+
+	return outFiles;
+}
+
+
+/**
+ * Builds all template files in a directory
+ **/
+function buildFolder( folder ){
+	var files = getTemplateFiles( folder )
+	  , i, l;
+
+	for( i=0, l=files.length; i<l; i++ ){
+		compileFile( files[i] );
+	}
+}
+
+
+/**
+ * Watch a folder for changes to templates
+ **/
+function watchFolder( folder ){
+	function addFiles(){
+		var files = getTemplateFiles( folder )
+		  , i, l, stat;
+
+		for( i=0, l=files.length; i<l; i++ ){
+			stat = fs.statSync( files[i] );
+
+			with({
+				  fPath : files[i]
+				, mtime : +stat.mtime
+			}){
+				// ignore already watched files
+				if( watchFiles[ fPath ] ){ continue; }
+
+				compileFile( fPath );
+				fs.watchFile( fPath, {
+					persistent : true
+					, interval : 500
+				}, function( stat ){
+					if( +stat.mtime === mtime ){ return; }
+					compileFile( fPath );
+					mtime = +stat.mtime;
+				} )
+
+				watchFiles[ fPath ] = 1;
+			}
+		}
+	}
+	
+	// scan immediately
+	addFiles();
+
+	// re-scan the directory every 30 seconds for new files
+	setInterval( addFiles, 3E4 );
+}
+
+
+/**
+ * Removes any un-necessary files from the widget directory
+ **/
+function removeExtraFiles( dir ){
+	var files = fs.readdirSync( dir )
+	  , i, l, stat, fPath;
+
+	for( i=0, l=files.length; i<l; i++ ){
+		fPath = path.join( dir, files[i] );
+		stat  = fs.statSync( fPath );
+
+		if( stat.isDirectory() ){
+			removeExtraFiles( fPath );
+
+		}else if( stat.isFile && rmRx.test( files[i] ) ){
+			fs.unlinkSync( path.join( dir, files[i] ) );
+		}
+	}
+}
+
+
+/**
+ * Bundles all necessary files in a widget
+ **/
+
+/**
+ * TODO:
+ * - copy all plugin resources into common folder
+ * - detect name conflicts
+ **/
+function createWidgetBundle( widget, dir ){
+	var       loader = require( path.join( widgetsDir, widget, 'js', 'loader.js' ) )
+	  , WidgetLoader = loader.WidgetLoader
+	  ,    loadFiles = loader.loadFiles
+
+	copyResource( path.join( widgetsDir, widget ), path.join( dir, widget ) );
+	removeExtraFiles( path.join( dir, widget ) );
+
+	// get the widget loader to give us a list of all required files
+	new WidgetLoader( function( err, files, config ){
+		if( err ){ throw err; }
+
+		// pull all of the CSS/JS together into a single file (except for jQuery)
+		loadFiles( files, function( err /*, file, file, file */ ){
+			var    args = arguments
+			  , compCSS = ''
+			  ,  compJS = ''
+			  , i, l;
+
+			for( i=0, l=files.length; i<l; i++ ){
+				if( jsRx.test( files[i] ) ){
+					compJS += uglify( args[ i+1 ] ) + ';\n';
+				}else if( cssRx.test( files[i] ) ){
+					compCSS += args[ i+1 ];
+				}
+			}
+
+			fs.writeFileSync( path.join( dir, widget, 'js' , 'bundle.js'  ), compJS );
+			fs.writeFileSync( path.join( dir, widget, 'css', 'bundle.css' ), compCSS );
+		} );
+	} );
+}

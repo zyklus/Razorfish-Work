@@ -1,0 +1,7 @@
+{
+	  "version"            : "1.4"
+	, "uri"                : "http://www.asual.com/jquery/address/"
+	, "license"            : [ "MIT", "GPL" ]
+	
+	, "files"              : [ "address.js" ]
+}

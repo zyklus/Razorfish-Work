@@ -1,0 +1,6 @@
+{
+	  "version"            : "1.0.0"
+	, "uri"                : "http://blog.leenix.co.uk/2009/10/jquery-plugin-imagetickbox-change-any.html"
+
+	, "files"              : [ "tickbox.js" ]
+}

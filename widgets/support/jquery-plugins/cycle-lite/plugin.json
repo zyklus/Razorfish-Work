@@ -1,0 +1,9 @@
+{
+	  "version"          : "1.3"
+	, "minJQueryVersion" : "1.3.2"
+	, "author"           : "M. Alsup"
+	, "uri"              : "http://jquery.malsup.com/cycle/"
+
+	, "files"            : [ "cycle-lite.js" ]
+	, "license"          : [ "mit", "gpl" ]
+}

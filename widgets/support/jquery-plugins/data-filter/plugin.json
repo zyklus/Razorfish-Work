@@ -1,0 +1,9 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "Utility jQuery Data Filter"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "files"        : [ "data-filter.js" ]
+}

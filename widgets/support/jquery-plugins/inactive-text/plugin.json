@@ -1,0 +1,9 @@
+{
+	  "version"      : "1.0.1"
+	, "description"  : "Plugin to allow a 'default' text value in inputs & textareas"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "files"        : [ "inactive-text.js" ]
+}

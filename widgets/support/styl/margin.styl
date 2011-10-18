@@ -1,0 +1,34 @@
+margin( args... )
+	params = ()
+	for n in args
+		push( params, n == 'auto' ? n : unit( n, unit( n ) || 'px' ) )
+
+	margin params
+
+margin-top( args... )
+	params = ()
+	for n in args
+		push( params, unit( floor(n), unit( n ) || 'px' ) )
+
+	margin-top params
+
+margin-right( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	margin-right params
+
+margin-bottom( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	margin-bottom params
+
+margin-left( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	margin-left params

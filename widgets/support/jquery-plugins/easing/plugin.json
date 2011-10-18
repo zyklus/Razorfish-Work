@@ -1,0 +1,9 @@
+{
+	  "version"      : "1.3"
+	, "author"       : "George McGinley Smith"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://gsgd.co.uk/sandbox/jquery/easing/"
+
+	, "files"        : [ "easing.js" ]
+	, "license"      : "bsd"
+}

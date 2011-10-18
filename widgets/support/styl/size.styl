@@ -1,0 +1,7 @@
+size( w, h = 0 )
+	if( 2 == length( w ) )
+		width  unit( w[0], unit( w[0] ) || 'px' )
+		height unit( w[1], unit( w[1] ) || 'px' )
+	else
+		width  unit( w, unit(w) || 'px' )
+		height unit( h, unit(h) || 'px' )

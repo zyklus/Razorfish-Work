@@ -1,0 +1,9 @@
+{
+	  "version"          : "3.0.4"
+	, "description"      : "Mousewheel"
+	, "author"           : "Brandon Aaron"
+	, "year"             : "2010"
+	, "uri"              : "http://brandonaaron.net"
+	, "license"          : "MIT"
+	, "minJQueryVersion" : "1.2.2"
+}

@@ -1,0 +1,10 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "A class that provides event observing / triggering"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "dependencies" : [ "klass" ]
+	, "files"        : [ "observable.js" ]
+}

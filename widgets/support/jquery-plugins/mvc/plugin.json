@@ -1,0 +1,10 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "MVC class providing basic functionality to the Model, View, Controller classes"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "dependencies" : [ "mvc" ]
+	, "files"        : [ "view.js" ]
+}

@@ -1,0 +1,9 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "Simple Scrollbar"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "files"        : [ "scrollbar.js" ]
+}

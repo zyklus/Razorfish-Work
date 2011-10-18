@@ -1,0 +1,9 @@
+{
+	  "version"            : "1.2"
+	, "author"             : "Andreas Eberhard"
+	, "email"              : "andreas.eberhard@gmail.com"
+	, "uri"                : "http://jquery.andreaseberhard.de/"
+	, "license"            : [ "GPL" ]
+	
+	, "files"              : [ "pngfix.js" ]
+}

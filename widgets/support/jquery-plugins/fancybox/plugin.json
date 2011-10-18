@@ -1,0 +1,10 @@
+{
+	  "version"          : "1.3.4"
+	, "minJQueryVersion" : "1.3.0"
+	, "author"           : "Janis Skarnelis"
+	, "uri"              : "http://fancybox.net"
+
+	, "files"            : [ "jquery.fancybox.js", "jquery.fancybox.css", "/*\.(png|gif)$/" ]
+	, "dependencies"     : [ "easing", "mousewheel" ]
+	, "license"          : [ "MIT", "GPL" ]
+}

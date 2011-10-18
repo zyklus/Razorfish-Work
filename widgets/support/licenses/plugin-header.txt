@@ -1,0 +1,8 @@
+/**
+ * The following plugins are the work of their respective authors and may be
+ * copyrighted by those authors.  Copyright information left in tact, all
+ * included licenses as follows:
+ * 
+#{licenses}
+ * 
+ **/

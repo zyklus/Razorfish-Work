@@ -1,0 +1,9 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "An inheritance Class structure"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "files"        : [ "klass.js" ]
+}

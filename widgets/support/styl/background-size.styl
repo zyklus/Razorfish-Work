@@ -1,0 +1,6 @@
+background-size( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	background-size params

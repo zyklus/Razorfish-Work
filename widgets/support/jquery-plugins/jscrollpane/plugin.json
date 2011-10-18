@@ -1,0 +1,10 @@
+{
+	  "version"          : "2.0.0b11"
+	, "author"           : "Kelvin Luck"
+	, "uri"              : "http://jscrollpane.kelvinluck.com/"
+	, "license"          : [ "MIT", "GPL" ]
+	, "minJQueryVersion" : "1.4.2"
+	
+	, "files"            : [ "jscrollpane.css", "jscrollpane.js" ]
+	, "dependencies"     : [ "mousewheel", "mwheel-intent" ]
+}

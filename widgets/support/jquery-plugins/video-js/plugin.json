@@ -1,0 +1,7 @@
+{
+	  "version"            : "2.0.2"
+	, "uri"                : "http://videojs.com/"
+	, "dependencies"       : [ "string" ]
+
+	, "files"              : [ "video.js", "video-js.css", "jquery-video.js" ]
+}

@@ -1,0 +1,68 @@
+{
+	      "version" : "0.0.1"
+	,        "name" : "Widget Foo"
+	, "description" : "Some widget"
+	,      "author" : "Razorfish"
+	,       "email" : "nobody@razorfish.com"
+	,         "uri" : "http://www.razorfish.com"
+
+	, "jqueryPlugins" : [
+		  { "name" : "plugin-A" }
+		, { "name" : "jquery-ui", "theme" : "ui-lightness", "another_param" : "foo" }
+	]
+
+	,  "minJQueryVersion" : "1.6.0"
+	, "testJQueryVersion" : "1.6.0"
+
+	, "files" : [
+		  "css/reset.css"
+		, "js/widget.js"
+	]
+
+	, "settings" : {
+		"size" : {
+			     "text" : "Select widget size"
+			,    "type" : "select"
+			, "default" : "small"
+			, "options" : {
+				   "tall" : "Tall (150x300)"
+				,  "wide" : "Wide (300x150)"
+				, "small" : "Small (200x200)"
+				, "large" : "Large (350x350)"
+			}
+		}
+
+		, "allowJQCDN" : {
+			  "text" : "Allow jQuery to be served from a CDN"
+			, "type" : "checkbox"
+		}
+
+		, "someSetting" : {
+			  "text" : "Enter some value"
+			, "type" : "text"
+		}
+
+		, "someBool" : {
+			  "text" : "Enable this flag"
+			, "type" : "checkbox"
+		}
+
+		, "someSelect" : {
+			     "text" : "Select one"
+			,    "type" : "select"
+			, "options" : {
+				  "1" : "Option #1"
+				, "2" : "Option #2"
+			}
+		}
+
+		, "someMultiSelect" : {
+			     "text" : "Select a few"
+			,    "type" : "multi-select"
+			, "options" : {
+				  "1" : "Option #1"
+				, "2" : "Option #2"
+			}
+		}
+	}
+}

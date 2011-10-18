@@ -1,0 +1,6 @@
+line-height( args... )
+	params = ()
+	for n in args
+		push( params, unit( n, unit( n ) || 'px' ) )
+
+	line-height params
