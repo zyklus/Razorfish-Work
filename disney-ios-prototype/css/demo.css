@@ -1,0 +1,15 @@
+html, body {
+	margin   : 0px;
+	padding  : 0px;
+}
+
+#scroller {
+	white-space : nowrap;
+	width       : 100%;
+	overflow    : auto;
+}
+
+img {
+	margin  : 0px;
+	padding : 0px;
+}
