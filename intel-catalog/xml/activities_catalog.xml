@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<activities_catalog>
+
+	<activity_category>
+	  <category id="online">Online</category>
+	  <category id="out_of_home">Out Of Home</category>
+	  <category id="print">Print</category>
+	  <category id="audio_video">Audio Video</category>
+	  <category id="event">Event</category>
+	  <category id="telemarketing">Telemarketing</category>
+	  <category id="sales_partner_activities">Sales Partners Activities</category>
+	  <category id="member_web_sites">Member Web Sites</category>
+	</activity_category>
+
+	<activity_type>
+	  <activity category="online" id="social_media">Social Media</activity>
+	  <activity category="online" id="microsite">Microsite</activity>
+	  <activity category="online" id="viral_video">Viral Video</activity>
+	  <activity category="online" id="webinar">Webinar</activity>
+	  <activity category="online" id="podcast">Podcast</activity>
+	  <activity category="online" id="product_video">Product Video</activity>
+	  <activity category="online" id="application_development">Application Development</activity>
+	  <activity category="online" id="email_marketing">E-Mail Marketing</activity>
+	  <activity category="online" id="e_catalog">E-Catalog/E-Brochure</activity>
+	  <activity category="online" id="contextual_ad">Contextual Ad</activity>
+	  <activity category="online" id="search_advertising">Search Advertising</activity>
+	  <activity category="online" id="text_ad">Text Ad</activity>
+	  <activity category="online" id="banner_ad">Banner Ad</activity>
+	  <activity category="online" id="web_site_sponsorship">Web site Sponsorship</activity>
+	  <activity category="online" id="sms_mms">SMS/MMS</activity>
+	  <activity category="out_of_home" id="billboards_and_transit_ad">Billboards and Transit Ad</activity>
+	  <activity category="print" id="collateral">Collateral: Brochure, Leaflet, Postcard, Flyer, Poster, Catalog, Newsletter, Merchandising Display Element</activity>
+	  <activity category="print" id="direct_mail">Direct Mail</activity>
+	  <activity category="print" id="insert">Insert and Outsert</activity>
+	  <activity category="print" id="newspaper">Newspaper</activity>
+	  <activity category="print" id="magazine">Magazine</activity>
+	  <activity category="print" id="white_paper">White Paper/Case Study</activity>
+	  <activity category="audio_video" id="television">Television</activity>
+	  <activity category="audio_video" id="radio">Radio</activity>
+	  <activity category="audio_video" id="cinema">Cinema</activity>
+	  <activity category="audio_video" id="digital_video_screen">Digital Video Screen</activity>
+	  <activity category="event" id="sponsorship_of_membership">Sponsorship of Membership-Owned Event</activity>
+	  <activity category="event" id="member_owned_event">Member-Owned Event</activity>
+	  <activity category="event" id="third_party_event">Third-Party Event Sponsorship/Participation</activity>
+	  <activity category="event" id="in_store_promoter">In-Store Promoter</activity>
+	  <activity category="event" id="out_of_store_promoter">Out-of-Store Promoter</activity>
+	  <activity category="telemarketing" id="telemarketing">End-User Focused Telemarketing</activity>
+	  <activity category="sales_partner" id="sp_newspaper">Newspaper</activity>
+	  <activity category="sales_partner" id="sp_magazine">Magazine</activity>
+	  <activity category="sales_partner" id="sp_sales_partners_web_site">Sales Partners Web Site</activity>
+	  <activity category="sales_partner" id="sp_email_marketing">E-Mail Marketing</activity>
+	  <activity category="sales_partner" id="sp_eflyer">E-Flyer, E-Catalog</activity>
+	  <activity category="sales_partner" id="sp_flyer">Flyer</activity>
+	  <activity category="sales_partner" id="sp_catalog">Catalog</activity>
+	  <activity category="sales_partner" id="sp_in_store_collateral">In-Store Collateral</activity>
+	  <activity category="sales_partner" id="sp_billboards" category="sales_partner">Billboards and Transit</activity>
+	  <activity category="sales_partner" id="sp_television" category="sales_partner">Television</activity>
+	  <activity category="sales_partner" id="sp_radio" category="sales_partner">Radio</activity>
+	  <activity category="sales_partner" id="sp_digital_video_screen" category="sales_partner">Digital Video Screen</activity>
+	  <activity category="member_web_sites" id="mws_text_ad" category="member_web_sites">Text Ad</activity>
+	  <activity category="member_web_sites" id="mws_banner_ad" category="member_web_sites">Banner Ad</activity>
+	  <activity category="member_web_sites" id="mws_contextual_ad" category="member_web_sites">Contextual Ad</activity>
+	</activity_type>
+
+	<label_chunks>
+	  <label id="description">Activity Description</label>
+	  <label id="branding_requirements">Activity Specific Branding Requirements</label>
+	  <label id="competition_inclusion">Competition Inclusion</label>
+	  <label id="reimbursable_costs">Reimbursable Costs</label>
+	  <label id="branding_documentation">Branding Documentation (Digital creative, digital picture, or physical asset)</label>
+	  <label id="cost_documentation">Cost Documentation (Original media invoice, itemized agency invoice, or agency invoice plus supporting documentation)</label>
+	  <label id="subject_to_spending_limits">Subject to Spending Limits</label>
+	  <label id="nonreimbursable_costs">Non-Reimbursable Costs (In addition to standard program exclusion) </label>
+	  <label id="subject_to_spending_limts">Subject to Spending Limits </label>
+	  <label id="submission">Submission</label>
+	</label_chunks>
+
+	<common_content_chunks>
+	  <common_content id="default_branding_requirements"><![CDATA[Balanced branding in the activity:<ul><li>Intel logo</li><li>Intel Mention</li></ul>]]></common_content>
+	  <common_content id="default_online_landing_page_requirements"><![CDATA[Balanced branding in the activity:<ul><li>Intel logo</li><li>Intel Mention required when Member product is mentioned</li></ul>Balanced branding on the landing page (if applicable):<ul><li>Intel Logo</li><li>Intel Mention</li><li>Trademark Acknowledgement Line</li></ul>]]></common_content>
+	  <common_content id="default_online_branding_requirements"><![CDATA[Balanced branding in the activity:<ul><li>Intel logo</li><li>Intel Mention required when Member product is mentioned</li></ul>Balanced branding on the landing page (if applicable):<ul><li>Intel Logo</li><li>Intel Mention</li><li>Trademark Acknowledgement Line</li></ul>]]></common_content>
+	  <common_content id="not_allowed"><![CDATA[Not allowed]]></common_content>
+	  <common_content id="no"><![CDATA[No]]></common_content>
+	  <common_content id="competitive_allowed_online"><![CDATA[Allowed on landing page. When included will cut the net reimbursable cost of the corresponding online ad in half before the appropriate reimbursement percentage rate is applied.]]></common_content>
+	</common_content_chunks>
+
+	<content_chunks>
+	  <content activity="social_media" id="description"><![CDATA[Activities such as community creation and management, and networking pages to be placed on social media (i.e. Facebook, LinkedIn, Twitter).<br/><br/>Note: Placing banners or text ads on social media is not included in this activity; they must be submitted as banner or text ads.]]></content>
+	  <content activity="social_media" id="branding_requirements"><![CDATA[[[default_branding_requirements]]]]></content>
+	  <content activity="social_media" id="competition_inclusion"><![CDATA[[[not_allowed]]]]></content>
+	  <content activity="social_media" id="reimbursable_costs"><![CDATA[Creative: agency fee for page look and feel and content development. <br/>Production: agency costs for page design, development, maintenance, and upload.<br/>Net media costs if applicable.]]></content>
+	  <content activity="social_media" id="branding_documentation"><![CDATA[Design of the page(s)]]></content>
+	  <content activity="social_media" id="cost_documentation"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative Costs and Production Costs (including Web maintenance and Web set up costs) <br/>6. Media costs when applicable (include unit and unit cost) <br/>7. Social media (URL) name]]></content>
+	  <content id="subject_to_spending_limits"><![CDATA[[[no]]]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE - Social Media.]]></content>
+	  
+	  <content activity="microsite" id="description"><![CDATA[Creation of an individual web page or a small cluster of pages meant to support a specific campaign.]]></content>
+	  <content activity="microsite" id="branding_requirements"><![CDATA[[[default_branding_requirements]]]]></content>
+	  <content activity="microsite" id="competition_inclusion"><![CDATA[[[not_allowed]]]]></content>
+	  <content activity="microsite" id="reimbursable_costs"><![CDATA[Creative: agency fee for page look and feel and content development.<br/>Production: agency costs for page design, development, maintenance and upload.<br/>Net media costs.]]></content>
+	  <content activity="microsite" id="branding_documentation"><![CDATA[Design of the page(s)]]></content>
+	  <content activity="microsite" id="cost_documentation"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative Costs and Production Costs (including Web maintenance and Web set up costs) <br/>6. Media costs (include unit and unit cost) <br/>7. Web site (URL) name]]></content>
+	  <content activity="microsite" id="subject_to_spending_limits"><![CDATA[[[no]]]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE - Microsite.]]></content>
+
+	  <content activity="viral_video" id="description"><![CDATA[Creation of a video with the intent to spread it through the web through unpaid media such as content communities (e.g. YouTube).]]></content>
+	  <content activity="viral_video" id="branding_requirements"><![CDATA[Balanced branding in the activity:<ul><li>Intel logo</li></ul>Balanced branding on the landing page (if applicable):<ul><li>Intel Logo</li><li>Intel Mention</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content activity="viral_video" id="competition_inclusion"><![CDATA[Not allowed in the video.<br/> [[competitive_allowed_online]]]]></content>
+	  <content activity="viral_video" id="reimbursable_costs"><![CDATA[Creative: agency fee for video ideations. <br/>Production: agency costs for video shooting and video development cost.<br/>Net media cost, if applicable.<br/>Uploading and hosting cost, if applicable.]]>]]></content>
+	  <content activity="viral_video" id="branding_documentation"><![CDATA[Content of video]]></content>
+	  <content activity="viral_video" id="cost_documentation"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative Costs and Production Costs<br/>6. Hosting and Media costs when applicable (include unit and unit cost) <br/>7. Web site (URL) name]]></content>
+	  <content activity="viral_video" id="subject_to_spending_limits"><![CDATA[[[no]]]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE - Viral Video.]]></content>
+
+	  <content activity="webinar" id="description"><![CDATA[A Web based seminar, presentation, lecture, or workshop shared with remote attendees.]]></content>
+	  <content activity="webinar" id="branding_requirements"><![CDATA[[[default_online_branding_requirements]]]]></content>
+	  <content activity="webinar" id="competition_inclusion"><![CDATA[Not allowed in the activity.<br/> [[competitive_allowed_online]]]]></content>
+	  <content activity="webinar" id="reimbursable_costs"><![CDATA[Creative: agency fee for webinar content development. <br/>Production: agency costs for webinar development (ex. costs of online facilitation tools). <br/>Net media cost covered for webinar hosting on third party Web site.]]></content>
+	  <content activity="webinar" id="branding_documentation"><![CDATA[Content of Webinar]]></content>
+	  <content activity="webinar" id="cost_documentation"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative Costs and Production Costs (including Web maintenance and Web set up costs) <br/>6. Hosting and Media costs (include unit and unit cost) <br/>7. Web site (URL) name]]></content>
+	  <content activity="webinar" id="subject_to_spending_limits"><![CDATA[[[no]]]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE - Webinar.]]></content>
+
+	  <content activity="podcast" id="description"><![CDATA[Placement of a series of digital media files (either audio or video) on the Web and made available for download.]]></content>
+	  <content activity="podcast" id="branding_requirements"><![CDATA[[[default_online_branding_requirements]]]]></content>
+	  <content activity="podcast" id="competition_inclusion"><![CDATA[Not allowed in the activity.<br/> [[competitive_allowed_online]]]]></content>
+	  <content activity="podcast" id="reimbursable_costs"><![CDATA[Creative: agency fee for podcast content development. <br/>Production: agency costs for podcast development (ex. costs of online facilitation tools).<br/>Net media cost covered for podcast hosting on third party Web site.]]></content>
+	  <content activity="podcast" id="branding_documentation"><![CDATA[Content of podcast]]></content>
+	  <content activity="podcast" id="cost_documentation"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative Costs and Production Costs (including Web maintenance and Web set up costs) <br/>6. Hosting and Media costs (include unit and unit cost) <br/>7. Web site (URL) name]]></content>
+	  <content activity="podcast" id="subject_to_spending_limits"><![CDATA[[[no]]]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE - Podcast.]]></content>
+
+	  <content activity="product_video" id="description"><![CDATA[Creation of video that shows product features and benefits.]]></content>
+	  <content activity="product_video" id="branding_requirements"><![CDATA[[[default_online_branding_requirements]]]]></content>
+	  <content activity="product_video" id="competition_inclusion"><![CDATA[Not allowed in the video.<br/> [[competitive_allowed_online]]]]></content>
+	  <content activity="product_video" id="reimbursable_costs"><![CDATA[Creative: agency fee for video ideations. <br/>Production: agency costs for video shooting and video development cost. <br/>Net media cost if applicable. <br/>Uploading and hosting cost if applicable.]]></content>
+	  <content activity="product_video" id="branding_documentation"><![CDATA[Content of video]]></content>
+	  <content activity="product_video" id="cost_documentation"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative Costs and Production Costs <br/>6. Hosting and Media costs when applicable (include unit and unit cost) <br/>7. Web site (URL) name - only required if claiming for media or hosting costs]]></content>
+	  <content activity="product_video" id="subject_to_spending_limits" activity="product_video"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE - Product Video.]]></content>
+
+	  <content id="description" activity="application_development"><![CDATA[Application (app), is computer software designed to perform specific tasks. For example, widgets; ROI calculators are included in this category.]]></content>
+	  <content id="branding_requirements" activity="application_development"><![CDATA[[[default_online_branding_requirements]]]]></content>
+	  <content id="competition_inclusion" activity="application_development"><![CDATA[Not allowed in the application.<br/> [[competitive_allowed_online]]]]></content>
+	  <content id="reimbursable_costs" activity="application_development"><![CDATA[Creative: agency fee for application ideations. <br/>Production: agency costs for application development. <br/>Net media and hosting cost if applicable. ]]></content>
+	  <content id="branding_documentation" activity="application_development"><![CDATA[Application design]]></content>
+	  <content id="cost_documentation" activity="application_development"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency fees <br/>4. Total invoice amount <br/>5. Creative Costs and Production Costs <br/>6. Hosting and Media costs when applicable (include unit and unit cost) <br/>7. Web site (URL) name - only required if claiming for media or hosting costs]]></content>
+	  <content id="subject_to_spending_limits" activity="application_development"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE - Application.]]></content>
+
+	  <content id="description" activity="email_marketing"><![CDATA[Email marketing is a form of direct marketing which uses electronic mail as a means of communicating to an audience. Only opt-in email advertising, whereby the recipient of the advertisement has consented to receive it, is supported. Common examples are E-newsletter and direct e-mail.]]></content>
+	  <content id="branding_requirements" 
+	activity="email_marketing"><![CDATA[[[default_online_branding_requirements]]]]></content>
+	  <content id="competition_inclusion" activity="email_marketing"><![CDATA[Not allowed in the activity.<br/> [[competitive_allowed_online]]]]></content>
+	  <content id="reimbursable_costs" activity="email_marketing"><![CDATA[Net media cost: actual costs to place an advertisement in the intended media vehicle. <br/>Both pay per delivered and/or pay per opened models are supported. ]]></content>
+	  <content id="nonreimbursable_costs" activity="email_marketing"><![CDATA[Production and Creative Costs]]></content>
+	  <content id="branding_documentation" activity="email_marketing"><![CDATA[Copy of e-mail]]></content>
+	  <content id="cost_documentation" activity="email_marketing"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. eDM distribution cost (include unit: ex. cost per delivered; cost per opened and unit cost) <br/>6. Quantity]]></content>
+	  <content id="subject_to_spending_limits" activity="email_marketing"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[According to the buying methodology, submit as follows:<br/> email read ñ submit as ONLINE - email cost per read<br/> email delivered ñ submit as ONLINE - email cost per delivered<br/>]]></content>
+
+	  <content id="description" activity="e_catalog"><![CDATA[Creation of a multi-page virtual document that shows product characteristics and benefits. Only eligible pages will be reimbursed.]]></content>
+	  <content id="branding_requirements" activity="e_catalog"><![CDATA[Balanced branding in the activity:<ul><li>Intel logo</li><li>Intel Mention required when Member system is mentioned</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="e_catalog"><![CDATA[Not allowed on front cover. Allowed on a non-eligible page of a multi-page document.]]></content>
+	  <content id="reimbursable_costs" activity="e_catalog"><![CDATA[Creative: agency fee for page look and feel and content development. <br/>Production: agency costs for page design and development. <br/>Net media cost if applicable. ]]></content>
+	  <content id="branding_documentation" activity="e_catalog"><![CDATA[Design of Catalog/Brochure]]></content>
+	  <content id="cost_documentation" activity="e_catalog"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative Costs and Production Costs <br/>6. Hosting and Media costs when applicable (include unit and unit cost) <br/>7. Web site (URL) name]]></content>
+	  <content id="subject_to_spending_limits" activity="e_catalog"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE - E-Catalog/E-Brochure.]]></content>
+
+	  <content id="description" activity="contextual_ad"><![CDATA[A form of targeted advertising in which the ad is embedded in the Web page content (typically in the form of underlined keywords). It can be reimbursed on a Cost-per-click (CPC) basis. Ads may be displayed on the Web page or as a pop-up ad.]]></content>
+	  <content id="branding_requirements" activity="contextual_ad"><![CDATA[Balanced branding in the activity:<ul><li>Intel logo (unless displayed content is text or thumbnail only)</li><li>Intel Mention</li></ul>Balanced branding on the landing page:<ul><li>Intel logo</li><li>Intel Mention</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="contextual_ad"><![CDATA[Not allowed in the activity.<br/> [[competitive_allowed_online]]]]></content>
+	  <content id="reimbursable_costs" activity="contextual_ad"><![CDATA[Net media cost]]></content>
+	  <content id="nonreimbursable_costs" activity="contextual_ad"><![CDATA[Production and Creative Costs]]></content>
+	  <content id="branding_documentation" activity="contextual_ad"><![CDATA[Design of displayed ad creative]]></content>
+	  <content id="cost_documentation" activity="contextual_ad"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Number of clicks, cost per click <br/>6. Web site (URL) name]]></content>
+	  <content id="subject_to_spending_limits" activity="contextual_ad"><![CDATA[Yes, if ad is placed on: <ul><li>Check out Web pages (those pages where you validate your cart and pay)</li><li>Configuration Web pages (those pages where you can personalize a system choosing the different features you want)</li></ul>]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE - Ad CPC.<br/><br/> If subject to spending limits, submit as ONLINE - Ad CPC Limited Spend.]]></content>
+
+	  <content id="description" activity="search_advertising"><![CDATA[Through the acquisition of ad words, online advertisements are placed on Web pages under the form of displayed results from search engine queries.]]></content>
+	  <content id="branding_requirements" activity="search_advertising"><![CDATA[Balanced branding in the activity:<ul><li>Intel Mention</li></ul>Balanced branding on landing page:<ul><li>Intel logo</li><li>Intel Mention</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="search_advertising"><![CDATA[Not allowed in the activity.<br/> [[competitive_allowed_online]]]]></content>
+	  <content id="reimbursable_costs" activity="search_advertising"><![CDATA[Net media cost. <br/>Ad words buying. <br/>Campaign optimization costs.]]></content>
+	  <content id="nonreimbursable_costs" activity="search_advertising"><![CDATA[Production and Creative Costs]]></content>
+	  <content id="branding_documentation" activity="search_advertising"><![CDATA[Display search entries]]></content>
+	  <content id="cost_documentation" activity="search_advertising"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Web site name <br/>6. Media Cost]]></content>
+	  <content id="subject_to_spending_limits" activity="search_advertising"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE - Ad CPC.]]></content>
+
+	  <content id="description" activity="text_ad"><![CDATA[A text-only advertisement on a Web page. This activity type includes promoted tweets.]]></content>
+	  <content id="branding_requirements" activity="text_ad"><![CDATA[Balanced branding in the activity:<ul><li>Intel Mention</li></ul>Balanced branding on landing page:<ul><li>Intel logo</li><li>Intel Mention</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="text_ad"><![CDATA[Not allowed in the activity.<br/> [[competitive_allowed_online]]]]></content>
+	  <content id="reimbursable_costs" activity="text_ad"><![CDATA[Net media cost. <br/>Activity can be reimbursed based on: Cost-per-click (CPC), Cost-per-impression (CPM), and Cost-per-day (CPD).]]></content>
+	  <content id="nonreimbursable_costs" activity="text_ad"><![CDATA[Production and Creative Costs]]></content>
+	  <content id="branding_documentation" activity="text_ad"><![CDATA[Content of ad]]></content>
+	  <content id="cost_documentation" activity="text_ad"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Web site (URL) name <br/>6. Media Cost: include unit and unit cost (ex. CPC, CPM, or CPD)]]></content>
+	  <content id="subject_to_spending_limits" activity="text_ad"><![CDATA[Yes, if ad is placed on:<ul><li>Check out Web pages (those pages where you completed your shopping, validated your cart and are going to pay)</li><li>Configuration Web pages (those pages where you can personalize a system choosing the different features you want)</li></ul>]]></content>
+	  <content id="submission"><![CDATA[According to the buying methodology, submit as follows:<br/> Impression (CPM) ñ submit as ONLINE -  Ad CPM<br/> Clicks (CPC) ñ submit as ONLINE - Ad CPC<br/>Cost per day ñ submit as ONLINE - Ad Cost per day<br/><br/>If the activity is subject to spending limits, submit as follows:<br/> Impression (CPM) ñ submit as ONLINE - Ad CPM Limited Spend<br/> Clicks (CPC) ñ submit as ONLINE - Ad CPC Limited Spend<br/>Cost per day ñ submit as ONLINE - Ad Cost per day Limited Spend]]></content>
+
+	  <content id="description" activity="banner_ad"><![CDATA[A Web banner or banner ad is a form of advertising that entails embedding an advertisement into a Web page of third party Web sites. This activity type includes mobile ads and video banners. End user focused affiliate marketing (a marketing practice in which a business rewards one or more affiliates for each visitor or customer brought about by the affiliate's own marketing efforts) is included.]]></content>
+	  <content id="branding_requirements" activity="banner_ad"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li></ul> On first ad destination page:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="banner_ad"><![CDATA[Not allowed in the activity.<br/> [[competitive_allowed_online]]]]></content>
+	  <content id="reimbursable_costs" activity="banner_ad"><![CDATA[Net media cost. <br/>Activity can be reimbursed based on: CPC (cost per click); CPM (cost per thousand impressions); cost per day and cost per sale.]]></content>
+	  <content id="nonreimbursable_costs" activity="banner_ad"><![CDATA[Production and Creative Costs]]></content>
+	  <content id="branding_documentation" activity="banner_ad"><![CDATA[Design of banner]]></content>
+	  <content id="cost_documentation" activity="banner_ad"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Web site (URL) name <br/>6. Media Cost: include unit and unit cost (ex. cost per click; cost per impression; cost per sale)]]></content>
+	  <content id="subject_to_spending_limits" activity="banner_ad"><![CDATA[Yes, if: <br/>1. Ad is placed on or leads to:<ul><li>Check out Web pages (those pages where you completed your shopping, validated your cart and are going to pay)</li><li>Configuration Web pages (those pages where you can personalize a system choosing the different features you want)</li></ul> <br/>2. Activity is bought on cost per sale (Online activity where there is a cost only when a transaction happen as a result of the end user clicking on the ad. Typically placed on Channel shopping engines)]]></content>
+	  <content id="submission"><![CDATA[According to the buying methodology, submit as follows:<br/> Impression (CPM) ñ submit as ONLINE -  Ad CPM<br/> Clicks (CPC) ñ submit as ONLINE - Ad CPC<br/>Cost per day ñ submit as ONLINE - Ad Cost per day<br/><br/>If the activity is subject to spending limits, submit as follows:<br/> Impression (CPM) ñ submit as ONLINE - Ad CPM Limited Spend<br/> Clicks (CPC) ñ submit as ONLINE - Ad CPC Limited Spend<br/>Cost per day ñ submit as ONLINE - Ad Cost per day Limited Spend<br/>Cost per sale ñ submit as ONLINE - Ad Cost per sale]]></content>
+
+	  <content id="description" activity="web_site_sponsorship"><![CDATA[Development of a unique design and format to be placed for a certain period of time on a third party Web site.]]></content>
+	  <content id="branding_requirements" activity="web_site_sponsorship"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li></ul> On first ad destination page:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="web_site_sponsorship"><![CDATA[Not allowed in the activity.<br/> [[competitive_allowed_online]]]]></content>
+	  <content id="reimbursable_costs" activity="web_site_sponsorship"><![CDATA[Net media cost]]></content>
+	  <content id="nonreimbursable_costs" activity="web_site_sponsorship"><![CDATA[Production and Creative Costs]]></content>
+	  <content id="branding_documentation" activity="web_site_sponsorship"><![CDATA[Design of the activity]]></content>
+	  <content id="cost_documentation" activity="web_site_sponsorship"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Web site (URL) name <br/>6. Media Cost: include unit and unit cost (ex. cost per click; cost per impression; cost per sale)]]></content>
+	  <content id="subject_to_spending_limits" activity="web_site_sponsorship"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[According to the buying methodology, submit as follows:<br/> Impression (CPM) ñ submit as ONLINE -  Ad CPM<br/> Clicks (CPC) ñ submit as ONLINE - Ad CPC<br/>Cost per day ñ submit as ONLINE - Ad Cost per day<br/><br/>If the activity is subject to spending limits, submit as follows:<br/> Impression (CPM) ñ submit as ONLINE - Ad CPM Limited Spend<br/> Clicks (CPC) ñ submit as ONLINE - Ad CPC Limited Spend<br/>Cost per day ñ submit as ONLINE - Ad Cost per day Limited Spend]]></content>
+
+	  <content id="description" activity="sms_mms"><![CDATA[A type of mobile marketing that uses text or graphic messages as a medium of direct advertising. Both push and pull delivery methods are supported. The push delivery method is when the advertiser sends an ad to an end user who previously granted the advertiser permission to do so. The pull delivery method is when an end user sends a message to a number published on an ad and is sent a direct ad in return.]]></content>
+	  <content id="branding_requirements" activity="sms_mms"><![CDATA[ Balanced branding in the activity:<ul><li>Intel logo (unless displayed content is text or thumbnail only)</li><li>Intel Mention</li></ul> On landing page:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="sms_mms"><![CDATA[Not allowed in the activity. Allowed <br/> [[competitive_allowed_online]]]]></content>
+	  <content id="reimbursable_costs" activity="sms_mms"><![CDATA[Net media cost]]></content>
+	  <content id="nonreimbursable_costs" activity="sms_mms"><![CDATA[Production and Creative Costs]]></content>
+	  <content id="branding_documentation" activity="sms_mms"><![CDATA[Content of the message and design of the landing page]]></content>
+	  <content id="cost_documentation" activity="sms_mms"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Web site (URL) name <br/>6. Media Cost: include unit and unit cost (ex. Messages sent or messages received)]]></content>
+	  <content id="subject_to_spending_limits" activity="sms_mms"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as ONLINE ñ SMS/MMS.]]></content>
+
+	  <content id="description" activity="billboards_and_transit_ad"><![CDATA[Large format outdoor advertising placed on dedicated structure in high traffic areas; on public transportation and public transportation shelters; on escalators; etc. Includes digital format.]]></content>
+	  <content id="branding_requirements" activity="billboards_and_transit_ad"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li></ul> On first ad destination page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="billboards_and_transit_ad"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="billboards_and_transit_ad"><![CDATA[Net media cost]]></content>
+	  <content id="nonreimbursable_costs" activity="billboards_and_transit_ad"><![CDATA[Production and Creative Costs]]></content>
+	  <content id="branding_documentation" activity="billboards_and_transit_ad"><![CDATA[Design of the ad]]></content>
+	  <content id="cost_documentation" activity="billboards_and_transit_ad"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Number of ads <br/>6. Placement and size of ad]]></content>
+	  <content id="subject_to_spending_limits" activity="billboards_and_transit_ad"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as OUT OF HOME - Transit/Billboard.]]></content>
+
+	  <content id="description" activity="collateral"><![CDATA[Creation of printed marketing material in various formats that outlines product characteristics and benefits. This category does not include collateral produced for in-store distribution. Please submit it under in-store collateral.]]></content>
+	  <content id="branding_requirements" activity="collateral"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul> On first ad destination page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="collateral"><![CDATA[Not allowed on front cover/panel. Allowed on a non-reimbursable page/panel of a multi-page document.]]></content>
+	  <content id="reimbursable_costs" activity="collateral"><![CDATA[Creative Costs: agency fee for piece look and feel and content development. <br/>Production Costs: costs incurred to produce or print the material (including, but not limited to, pre-press, printing, and post-production). <br/>Net media cost]]></content>
+	  <content id="nonreimbursable_costs" activity="collateral"><![CDATA[Postage cost]]></content>
+	  <content id="branding_documentation" activity="collateral"><![CDATA[Design of the piece]]></content>
+	  <content id="cost_documentation" activity="collateral"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative and Production (including printing) costs <br/>6. Number of pieces]]></content>
+	  <content id="subject_to_spending_limits" activity="collateral"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as PRINT - Collateral.<br/><br/> If subject to spending limits, submit as PRINT - In store collateral Limited Spend.]]></content>
+
+	  <content id="description" activity="direct_mail"><![CDATA[The delivery of different format of marketing material to recipients of postal mail.]]></content>
+	  <content id="branding_requirements" activity="direct_mail"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul> On first ad destination page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="direct_mail"><![CDATA[Not allowed on front cover. Allowed on a non-reimbursable page of a multi-page document. Envelopes: not allowed.]]></content>
+	  <content id="reimbursable_costs" activity="direct_mail"><![CDATA[Creative Costs: agency fee for piece look and feel and content development. <br/>Production Costs: costs incurred to produce or print the material (including, but not limited to, pre-press, printing, and post-production). <br/>Net media cost. <br/>Postage costs to mail piece to end user.]]></content>
+	  <content id="nonreimbursable_costs" activity="direct_mail"><![CDATA[Database rental or purchase]]></content>
+	  <content id="branding_documentation" activity="direct_mail"><![CDATA[Design of the piece]]></content>
+	  <content id="cost_documentation" activity="direct_mail"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative and Production (including printing) costs <br/>6. Number of pieces <br/>7. Postage Costs]]></content>
+	  <content id="subject_to_spending_limits" activity="direct_mail"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as PRINT - Direct mail.]]></content>
+
+	  <content id="description" activity="insert"><![CDATA[Typically multi-page collateral distributed together (either enclosed or inserted) in a specific publication.]]></content>
+	  <content id="branding_requirements" activity="insert"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul> On first ad destination page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="insert"><![CDATA[Not allowed on front cover. Allowed on a non-reimbursable page of a multi-page document.]]></content>
+	  <content id="reimbursable_costs" activity="insert"><![CDATA[Creative Costs: agency fee for piece look and feel and content development. <br/>Production Costs: costs incurred to produce or print the material (including, but not limited to, pre-press, printing, and post-production). <br/>Net media cost.]]></content>
+	  <content id="nonreimbursable_costs" activity="insert"><![CDATA[Database rental or purchase]]></content>
+	  <content id="branding_documentation" activity="insert"><![CDATA[Design of page/s]]></content>
+	  <content id="cost_documentation" activity="insert"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative and Production (including printing) costs <br/>6. Number of pieces <br/>7. Media placement cost]]></content>
+	  <content id="subject_to_spending_limits" activity="insert"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as PRINT - Inserts/Outserts.]]></content>
+
+	  <content id="description" activity="newspaper"><![CDATA[Advertising page placed in a print publication.]]></content>
+	  <content id="branding_requirements" activity="newspaper"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul> On first ad destination page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul><br/>If activity is an editorial where logos are not supported, Intel mention will suffice.]]></content>
+	  <content id="competition_inclusion" activity="newspaper"><![CDATA[Not allowed on single pages. Allowed on a non-reimbursable page of a multi-page ad.]]></content>
+	  <content id="reimbursable_costs" activity="newspaper"><![CDATA[Net media cost.]]></content>
+	  <content id="nonreimbursable_costs" activity="newspaper"><![CDATA[Production and Creative Costs]]></content>
+	  <content id="branding_documentation" activity="newspaper"><![CDATA[Design of page]]></content>
+	  <content id="cost_documentation" activity="newspaper"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Publication name <br/>6. Number of insertions <br/>7. Media placement costs]]></content>
+	  <content id="subject_to_spending_limits" activity="newspaper"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as PRINT - Magazine/Newspapers.]]></content>
+
+	  <content id="description" activity="magazine"><![CDATA[Advertising page placed in a print publication.]]></content>
+	  <content id="branding_requirements" activity="magazine"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul> On first ad destination page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="magazine"><![CDATA[Not allowed on single pages. Allowed on a non-reimbursable page of a multi-page ad.]]></content>
+	  <content id="reimbursable_costs" activity="magazine"><![CDATA[Net media cost.]]></content>
+	  <content id="nonreimbursable_costs" activity="magazine"><![CDATA[Production and Creative Costs]]></content>
+	  <content id="branding_documentation" activity="magazine"><![CDATA[Design of page]]></content>
+	  <content id="cost_documentation" activity="magazine"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Publication name <br/>6. Number of insertions <br/>7. Media placement costs]]></content>
+	  <content id="subject_to_spending_limits" activity="magazine"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as PRINT - Magazine/Newspapers.]]></content>
+
+	  <content id="description" activity="white_paper"><![CDATA[Creation of documents used to educate readers on product benefits through real cases to help people make buying decisions.]]></content>
+	  <content id="branding_requirements" activity="white_paper"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel required when Member system is mentioned</li><li>Trademark Acknowledgement Line</li></ul> On first ad destination page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="white_paper"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="white_paper"><![CDATA[Creative Costs: agency fee for piece look and feel and content development. <br/>Production Costs: costs incurred to produce or print the material (including, but not limited to, pre-press, printing, and post-production). <br/>Net media cost.]]></content>
+	  <content id="branding_documentation" activity="white_paper"><![CDATA[Content of white paper or case study]]></content>
+	  <content id="cost_documentation" activity="white_paper"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Creative and Production (including copy writer) costs <br/>6. Media Placement cost]]></content>
+	  <content id="subject_to_spending_limits" activity="white_paper"><![CDATA[Yes, when information contained in white paper refers to a customer specifically]]></content>
+	  <content id="submission"><![CDATA[Submit as PRINT - White paper/case study.<br/><br/> If subject to spending limits, submit as PRINT - White paper/case study Limited Spend.]]></content>
+
+	  <content id="description" activity="television"><![CDATA[Commercials placed on television channels.]]></content>
+	  <content id="branding_requirements" activity="television"><![CDATA[Use of Intel signature identity asset (must be 100% of the screen with the exception of Japan where it must be 20% of the screen). <br/>Mention of Intel in audio. If a commercial does not support audio, use the text mention.]]></content>
+	  <content id="competition_inclusion" activity="television"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="television"><![CDATA[Net media cost]]></content>
+	  <content id="nonreimbursable_costs" activity="television"><![CDATA[Production and creative cost]]></content>
+	  <content id="branding_documentation" activity="television"><![CDATA[Commercial]]></content>
+	  <content id="cost_documentation" activity="television"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Channel Name <br/>6. Number of spots and cost per spot <br/>7. Duration of spot]]></content>
+	  <content id="subject_to_spending_limits" activity="television"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as AUDIO/VIDEO - Television.]]></content>
+
+	  <content id="description" activity="radio"><![CDATA[Commercials placed on radio channels.]]></content>
+	  <content id="branding_requirements" activity="radio"><![CDATA[Use of Intel signature identity asset. <br/>Mention of Intel in audio.]]></content>
+	  <content id="competition_inclusion" activity="radio"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="radio"><![CDATA[Net media cost]]></content>
+	  <content id="nonreimbursable_costs" activity="radio"><![CDATA[Production and creative cost]]></content>
+	  <content id="branding_documentation" activity="radio"><![CDATA[Commercial]]></content>
+	  <content id="cost_documentation" activity="radio"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Channel Name <br/>6. Number of spots and cost per spot <br/>7. Duration of spot]]></content>
+	  <content id="subject_to_spending_limits" activity="radio"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as AUDIO/VIDEO - Radio.]]></content>
+
+	  <content id="description" activity="cinema"><![CDATA[Commercials placed at movie theaters during/before movies.]]></content>
+	  <content id="branding_requirements" activity="cinema"><![CDATA[Use of Intel signature identity asset (must be 100% of the screen). <br/>Mention of Intel in audio. If a commercial does not support audio, use the text mention.]]></content>
+	  <content id="competition_inclusion" activity="cinema"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="cinema"><![CDATA[Net media cost]]></content>
+	  <content id="nonreimbursable_costs" activity="cinema"><![CDATA[Production and creative cost]]></content>
+	  <content id="branding_documentation" activity="cinema"><![CDATA[Commercial]]></content>
+	  <content id="cost_documentation" activity="cinema"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Theater Name and Movie Title <br/>6. Number of spots and cost per spot <br/>7. Duration of spot]]></content>
+	  <content id="subject_to_spending_limits" activity="cinema"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as AUDIO/VIDEO - Cinema.]]></content>
+
+	  <content id="description" activity="digital_video_screen"><![CDATA[Commercials placed at movie theaters during/before movies.]]></content>
+	  <content id="branding_requirements" activity="digital_video_screen"><![CDATA[Use of Intel signature identity asset (must be 100% of the screen). <br/>Mention of Intel in audio. If a commercial does not support audio, use the text mention.]]></content>
+	  <content id="competition_inclusion" activity="digital_video_screen"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="digital_video_screen"><![CDATA[Net media cost]]></content>
+	  <content id="nonreimbursable_costs" activity="digital_video_screen"><![CDATA[Production and creative cost]]></content>
+	  <content id="branding_documentation" activity="digital_video_screen"><![CDATA[Commercial]]></content>
+	  <content id="cost_documentation" activity="digital_video_screen"><![CDATA[1. Date/date range <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Location/s <br/>6. Media placement cost per location <br/>7. Ad duration]]></content>
+	  <content id="subject_to_spending_limits" activity="digital_video_screen"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as AUDIO/VIDEO - Digital video screen.]]></content>
+
+	  <content id="description" activity="sponsorship_of_membership"><![CDATA[Large scale events where the Member sells sponsorship packages to multiple players. We will reimburse the OEM up to 100% of sponsorship package cost. <br/>Only allowed when sponsorship packages are sold by the Member to multiple companies. Pre-approval is always required.]]></content>
+	  <content id="branding_requirements" activity="sponsorship_of_membership"><![CDATA[As defined by the sponsorship package agreement.]]></content>
+	  <content id="competition_inclusion" activity="sponsorship_of_membership"><![CDATA[Yes, at the Event but not in the Sponsorship package deliverables of the package bought by Intel.]]></content>
+	  <content id="reimbursable_costs" activity="sponsorship_of_membership"><![CDATA[As defined by sponsorship package agreement.]]></content>
+	  <content id="branding_documentation" activity="sponsorship_of_membership"><![CDATA[As defined by sponsorship package agreement.]]></content>
+	  <content id="cost_documentation" activity="sponsorship_of_membership"><![CDATA[1. Date/date range and location <br/>2. Details defined by pre-approved sponsorship package agreement.]]></content>
+	  <content id="subject_to_spending_limits" activity="sponsorship_of_membership"><![CDATA[Yes, if: sales are happening on site at the event.]]></content>
+	  <content id="submission"><![CDATA[Submit as EVENTS - 100% Sponsorship of Member owned.]]></content>
+
+	  <content id="description" activity="member_owned_event"><![CDATA[Event such as workshop and seminar organized by IIP members. Invitation is available to any interested audience (online registrations, flyers on street, ads on newspaper, etc.) Pre-approval required if governmental attendees are invited.]]></content>
+	  <content id="branding_requirements" activity="member_owned_event"><![CDATA[<ul><li>Balanced branding on venue decoration (signage) and booth/kiosk if there is one</li><li>Mention of Intel when OEM system or solution is mentioned in the presentation or demonstration (i.e. keynote, training, break out sessions etc). This requirement can also be met if there is an Intel keynote or Intel-led breakout session at the event</li></ul> Additionally Intel will reimburse the following items when co-branded:<ul><li>Giveaways</li><li>Uniform for staff</li><li>Handout</li><li>Invitation</li><li>Registration Web site</li></ul>Important: As per the general program requirement, Intel based systems must carry Intel on-system branding even if using a demo unit dedicated to the event or if the system is not yet commercially available.]]></content>
+	  <content id="competition_inclusion" activity="member_owned_event"><![CDATA[Allowed. If included, will cut the net reimbursable cost of the activity in half before the appropriate reimbursement percentage rate is applied. Equal or greater prominence required for products based on Intel eligible processors and for Intel brand logos.]]></content>
+	  <content id="reimbursable_costs" activity="member_owned_event"><![CDATA[<ul><li>Cost of hiring promoters</li><li>Promoters training cost (including venue)</li><li>Participation fee paid by Member or third party for a third party's participation/speaker</li><li>Creative design for event signage and booth or kiosk</li><li>Logistics and venue related costs ( i.e. booth/venue set up; decoration; carpet, electrical, internet, furniture, etc.)</li><li>Shipping of demo units</li><li>Agency fee for event management, co-branded Collateral, co-branded Invitations, co-branded registration Web site, co-branded giveaways</li><li>Gifts and entertainment (within Intel approved amounts)</li></ul>]]></content>
+	  <content id="branding_documentation" activity="member_owned_event"><![CDATA[For branding:<ul><li>Image of venue set up</li><li>Image of product</li></ul><ul><li>Copy of presentation content</li><li>Image of any co-branding item submitted for reimbursement</li></ul>]]></content>
+	  <content id="cost_documentation" activity="member_owned_event"><![CDATA[1. Date/date range and location <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Itemization of Gift and Entertainment costs <br/>6. Summary of venue costs <br/>7. Attendee list]]></content>
+	  <content id="subject_to_spending_limits" activity="member_owned_event"><![CDATA[Yes, if: <br/>1. sales are happening on-site at the event. <br/>2. Invitation is reserved to a defined group of decision makers <br/>3. Invitation is non-transferable or unavailable to the public.]]></content>
+	  <content id="submission"><![CDATA[Submit as EVENT - Event.<br/><br/> If subject to spending limits, submit as EVENT - Event Limited Spend.<br/><br/>If including government attendees, submit as EVENT - Event (G)<br/><br/>If including government attendees AND subject to spending limits, submit as EVENT - Event Limited Spend (G)]]></content>
+
+	  <content id="description" activity="third_party_event"><![CDATA[The Member buys a sponsorship package or pays an attendance fee in addition to the event set up cost. <br/>These can be events of all sorts: seminars; workshops; tradeshows; etc. Invitation is available to any interested audience (online registrations, flyers on street, invitations on newspaper, etc.) Pre-approval required if governmental attendees are invited.]]></content>
+	  <content id="branding_requirements" activity="third_party_event"><![CDATA[<ul><li>Balanced branding on venue decoration (signage) and booth/kiosk if there is one</li><li>Mention of Intel when OEM system or solution is mentioned in the presentation or demonstration (i.e. keynote, training, break out sessions, etc). This requirement can also be met if there is an Intel keynote or Intel-led breakout session at the event</li></ul> Additionally Intel will reimburse the following items when co-branded:<ul><li>Giveaways</li><li>Uniform for staff</li><li>Handout</li><li>Invitation</li><li>Registration Web site</li></ul>Important: As per the general program requirement, Intel based systems must carry Intel on-system branding even if using a unit demo dedicated to event or if the system is not yet commercially available.]]></content>
+	  <content id="competition_inclusion" activity="third_party_event"><![CDATA[Allowed. If included, will cut the net reimbursable cost of the activity in half before the appropriate reimbursement percentage rate is applied. Equal or greater prominence required for products based on Intel eligible processors and for Intel Brand Logos.]]></content>
+	  <content id="reimbursable_costs" activity="third_party_event"><![CDATA[<ul><li>Cost of hiring promoters</li><li>Promoters training cost (including venue)</li><li>Show participation fee</li><li>Event sponsorship fees</li><li>Participation fee paid by Member or third party for a third party's participation/speaker</li><li>Creative design for event signage and booth or kiosk</li><li>Logistics and venue related costs ( i.e. booth/venue set up; decoration; carpet, electrical, internet, furniture, etc.)</li><li>Shipping of demo units</li><li>Agency fee for event management, co-branded Collateral, co-branded Invitations, co-branded registration Web site, co-branded giveaways</li><li>Gifts and entertainment (within Intel approved amounts)</li></ul>]]></content>
+	  <content id="branding_documentation" activity="third_party_event"><![CDATA[For branding:<ul><li>Image of venue set up</li><li>Image of product showcase</li></ul><ul><li>Copy of presentation content</li><li>Image of any co-branding item submitted for reimbursement</li></ul>]]></content>
+	  <content id="cost_documentation" activity="third_party_event"><![CDATA[1. Date/date range and location <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Itemization of Gift and Entertainment costs <br/>6. Summary of venue costs <br/>7. Participation fees <br/>8. Sponsorship fee details <br/>9. Attendee list]]></content>
+	  <content id="subject_to_spending_limits" activity="third_party_event"><![CDATA[Yes, if: <br/>1. sales are happening on-site at the event. <br/>2. Invitation is reserved to a defined group of decision makers <br/>3. Invitation is non-transferable or unavailable to the public.]]></content>
+	  <content id="submission"><![CDATA[Submit as EVENT - Event.<br/><br/> If subject to spending limits, submit as EVENT - Event Limited Spend.<br/><br/>If including government attendees, submit as EVENT - Event (G)<br/><br/>If including government attendees AND subject to spending limits, submit as EVENT - Event Limited Spend (G)]]></content>
+
+	  <content id="description" activity="in_store_promoter"><![CDATA[Marketing demonstration of products taking place in a store.]]></content>
+	  <content id="branding_requirements" activity="in_store_promoter"><![CDATA[<ul><li>Balanced branding on venue decoration (signage) and booth/kiosk if there is one</li><li>Mention of Intel when OEM system or solution is mentioned in the presentation or demonstration to end users</li><li>Inclusion of Intel content (available for download on the program Web site) in the material used to train promoters</li></ul> Additionally Intel will reimburse the following items when co-branded:<ul><li>Giveaways</li><li>Uniform for staff</li><li>Handout</li></ul>Important: As per the general program requirement, Intel based systems must carry Intel on-system branding even if using a demo unit dedicated to the event or if the system is not yet commercially available.]]></content>
+	  <content id="competition_inclusion" activity="in_store_promoter"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="in_store_promoter"><![CDATA[<ul><li>Promoters training cost (including venue)</li><li>Cost of hiring promoters</li><li>Creative design for event signage and booth or kiosk</li><li>Logistics and venue related costs ( i.e. booth/venue set up; decoration; carpet, electrical, internet, furniture, etc.) </li><li>Shipping of demo units </li><li>Agency fee for event management , Co-branded Collateral, Co-branded Invitations, Co-branded registration Web site, Co-branded giveaways; Gifts and entertainment (within Intel approved amounts) </li></ul>]]></content>
+	  <content id="branding_documentation" activity="in_store_promoter"><![CDATA[For branding:<ul><li>Image of venue set up</li><li>Image of product showcase</li></ul><ul><li>Copy of presentation content</li><li>Image of any co-branding item submitted for reimbursement</li></ul>]]></content>
+	  <content id="cost_documentation" activity="in_store_promoter"><![CDATA[1. Date/date range and location <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Itemization of Gift and Entertainment costs <br/>6. Summary of set up costs]]></content>
+	  <content id="subject_to_spending_limits" activity="in_store_promoter"><![CDATA[Yes]]></content>
+	  <content id="submission"><![CDATA[Submit as EVENT ñ In-store Promoter.]]></content>
+
+	  <content id="description" activity="out_of_store_promoter"><![CDATA[Marketing demonstration of products taking place outside a selling environment. Can be performed in airport; theatre; etc.]]></content>
+	  <content id="branding_requirements" activity="out_of_store_promoter"><![CDATA[<ul><li>Balanced branding on venue decoration (signage) and booth/kiosk if there is one</li><li>Mention of Intel when OEM system or solution is mentioned in the presentation or demonstration to end users</li><li>Inclusion of Intel content (available for download on the program Web site) in the material used to train promoters</li></ul> Additionally Intel will reimburse the following items when co-branded:<ul><li>Giveaways</li><li>Uniform for staff</li><li>Handout</li></ul>Important: As per the general program requirement, Intel based systems must carry Intel on-system branding even if using a demo unit dedicated to the event or if the system is not yet commercially available.]]></content>
+	  <content id="competition_inclusion" activity="out_of_store_promoter"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="out_of_store_promoter"><![CDATA[<ul><li>Cost of hiring promoters</li><li>Promoters training cost (including venue)</li><li>Show participation fee</li><li>Event sponsorship fees</li><li>Participation fee paid by Member or third party for a third party's participation</li><li>Creative design for event signage and booth or kiosk</li><li>Logistics and venue related costs ( i.e. booth/venue set up; decoration; carpet, electrical, internet, furniture, etc.) </li><li>Shipping of demo units </li><li>Agency fee for event management , co-branded Collateral, co-branded Invitations, co-branded registration Web site, co-branded giveaways; Gifts and entertainment (within Intel approved amounts)</li></ul>]]></content>
+	  <content id="branding_documentation" activity="out_of_store_promoter"><![CDATA[For branding:<ul><li>Image of venue set up</li><li>Image of product showcase</li></ul><ul><li>Copy of presentation content</li><li>Image of any co-branding item submitted for reimbursement</li></ul>]]></content>
+	  <content id="cost_documentation" activity="out_of_store_promoter"><![CDATA[1. Date/date range and location <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Itemization of Gift and Entertainment costs <br/>6. Summary of Venue costs]]></content>
+	  <content id="subject_to_spending_limits" activity="out_of_store_promoter"><![CDATA[Yes, if sales are happening on-site at the event.]]></content>
+	  <content id="submission"><![CDATA[Submit as EVENT - Event.<br/><br/> If subject to spending limits, submit as EVENT - Event Limited Spend.]]></content>
+
+	  <content id="description" activity="end_user_focused_telemarketing"><![CDATA[Telemarketing is a method of direct marketing in which a salesperson solicits prospective customers to buy products or services, either over the phone or through a subsequent face to face appointment scheduled during the call.]]></content>
+	  <content id="branding_requirements" activity="end_user_focused_telemarketing"><![CDATA[Mention of Intel required when Member system is mentioned.]]></content>
+	  <content id="competition_inclusion" activity="end_user_focused_telemarketing"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="end_user_focused_telemarketing"><![CDATA[<ul><li>Telephone charges</li><li>Labor to deliver telemarketing</li><li>Copywriting, editing, translating, and formatting telemarketing scripts</li><li>Producing/printing scripts</li><li>Generating telemarketing performance metrics reports</li></ul>]]></content>
+	  <content id="nonreimbursable_costs" activity="end_user_focused_telemarketing"><![CDATA[<ul><li>Venue cost to house the telemarketing team</li><li>Database rental or purchase</li><li>Development or maintenance of the reporting system</li></ul>]]></content>
+	  <content id="branding_documentation" activity="end_user_focused_telemarketing"><![CDATA[Telemarketing script]]></content>
+	  <content id="cost_documentation" activity="end_user_focused_telemarketing"><![CDATA[1. Date/date range and location <br/>2. Tax, discounts, rebates, bonus ads <br/>3. Agency/Agent management fees <br/>4. Total invoice amount <br/>5. Number of calls, creation cost (copy writing, editing, translating, and formatting]]></content>
+	  <content id="subject_to_spending_limits" activity="end_user_focused_telemarketing"><![CDATA[Yes]]></content>
+	  <content id="submission"><![CDATA[Submit as TELEMARKETING - Telemarketing.]]></content>
+
+	  <content id="description" activity="sp_newspaper"><![CDATA[Advertising page created by Sales Partners or their agencies and placed in a print publication. In the United states and Canada only this activity is eligible for Clip and Pay.]]></content>
+	  <content id="branding_requirements" activity="sp_newspaper"><![CDATA[In the activity:<ul><li>Logo of Intel</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul> On first destination Web page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="sp_newspaper"><![CDATA[Allowed outside reimbursable space]]></content>
+	  <content id="reimbursable_costs" activity="sp_newspaper"><![CDATA[Published rate card value <br/>Reimbursement is available for parts of a page]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_newspaper"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_newspaper"><![CDATA[Design of page]]></content>
+	  <content id="cost_documentation" activity="sp_newspaper"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_newspaper"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ Magazine/Newspaper.]]></content>
+
+	  <content id="description" activity="sp_magazine"><![CDATA[Advertising page created by Sales Partners or their agencies and placed in a print publication. <br/>In the United states and Canada only this activity is eligible for Clip and Pay.]]></content>
+	  <content id="branding_requirements" activity="sp_magazine"><![CDATA[In the activity:<ul><li>Logo of Intel</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul> On first destination Web page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="sp_magazine"><![CDATA[Allowed outside reimbursable space]]></content>
+	  <content id="reimbursable_costs" activity="sp_magazine"><![CDATA[Published rate card value <br/>Reimbursement is available for parts of a page]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_magazine"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_magazine"><![CDATA[Design of page]]></content>
+	  <content id="cost_documentation" activity="sp_magazine"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_magazine"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ Magazine/Newspaper.]]></content>
+
+	  <content id="description" activity="sp_sales_partners_web_site"><![CDATA[Ads created and placed on Sales Partner Web pages, such as home pages or product information pages. This category includes banner ads, text ads, contextual ads, mobile ads and video banners. <br/>Please note: CPM activities can only be performed on Web pages where Intel based products are featured.]]></content>
+	  <content id="branding_requirements" activity="sp_sales_partners_web_site"><![CDATA[In the activity:<ul><li>Logo of Intel (when activity supports graphic)</li><li>Mention of Intel</li></ul> On first destination Web page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="sp_sales_partners_web_site"><![CDATA[Not allowed in the activity. <br/>Allowed in the site wrapper or main product area of ad destination page. When included will cut the net reimbursable cost of the corresponding online ad in half before the appropriate reimbursement percentage rate is applied.]]></content>
+	  <content id="reimbursable_costs" activity="sp_sales_partners_web_site"><![CDATA[Published rate card value]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_sales_partners_web_site"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_sales_partners_web_site"><![CDATA[Design/content of the ad]]></content>
+	  <content id="cost_documentation" activity="sp_sales_partners_web_site"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_sales_partners_web_site"><![CDATA[Yes, if: <br/>1. Ad is placed on or leads to:<ul><li>Check out Web pages (those pages where you completed your shopping, validated your cart and are going to pay)</li><li>Configuration Web pages (those pages where you can personalize a system choosing the different features you want)</li></ul> <br/>2. Activity is bought on cost per sale (Online activity where there is a cost only when a transaction happen as a result of the end user clicking on the ad. Typically placed on Channel shopping engines)]]></content>
+	  <content id="submission"><![CDATA[According to the buying methodology, submit as follows:<br/> Impression (CPM) ñ submit as SALES PARTNER -  Ad CPM<br/> Clicks (CPC) ñ submit as SALES PARTNER - Ad CPC<br/>Cost per day ñ submit as SALES PARTNER - Ad Cost per day<br/><br/>If the activity is subject to spending limits, submit as follows:<br/> Impression (CPM) ñ submit as SALES PARTNER - Ad CPM Limited Spend<br/> Clicks (CPC) ñ submit as SALES PARTNER - Ad CPC Limited Spend<br/>Cost per day ñ submit as SALES PARTNER - Ad Cost per day Limited Spend<br/>Cost per sale ñ submit as SALES PARTNER - Ad Cost per sale]]></content>
+
+	  <content id="description" activity="sp_email_marketing"><![CDATA[Electronically delivered newsletters created by Sales Partners or their agencies that feature Member and a single Intel product.]]></content>
+	  <content id="branding_requirements" activity="sp_email_marketing"><![CDATA[In the activity:<ul><li>Logo of Intel</li><li>Mention of Intel</li></ul> On first destination Web page:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="sp_email_marketing"><![CDATA[Allowed outside reimbursable space]]></content>
+	  <content id="reimbursable_costs" activity="sp_email_marketing"><![CDATA[Published rate card value]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_email_marketing"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_email_marketing"><![CDATA[Content of e-mail]]></content>
+	  <content id="cost_documentation" activity="sp_email_marketing"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_email_marketing"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ E-mail Marketing.]]></content>
+
+	  <content id="description" activity="sp_eflyer"><![CDATA[Ads placed in virtual flyers or Catalogs created by Sales Partners or their agencies that feature Member and Intel product and are delivered electronically.]]></content>
+	  <content id="branding_requirements" activity="sp_eflyer"><![CDATA[In the activity:<ul><li>Logo of Intel</li><li>Mention of Intel</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="sp_eflyer"><![CDATA[Allowed outside reimbursable space]]></content>
+	  <content id="reimbursable_costs" activity="sp_eflyer"><![CDATA[Published rate card value]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_eflyer"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_eflyer"><![CDATA[Design of e-flyer or e-catalog]]></content>
+	  <content id="cost_documentation" activity="sp_eflyer"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_eflyer"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ E-flyers/E-catalogs.]]></content>
+
+	  <content id="description" activity="sp_flyer"><![CDATA[Ads placed in flyers created by Sales Partners or their agencies that feature Member and Intel product. A flyer is defined as a multi-page print document where the cover weight and internal page weight is up to 80 grams. Typically, flyers have fewer than 20 pages. Supported distribution methods include direct mail, insert/outserts, and in-store.]]></content>
+	  <content id="branding_requirements" activity="sp_flyer"><![CDATA[In the activity:<ul><li>Logo of Intel</li><li>Mention of Intel</li></ul> On first destination Web page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="sp_flyer"><![CDATA[Allowed outside reimbursable space]]></content>
+	  <content id="reimbursable_costs" activity="sp_flyer"><![CDATA[Published rate card value]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_flyer"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_flyer"><![CDATA[Design of flyer]]></content>
+	  <content id="cost_documentation" activity="sp_flyer"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_flyer"><![CDATA[Yes, if produced for in-store distribution.]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ Flyers.<br/>If subject to spending limits, submit as SALES PARTNER ñ In-store Flyers.]]></content>
+
+	  <content id="description" activity="sp_catalog"><![CDATA[Ads placed in catalogs created by Sales Partners or their agencies that feature Member and Intel product. A catalog is defined as a multi-page print document where the cover weight is between 150 and 250 grams and internal page weight is between 90 and 115 grams. Typically, catalogs have 20 or more pages. Supported distribution methods include direct mail, insert/outserts, and in-store.]]></content>
+	  <content id="branding_requirements" activity="sp_catalog"><![CDATA[In the activity:<ul><li>Logo of Intel</li><li>Mention of Intel</li></ul> On first destination Web page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="sp_catalog"><![CDATA[Allowed outside reimbursable space]]></content>
+	  <content id="reimbursable_costs" activity="sp_catalog"><![CDATA[Published rate card value]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_catalog"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_catalog"><![CDATA[Design of catalog]]></content>
+	  <content id="cost_documentation" activity="sp_catalog"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_catalog"><![CDATA[Yes, if produced for in-store distribution.]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ Catalogs.<br/>If subject to spending limits, submit as SALES PARTNER ñ In-store Catalogs.]]></content>
+
+	  <content id="description" activity="sp_in_store_collateral"><![CDATA[Marketing Material created by Sales Partners or their agencies to be distributed or placed in Sales Partners store. This category does not include flyers or catalogs.]]></content>
+	  <content id="branding_requirements" activity="sp_in_store_collateral"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li></ul> On first destination Web page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="sp_in_store_collateral"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="sp_in_store_collateral"><![CDATA[Published rate card value]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_in_store_collateral"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_in_store_collateral"><![CDATA[Design of piece]]></content>
+	  <content id="cost_documentation" activity="sp_in_store_collateral"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_in_store_collateral"><![CDATA[Yes]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ In-store Collateral.]]></content>
+
+	  <content id="description" activity="sp_billboards"><![CDATA[Out-of-home ads created by Sales Partners or their agencies that feature the Member and Intel, includes billboards, transit ads, digital out-of-home, escalators, etc.]]></content>
+	  <content id="branding_requirements" activity="sp_billboards"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li></ul> On first destination Web page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="sp_billboards"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="sp_billboards"><![CDATA[Published rate card value]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_billboards"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_billboards"><![CDATA[Design of ad]]></content>
+	  <content id="cost_documentation" activity="sp_billboards"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_billboards"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ Transit/Billboard.]]></content>
+
+	  <content id="description" activity="sp_television"><![CDATA[Television ads created by Sales Partners or their agencies that feature the Member and Intel.]]></content>
+	  <content id="branding_requirements" activity="sp_television"><![CDATA[Use of Intel signature identity asset (must be 100% of the screen with the exception of Japan where it must be 20% of the screen) <br/>Mention of Intel in audio if a commercial does not support audio, use the text mention]]></content>
+	  <content id="competition_inclusion" activity="sp_television"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="sp_television"><![CDATA[Published rate card value]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_television"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_television"><![CDATA[Commercial]]></content>
+	  <content id="cost_documentation" activity="sp_television"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_television"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ Television.]]></content>
+
+	  <content id="description" activity="sp_radio"><![CDATA[Radio ads created by Sales Partners or their agencies that feature the Member and Intel.]]></content>
+	  <content id="branding_requirements" activity="sp_radio"><![CDATA[Use of Intel signature identity asset and mention of Intel]]></content>
+	  <content id="competition_inclusion" activity="sp_radio"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="sp_radio"><![CDATA[Published rate card value]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_radio"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_radio"><![CDATA[Commercial]]></content>
+	  <content id="cost_documentation" activity="sp_radio"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_radio"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ Radio.]]></content>
+
+	  <content id="description" activity="sp_digital_video_screen"><![CDATA[In-store digital screens showing video featuring Member and Intel. This category includes in-store and out-of-store screens excluding on-shelf PC screens.]]></content>
+	  <content id="branding_requirements" activity="sp_digital_video_screen"><![CDATA[Use of Intel signature identity asset (must be 100% of the screen). <br/>Mention of Intel in audio if a commercial does not support audio, use the text mention.]]></content>
+	  <content id="competition_inclusion" activity="sp_digital_video_screen"><![CDATA[Not allowed]]></content>
+	  <content id="reimbursable_costs" activity="sp_digital_video_screen"><![CDATA[Published rate card value]]></content>
+	  <content id="nonreimbursable_costs" activity="sp_digital_video_screen"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="sp_digital_video_screen"><![CDATA[Commercial]]></content>
+	  <content id="cost_documentation" activity="sp_digital_video_screen"><![CDATA[Declaration from Sales Partner or Member including the activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="sp_digital_video_screen"><![CDATA[No]]></content>
+	  <content id="submission"><![CDATA[Submit as SALES PARTNER ñ Digital video screen.]]></content>
+
+	  <content id="description" activity="mws_text_ad"><![CDATA[A text ad is a form of advertising entails embedding an text only advertisement into a Web page such as home page, product information page of Member Web site. <br/>Please note: CPM activities can only be performed on Web pages where Intel based products are featured.]]></content>
+	  <content id="branding_requirements" activity="mws_text_ad"><![CDATA[In the activity:<ul><li>Mention of Intel</li></ul> On first ad destination page (if a QR code is included):<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="mws_text_ad"><![CDATA[Not allowed in the activity. Allowed in the site wrapper or main product area of ad destination page. When included will cut the net reimbursable cost of the corresponding online ad in half before the appropriate reimbursement percentage rate is applied.]]></content>
+	  <content id="reimbursable_costs" activity="mws_text_ad"><![CDATA[Published rate card value. <br/>Activity can be reimbursed based on: CPC (cost per click); CPM (cost per thousand Impressions); cost per day and cost per sale.]]></content>
+	  <content id="nonreimbursable_costs" activity="mws_text_ad"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="mws_text_ad"><![CDATA[Content of ad]]></content>
+	  <content id="cost_documentation" activity="mws_text_ad"><![CDATA[Declaration from Member including those activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="mws_text_ad"><![CDATA[Yes, if: <br/>Ad is placed on:<ul><li>Check out Web pages (those pages where you completed your shopping, validated your cart and are going to pay)</li><li>Configuration Web pages (those pages where you can personalize a system choosing the different features you want)</li></ul> <br/>]]></content>
+	  <content id="submission"><![CDATA[According to the buying methodology, submit as follows:<br/> Impression (CPM) ñ submit as MEMBER WEB SITE -  Ad CPM<br/> Clicks (CPC) ñ submit as MEMBER WEB SITE - Ad CPC<br/>Cost per day ñ submit as MEMBER WEB SITE - Ad Cost per day<br/><br/>If the activity is subject to spending limits, submit as follows:<br/> Impression (CPM) ñ submit as MEMBER WEB SITE - Ad CPM Limited Spend<br/> Clicks (CPC) ñ submit as MEMBER WEB SITE - Ad CPC Limited Spend<br/>Cost per day ñ submit as MEMBER WEB SITE - Ad Cost per day Limited Spend]]></content>
+
+	  <content id="description" activity="mws_banner_ad"><![CDATA[Web banner or banner ad is a form of advertising that entails embedding an advertisement into a Web page such as home page, product information page of Member Web site; this activity type includes mobile ad and video banner. <br/>Please note: CPM activities can only be performed on Web pages where Intel based products are featured.]]></content>
+	  <content id="branding_requirements" activity="mws_banner_ad"><![CDATA[In the activity:<ul><li>Balanced branding</li><li>Mention of Intel</li></ul> On first destination Web page:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="mws_banner_ad"><![CDATA[Not allowed in the activity. Allowed in the site wrapper or main product area of ad destination page. When included will cut the net reimbursable cost of the corresponding online ad in half before the appropriate reimbursement percentage rate is applied.]]></content>
+	  <content id="reimbursable_costs" activity="mws_banner_ad"><![CDATA[Published rate card value. <br/>Activity can be reimbursed based on: CPC (cost per click); CPM (cost per thousand Impressions); cost per day and cost per sale.]]></content>
+	  <content id="nonreimbursable_costs" activity="mws_banner_ad"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="mws_banner_ad"><![CDATA[Design of banner]]></content>
+	  <content id="cost_documentation" activity="mws_banner_ad"><![CDATA[Declaration from Member including those activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="mws_banner_ad"><![CDATA[Yes, if: <br/>Ad is placed on or leads to:<ul><li>Check out Web pages (those pages where you completed your shopping, validated your cart and are going to pay)</li><li>Configuration Web pages (those pages where you can personalize a system choosing the different features you want)</li></ul> <br/>
+	  <content id="submission"><![CDATA[According to the buying methodology, submit as follows:<br/> Impression (CPM) ñ submit as MEMBER WEB SITE -  Ad CPM<br/> Clicks (CPC) ñ submit as MEMBER WEB SITE - Ad CPC<br/>Cost per day ñ submit as MEMBER WEB SITE - Ad Cost per day<br/><br/>If the activity is subject to spending limits, submit as follows:<br/> Impression (CPM) ñ submit as MEMBER WEB SITE - Ad CPM Limited Spend<br/> Clicks (CPC) ñ submit as MEMBER WEB SITE - Ad CPC Limited Spend<br/>Cost per day ñ submit as MEMBER WEB SITE - Ad Cost per day Limited Spend]]></content>
+
+	  <content id="description" activity="mws_contextual_ad"><![CDATA[Contextual advertising is a form of targeted advertising in which the ad is embedded in the Web page the user is viewing (typically in the form of underlined keywords) and it is related to the Web page content. Contextual advertising is also called "In-Text" advertising. The advertisements may be displayed on the Web page or as pop-up ads. It does include ads placed on Web pages such as home pages and product information pages.]]></content>
+	  <content id="branding_requirements" activity="mws_contextual_ad"><![CDATA[In the activity:<ul><li>Balanced branding (unless displayed content is text or thumbnail only)</li><li>Mention of Intel</li></ul> On first ad destination page:<ul><li>Balanced branding</li><li>Mention of Intel</li><li>Trademark Acknowledgement Line</li></ul>]]></content>
+	  <content id="competition_inclusion" activity="mws_contextual_ad"><![CDATA[Not allowed in the activity. Allowed in the site wrapper or main product area of ad destination page. When included will cut the net reimbursable cost of the corresponding online ad in half before the appropriate reimbursement percentage rate is applied.]]></content>
+	  <content id="reimbursable_costs" activity="mws_contextual_ad"><![CDATA[Published rate card value. <br/>Activity is reimbursed on a CPC (cost per click) basis.]]></content>
+	  <content id="nonreimbursable_costs" activity="mws_contextual_ad"><![CDATA[No reimbursement outside rate card value]]></content>
+	  <content id="branding_documentation" activity="mws_contextual_ad"><![CDATA[Design of displayed ad creative]]></content>
+	  <content id="cost_documentation" activity="mws_contextual_ad"><![CDATA[Declaration from Member including those activity information provided to calculate rate.]]></content>
+	  <content id="subject_to_spending_limits" activity="mws_contextual_ad"><![CDATA[Yes, if ad is placed on:<ul><li>Check out Web pages (those pages where you completed your shopping, validated your cart and are going to pay)</li><li>Configuration Web pages (those pages where you can personalize a system choosing the different features you want)</li></ul>
+	  <content id="submission"><![CDATA[Submit as MEMBER WEB SITE - Ad CPC.<br/><br/> If subject to spending limits, submit as MEMBER WEB SITE - Ad CPC Limited Spend.]]></content>
+	</content_chunks>
+
+	<page_content>
+	  <page id="introduction"><![CDATA[
+		<p>The new Intel InsideÆ Program supports an extensive range of marketing activities. As you identify, create and execute your marketing activities, this interactive guide will provide you with specific reference tables summarizing the fundamental things to remember.</p>
+		<h4>Things to Remember</h4>
+		<ul><li>The Intel Inside(r) Program supports activities targeting end users. An end user is defined as a person or organization that purchases products for their own use.</li>
+		<li>The branding framework applies for all activities</li>
+		<li>Requirements regarding other brand elements do not apply to landing pages</li>
+		<li>Some activities are subject to spending limits. Your budget for these activities will be displayed in your account summary. Check the View Spending Limit Funds page to make sure funds are available before performing such activities. Keep in mind that funds are shown as available until Reimbursement Requests are submitted.</li></ul>
+		</p>
+		<p>The following are always excluded from Reimbursable Costs, regardless of who has paid them:
+		<ul><li>Cash Prizes</li>
+		<li>Taxes, agency or media company retainer fees and commissions</li>
+		<li>Member internal costs of any kind</li>
+		<li>Royalties or finance charges (cash prizes or your internal costs)</li></ul>
+		</p>]]>
+	  </page>
+	  
+	  <page id="branding_framework"><![CDATA[
+		<h4>Joint Promotion</h4>
+		<p>Marketing activities must promote a Memberís Eligible Product, a Solution based an Eligible Product, or an Initiative.</p>
+		[[image]]
+		<h4>Balanced Branding</h4>
+		<p>Marketing activities must represent the Memberís brand and Intelís brand in a balanced manner.</p>
+		[[image]]
+		<h4>Other Brand Elements</h4>
+		<p>Marketing activities may include other Brand Elements. Reimbursement percentage may vary based on their quantity, size, and use of a Top 20 brand.</p>
+		[[image]]
+		<br>
+		<h4>Joint Promotion</h4>
+		<p>Marketing activities must promote a Memberís Eligible Product, a solution based an Eligible Product, or an initiative.</p>
+		[[image]]
+		<p>Solutions are defined as a combination of hardware software and/or services. Examples can be virtualization, cloud computing, etc.</p>
+		<p>Initiatives are defined as non-product focused activities positioning you and Intel as technology leaders. Examples can span from music to art to sport to scientific research.</p>
+		<p>The <a href=""><![CDATA[Program Calendar</a> identifies Eligible Brands and their respective reimbursement rates.</p>
+		<h5>Product Activites</h5>
+		<p>Is your activity promoting a product? Make sure to use:
+		  <ul><li>the appropriate Eligible processor logo - [[show the badges!]]</li>
+		  <li>the appropriate Intel Mention for a processor (i.e. Intel(r) Core(tm) i5 processor) or a family (i.e. Intel(r) Core processors or Intel(r) Core family)</li></ul></p>
+		<p>Alernative Intel Mentions for each processor brand will be available in the Brand Resource Center.</p>
+		<p>If the Intel Mention is not included in the headline, subhead or body copy of a marketing activity and is included in the specification list instead, it must be the first item on that list.</p>
+		<p>If an activity features multiple products, the Eligible Product(s) must occupy at least 50% of visual space or airtime.</p>
+		[[image]]
+		<p>For activities promoting Member product lines not entirely based on Intel processors, the exact sub-brand, model number, or SKU of the Intel-based product must be identified.</p>
+		<h5>Solution or Initiative Activites</h5>
+		<p>Is your activity promoting a solution or an initiative? (Note: if a product is mentioned either visually or in text, then Product Activity requirements apply.)
+		<p>If no product is mentioned either visually or in text, then you may choose to use:
+		  <ul><li>the Intel Masterbrand Mark</li>
+		  <li><b>Intel(r)</b> after your company name (this qualifies as the Intel Mention)</li></ul></p>
+		[[image]]
+		<h4>Shortened Intel Mentions</h4>
+		<p>Shortened Intel Mentions are allowed in certain activities and vary according to the processor featured.</p>
+		<h5>Guidance for IntelÆ Coreô Processors and Intel(r) Atom(tm) Processors</h5>
+		<p>A shortened Intel Mention is available for use in online text ads only if the full Intel Mention appears on the ad's landing page. No other shortened use is allowed.</p>
+		<h5>Guidance for Other IntelÆ Processors</h5>
+		<p>A shortened Intel Mention is optional for use in print headlines, TV, radio, online banner and text ads. The full Intel Mention must appear on the ad's landing page. No other shortened use is allowed.</p>
+		<p>To create a shortened brand name, copy the approved Intel Mention from Brand Resource Center and remove the noun corresponding to the English word processor.</p>
+		<br>
+		<h4>Balanced Branding</h4>
+		<p>Marketing activities must represent the Memberís brand and Intelís brand in a balanced manner.</p>
+		<p>For logos this means:
+		  <ul><li>The area of your largest logo must be comparable to the area dedicated to the Intel logo. An online tool will be available for you to ensure this criteria is met.</li>
+		  <li>If you choose to omit your logo from a marketing activity, Intel branding requirements still apply. A minimum size will be provided for each Intel logo.</li></ul></p>
+		<p>For Intel Mentions this means:
+		  <ul><li>Intel should be mentioned in the same font size as other body copy or at the same volume and speed as the rest of the audio</li>
+		  <li>If an activity does not support graphics, a logo is not reauired, and only an Intel Mention is required</li>
+		  <li>If an activity does not support text, an audio Intel Mention is required</li></ul></p>
+		  <br>
+		<h4>Other Brand Elements</h4>
+		<p>Marketing activities may include other Brand Elements. Reimbursement percentage may vary based on their quantity, size, and use of a Top 20 brand.</p>
+		<p>Inclusion of other brand elements is allowed but reimbursement may vary:
+		  <ul><li>Inclusion of three or more non-Top 20 brands* will result in 25% reimbursement</li>
+		  <li>Inclusion of  one of a Top 20 brand will result in 25% reimbursement</li>
+		  <li>Inclusion of more than one Top 20 brands will result in no reimbursement</li>
+		  <li>Inclusion of the below brand elements wonít impact reimbursement:
+			<ul><li>Other Intel processor brands</li>
+			<li>Intel-based products/technologies</li>
+			<li>Industry standard logos</li>
+			<li>Distribution channel logos</li>
+			<li>Payment method logos</li>
+			<li>Images of or from a movie or game (even if they belong to one of the Top 20 brands)</li>
+			<li>Up to two non-Top 20 global brands</li></ul>
+		  </li></ul>
+		  *as defined by the INTERBRAND TOP GLOBAL BRAND CHART 
+		</p>
+		<p>All other brand elements should be smaller than the Intel logo, with the exception of: 
+		  <ul><li>Sales partner logos in sales partner activities</li>
+		  <li>Logos of a third party organizer of an initiative (i.e. the Olympic Games)</li>
+		  <li>Images of or from a movie or game (even if they belong to one of the Top 20 brands)</li></ul></p>
+		[[insert chart]]
+		<br>
+		<h4>Competition Inclusion</h4>
+		<p>In many activities competition inclusion is allowed and will have an impact on reimbursement. Competition logo may not be larger than the Intel logo in the activity.</p>
+		<p>Specific details are provided on each activity type page.</p>]]>
+	  </page>
+	  
+	  <page id="sales_partner"><![CDATA[
+		<h4>Co-Branding Through Sales Partners</h4>
+		<p>The Intel Inside Program offers you a wide range of activities to enable you go to market through your sales partners.</p>
+		
+		<p>Sales Partners are third-party distribution channels that sell Member products to end users on behalf of the Member. Examples of Sales Partners include: retailers, e-tailers, telcos, resellers, and distributors. These activities are reimbursed according to rate cards created by an independent media auditor to reflect market prices. Rate cards will be phased in. If the activity runs in a location not covered by a rate card, standard documentation requirements apply (documentation must be provided by a third party).</p>
+		[[rate cards phases image]]
+		<p>The following conditions apply to sales partner activities:
+		  <ul><li>Member must engage and agree upon the activity with the sales partner</li>
+		  <li>Sales partner executes the activity</li>
+		  <li>Member is respponsible to ensure that the activity meets Program requirements</li>
+		  <li>Member is responsible for requesting reimbursement and for retaining documentation</li>
+		  <li>Intel will only reimburse Members, not sales partners</li></ul></p>
+		<br>
+		   <h4>Clip and Pay (United States and Canada only)</h4>
+		   <p>The Clip and Pay reimbursement model allows Members to be reimbursed without submitting reimbursement requests. This model is available only in the United States and Canada for Sales Partner flyers and catalogs distributed as inserts/outserts and for Sales Partner newspaper and magazine ads.</p>
+		<h4>Specific Branding Requirements</h4>
+		<p>To properly support sales partner activities we introduced two additional concepts:
+		  <ol><li>Sales partner logo may be larger than the Intel logo in the activity</li>
+		  <li>The following sales partner activities are reimbursed on eligible area. In this case a minimum size Intel logo is required:
+			<ul><li>Flyers &amp; e-Flyers</li>
+			<li>Catalogs &amp; e-Catalogs</li>
+			<li>Newspaper</li>
+			<li>Magazine</li>
+			<li>E-mail Marketing</li></ul>
+		  </li></ol>
+		</p>
+		<br>
+		<h4>Eligible Area</h4>
+		<p>Certain sales partner activities feature multiple Member products on the same page. In order to support these activity types, the program allows reimbursement for parts of pages by defining an eligible area.</p>
+		<p>Eligible Area is defined as the area within an advertisement, delineated by column rules, clear space and/or color, which contains only Member devices or solutions, proper supporting content, and Intel brand elements.</p>
+		<p>On those activities reimbursed on eligible area, a reimbursement request may be submitted for a full page if the following requirements are met:
+		  <ol><li>Only one Member's products are featured on the page.</li>
+		  <li>The page does not feature any competitive products.</li>
+		  <li>If multiple products are featured, the eligible product must occupy at least 50% of the page, or all products featured are eligible products.</li></ol>
+		</p>]]>
+	  </page>
+	  
+	  <page id="events"><![CDATA[
+		<h4>Events</h4>
+		<p>The Intel Inside Program supports a variety of end user focused events. Events which target both end users and sales partners are supported, however events targeting sales partner only are not supported.</p>
+		<h5>Gifts</h5>
+		<p>Business gifts must not be offered with the intent of compromising the recipientís objectivity in making business decisions. Gifts must be valued at no more than $200 per person and Intel will reimburse up to 50%. Gifts include co-branded marketing merchandise and trinkets, Intel or other branded products, tangible non-cash items (e.i. watches), or any type of award.</p>
+		<h5>Entertainment</h5>
+		<p>Business entertainment must have a substantial business purpose. Entertainment must be valued at no more than $400 per person and Intel will reimburse up to 50%. Entertainment includes activities such as dining, concerts, sporting events, golf outings, travel and accommodations, etc. Entertainment does not include coffee breaks or lunch catering at an event venue.</p>
+		<h5>Events With Government Attendees</h5>
+		<p>Events with government attendees must be submitted in advance via the Create Activity page, where the Member will be required to comply with the provisions of the Foreign Corrupt Practices Act (http://www.fcpa.us). Government attendees include:
+		  <ul><li>Government officials and SOEís (State Owned Enterprises) employees</li>
+		  <li>All government employees, such as professors in public universities and employees of government owned research and development institutions</li></ul>
+		</p>
+		<h5>Sponsorship of Member Owned Events</h5>
+		<p>To support Member events where the Member sells sponsorship packages to multiple companies, Intel offers a 100% reimbursement model for the cost of a sponsorship package. To be eligible for this reimbursement model, an event must have the following characteristics:
+		  <ul><li>For a consumer event, greater than 1,000 people must be invited</li>
+		  <li>For a business event, greater than 150 people must be invited</li>
+		  <li>At least 4 companies (including Intel) must sponsor the event</li>
+		  <li>Availability of an official sponsorship package and overall sponsorship structure</li></ul>
+		</p>
+		<p>Intel pre-approval is required for these events.</p>
+		<p>Pre-Approval process steps:
+		  <ol><li>Customer pre-submits the event on the Create Activity page at least two weeks prior to the event</li>
+		  <li>When the actvity is created, the Member will be provided with an Intel e-mail address for the submission of:
+			<ul><li>the official sponsorship package and overall sponsorship structure</li>
+			<li>indication of the sponsorship package discussed with your Intel contact, and name of contact</li></ul>
+		  <li>Intel finance team will review documentation within five business days and may contact the Member if further information is needed.</li>
+		  <li>Customer will receive a notification once the event is approved.</li></ol>
+		</p>]]>
+	  </page>
+	  
+	  <page id="member_web_site"><![CDATA[
+		<h4>Member Web Sites</h4>
+		<p>The Intel Inside Program supports co-branded online ads placed on your company's web site. These activities are reimbursed according to rate cards created by an independent media auditor to reflect market prices.</p>
+		<p>Specific requirements:
+		  <ul><li>Cost-per-click (CPC) ads are supported on all Member web site pages</li>
+		  <li>Cost-per-day (CPD) and cost-per-impression (CPM) ads are only supported on pages that visually feature eligible products. Exception: CPD/CPM ads are always allowed on home pages.</li>
+		  <li>No more than two CPD/CPM ads are allowed on the same web page.</li></ul>
+		</p>]]>
+	  </page>
+	  
+	  <page id="print"><![CDATA[
+		<h4>Print</h4>
+		<p>Specific branding requirements for multi-page print</p>
+		<h5>Front Cover</h5>
+		  <p>In order for a multi-page print activity to be eligible for reimbursement, the front cover must meet branding framework requirements for joint promotion, balanced branding, and other brand elements. Competition may not be included.</p>
+		<h5>Internal Pages</h5>
+		  <p>Double spread pages can be treated as a single page. This means that if single page requirements are met, both pages will be reimbursed. For brochures, multiple spread pages can be treated as a single page. This means that if single page requirements are met, all eligible pages will be reimbursed.</p>]]>
+	  </page>
+	<page_content>
+
+</activities_catalog>
