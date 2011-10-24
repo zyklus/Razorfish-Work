@@ -48,7 +48,7 @@ $( window ).bind( 'load', function(){
 		var heading = ev.webkitCompassHeading;
 		if( !heading ){ return; }
 
-		setXPos( heading / 360 * imgWidth );
+		setXPos( -heading / 360 * imgWidth );
 	} );
 
 	window.addEventListener( 'deviceorientation', function( ev ) {
