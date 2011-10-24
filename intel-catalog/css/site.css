@@ -125,3 +125,33 @@ strong {
 		list-style-type : disc;
 		margin-left     : 20px;
 	}
+
+/***********************
+ * Category Index Page *
+ ***********************/
+
+.category-index ul {
+	float        : left;
+	width        : 40%;
+}
+
+.category-index h3 {
+	font-size : 1.2em;
+	margin    : 0 0 10px 0;
+}
+
+#page-content .category-index ul li {
+	line-height     : 29px;
+	border          : 1px solid #C5C5C5;
+	background      : url( '../images/h_category_title.png' );
+	list-style-type : none;
+	color           : #085A9D;
+	margin          : 0 20px 5px 0;
+	padding         : 0 0 0 10px;
+	font-weight     : bold;
+	cursor          : pointer;
+}
+
+#page-content .category-index ul li:hover {
+	background : url( '../images/h_category_title_hover.png' );
+}
