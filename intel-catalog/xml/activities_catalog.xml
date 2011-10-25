@@ -10,7 +10,7 @@
 	  <category id="event">Event</category>
 	  <category id="telemarketing">Telemarketing</category>
 	  <category id="sales_partner_activities">Sales Partners Activities</category>
-	  <category id="member_web_sites">Member Web Sites</category>
+	  <category id="member_web_site">Member Web Sites</category>
 	</activity_category>
 
 	<activity_type>

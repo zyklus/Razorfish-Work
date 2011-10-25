@@ -130,9 +130,9 @@ strong {
  * Category Index Page *
  ***********************/
 
-.category-index ul {
+.category-index ul.nav {
 	float        : left;
-	width        : 40%;
+	width        : 50%;
 }
 
 .category-index h3 {
@@ -140,18 +140,55 @@ strong {
 	margin    : 0 0 10px 0;
 }
 
-#page-content .category-index ul li {
-	line-height     : 29px;
-	border          : 1px solid #C5C5C5;
+#page-content .category-index ul.nav li, #page-content .section {
 	background      : url( '../images/h_category_title.png' );
-	list-style-type : none;
-	color           : #085A9D;
+	border          : 1px solid #C5C5C5;
 	margin          : 0 20px 5px 0;
 	padding         : 0 0 0 10px;
+	white-space     : nowrap;
+	overflow        : hidden;
+}
+
+#page-content .category-index ul.nav li, #page-content .section h4 {
+	line-height     : 29px;
+	list-style-type : none;
+	color           : #085A9D;
 	font-weight     : bold;
 	cursor          : pointer;
 }
 
-#page-content .category-index ul li:hover {
+#page-content .category-index ul.nav li:hover, #page-content .section:hover {
 	background : url( '../images/h_category_title_hover.png' );
+}
+
+/*************************
+ * Category Content Page *
+ *************************/
+#page-content .section h4 {
+	padding-left : 26px;
+	background   : url( '../images/icon_plus.png' ) no-repeat 1px 50%;
+}
+
+#page-content h5 {
+	font-size   : 1.1em;
+	font-weight : bold;
+	margin      : .5em 0;
+}
+
+#page-content .section ul {
+	margin : .5em 0;
+}
+
+#page-content .section.expanded {
+	background  : url( '../images/bg_section.png' ) repeat-x 0 100%;
+	white-space : normal;
+}
+
+#page-content .section.expanded h4 {
+	background : url( '../images/icon_minus.png' ) no-repeat 1px 50%;
+}
+
+#page-content .section .content {
+	display : none;
+	margin  : 10px 30px 20px 30px;
 }

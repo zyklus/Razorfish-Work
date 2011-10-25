@@ -85,7 +85,7 @@ $(function(){
 			.appendTo( $pageContent )
 			.css     ({ left : width, position : 'absolute', width : width, top : 0 })
 			.animate ({ left : 0 }, function(){
-				$pNode.remove();
+				$pNode.detach();
 				$node.css({ position : 'relative', width : 'auto' });
 			});
 
@@ -118,6 +118,9 @@ $(function(){
 		initialLoaded = true;
 
 		if( cat ){
+			console.log( cat[1] );
+			selectLink( 'catalog/' + cat[1] );
+
 			if( cat[2] ){
 				navToCatPage( cat[2], createCatSubPage, immediate );
 			}else{
@@ -162,7 +165,7 @@ $(function(){
 		$catalogXML.find( 'activity_category category' ).each( function(){
 			var $this = $( this );
 
-			$catLinks.append( $( '<li><a href="catalog/' + $this.text().toLowerCase().replace( / /g, '-' ) + '">' + $this.text() + '</a></li>' )
+			$catLinks.append( $( '<li><a href="catalog/' + $this.text().toLowerCase().replace( / /g, '_' ) + '">' + $this.text() + '</a></li>' )
 			 	.find( 'a' )
 					.bind( 'click', clickCatLink )
 					.data( 'cat-id', $this.attr( 'id' ) )
@@ -206,11 +209,16 @@ $(function(){
 
 	// create category page with just a bunch of links
 	function createCatIndexPage( id ){
-		var  title = $catalogXML.find( 'activity_category category[id="' + id + '"]' ).text()
-		  ,  $list = $catalogXML.find( 'activity_type activity[category="' + id + '"]' )
-		  ,  $node = $( '<div class="category-index"><h3>' + title + '</h3><ul></ul><ul></ul></div>' )
-		  ,   $ul1 = $node.find( 'ul:eq(0)' )
-		  ,   $ul2 = $node.find( 'ul:eq(1)' );
+		var   title = $catalogXML.find( 'activity_category category[id="' + id + '"]' ).text()
+		  ,   $list = $catalogXML.find( 'activity_type activity[category="' + id + '"]' )
+		  ,   $node = $( '<div class="category-index"><h3>' + title + '</h3><ul class="nav"></ul><ul class="nav"></ul></div>' )
+		  ,    $ul1 = $node.find( 'ul.nav:eq(0)' )
+		  ,    $ul2 = $node.find( 'ul.nav:eq(1)' )
+		  , pageTxt = $catalogXML.find( 'page_content page[id="' + id + '"]' );
+
+		if( pageTxt ){
+			processPageTxt( pageTxt.text() ).insertBefore( $ul1 );
+		}
 
 		$list.each( function( ix, node ){
 			// ignore odd items
@@ -247,17 +255,39 @@ $(function(){
 	// parse page for sub-data, sections, etc.
 	function processPageTxt( txt ){
 		var chunkRx = /\[\[([^\]]+)\]\]/gm
-		  ,  sectRx = /<section>[^<]+<h4>([^<]+)<\/h4>(.*?)<\/section>/gm
-		  , chunk;
+		  ,  sectRx = /<section>[^<]*<h4>([^<]+)<\/h4>(.*?)<\/section>/gm
+		  , chunk, $node;
+
+		// strip new-lines (regex's don't like some of them)
+		txt = txt.replace( /\n|\r/g, ' ' );
 
 		// replace [[id]] with common content chunk
 		while( chunk = chunkRx.exec( txt ) ){
-			txt = txt.replace( chunk[0], commonChunks[ chunk ] || '' );
+			txt = txt.replace( chunk[0], commonChunks[ chunk[1] ] || '' );
 		}
 
 		// parse <section><h4>...</h4>...</section>
-		
-		return $( '<div>' + txt + '</div>' );
+		while( chunk = sectRx.exec( txt ) ){
+			txt = txt.replace( chunk[0], '<div class="section"><h4>' + chunk[1] + '</h4><div class="content">' + chunk[2] + '</div></div>' );
+		}
+
+		$node = $( '<div>' + txt + '</div>' );
+
+		$node.delegate( '.section h4', 'click', function(){
+			var    $this = $( this ).closest( '.section' )
+			  , $content = $this.find( '.content' );
+
+			if( $content.is( ':visible' ) ){
+				$content.slideUp( function(){
+					$this.removeClass( 'expanded' );
+				} );
+			}else{
+				$this.addClass( 'expanded' )
+				$content.slideDown();
+			}
+		} );
+
+		return $node;
 	}
 
 	// map chunks and content
@@ -281,6 +311,6 @@ $(function(){
 			out += '</section>';
 			
 			return out;
-		} ) );
+		} ).get().join( '' ) );
 	}
 });
