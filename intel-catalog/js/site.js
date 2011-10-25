@@ -166,7 +166,7 @@ $(function(){
 		$catalogXML.find( 'activity_category category' ).each( function(){
 			var $this = $( this );
 
-			$catLinks.append( $( '<li><a href="catalog/' + $this.text().toLowerCase().replace( / /g, '_' ) + '">' + $this.text() + '</a></li>' )
+			$catLinks.append( $( '<li><a href="catalog/' + $this.attr( 'id' ) + '">' + $this.text() + '</a></li>' )
 			 	.find( 'a' )
 					.bind( 'click', clickCatLink )
 					.data( 'cat-id', $this.attr( 'id' ) )
