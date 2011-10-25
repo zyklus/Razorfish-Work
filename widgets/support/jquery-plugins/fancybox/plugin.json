@@ -4,7 +4,7 @@
 	, "author"           : "Janis Skarnelis"
 	, "uri"              : "http://fancybox.net"
 
-	, "files"            : [ "jquery.fancybox.js", "jquery.fancybox.css", "/*\.(png|gif)$/" ]
+	, "files"            : [ "jquery.fancybox.js", "jquery.fancybox.css", "/*\\.(png|gif)$/" ]
 	, "dependencies"     : [ "easing", "mousewheel" ]
 	, "license"          : [ "MIT", "GPL" ]
 }

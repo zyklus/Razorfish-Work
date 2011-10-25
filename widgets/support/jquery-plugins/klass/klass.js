@@ -6,7 +6,7 @@
 	$.Klass = function(){};
 
 	// Create a new klass that inherits from this class
-	$.Klass.extend = function(prop) {
+	$.Klass.extend = function( prop, appendProp ){
 		var _super = this.prototype;
 
 		// Instantiate a base class (but only create the instance,
@@ -27,7 +27,7 @@
 		}
 
 		// Copy the properties over onto the new prototype
-		for (var name in prop) {
+		for( var name in prop ){
 			// TODO: pass straight functions through when there is no before or after.
 			//       to do this, we need to retroactively wrap protptype functions if
 			//       a before or after function is in an inheriting class.
@@ -67,6 +67,16 @@
 					: prop[name];
 		}
 
+		// Copy append properties onto the new prototype, preserving existing properties
+		appendProp || ( appendProp = {} );
+		for( var name in appendProp ){
+			prototype[ name ] =
+				// if an array
+				( ( null != appendProp[name].length ) && ( appendProp[name].splice ) )
+					? ( _super[ name ] || [] ).concat( appendProp[ name ] )
+					: $.extend( {}, _super[ name ], appendProp[ name ] );
+		}
+
 		// The dummy class constructor
 		function klass() {
 			// All construction is actually done in the init method
@@ -97,10 +107,6 @@
 			    set = this['set' + pC],
 			    get = this['get' + pC],
 
-			/*******
-			 * do NOT normally do this since it usually unnecessarily creates a larger closure than is needed.
-			 * In this case, however, we want pretty much everything here bound in the closure, so there's no need to use .bind()
-			 *******/
 			    self = this;
 
 			// and bind the new ones

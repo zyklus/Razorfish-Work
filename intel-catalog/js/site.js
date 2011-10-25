@@ -49,6 +49,7 @@ $(function(){
 
 	// set active link
 	function selectLink( uri ){
+		console.log( uri );
 		if( $leftNav.find( 'a[href="' + uri + '"]' ).length ){
 			$leftNav
 				.find( '.selected' )

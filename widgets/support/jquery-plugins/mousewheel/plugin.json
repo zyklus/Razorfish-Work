@@ -6,4 +6,6 @@
 	, "uri"              : "http://brandonaaron.net"
 	, "license"          : "MIT"
 	, "minJQueryVersion" : "1.2.2"
+
+	, "files"            : [ "mousewheel.js" ]
 }
