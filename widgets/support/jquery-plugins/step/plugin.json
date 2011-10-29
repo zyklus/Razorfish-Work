@@ -1,0 +1,10 @@
+{
+	  "version"      : "2011-10-27"
+	, "description"  : "JavaScript asynchronous flow control library"
+	, "author"       : "Tim Caswell"
+	, "email"        : "tim@creationix.com"
+	, "uri"          : "https://github.com/creationix/step/blob/master/lib/step.js"
+	, "license"      : [ "MIT" ]
+
+	, "files"        : [ "step.js" ]
+}

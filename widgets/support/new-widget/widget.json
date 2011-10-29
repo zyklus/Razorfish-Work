@@ -16,7 +16,22 @@
 
 	, "files" : [
 		  "css/reset.css"
+		, {
+			"settings" : "size:small,skin:orange"
+			,   "file" : "css/small.css"
+		}
 		, "js/widget.js"
+	]
+
+	, "views" : [
+		{
+			"settings" : "size:small"
+			,   "file" : "small.html"
+		}
+		, {
+			"settings" : "size:large"
+			,   "file" : "large.html"
+		}
 	]
 
 	, "settings" : {

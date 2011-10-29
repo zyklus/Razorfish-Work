@@ -1,0 +1,9 @@
+{
+	  "version"            : "1.2.0"
+	, "author"             : "Jeremy Ashkenas"
+	, "uri"                : "http://documentcloud.github.com/underscore"
+	, "copyright"          : "(c) 2011 Jeremy Ashkenas, DocumentCloud Inc."
+	, "license"            : [ "MIT" ]
+	
+	, "files"              : [ "underscore.js" ]
+}

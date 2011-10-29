@@ -3,7 +3,7 @@
  *   to somewhere (browser data-store, ajax, etc) if necessary
  **/
 (function( $ ){
-	$.Klass.add( 'Model', $.Klass.Observable, {
+	$.Klass.add( 'Model', $.Klass.MVC, {
 		init : function( config ){
 			this._super.apply( this, arguments );
 		}

@@ -3,6 +3,7 @@
 	, "author"           : "Kelvin Luck"
 	, "uri"              : "http://jscrollpane.kelvinluck.com/"
 	, "license"          : [ "MIT", "GPL" ]
+	, "copyright"        : "Copyright (c) 2010 Kelvin Luck"
 	, "minJQueryVersion" : "1.4.2"
 	
 	, "files"            : [ "jscrollpane.css", "jscrollpane.js" ]

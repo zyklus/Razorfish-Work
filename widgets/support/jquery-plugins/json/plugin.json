@@ -1,0 +1,8 @@
+{
+	  "version"      : "2011.11.18"
+	, "description"  : "Provides JSON.stringify && JSON.parse in browsers that don't already have them."
+	, "author"       : "Douglass Crockford"
+	, "uri"          : "https://github.com/douglascrockford/JSON-js"
+
+	, "files"        : [ "json2.js" ]
+}

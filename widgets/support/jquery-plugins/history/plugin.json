@@ -1,0 +1,12 @@
+{
+	  "version"      : "1.7.1-r2"
+	, "description"  : "Interface to the HTML5 History State APIs with HTML4 fallbacks"
+	, "author"       : "Benjamin Arthur Lupton"
+	, "email"        : "b@lupton.cc"
+	, "copyright"    : "@copyright 2010-2011 Benjamin Arthur Lupton <contact@balupton.com>"
+	, "uri"          : "https://github.com/balupton/History.js"
+	, "license"      : [ "bsd" ]
+
+	, "dependencies" : [ "json" ]
+	, "files"        : [ "history.adapter.jquery.js", "history.html4.js", "history.js" ]
+}

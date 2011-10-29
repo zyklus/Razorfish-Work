@@ -13,7 +13,7 @@
 		 * In english (I hope): You're trying to observe an event, but another event MUST be run first (it gets data, etc).  Observe the event normally, and add the required event to the 3rd arg
 		 */
 
-		, observe : function(events, callback, reqEvents){
+		, bind : function(events, callback, reqEvents){
 			if(!this.observing){
 				$.log('Observable klass not properly instantiated.  Did you forget to call _super() from a subclass constructor?');
 				return;
@@ -91,8 +91,8 @@
 			return this;
 		}
 
-		, fire : function(event){
-			var args = $A(arguments);
+		, trigger : function(event){
+			var args = [].slice.apply(arguments);
 			args.shift();
 
 			for(var i=0, e=this.observing[event] || [], l=e.length; i<l; i++){
@@ -104,13 +104,13 @@
 			return this;
 		}
 
-		, fireAndCache : function(event){
+		, triggerAndCache : function(event){
 			var args = $A(arguments);
 			args.shift();
 
 			this.cache[event] = args;
 
-			return this.fire.apply(this, arguments);
+			return this.trigger.apply(this, arguments);
 		}
 	});
 })( jQuery );

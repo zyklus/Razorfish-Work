@@ -78,7 +78,7 @@
 
 			this.percentTop     = ( this.config.minTop || 0 ) / this.scrollerHeight;
 			this.minScrPos      = this.scrollerHeight * this.percentTop;
-			this.maxScrPos      = this.scrollerHeight * ( this.barPercent - this.percentTop );
+			this.maxScrPos      = this.scrollerHeight * ( this.barPercent + this.percentTop );
 			this.scrDistance    = this.maxScrPos - this.minScrPos;
 
 			return this.update();

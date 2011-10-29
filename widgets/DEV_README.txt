@@ -1,3 +1,30 @@
+/********************
+ * Widgets Overview *
+ ********************/
+
+Steps to dev:
+  - Create a new widget (see "Widget Creation" section)
+  - Decide whether or not you want to use `.styl`-->`.css` template and/or
+    `.jade`-->`.html` templates.
+    - If yes:
+      - see "Dev Environment" section
+    - If no:
+      - remove `*.styl`, `*.jade` from your widgets directory
+      - No need for any non-standard dev tools.  You may want to run in dev
+        mode anyway since it automatically runs "jslint" on all `.js` files
+  - Modify `widget.json` to specifiy what files should be loaded, what plugins
+    should be loaded, any settings in your widget.
+  - Start developing
+
+Steps to deployment:
+  - Either:
+    - MUST have "node.js" installed
+    - see "Building a deployment"
+  - Or:
+    - check everything into svn
+    - email me ( Deployments are a one-line command )
+
+
 /*******************
  * Widget Creation *
  *******************/
@@ -99,6 +126,15 @@ Widget Settings:
 - no-jquery
     jQuery is included by default.  Set this to not include it.  Most plugins
     probably won't work.
+- settings
+    Any applicable settings to the widget.  At the very least this should
+    include size and/or skin
+- files
+    List of files to be loaded.  Files are automatically included and can be
+    filtered based on settings
+- views
+    If included, views will ENTIRELY replace the HTML of the current page, and
+    can be filtered based on settings
 
 
 /**********************

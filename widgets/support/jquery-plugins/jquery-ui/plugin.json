@@ -4,6 +4,10 @@
 		, "minJQueryVersion" : "1.3.2"
 	}]
 
+	, "license"   : [ "mit", "gpl2" ]
+	, "copyright" : "Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)"
+	, "uri"       : "http://jquery.org/license | http://docs.jquery.com/UI"
+
 	, "files" : [
 		"/\/themes\/#{theme}\/images\/*/"
 	]

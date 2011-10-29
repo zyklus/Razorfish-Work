@@ -47,6 +47,8 @@
 
 				// convienience method -- set this.opt
 				this[ opt ] = config[ opt ];
+
+				this.trigger( 'set:' + opt, config[ opt ] );
 			}
 
 			return this;
@@ -56,7 +58,7 @@
 			// release stuffs -- BRUTE FORCE FTW!
 			var n;
 			for( n in this ){
-				this[n] = null;
+				delete this[n];
 			}
 
 			// not chainable ;)

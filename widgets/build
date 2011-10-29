@@ -65,7 +65,7 @@ var           fs = require( 'fs' )
 		,    maxerr : 50
 		,    indent : 4
   }
-  , preLint = '/*global $, widgetSettings*/'
+  , preLint = '/*global $, _, widgetSettings*/'
 
 // lint options I disagree with
   ,  allowedLint = {
@@ -74,6 +74,7 @@ var           fs = require( 'fs' )
 	, "Expected a conditional expression and instead saw an assignment."       : 1 // allows `foo || (foo = 1);`
 	, "Expected an assignment or function call and instead saw an expression." : 1 // same as above
 	, "Unexpected dangling '_' in '__dirname'."                                : 1
+	, "Unexpected dangling '_' in '_'."                                        : 1 // underscore.js library
   }
 
   ,   watchFiles = {}
@@ -406,7 +407,7 @@ function compileFile( fPath ){
 	function jadeCompiler( jadeStr, fPath, cb ){
 		try{
 			// {} references locals, which may be used in the future?
-			cb( null, jade.compile( jadeStr )( {} ) )
+			cb( null, jade.compile( jadeStr, { filename: fPath } )( {} ) )
 		}catch( err ){
 			cb( err );
 		}
@@ -419,6 +420,9 @@ function compileFile( fPath ){
 	function jsLint( code, fPath ){
 		var lintOpts = {}
 		  , prop;
+
+		// ignore anything wrapped in `jslint: disable` ... `enable` comments
+		code = code.replace(/\/\* *jslint: *disable *\*\/(.|\n|\r)*?\/\* *jslint: *enable *\*\//g, '' );
 
 		// clone jsLintOpts into a local var so we can manipulate it if necessary
 		for( prop in jsLintOpts ){
@@ -603,7 +607,11 @@ function createWidgetBundle( widget, dir ){
 
 			for( i=0, l=files.length; i<l; i++ ){
 				if( jsRx.test( files[i] ) ){
-					compJS += uglify( args[ i+1 ] ) + ';\n';
+					// add original file name to source for later debugging
+					compJS += '// ' + files[i] + '\n';
+
+					// wrap the function source in an anoynmous function and minify it
+					compJS += uglify( '(function(){' + args[ i+1 ] + '}())' ) + ';\n';
 				}else if( cssRx.test( files[i] ) ){
 					compCSS += args[ i+1 ];
 				}

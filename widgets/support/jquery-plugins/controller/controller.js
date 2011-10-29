@@ -13,25 +13,64 @@
 		 *   - to   foo.bar.View
 		 **/
 		, initLikeThingy : function( type ){
-			var thing = $.get( this.namespace, type );
+			var thing;
+
+			if( this.namespace ){
+				$.Klass.get( this.namespace, type );
+			}
 
 			if( !thing ){
 				// If the controller isn't explicitely named '.Controller', as is often the case
-				thing = $.get( this.namespace, this.klassName, type );
+				thing = $.Klass.get( this.namespace, this.klassName, type );
 			}
+
 			return thing ? new thing({ controller : this }) : undefined;
 		}
 
 		, initView : function(){
-			this.view = this.initLikeThingy( 'View ');
+			this.view = this.initLikeThingy( 'View');
+
+			// initialize a default view if one doesn't exist for the current controller
+			if( !this.view ){
+				this.view = new $.Klass.View({ controller : this });
+			}
+
+			return this;
 		}
 
 		, initModel : function(){
 			this.model = this.initLikeThingy( 'Model' );
+
+			return this;
 		}
 
 		, getParent : function(){
 			return this.parentController;
 		}
+
+		, bridgeToView : function( cmd, args ){
+			this.view[ cmd ].apply( this.view, [].slice.call( args ) );
+
+			return this;
+		}
+
+		/**
+		 * Bridge a bunch of stuff to the view
+		 **/
+		, appendTo     : function( node ){ return this.bridgeToView( 'appendTo'    , arguments ); }
+		, prependTo    : function( node ){ return this.bridgeToView( 'prependTo'   , arguments ); }
+		, insertAfter  : function( node ){ return this.bridgeToView( 'insertAfter' , arguments ); }
+		, insertBefore : function( node ){ return this.bridgeToView( 'insertBefore', arguments ); }
+		, innerHeight  : function( node ){ return this.bridgeToView( 'innerHeight' , arguments ); }
+		, innerWidth   : function( node ){ return this.bridgeToView( 'innerWidth'  , arguments ); }
+		, outerHeight  : function( node ){ return this.bridgeToView( 'outerHeight' , arguments ); }
+		, outerWidth   : function( node ){ return this.bridgeToView( 'outerWidth'  , arguments ); }
+		, width        : function( node ){ return this.bridgeToView( 'width'       , arguments ); }
+		, height       : function( node ){ return this.bridgeToView( 'height'      , arguments ); }
+		, offset       : function( node ){ return this.bridgeToView( 'offset'      , arguments ); }
+		, position     : function( node ){ return this.bridgeToView( 'position'    , arguments ); }
+		, remove       : function( node ){ return this.bridgeToView( 'remove'      , arguments ); }
+		, scrollLeft   : function( node ){ return this.bridgeToView( 'scrollLeft'  , arguments ); }
+		, scrollTop    : function( node ){ return this.bridgeToView( 'scrollTop'   , arguments ); }
 	});
 })( jQuery );

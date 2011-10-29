@@ -1,0 +1,19 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "Utility to transition from one DOM node to another in the same place (e.g. image flipper)"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "files"        : [ "transition.js", "transition.effect.show.js" ]
+
+	, "subPlugins" : [
+		  { "name" : "effect.fade"          , "files" : [ "transition.effect.fade.js"           ], "dependencies" : [ "transition" ] }
+		, { "name" : "effect.scrollLeft"    , "files" : [ "transition.effect.scrollLeft.js"     ], "dependencies" : [ "transition" ] }
+		, { "name" : "effect.scrollRight"   , "files" : [ "transition.effect.scrollRight.js"    ], "dependencies" : [ "transition" ] }
+		, { "name" : "effect.show"          , "files" : [ "transition.effect.show.js"           ], "dependencies" : [ "transition" ] }
+		, { "name" : "effect.hide"          , "files" : [ "transition.effect.slide.js"          ], "dependencies" : [ "transition" ] }
+		, { "name" : "effect.iOSScrollLeft" , "files" : [ "transition.effect.iosScrollLeft.js"  ], "dependencies" : [ "transition" ] }
+		, { "name" : "effect.iOSScrollRight", "files" : [ "transition.effect.iosScrollRight.js" ], "dependencies" : [ "transition" ] }
+	]
+}

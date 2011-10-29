@@ -116,8 +116,8 @@
 				if(value !== val){
 					value = val;
 
-					if(event && self.fireAndCache){
-						self.fireAndCache(event, value);
+					if(event && self.triggerAndCache){
+						self.triggerAndCache(event, value);
 					}
 				}
 
@@ -132,14 +132,18 @@
 			if(set && value){ set.call(self, value); }
 		},
 
-		bind : function(){
-			var args = $A(arguments),
+		bindMethod : function(){
+			var args = [].slice.apply(arguments),
 			    name = args.shift(),
 			    self = this;
 
 			return function(){
-				return self[name].apply(self, args.concat( $A(arguments) ));
+				return self[name].apply(self, args.concat( [].slice.apply(arguments) ));
 			};
+		}
+
+		, deferMethod : function(){
+			setTimeout( this.bindMethod.apply( this, arguments ), 1 );
 		}
 	});
 
@@ -149,23 +153,23 @@
 	 * @param {Function} inheritsFrom
 	 * @param {Object} klass Class definition
 	 **/
-	$.Klass.add = function( ns, extends, klass ){
-		var path = ns.split( '.' );
+	$.Klass.add = function( ns, toExtend, klass ){
+		var path = ns.split( '.' )
 		  ,   nm = path.pop()
 		  ,  obj = ( function walk( root, ary ){
 			var next = ary.shift();
 
 			return (
 				next
-					? walk( root[ next ] || ( root[ next ] = {} ) )
+					? walk( root[ next ] || ( root[ next ] = {} ), ary )
 					: root
 			);
-		}( $.Klass, path.slice() );
+		}( $.Klass, path.slice() ) );
 
-		klass.namespace = path.join('.');
+		klass.namespace = path.join( '.' );
 		klass.klassName = nm;
 
-		obj[ nm ] = (extends || $.Klass).extend( klass );
+		obj[ nm ] = ( toExtend || $.Klass ).extend( klass );
 	};
 
 	/**
@@ -178,6 +182,11 @@
 	$.Klass.get = function( /*ns, name, name, ...*/ ){
 		var path = [].slice.apply( arguments ).join( '.' ).split( '.' );
 
+		// trim empty arguments
+		for( var i=path.length-1; i>=0; i-- ){
+			if( !path[i] ){ path.splice( i, 1 ); }
+		}
+
 		return ( function walk( root, ary ){
 			if( !root ){ return undefined; }
 
@@ -185,7 +194,7 @@
 
 			return (
 				next
-					? walk( root[ next ] )
+					? walk( root[ next ], ary )
 					: root
 			);
 		})( $.Klass, path );

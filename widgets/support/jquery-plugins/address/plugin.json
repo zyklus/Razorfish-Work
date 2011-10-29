@@ -1,6 +1,7 @@
 {
 	  "version"            : "1.4"
 	, "uri"                : "http://www.asual.com/jquery/address/"
+	, "copyright"          : "Copyright (c) 2009-2010 Rostislav Hristov"
 	, "license"            : [ "MIT", "GPL" ]
 	
 	, "files"              : [ "address.js" ]
