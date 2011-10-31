@@ -1,0 +1,20 @@
+{
+	      "version" : "0.0.1"
+	,        "name" : "MSNBC RFI"
+	,      "author" : "Mark Kahn"
+	,       "email" : "mark.kahn@razorfish.com"
+
+	, "jqueryPlugins" : [
+		  { "name" : "fancybox" }
+		, { "name" : "video-js" }
+	]
+
+	,  "minJQueryVersion" : "1.6.0"
+	, "testJQueryVersion" : "1.6.0"
+
+	, "files" : [
+		  "meta-font/stylesheet.css"
+		, "css/widget.css"
+		, "js/widget.js"
+	]
+}

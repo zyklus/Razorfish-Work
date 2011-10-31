@@ -1,0 +1,245 @@
+/*************************************
+ * Include equivalent of a reset.css *
+ *************************************/
+global-reset()
+
+.clear
+	clearfix()
+
+for Z in 1..9
+	.z{Z}
+		z-index Z !important
+
+/**********************************
+ * Define sizes & other variables *
+ * ( Yes, Stylus has Variables )  *
+ **********************************/
+
+linkColor = #AAA
+
+body
+	position    relative
+	background  #000
+	color       #FFF
+	font-family verdana, sans-serif
+	font-size   11px
+
+hr
+	border     0px
+	height     1px
+	margin     0px
+	background sprite( '../images/h-dotted-line.gif' ) repeat-x
+
+h1
+	font-size   34px
+	
+h3
+	font-size      16px
+	text-transform uppercase
+
+h4
+	font-family 'Didact Gothic', sans-serif
+	font-size   18px
+
+em
+	font-style italic
+
+
+a, a:active, a:visited
+	color           inherit
+	text-decoration none
+
+a:hover
+	color linkColor
+
+
+.video
+	overflow hidden
+
+
+#site
+	position   relative
+	background url( '../images/img_bg_sidebars.jpg' ) repeat-y 50% 173px
+
+.dark-text
+	color #999
+
+
+#top-banner
+	background #009DEB
+	height     173
+	position   absolute
+	top        0px
+	left       0px
+	width      100%
+
+.top-banner
+	height        174px
+	margin-bottom 20px
+	padding       30px 50px 0 150px
+	font-size     14px
+
+	.h1
+		spriteSize()
+		background sprite( '../images/ttl_hello.png' )
+		position   absolute
+		top        38px
+		left       150px
+
+	.bg
+		spriteSize()
+		background sprite( '../images/logo_msnbc.png' )
+		position   absolute
+		top        35px
+		left       -50px
+
+	.copy
+		font-family MetaNormalRegular, verdana, sans-serif
+		line-height 20px
+		margin      0 100px 0 0
+		position    absolute
+		top         80px
+		left        150px
+		color       #FFF
+
+
+#content
+	position   relative
+	width      850px
+	margin     0 auto
+	z-index    2
+
+
+#download
+	background url( '../images/ttl_rfp_response.png' ) no-repeat 15px 0
+	height     300
+	position   relative
+	top        0
+	left       0
+
+	.content
+		position    absolute
+		top         0
+		left        420
+		font-family 'Didact Gothic', sans-serif
+
+		.btn
+			font-size      20px
+			color          #FFF
+			display        inline-block
+			vertical-align top
+			margin         0 95px 0 0
+
+		h4
+			color       #FFF
+			line-height 22px
+			margin      0 0 5px 0
+
+		.agency-copy
+			margin     0 0 0 10px
+
+		.download
+			display    block
+			margin     30px 0 5px 0
+
+		.download:hover
+
+		.contact
+			margin      100px 0 0 0
+			font-size   14px
+
+
+#team
+	background url( '../images/ttl_our_team.png' ) no-repeat 15px 0
+	margin     20px 0 50px 0
+	padding    0 0 0 150
+
+	.group1, .group2
+		width          50%
+		display        inline-block
+		vertical-align top
+
+	h4
+		margin 0 0 5px 0
+
+	ul
+		width  33%
+		float  left
+
+		li
+			list-style-type none
+			margin          10px 0 20px 0
+			min-height      60px
+			line-height     16px
+
+			a
+				position relative
+				background #000
+				display    block
+
+			.bio
+				display       none
+				position      absolute
+				top           20px
+				left          20px
+				border        1px solid #666
+				background    #000
+				border-radius 5px
+				padding       10px
+				width         400px
+				color         #FFF
+				box-shadow    0px 0px 10px #CCC
+
+				br
+					margin      10px 0
+					display     block
+					line-height 35px
+
+#reels
+	background url( '../images/ttl_view_videos.png' ) no-repeat 15px 0
+	margin     20px 0 50px 0
+	padding    0 0 0 150
+	height     120
+
+	ul
+		margin 20px 0 0 0
+
+		li
+
+			a
+				float       left
+				white-space nowrap
+				display     block
+				width       124
+				padding     75px 0 0 3px
+
+				&.ideas
+					background url( '../images/thumb_ideas.png' ) no-repeat
+
+#links
+	background url( '../images/ttl_more_info.png' ) no-repeat 15px 0
+	margin     20px 0 50px 0
+	padding    0 0 0 150
+
+	h4
+		margin 0 0 10px 0
+
+	#sites, #published
+		display        inline-block
+		width          50%
+		vertical-align top
+
+	ul
+		li
+			list-style-type none
+			background      url( '../images/right-arrow.gif' ) no-repeat 0px 2px
+			display         block
+			margin          4px 0 0 0
+
+.bottom-banner
+	margin 20px 0
+	
+	.bg
+		spriteSize()
+		background sprite( '../images/logo_footer.png' )
+		margin     0 auto
