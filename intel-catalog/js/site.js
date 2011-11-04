@@ -44,12 +44,11 @@ $(function(){
 	// page state has changed!
 	History.Adapter.bind( window, 'statechange', function(){
 		var state = History.getState();
-		loadState( state.data.uri );
+		loadState( state.hash.substr( state.hash.indexOf( linkPrefix ) + 1 ) );
 	} );
 
 	// set active link
 	function selectLink( uri ){
-		console.log( uri );
 		if( $leftNav.find( 'a[href="' + uri + '"]' ).length ){
 			$leftNav
 				.find( '.selected' )
@@ -77,7 +76,7 @@ $(function(){
 			return;
 		}
 
-		var $pNode = $pageContent.find( '.content' )
+		var $pNode = $pageContent.find( '.content:first' )
 		  ,  width = $pageContent.width();
 
 		$pNode.animate({ left : -width });
@@ -87,7 +86,7 @@ $(function(){
 			.css     ({ left : width, position : 'absolute', width : width, top : 0 })
 			.animate ({ left : 0 }, function(){
 				$pNode.detach();
-				$node.css({ position : 'relative', width : 'auto' });
+				$node.css({ position : 'relative' });
 			});
 
 		$pageContent.css({ minHeight : $node.height() });
@@ -95,7 +94,7 @@ $(function(){
 
 	// adds a page state
 	function addState( uri ){
-		History.pushState( { uri : uri }, null, linkPrefix + uri );
+		History.pushState( null, null, linkPrefix + uri );
 		if( !initialLoaded ){
 			loadState( uri );
 		}
@@ -119,7 +118,6 @@ $(function(){
 		initialLoaded = true;
 
 		if( cat ){
-			console.log( cat[1] );
 			selectLink( 'catalog/' + cat[1] );
 
 			if( cat[2] ){
