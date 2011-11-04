@@ -1,0 +1,8 @@
+{
+	  "version"   : "2.0"
+	, "uri"       : "http://raphaeljs.com/"
+	, "copyright" : [ "Copyright (c) 2008-2011 Dmitry Baranovskiy (http://raphaeljs.com)", "Copyright (c) 2008-2011 Sencha Labs (http://sencha.com)" ]
+	, "license"   : "MIT"
+
+	, "files"     : [ "raphaeljs" ]
+}
