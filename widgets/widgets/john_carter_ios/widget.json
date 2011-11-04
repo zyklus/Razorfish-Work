@@ -1,0 +1,40 @@
+{
+	      "version" : "0.0.1"
+	,        "name" : "Widget Foo"
+	, "description" : "Some widget"
+	,      "author" : "Razorfish"
+	,       "email" : "nobody@razorfish.com"
+	,         "uri" : "http://www.razorfish.com"
+
+	, "jqueryPlugins" : [
+		  { "name" : "string"     }
+		, { "name" : "view"       }
+		, { "name" : "controller" }
+	]
+
+	,  "minJQueryVersion" : "1.6.0"
+	, "testJQueryVersion" : "1.6.0"
+
+	, "files" : [
+		  "css/reset.css"
+		, {
+			"settings" : "size:small,skin:orange"
+			,   "file" : "css/small.css"
+		}
+		, "js/widget.js"
+	]
+
+	, "settings" : {
+		"size" : {
+			     "text" : "Select widget size"
+			,    "type" : "select"
+			, "default" : "small"
+			, "options" : {
+				   "tall" : "Tall (150x300)"
+				,  "wide" : "Wide (300x150)"
+				, "small" : "Small (200x200)"
+				, "large" : "Large (350x350)"
+			}
+		}
+	}
+}
