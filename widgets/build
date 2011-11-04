@@ -35,6 +35,7 @@ var           fs = require( 'fs' )
   ,         jsRx = /\.js$/
   ,        cssRx = /\.css$/
   ,         rmRx = /(\.(styl(us)?|jade|md|markdown|css|js)|widget.json)$/i
+  ,     jQueryRx = /jquery[-._]?[.0-9]*[-._]?(min)?.js$/
 
   ,     templates = {
 	  'styl' : { ext: 'css' , compiler: stylusCompiler }
@@ -73,10 +74,8 @@ var           fs = require( 'fs' )
 	, "The '&&' subexpression should be wrapped in parens."                    : 1
 	, "Expected a conditional expression and instead saw an assignment."       : 1 // allows `foo || (foo = 1);`
 	, "Expected an assignment or function call and instead saw an expression." : 1 // same as above
-	, "Unexpected dangling '_' in '__dirname'."                                : 1 // node.js __dirname
-	, "Unexpected dangling '_' in '_super'."                                   : 1 // observable library
+	, "Unexpected dangling '_' in '__dirname'."                                : 1
 	, "Unexpected dangling '_' in '_'."                                        : 1 // underscore.js library
-	, "Unescaped '-'."                                                         : 1 // Allow `-` character at start/end of regex groups (I don't WANT to escape them!)
   }
 
   ,   watchFiles = {}
@@ -133,17 +132,25 @@ widgets = program.args;
 
 
 /**
- * Detect growl, then init
+ * Do required stuff, then init
  **/
-exec( 'which growlnotify', function( err, cmd ){
-	if( cmd ){
-		growlNotify = function( err ){
-			exec( 'growlnotify -m"' + err.message.replace( /"/g, '\\"' ) + '" ' + err.name );
-		};
-	}
+step(
+	function(){
+		exec( 'which growlnotify', this.parallel() );
+		exec( 'ulimit -n 512', this.parallel() );
 
-	init();
-});
+	}, function( err, cmd, ulimit ){
+		if( cmd ){
+			growlNotify = function( err ){
+				exec( 'growlnotify -m"' + err.message.replace( /"/g, '\\"' ) + '" ' + err.name );
+			};
+		}
+		this();
+
+	}, function(){
+		init();
+	}
+);
 
 
 /**
@@ -234,11 +241,24 @@ function init(){
 
 	}, function(){
 
+		// replace the dev loader(s) with the newest version
+		if( program.deploy ){
+			widgets.forEach( function( widget ){
+				copyResource( path.join( supportDir, 'loaders', 'dev.js' ), path.join( widgetsDir, widget, 'js', 'loader.js' ), function(){
+					success( 'Reset dev loader for witget "' + widget + '"' );
+				} );
+			} );
+		}
+		this();
+		
+
+	}, function(){
+
 		// build widget(s)
 		if( program.build ){
 			widgets.forEach( function( widget ){
 				buildFolder( path.join( widgetsDir, widget ) );
-				success( 'Compiled widget "' + widget + '"' );
+				success( 'Compile widget "' + widget + '"' );
 			} );
 		}
 		this();
@@ -250,7 +270,7 @@ function init(){
 			var         now = new Date()
 			  , packageName = program.outfile || ( widgets.join( '_' ) + '-' +  now.getFullYear() + '-' + ( now.getMonth()+1 ) + '-' + now.getDate() + '-' + now.getHours() + '-' + now.getMinutes() + '-' + now.getSeconds() )
 			  ,  packageDir = path.join( deployDir, packageName );
-			
+
 			fs.mkdirSync( packageDir, 0775 );
 //			fs.mkdirSync( path.join( packageDir, 'support' ), 0775 );
 //			
@@ -454,7 +474,7 @@ function compileFile( fPath ){
 			if( !err ){ continue; }
 
 			if( !allowedLint[ err.reason ] ){
-				errs.push( 'File: ' + fPath + ' Line ' + err.line + ' char ' + err.character + '\n\n' + err.reason );
+				errs.push( 'File: ' + fPath + ' Line ' + err.line + ' char ' + err.character + '\n\n' + err.reason.replace( /\$/g, '\\$' ) );
 			}
 		}
 
@@ -464,7 +484,7 @@ function compileFile( fPath ){
 			// ignore the error if the var is an exposed global
 			if( !err || ~( ' ' + data.globals.join(' ') ).indexOf( ' ' + err.name ) ){ continue; }
 
-			errs.push( 'File: ' + fPath + ' Line ' + err.line + '\n\nUndefined variable: ' + err.name );
+			errs.push( 'File: ' + fPath + ' Line ' + err.line + '\n\nUndefined variable: ' + err.name.replace( /\$/g, '\\$' ) );
 		}
 
 		for( i=0, l=errs.length; i<l; i++ ){
@@ -600,17 +620,41 @@ function createWidgetBundle( widget, dir ){
 	new WidgetLoader( function( err, files, config ){
 		if( err ){ throw err; }
 
+		var key;
+
+		// remove all config options that the deployed bundle doesn't need
+		for( key in config ){
+			if( !{ settings: 1, json: 1, minJQueryVersion: 1 }[ key ] ){
+				delete config[ key ];
+			}
+		}
+
+		// add deployment loader & jquery-versions as first files
+		files.unshift( path.join( supportDir, 'jquery', 'jquery-versions.json' ) );
+		files.unshift( path.join( supportDir, 'loaders', 'deploy.js' ) );
+
 		// pull all of the CSS/JS together into a single file (except for jQuery)
 		loadFiles( files, function( err /*, file, file, file */ ){
 			var    args = arguments
 			  , compCSS = ''
 			  ,  compJS = ''
+			  ,   jqVer = args[ 2 ].versions.pop()
 			  , i, l;
 
-			for( i=0, l=files.length; i<l; i++ ){
+			// add jquery info & bundle
+			config.bundledJQueryVersion = jqVer;
+			loadFiles( path.join( supportDir, 'jquery', 'jquery-' + jqVer + '.js' ), function( err, jqSource ){
+				fs.writeFileSync( path.join( dir, widget, 'js', 'jquery-' + jqVer + '-min.js' ), uglify( jqSource ) );
+				success( 'Bundle jQuery v' + jqVer + ' with widget "' + widget + '"' );
+			} );
+
+			for( i=2, l=files.length; i<l; i++ ){
 				if( jsRx.test( files[i] ) ){
+					// don't bundle jQuery here
+					if( jQueryRx.test( files[i] ) ){ continue; }
+
 					// add original file name to source for later debugging
-					compJS += '// ' + files[i] + '\n';
+					compJS += '\n/**\n * Original File: ' + files[i] + '\n **/\n';
 
 					// wrap the function source in an anoynmous function and minify it
 					compJS += uglify( '(function(){' + args[ i+1 ] + '}())' ) + ';\n';
@@ -619,8 +663,14 @@ function createWidgetBundle( widget, dir ){
 				}
 			}
 
+			compJS = uglify( args[ 1 ] )
+				.replace( 'putWidgetSettingsHere()', JSON.stringify( config ) )
+				.replace( 'doOtherJSStuffs()'      , compJS );
+
 			fs.writeFileSync( path.join( dir, widget, 'js' , 'bundle.js'  ), compJS );
 			fs.writeFileSync( path.join( dir, widget, 'css', 'bundle.css' ), compCSS );
+
+			success( 'Bundle widget "' + widget + '"' );
 		} );
 	} );
 }
