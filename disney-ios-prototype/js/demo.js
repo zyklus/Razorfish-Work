@@ -60,7 +60,7 @@ $( window ).bind( 'load', function(){
 		while( pos > 0         ) pos -= imgWidth;
 
 		pos = pos;
-
+console.log( pos );
 		$scroller.css({ left: lastLeft = pos });
 	}
 });

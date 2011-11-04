@@ -35,6 +35,11 @@
 						self.mouseDown.apply( self, arguments );
 					} );
 
+			if( 'static' === this.$node.css( 'position' ) ){
+				// for some reason, needed for IE7
+				this.$node.css( 'position', 'relative' );
+			}
+
 			this.mMove = function(){
 				self.mouseMove.apply( self, arguments );
 			};
@@ -64,7 +69,7 @@
 				this.$scrCont.css({
 					     top : this.$node.position().top
 					, height : this.$node.height()
-					,  right : this.$node.offsetParent().width() - this.$node.position().left - this.$node.width()
+					,  right : this.$node.offsetParent().outerWidth() - this.$node.position().left - this.$node.width()
 				});
 
 			}else{

@@ -7,4 +7,8 @@
 
 	, "dependencies" : [ "mvc" ]
 	, "files"        : [ "view.js" ]
+
+	, "subPlugins" : [
+		    { "name" : "mutable", "files" : [ "view.mutable.js" ], "dependencies" : [ "view" ] }
+	]
 }

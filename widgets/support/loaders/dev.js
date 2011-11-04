@@ -403,17 +403,6 @@
 				var args = arguments
 				  , widgetSettings, i, l, json;
 
-				// put any JSON files into the widgetConfig
-/*
-				for( i=1, l=args.length; i<l; i++ ){
-					if( 'string' !== typeof( args[i] ) ){
-						// JSON - pass it along in widgetConfig.json[ fileName ];
-						json = ( widgetConfig.json || ( widgetConfig.json = {} ) );
-						json[ fileList[ i-1 ] ] = args[i];
-					}
-				}
-*/
-
 				widgetSettings = getWidgetSettings( widgetConfig );
 
 				for( i=1, l=args.length; i<l; i++ ){
@@ -665,6 +654,7 @@
 
 				// Add appropriate jQuery version
 				this.addReqFiles( supportDir + 'jquery/jquery-' + this.minJQVersion + '.js' );
+				this.widgetConf.minJQueryVersion = this.minJQVersion;
 
 				for( i=0, l=plugins.length; i<l; i++ ){
 					this.addPluginFiles( plugins[i] );
@@ -756,7 +746,9 @@
 			 * Set plugin jQuery version to at least v
 			 **/
 			, requireJQVersion : function( v ){
-				( v > this.minJQVersion ) && ( this.minJQVersion = v );
+				if( v > this.minJQVersion ){
+					this.minJQVersion = v;
+				}
 
 				return this;
 			}
@@ -790,6 +782,11 @@
 							}
 						} );
 					}( rFile ) );
+				}
+
+				// no JSON files to load
+				if( !loading ){
+					this.triggerCB();
 				}
 			}
 

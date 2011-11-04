@@ -73,8 +73,10 @@ var           fs = require( 'fs' )
 	, "The '&&' subexpression should be wrapped in parens."                    : 1
 	, "Expected a conditional expression and instead saw an assignment."       : 1 // allows `foo || (foo = 1);`
 	, "Expected an assignment or function call and instead saw an expression." : 1 // same as above
-	, "Unexpected dangling '_' in '__dirname'."                                : 1
+	, "Unexpected dangling '_' in '__dirname'."                                : 1 // node.js __dirname
+	, "Unexpected dangling '_' in '_super'."                                   : 1 // observable library
 	, "Unexpected dangling '_' in '_'."                                        : 1 // underscore.js library
+	, "Unescaped '-'."                                                         : 1 // Allow `-` character at start/end of regex groups (I don't WANT to escape them!)
   }
 
   ,   watchFiles = {}

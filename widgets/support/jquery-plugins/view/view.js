@@ -43,6 +43,7 @@
 		, offset       : function( node ){ return this.runjQCmd( 'offset'      , node ); }
 		, position     : function( node ){ return this.runjQCmd( 'position'    , node ); }
 		, remove       : function( node ){ return this.runjQCmd( 'remove'      , node ); }
+		, detach       : function( node ){ return this.runjQCmd( 'detach'      , node ); }
 		, scrollLeft   : function( node ){ return this.runjQCmd( 'scrollLeft'  , node ); }
 		, scrollTop    : function( node ){ return this.runjQCmd( 'scrollTop'   , node ); }
 	});

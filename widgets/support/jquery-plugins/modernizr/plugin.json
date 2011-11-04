@@ -1,0 +1,10 @@
+{
+	    "version" : "2.0.6"
+	, "license"   : [ "mit", "bsd" ]
+	, "uri"       : "http://www.modernizr.com"
+
+	, "subPlugins" : [
+		    { "name" : "css3", "files" : [ "css3.js" ] }
+		  , { "name" : "full", "files" : [ "full.js" ] }
+	]
+}

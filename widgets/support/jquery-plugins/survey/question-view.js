@@ -5,6 +5,9 @@
 
 			this.$questionNode = $( '<div class="question-title"></div>' ).appendTo( this.$domNode );
 			this.$answersNode  = $( '<ul class="question-answers"></ul>' ).appendTo( this.$domNode );
+			$( '<div class="clear"></div>' ).appendTo( this.$domNode );
+
+			this.$domNode.addClass( 'question-' + this.controller.questionIndex )
 		}
 
 		, setQuestion : function( question ){
@@ -18,7 +21,7 @@
 
 			$( answers ).each( function( ix, a ){
 				self.$answersNode.append(
-					$( '<li><span class="question-radio-wrapper"><input type="radio" name="radio-' + self.guid + '"></span><span class="question-answer-text">' + a + '</span></li>' )
+					$( '<li' + ( ( 0===ix ) ? ' class="first"' : '' ) + '><span class="question-radio-wrapper"><input type="radio" name="radio-' + self.guid + '"></span><span class="question-answer-text">' + a + '</span></li>' )
 						.bind( 'click', self.bindMethod( 'selectRadio', ix ) )
 				);
 			} );

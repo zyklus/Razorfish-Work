@@ -3,7 +3,7 @@
 	, "description"  : "Plugin to allow a 'default' text value in inputs & textareas"
 	, "author"       : "Mark Kahn"
 	, "email"        : "mark.kahn@razorfish.com"
-	, "uri"          : "http://www.razorfish.com"
+	, "uri"          : "https://github.com/cwolves/jQuery-inactiveText"
 
 	, "files"        : [ "inactive-text.js" ]
 }

@@ -1,7 +1,11 @@
 (function( $ ){
 	$.Klass.add( 'Controller', $.Klass.MVC, {
 		init : function( config ){
-			this._super.apply( this, arguments );
+			this._super.apply( this, [].slice.call( arguments, 0 ).concat(
+				// allow specification of exact view & model to use
+				'viewKlass', 'modelKlass'
+			) );
+
 			this
 				.initView()
 				.initModel();
@@ -13,17 +17,20 @@
 		 *   - to   foo.bar.View
 		 **/
 		, initLikeThingy : function( type ){
-			var thing;
+			// allow override of model/view klass constructor
+			var thing = this[ type + 'Klass' ];
 
-			if( this.namespace ){
-				$.Klass.get( this.namespace, type );
-			}
-
+			// If the controller isn't explicitely named '.Controller', as is often the case
 			if( !thing ){
-				// If the controller isn't explicitely named '.Controller', as is often the case
 				thing = $.Klass.get( this.namespace, this.klassName, type );
 			}
 
+			// pull constructor from default namespace path
+			if( !thing && this.namespace ){
+				thing = $.Klass.get( this.namespace, type );
+			}
+
+			// init model/view constructor
 			return thing ? new thing({ controller : this }) : undefined;
 		}
 

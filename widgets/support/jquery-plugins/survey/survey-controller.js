@@ -3,7 +3,7 @@
 		init : function( config ){
 			// this just calls _super with 'questions' tacked on to the existing arguments
 			this._super.apply( this, [].slice.call( arguments, 0 ).concat(
-				'questions', 'disableBack', 'transitionEffect'
+				'questions', 'disableBack', 'transitionEffect', 'questionViewKlass'
 			) );
 
 			this.questionNum     = 0;
@@ -32,7 +32,14 @@
 			// init instances of `Survey.Question` klass
 			for( i=0, l=q.length; i<l; i++ ){
 				this.aryQuestions.push(
-					new $.Klass.Survey.Question( $.extend( { questionIndex: i+1, transitionEffect : this.transitionEffect }, q[i] ) )
+					new $.Klass.Survey.Question( $.extend(
+						{
+							      questionIndex : i+1
+							,  transitionEffect : this.transitionEffect
+							, questionViewKlass : this.questionViewKlass
+						}
+						, q[i] )
+					)
 						.bind( 'selectAnswer', boundSelectAnswer )
 				);
 			}
