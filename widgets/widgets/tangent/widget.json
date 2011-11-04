@@ -1,0 +1,26 @@
+{
+	      "version" : "0.0.1"
+	,        "name" : "Tangent"
+	, "description" : "Web interface to control a deployment server"
+	,      "author" : "Mark Kahn"
+	,       "email" : "cwolves@gmail.com"
+
+	, "jqueryPlugins" : [
+		  { "name" : "raphael" }
+	]
+
+	,  "minJQueryVersion" : "1.6.0"
+	, "testJQueryVersion" : "1.6.0"
+
+	, "files" : [
+		  "css/reset.css"
+		, "js/widget.js"
+	]
+
+	, "settings" : {
+		, "allowJQCDN" : {
+			  "text" : "Allow jQuery to be served from a CDN"
+			, "type" : "checkbox"
+		}
+	}
+}

@@ -1,0 +1,87 @@
+[
+	{
+		       "commit" : "57c1fc5c30a960634c8f0f8b2bd4ec46360ecc92"
+		,      "parent" : "1b6f1a3ec400e59ad9ff5490ef5518abf260c3c3"
+		,      "author" : "Mark Kahn <cwolves@gmail.com>"
+		,        "date" : "Fri Oct 28 22:59:05 2011 -0700"
+		,       "title" : "Syncing widgets dir with experian project (need to do this via git soon)"
+		,       "flags" : [
+			{
+				    "author" : "Mark Kahn <cwolves@gmail.com>"
+				,     "type" : "QA"
+				, "messsage" : "Ready for QA"
+			}
+		]
+	}
+	
+	, {
+		       "commit" : "1b6f1a3ec400e59ad9ff5490ef5518abf260c3c3"
+		,      "parent" : "3e7f4a1488239e77602243ef11ab0d06e6ac2751"
+		,      "author" : "Mark Kahn <cwolves@gmail.com>"
+		,        "date" : "Mon Oct 24 19:28:53 2011 -0700"
+		,       "title" : "minor fix to intel-catalog xml"
+	}
+	
+	, {
+		       "commit" : "3e7f4a1488239e77602243ef11ab0d06e6ac2751"
+		,      "parent" : "ff2a538f2307d8e1e1897787b0b00aa8cdd373bd"
+		,      "author" : "Mark Kahn <cwolves@gmail.com>"
+		,        "date" : "Mon Oct 24 19:27:56 2011 -0700"
+		,       "title" : "Making links attach to id instead of text"
+	}
+	
+	, {
+		       "commit" : "ff2a538f2307d8e1e1897787b0b00aa8cdd373bd"
+		,      "parent" : "4e61f3c5f4a341906c1f6c14edd8b4a48fb4546d"
+		,      "author" : "Mark Kahn <cwolves@gmail.com>"
+		,        "date" : "Mon Oct 24 19:25:07 2011 -0700"
+		,       "title" : "Updating intel-catalog"
+	}
+	
+	, {
+		       "commit" : "4e61f3c5f4a341906c1f6c14edd8b4a48fb4546d"
+		,      "parent" : "e994de379dd40aeb1c880d526717dd9a3fdc029a"
+		,      "author" : "Mark Kahn <cwolves@gmail.com>"
+		,        "date" : "Mon Oct 24 19:13:19 2011 -0700"
+		,       "title" : "Updating intel-catalog"
+	}
+	
+	, {
+		       "commit" : "e994de379dd40aeb1c880d526717dd9a3fdc029a"
+		,      "parent" : "46d7903c22dfe0322d2f365a435afe60bc62164c"
+		,      "author" : "Mark Kahn <cwolves@gmail.com>"
+		,        "date" : "Mon Oct 24 16:23:41 2011 -0700"
+		,       "title" : "Updating Intel Catalog"
+	}
+	
+	, {
+		       "commit" : "46d7903c22dfe0322d2f365a435afe60bc62164c"
+		,      "parent" : "ad3057799e462208b06703628da170537e3b2c57"
+		,      "author" : "Mark Kahn <cwolves@gmail.com>"
+		,        "date" : "Mon Oct 24 10:24:15 2011 -0700"
+		,       "title" : "Flipping compass"
+	}
+	
+	, {
+		       "commit" : "ad3057799e462208b06703628da170537e3b2c57"
+		,      "parent" : "bb5a02270ff58d2b7f570f797130f13be3fd65ab"
+		,      "author" : "Mark Kahn <cwolves@gmail.com>"
+		,        "date" : "Sun Oct 23 10:30:08 2011 -0700"
+		,       "title" : "Updating ios prototype"
+	}
+	
+	, {
+		       "commit" : "bb5a02270ff58d2b7f570f797130f13be3fd65ab"
+		,      "parent" : "8a258432864bfe93aec51017f221395ad65ae011"
+		,      "author" : "Mark Kahn <cwolves@gmail.com>"
+		,        "date" : "Fri Oct 21 19:06:03 2011 -0700"
+		,       "title" : "Adding disney prototype"
+	}
+	
+	, {
+		       "commit" : "8a258432864bfe93aec51017f221395ad65ae011"
+		,      "author" : "Mark Kahn <cwolves@gmail.com>"
+		,        "date" : "Fri Oct 21 18:28:34 2011 -0700"
+		,       "title" : "Adding JSON2 library for older browsers"
+	}
+]

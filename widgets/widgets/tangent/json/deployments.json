@@ -1,0 +1,13 @@
+[
+	{
+		         "name" : "Repo Foo"
+		, "description" : "Some random server -- description goes here"
+		,      "domain" : "foo.*"
+		,        "repo" : {
+			      "type" : "git"
+			,      "uri" : "http://www.foo.bar.com"
+			, "username" : "foo"
+			, "password" : "bar"
+		}
+	}
+]

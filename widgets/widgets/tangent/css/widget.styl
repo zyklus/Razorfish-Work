@@ -1,0 +1,33 @@
+/*************************************
+ * Include equivalent of a reset.css *
+ *************************************/
+global-reset()
+
+
+/**********************************
+ * Define sizes & other variables *
+ * ( Yes, Stylus has Variables )  *
+ **********************************/
+
+size_tall  = 150, 300
+size_wide  = 300, 150
+size_small = 200, 200
+size_large = 350, 350
+
+
+/*******************
+ * Define Size CSS *
+ *******************/
+
+.widget.tall  { size : size_tall  }
+.widget.wide  { size : size_wide  }
+.widget.small { size : size_small }
+.widget.large { size : size_large }
+
+
+/**************
+ * More Stuff *
+ **************/
+
+.foo
+	background red
