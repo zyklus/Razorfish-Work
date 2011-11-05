@@ -136,7 +136,7 @@ $(function(){
 			var $data = $( '<div></div>' ).html( data );
 			selectLink( link );
 
-			setPageContent( $data.html(), immediate );
+			setPageContent( processPageTxt( $data.html() ), immediate );
 			var title = $data.find( 'title' ).text();
 		
 			if( title ){ document.title = title; }
