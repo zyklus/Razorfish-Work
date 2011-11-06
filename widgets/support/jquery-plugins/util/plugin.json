@@ -1,0 +1,13 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "jQuery utility functions"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "files"        : [ "util-obj.js" ]
+
+	, "subPlugins" : [
+		  { "name" : "image-loader", "files" : [ "image-loader.js" ], "dependencies" : [ "util" ] }
+	]
+}

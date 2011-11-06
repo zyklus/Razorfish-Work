@@ -1,0 +1,12 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "Helper classes/utilities for mobile webkit"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "subPlugins" : [
+		    { "name" : "viewport-size", "files" : [ "viewport-size.js" ], "dependencies" : [ "mobile-webkit" ] }
+		  , { "name" : "orientation"  , "files" : [ "orientation.js"   ], "dependencies" : [ "mobile-webkit" ] }
+	]
+}

@@ -31,4 +31,4 @@
 					: false;
 			}
 	} );
-})( jQuery )
+})( jQuery );

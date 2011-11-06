@@ -22,7 +22,9 @@ var           fs = require( 'fs' )
   ,      dirFile = 'files.json'
   ,         root = process.cwd()
   ,   supportDir = path.join( root, 'support' )
-  ,    pluginDir = path.join( root, 'support', 'jquery-plugins' )
+  ,    pluginDir = path.join( supportDir, 'jquery-plugins' )
+  ,   loadersDir = path.join( supportDir, 'loaders' )
+  ,   modulesDir = path.join( root, 'node_modules' )
   ,   widgetsDir = path.join( root, 'widgets' )
   ,    deployDir = path.join( root, 'deploy' )
 
@@ -66,7 +68,7 @@ var           fs = require( 'fs' )
 		,    maxerr : 50
 		,    indent : 4
   }
-  , preLint = '/*global $, _, widgetSettings*/'
+  , preLint = '/*global $, $A, _, widgetSettings*/'
 
 // lint options I disagree with
   ,  allowedLint = {
@@ -74,8 +76,12 @@ var           fs = require( 'fs' )
 	, "The '&&' subexpression should be wrapped in parens."                    : 1
 	, "Expected a conditional expression and instead saw an assignment."       : 1 // allows `foo || (foo = 1);`
 	, "Expected an assignment or function call and instead saw an expression." : 1 // same as above
-	, "Unexpected dangling '_' in '__dirname'."                                : 1
 	, "Unexpected dangling '_' in '_'."                                        : 1 // underscore.js library
+	, "Unexpected dangling '_' in '__dirname'."                                : 1 // node.js __dirname
+	, "Unexpected dangling '_' in '_super'."                                   : 1 // observable library
+	, "Unescaped '-'."                                                         : 1 // Allow `-` character at start/end of regex groups (I don't WANT to escape them!)
+	, "Expected 'String' and instead saw ''''."                                : 1 // Empty string ARE allowed, wtf.
+
   }
 
   ,   watchFiles = {}
@@ -289,11 +295,20 @@ function init(){
 
 		// kick into developer mode
 		if( program.develop ){
-			widgets.forEach( function( widget ){
-				watchFolder( path.join( widgetsDir, widget ) );
+			watchFolder( widgetsDir, true );
+			success( 'Monitoring all widgets' );
 
-				success( 'Monitoring widget: ' + widget );
-			} );
+			// watch plugins folder
+			watchFolder( pluginDir, true );
+			success( 'Monitoring plugins directory' );
+
+			// watch plugins folder
+			watchFolder( loadersDir, true );
+			success( 'Monitoring loaders directory' );
+
+			// watch node_modules folder
+			// watchFolder( modulesDir, true );
+			// success( 'Monitoring node_modules directory' );
 		}
 		this();
 	} );
@@ -482,7 +497,7 @@ function compileFile( fPath ){
 			err = data.undefined[ i ];
 
 			// ignore the error if the var is an exposed global
-			if( !err || ~( ' ' + data.globals.join(' ') ).indexOf( ' ' + err.name ) ){ continue; }
+			if( !err || ~( ' ' + ( data.globals || [] ).join(' ') ).indexOf( ' ' + err.name ) ){ continue; }
 
 			errs.push( 'File: ' + fPath + ' Line ' + err.line + '\n\nUndefined variable: ' + err.name.replace( /\$/g, '\\$' ) );
 		}
@@ -540,7 +555,7 @@ function buildFolder( folder ){
 /**
  * Watch a folder for changes to templates
  **/
-function watchFolder( folder ){
+function watchFolder( folder, onModifyOnly ){
 	function addFiles(){
 		var files = getTemplateFiles( folder )
 		  , i, l, stat;
@@ -555,7 +570,7 @@ function watchFolder( folder ){
 				// ignore already watched files
 				if( watchFiles[ fPath ] ){ continue; }
 
-				compileFile( fPath );
+				if( !onModifyOnly ){ compileFile( fPath ); }
 				fs.watchFile( fPath, {
 					persistent : true
 					, interval : 500
@@ -657,7 +672,7 @@ function createWidgetBundle( widget, dir ){
 					compJS += '\n/**\n * Original File: ' + files[i] + '\n **/\n';
 
 					// wrap the function source in an anoynmous function and minify it
-					compJS += uglify( '(function(){' + args[ i+1 ] + '}())' ) + ';\n';
+					compJS += uglify( '(function(){' + args[ i+1 ] + '}());' ) + ';\n';
 				}else if( cssRx.test( files[i] ) ){
 					compCSS += args[ i+1 ];
 				}

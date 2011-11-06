@@ -1,0 +1,10 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "Sprite animation class"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "files"        : [ "sprite-animation.js" ]
+	, "dependencies" : [ "util/image-loader" ]
+}

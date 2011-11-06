@@ -6,4 +6,5 @@
 	, "uri"          : "http://www.razorfish.com"
 
 	, "files"        : [ "klass.js" ]
+	, "dependencies" : [ "core" ]
 }

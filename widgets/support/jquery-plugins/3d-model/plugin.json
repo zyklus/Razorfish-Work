@@ -1,0 +1,10 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "3D model viewer using webkit 3d transformations"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "files"        : [ "3d-model.js" ]
+	, "dependencies" : [ "util/imageLoader" ]
+}

@@ -7,4 +7,11 @@
 
 	, "dependencies" : [ "observable" ]
 	, "files"        : [ "mvc.js" ]
+
+	, "subPlugins" : [
+		  { "name" : "model"       , "files" : [ "model.js"        ], "dependencies" : [ "mvc"      ] }
+		, { "name" : "view"        , "files" : [ "view.js"         ], "dependencies" : [ "mvc"      ] }
+		, { "name" : "controller"  , "files" : [ "controller.js"   ], "dependencies" : [ "mvc"      ] }
+		, { "name" : "view/mutable", "files" : [ "view.mutable.js" ], "dependencies" : [ "mvc/view" ] }
+	]
 }

@@ -1,7 +1,8 @@
 (function( $ ){
 	$.Klass.add( 'MVC', $.Klass.Observable, {
 		init : function( config, optName /*, optName, optName, optName*/ ){
-			var i, l;
+			var self = this
+			  , i, l;
 
 			// call Observable constructor
 			this._super();
@@ -16,7 +17,7 @@
 			this.addConfigParameters.apply( this, [].slice.call( arguments, 1 ) );
 
 			// now apply all options in config
-			this.set( config );
+			self.set( config );
 		}
 
 		, addConfigParameters : function(){
@@ -48,20 +49,25 @@
 				// convienience method -- set this.opt
 				this[ opt ] = config[ opt ];
 
-				this.trigger( 'set:' + opt, config[ opt ] );
+				this.triggerAndCache( 'set:' + opt, config[ opt ] );
 			}
 
 			return this;
+		}
+
+		, get: function get( param ){
+			return this.config[ param ];
 		}
 
 		, destroy : function(){
 			// release stuffs -- BRUTE FORCE FTW!
 			var n;
 			for( n in this ){
+				if( !this.hasOwnProperty( n ) ){ continue; }
 				delete this[n];
 			}
 
 			// not chainable ;)
 		}
 	});
-})( jQuery );
+}( jQuery ));

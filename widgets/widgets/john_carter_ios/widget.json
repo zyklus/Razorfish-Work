@@ -7,20 +7,21 @@
 	,         "uri" : "http://www.razorfish.com"
 
 	, "jqueryPlugins" : [
-		  { "name" : "string"     }
-		, { "name" : "view"       }
-		, { "name" : "controller" }
+		  { "name" : "string"                      }
+		, { "name" : "mvc/view/mutable"            }
+		, { "name" : "mobile-webkit/viewport-size" }
+		, { "name" : "sprite-animation"            }
+		, { "name" : "util/image-loader"           }
 	]
 
 	,  "minJQueryVersion" : "1.6.0"
-	, "testJQueryVersion" : "1.6.0"
+	, "testJQueryVersion" : "1.6.4"
 
 	, "files" : [
-		  "css/reset.css"
-		, {
-			"settings" : "size:small,skin:orange"
-			,   "file" : "css/small.css"
-		}
+		  "css/widget.css"
+		, "js/cylinder.js"
+		, "js/cylinder-item.js"
+		, "js/cylinder-background.js"
 		, "js/widget.js"
 	]
 

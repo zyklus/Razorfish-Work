@@ -1,5 +1,5 @@
 (function( $ ){
-	$.Klass.add( 'Survey.Question.View', $.Klass.View, {
+	$.Klass.add( 'Survey.Question.View', $.Klass.MVC.View, {
 		init : function( config ){
 			this._super.apply( this, arguments );
 

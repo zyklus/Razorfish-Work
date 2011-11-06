@@ -540,7 +540,8 @@
 				for( p in this.pluginQueue ){
 					if( this.pluginConfs[p] ){ continue; }
 
-					files.push( pluginDir + p + '/plugin.json' );
+					// the split is so that we load the json from the root plugin
+					files.push( pluginDir + p.split('/')[0] + '/plugin.json' );
 				}
 				this.pluginQueue = {};
 
@@ -623,7 +624,7 @@
 			 **/
 			, getPluginFiles : function( pConf ){
 				var versions = pConf.versions
-				  ,    files = pConf.files
+				  ,    files = pConf.files || []
 				  ,      out = []
 				  ,    isVer = versions && versions.length
 				  ,   verStr = pluginDir + pConf.root + ( isVer ? '/#{version}' : '' )

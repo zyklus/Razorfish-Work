@@ -38,7 +38,7 @@
 	 *   ( and if it somehow does, it's an un-expected use case so don't care )
 	 **/
 	jQueryPath = queryString.jquerypath;
-	if( queryString.jqueryversion )
+	if( queryString.jqueryversion ){
 		jQVersion = queryString.jqueryversion;
 	}
 
@@ -56,18 +56,17 @@
 			type = settings[ n ].type;
 
 			if( val ){
-				out.push( '"%s": %s'.sprintf(
-					  n
-					,   ( type === 'checkbox'     ) ? !!val
+				out.push( '"' + n + '": ' +
+					    ( type === 'checkbox'     ) ? !!val
 					  : ( type === 'multi-select' ) ? '["' + val.split( ',' ).join( '", "' ) + '"]'
 					  : '"' + val + '"'
-				) );
+				);
 			}
 		}
 
 		// pass along any JSON files
 		if( conf.json ){
-			out.push( '"%s": %s'.sprintf( 'json', JSON.stringify( conf.json ) ) );
+			out.push( '"json": ' + JSON.stringify( conf.json ) );
 		}
 
 		return '{' + out.join( ', ' ) + '}';
@@ -107,7 +106,7 @@
 		// go backwards because last script wins
 		for( i=scripts.length-1; i>=0; i-- ){
 			     src = scripts[ i ].getAttribute( 'src' );
-			filename = ([^\/\?#]+)(\?|#|$)/.exec( src.toLowerCase() )[ 1 ];
+			filename = /([^\/\?#]+)(\?|#|$)/.exec( src.toLowerCase() )[ 1 ];
 
 			// testing a regexp
 			if( RegExp === file.constructor ){
