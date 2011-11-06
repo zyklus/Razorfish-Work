@@ -136,4 +136,6 @@ function newSound( file ){
 	var bgSound = newSound( 'resources/sounds/desert_loop.mp3' )
 	, alienYell = newSound( 'resources/sounds/alien_yell.mp3' )
 	,  shipPass = newSound( 'resources/sounds/ship_pass.mp3' );
+
+	bgSound.play();
 }());
