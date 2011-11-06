@@ -236,7 +236,7 @@ addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/moons.png' ) no-repeat"
 	,    width : 415
 	,   height : 359
-}), spriteCyl1, { xDeg: -55, yPos: -55, parallaxMultiplier: 0.65 } );
+}), spriteCyl1, { xDeg: -55, yPos: -55, parallaxMultiplier: 1.35 } );
 
 
 // right ship #1 + shadow
@@ -304,5 +304,5 @@ function newSound( file ){
 	shipPass  = newSound( 'resources/sounds/ship_pass.mp3' );
 
 	bgSound.setAttribute( 'loop', 'loop' );
-	bgSound.play();
+//	bgSound.play();
 }());
