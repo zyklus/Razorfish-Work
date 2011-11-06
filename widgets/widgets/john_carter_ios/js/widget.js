@@ -48,7 +48,7 @@ $window.bind( 'viewportResize', function( ev, w, h ){
  **/
 bgCyl = new $.Klass.Cylinder.Background({
 	        image : 'images/panarama.jpg'
-	,       faces : 150
+	,       faces : 50
 	, perspective : 500
 });
 bgCyl.appendTo( $widget );
