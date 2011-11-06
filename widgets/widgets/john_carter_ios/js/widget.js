@@ -100,6 +100,8 @@ function addItemToCylinder( node, cylinder, xDeg, yPos ){
 	crystal.$domNode
 		.bind( 'mousedown touchstart', function( ev ){
 			ev.preventDefault();
+			ev.stopPropagation();
+
 			crystal.stop();
 
 			mousedown = ev;
@@ -109,6 +111,7 @@ function addItemToCylinder( node, cylinder, xDeg, yPos ){
 	$widget
 		.bind( 'mouseup touchend', function( ev ){
 			if( !mousedown ){ return; }
+
 			ev.preventDefault();
 			ev.stopPropagation();
 
@@ -117,6 +120,7 @@ function addItemToCylinder( node, cylinder, xDeg, yPos ){
 
 		} ).bind( 'mousemove touchmove', function(ev){
 			if( !mousedown ){ return; }
+
 			ev.preventDefault();
 			ev.stopPropagation();
 
