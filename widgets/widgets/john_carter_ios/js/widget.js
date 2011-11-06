@@ -20,15 +20,15 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 	var mousedown, lastX;
 
 	$( document.body )
-		.bind( 'mousedown', function( ev ){
+		.bind( 'mousedown touchstart', function( ev ){
 			mousedown = ev;
 
 			lastX = ev.pageX;
 		} )
-		.bind( 'mouseup', function(){
+		.bind( 'mouseup touchend', function(){
 			mousedown = false;
 		} )
-		.bind( 'mousemove', function( ev ){
+		.bind( 'mousemove touchmove', function( ev ){
 			if( !mousedown ){ return; }
 			
 			var deg = ( ev.pageX - lastX ) / 20
@@ -106,15 +106,19 @@ function addItemToCylinder( node, cylinder, xDeg, yPos ){
 			frame     = crystal.frame;
 		} );
 
-	$( document.body )
-		.bind( 'mouseup touchend', function(){
+	$widget
+		.bind( 'mouseup touchend', function( ev ){
 			if( !mousedown ){ return; }
+			ev.preventDefault();
+			ev.stopPropagation();
 
 			mousedown = false;
 			crystal.start();
 
 		} ).bind( 'mousemove touchmove', function(ev){
 			if( !mousedown ){ return; }
+			ev.preventDefault();
+			ev.stopPropagation();
 
 			crystal.setFrame( frame + ( 0| ( ev.pageX - mousedown.pageX ) / 10 ) );
 			ev.preventDefault();
