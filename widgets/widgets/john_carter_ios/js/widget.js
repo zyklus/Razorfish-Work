@@ -304,5 +304,5 @@ function newSound( file ){
 	shipPass  = newSound( 'resources/sounds/ship_pass.mp3' );
 
 	bgSound.setAttribute( 'loop', 'loop' );
-//	bgSound.play();
+	bgSound.play();
 }());
