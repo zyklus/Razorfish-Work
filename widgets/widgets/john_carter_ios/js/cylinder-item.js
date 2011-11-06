@@ -41,7 +41,7 @@
 			this.$content = $( '<div></div>' )
 				.css({
 					  '-webkit-transform' : 'rotateY(180deg)'
-					, '-webkit-backface-visibility' : 'hidden'
+//					, '-webkit-backface-visibility' : 'hidden'
 				})
 				.appendTo( this.$domNode );
 	
