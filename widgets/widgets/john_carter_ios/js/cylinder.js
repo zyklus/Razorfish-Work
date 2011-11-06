@@ -35,25 +35,37 @@
 				.appendTo( this.$cylinder );
 
 			this.bindEvents(
-				'set:perspective', 'setPerspective'
-				,    'set:radius', 'setRadius'
+				'set:perspective', 'onSetPerspective'
+				,    'set:radius', 'onSetRadius'
 			);
 
 			this.degrees = 0;
 		}
 
-		, setPerspective : function( p ){
-			this.$domNode .css( '-webkit-perspective', '' + p );
+		// private -- do not call
+		, onSetPerspective : function( p ){
+			return this.$domNode .css( '-webkit-perspective', '' + p );
 		}
 
-		, setRadius : function( r ){
-			this.$cylinder.css( '-webkit-transform', 'translateZ(' + r + 'px)' );
+		// private -- do not call
+		, onSetRadius : function( r ){
+			return this.$cylinder.css( '-webkit-transform', 'translateZ(' + r + 'px)' );
 		}
 
 		, rotateBy : function rotateBy( deg ){
+			return (
+				this
+					.rotateTo( this.degrees + deg )
+					.trigger( 'rotate-by', deg )
+			);
+		}
+
+		, rotateTo : function rotateTo( deg ){
 			this.$container.css({
-				'-webkit-transform' : 'rotateY( ' + ( this.degrees += deg ) + 'deg )'
+				'-webkit-transform' : 'rotateY( ' + ( this.degrees = deg ) + 'deg )'
 			});
+
+			return this.trigger( 'rotate-to', this.degrees );
 		}
 
 		, getContentNode : function(){

@@ -1,7 +1,8 @@
 var   $widget = $( '#widget' )
   ,   $window = $( window )
   , cylinders = []
-  , bgCyl, spriteCyl1, crystal;
+  , bgCyl, spriteCyl1, crystal, i, l
+  , bgSound, alienYell, shipPass;
 
 /**
  * Control the size of the view
@@ -58,10 +59,18 @@ cylinders.push( bgCyl );
  * Add sprite cylinders
  **/
 spriteCyl1 = new $.Klass.Cylinder({
-	       radius : 800
+	       radius : 1222
 	, perspective : 500
 }).appendTo( $widget );
 cylinders.push( spriteCyl1 );
+
+/**
+ * set default rotation
+ **/
+for( i=0, l=cylinders.length; i<l; i++ ){
+	cylinders[i].rotateTo( 15 );
+}
+
 
 /**
  * Add sprites
@@ -70,14 +79,18 @@ cylinders.push( spriteCyl1 );
 
 /**
  * Add an HTML element to a cylinder
+ * 
+ * conf allows:
+ * - xDeg
+ * - yPos
+ * - zPos
+ * - scale
+ * - parallaxMultiplier
  **/
-function addItemToCylinder( node, cylinder, xDeg, yPos ){
-	var item = new $.Klass.Cylinder.Item({
-		  xDeg : xDeg || 0
-		, yPos : yPos || 0
-	});
+function addItemToCylinder( node, cylinder, conf ){
+	var item = new $.Klass.Cylinder.Item( conf );
 
-	item.append( node ).appendTo( cylinder );
+	return item.append( node ).appendTo( cylinder );
 }
 
 
@@ -86,9 +99,9 @@ function addItemToCylinder( node, cylinder, xDeg, yPos ){
  **/
 (function(){
 	crystal = new $.Klass.Sprite.Animation({
-		      image : 'images/textures/crystal.png'
-		,  imgWidth : 400
-		, imgHeight : 400
+		      image : 'images/textures/crystal_200.png'
+		,  imgWidth : 200
+		, imgHeight : 200
 		,    frames : 36
 		,      rows : 6
 		,      cols : 6
@@ -128,11 +141,156 @@ function addItemToCylinder( node, cylinder, xDeg, yPos ){
 			ev.preventDefault();
 		} );
 
-	addItemToCylinder( crystal, spriteCyl1, -50, 400 );
+	addItemToCylinder( crystal, spriteCyl1, { xDeg: -130, yPos: 442 } );
 }());
 
+/**
+ * Add the other sprites
+ **/
+
+// alien
+(function(){
+	var alien = addItemToCylinder( $( '<div></div>' ).css({
+		background : "url( 'images/alien.png' ) no-repeat"
+		,    width : 613
+		,   height : 762
+	}), spriteCyl1, { xDeg: -95, yPos: 1050 } )
+	, triggered = false;
+
+	alien.bindLocation( '273', function(){
+		if( triggered ){ return; }
+
+		alien.set({ yPos: 235 });
+		alienYell.play();
+
+		triggered = true;
+	} );
+}());
+
+
+// dead guy
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/dead_guy.png' ) no-repeat"
+	,    width : 477
+	,   height : 83
+}), spriteCyl1, { xDeg: -171, yPos: 675, scale: 0.9 } );
+
+
+// woman
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/woman.png' ) no-repeat"
+	,    width : 694
+	,   height : 643
+}), spriteCyl1, { xDeg: -17, yPos: 377 } );
+
+
+// flag
+/*
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/flag.png' )"
+	,    width : 293
+	,   height : 504
+}), spriteCyl1, { xDeg: -50, yPos: 235 } );
+*/
+
+
+// john carter
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/john_carter.png' ) no-repeat"
+	,    width : 609
+	,   height : 725
+}), spriteCyl1, { xDeg: 106, yPos: 267 } );
+
+
+// left ship
+(function(){
+	var shipDom = $( '<div></div>' ).css({
+		background : "url( 'images/left_ship.png' ) no-repeat"
+		,    width : 252
+		,   height : 157
+	}).hide()
+	, ship = addItemToCylinder( shipDom, spriteCyl1, { xDeg: 220, zPos: 500, yPos: 255, scale: 0.01 } )
+	, triggered = false;
+
+	ship.bindLocation( '325', function(){
+		if( triggered ){ return; }
+
+		shipDom.show();
+		ship.set({ zPos: -200, yPos: -50, scale: 2, speed: 2 });
+		shipPass.play();
+
+		triggered = true;
+	});
+}());
+
+// logo
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/logo.png' ) no-repeat"
+	,    width : 914
+	,   height : 671
+}), spriteCyl1, { xDeg: -196, yPos: 275, zPos: 250, scale: 1.15 } );
+
+
+// moons
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/moons.png' ) no-repeat"
+	,    width : 415
+	,   height : 359
+}), spriteCyl1, { xDeg: -55, yPos: -55, parallaxMultiplier: 0.65 } );
+
+
+// right ship #1 + shadow
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/right_ship.png' ) no-repeat"
+	,    width : 734
+	,   height : 273
+}), spriteCyl1, { xDeg: 53, yPos: -125, zPos: 300, scale: 2 } );
+
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/right_ship_shadow.png' ) no-repeat"
+	,    width : 657
+	,   height : 186
+}), spriteCyl1, { xDeg: 53, yPos: 495, zPos: 300, scale: 1.6 } );
+
+
+// right ship #2 + shadow
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/right_ship.png' ) no-repeat"
+	,    width : 734
+	,   height : 273
+}), spriteCyl1, { xDeg: 86, yPos: -95, zPos: 400, scale: 0.8 } );
+
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/right_ship_shadow.png' ) no-repeat"
+	,    width : 657
+	,   height : 186
+}), spriteCyl1, { xDeg: 86, yPos: 455, zPos: 400, scale: 0.8 } );
+
+
+// right ship #3 + shadow
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/right_ship.png' ) no-repeat"
+	,    width : 734
+	,   height : 273
+}), spriteCyl1, { xDeg: 14, yPos: -145, zPos: 500 } );
+
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/right_ship_shadow.png' ) no-repeat"
+	,    width : 657
+	,   height : 186
+}), spriteCyl1, { xDeg: 14, yPos: 443, zPos: 500 } );
+
+
+// sword
+addItemToCylinder( $( '<div></div>' ).css({
+	background : "url( 'images/sword.png' ) no-repeat"
+	,    width : 109
+	,   height : 237
+}), spriteCyl1, { xDeg: 18.6, yPos: 512 } );
+
+
 function newSound( file ){
-	return $('<audio preload><source src="' + file + '"></audio>')
+	return $('<audio preload="auto"><source src="' + file + '"></audio>')
 		.appendTo( document.body )
 		.get(0);
 }
@@ -141,9 +299,10 @@ function newSound( file ){
  * Add sounds
  **/
 (function(){
-	var bgSound = newSound( 'resources/sounds/desert_loop.mp3' )
-	, alienYell = newSound( 'resources/sounds/alien_yell.mp3' )
-	,  shipPass = newSound( 'resources/sounds/ship_pass.mp3' );
+	bgSound   = newSound( 'resources/sounds/desert_loop.mp3' );
+	alienYell = newSound( 'resources/sounds/alien_yell.mp3' );
+	shipPass  = newSound( 'resources/sounds/ship_pass.mp3' );
 
+	bgSound.setAttribute( 'loop', 'loop' );
 	bgSound.play();
 }());
