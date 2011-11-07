@@ -48,7 +48,7 @@
 
 			var   imgWidth = 0
 			  , faceHeight = this.$images[0][0].height
-			  ,      imgIx = 0
+			  ,      imgIx = this.$images.length - 1
 			  ,       imgX = 0
 			  , i, l, face, faceWidth;
 
@@ -72,7 +72,7 @@
 				face.append(
 					$( '<div></div>' )
 						.css({
-							background : "url( '%s' ) %spx 0px".sprintf( this.$images[ imgIx ][0].src, imgX + faceWidth )
+							background : "url( '%s' ) %spx 0px".sprintf( this.$images[ imgIx ][0].src, imgX )
 							,    width : 0|faceWidth
 							,   height : faceHeight
 						})
@@ -81,8 +81,14 @@
 				imgX += faceWidth;
 				// .1 is for floating point errors
 				if( (imgX+.1) >= this.$images[ imgIx ][0].width ){
-					imgIx++;
 					imgX = 0;
+				}
+
+				if( imgX === faceWidth ){
+					imgIx++;
+					if( imgIx === this.$images.length ){
+						imgIx = 0;
+					}
 				}
 
 				this.faceKlss.push( face );
