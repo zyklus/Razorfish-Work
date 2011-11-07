@@ -50,7 +50,7 @@
 			  , faceHeight = this.$images[0][0].height
 			  ,      imgIx = this.$images.length - 1
 			  ,       imgX = 0
-			  , i, l, face, faceWidth;
+			  , i, l, face, faceWidth, canvas, ctx;
 
 			for( i=0, l=this.$images.length; i<l; i++ ){
 				imgWidth += this.$images[i][0].width;
@@ -69,14 +69,22 @@
 					, xPatch : i ? 0 : ( -360 / this.faces / 2 )
 				});
 
-				face.append(
-					$( '<div></div>' )
-						.css({
-							background : "url( '%s' ) %spx 0px".sprintf( this.$images[ imgIx ][0].src, imgX )
-							,    width : 0|faceWidth
-							,   height : faceHeight
-						})
-				).appendTo( this );
+				canvas = $( '<canvas width="%s" height="%s"></canvas>'.sprintf( 0|faceWidth, 0|faceHeight ) );
+				ctx    = canvas[0].getContext( '2d' );
+
+				// drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+				ctx.drawImage( this.$images[ imgIx ][0], imgX ? this.$images[ imgIx ][0].width - imgX : 0, 0, 0|faceWidth, faceHeight, 0, 0, 0|faceWidth, faceHeight );
+
+				face.append( canvas ).appendTo( this );
+				// 
+				// face.append(
+				// 	$( '<div></div>' )
+				// 		.css({
+				// 			background : "url( '%s' ) %spx 0px".sprintf( this.$images[ imgIx ][0].src, imgX )
+				// 			,    width : 0|faceWidth
+				// 			,   height : faceHeight
+				// 		})
+				// ).appendTo( this );
 
 				imgX += faceWidth;
 				// .1 is for floating point errors

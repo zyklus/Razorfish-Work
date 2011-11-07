@@ -224,6 +224,7 @@ function addItemToCylinder( node, cylinder, conf ){
  **/
 
 // alien
+/*
 (function(){
 	var alien = addItemToCylinder( $( '<div></div>' ).css({
 		background : "url( 'images/alien.png' ) no-repeat"
@@ -241,7 +242,7 @@ function addItemToCylinder( node, cylinder, conf ){
 		triggered = true;
 	} );
 }());
-
+*/
 
 // dead guy
 addItemToCylinder( $( '<div></div>' ).css({
@@ -252,12 +253,13 @@ addItemToCylinder( $( '<div></div>' ).css({
 
 
 // woman
+/*
 addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/woman.png' ) no-repeat"
 	,    width : 694
 	,   height : 643
 }), spriteCyl1, { xDeg: -17, yPos: 567, zPos : 200 } );
-
+*/
 
 // flag
 /*
