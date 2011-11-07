@@ -57,7 +57,6 @@
 			}
 
 			faceWidth = imgWidth / this.faces;
-			console.log( faceWidth, imgWidth, this.faces );
 
 			this.set({ 'radius': imgWidth / Math.PI / 2 });
 
@@ -66,7 +65,8 @@
 
 			for( i=0, l=this.faces; i<l; i++ ){
 				face = new $.Klass.Cylinder.Item({
-					xDeg : 360 / this.faces * i
+					    xDeg : 360 / this.faces * i
+					, xPatch : i ? 0 : ( -360 / this.faces / 2 )
 				});
 
 				face.append(
@@ -79,7 +79,6 @@
 				).appendTo( this );
 
 				imgX += faceWidth;
-				console.log( imgX, this.$images[ imgIx ][0].width );
 				// .1 is for floating point errors
 				if( (imgX+.1) >= this.$images[ imgIx ][0].width ){
 					imgIx++;
@@ -88,6 +87,10 @@
 
 				this.faceKlss.push( face );
 			}
+
+			// fix a safari bug where the first item shows up in the wrong place for some reason
+			var $item = this.$domNode.find( '.view-Cylinder-Item:first' ), $parent = $item.parent();
+			$item.prependTo( $parent );
 		}
 	} );
 }( jQuery ) );
