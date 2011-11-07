@@ -1,0 +1,405 @@
+/*************************************
+ * Include equivalent of a reset.css *
+ *************************************/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+.clear {
+  zoom: 1;
+}
+.clear:before,
+.clear:after {
+  content: "";
+  display: table;
+}
+.clear:after {
+  clear: both;
+}
+/**********************************
+ * Define sizes & other variables *
+ * ( Yes, Stylus has Variables )  *
+ **********************************/
+body {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-family: verdana, sans-serif;
+  font-size: 11px;
+  background: #000;
+}
+hr {
+  border: 0px;
+  height: 1px;
+  margin: 0px;
+  background: url("../images/sprite-1.gif") repeat-x;
+  background-position: 0 0;
+}
+.z1 {
+  z-index: 1 !important;
+}
+.z2 {
+  z-index: 2 !important;
+}
+.z3 {
+  z-index: 3 !important;
+}
+.z4 {
+  z-index: 4 !important;
+}
+.z5 {
+  z-index: 5 !important;
+}
+.z6 {
+  z-index: 6 !important;
+}
+h1 {
+  font-size: 34px;
+  font-family: MetaNormalRegular, Verdana, sans-serif;
+}
+h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  padding: 0px 0px 5px 0px;
+}
+em {
+  font-style: italic;
+}
+a,
+a:active,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  color: #0cf;
+}
+.dark-text {
+  color: #999;
+}
+.video {
+  overflow: hidden;
+}
+#site {
+  position: relative;
+  z-index: 1;
+}
+#top-banner {
+  background: #0cf;
+  height: 174px;
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+.top-banner {
+  height: 134px;
+  font-family: MetaNormalRegular, Verdana, sans-serif;
+  padding: 40px 0px 0px 150px;
+  font-size: 14px;
+}
+.top-banner .bg {
+  background: url("../images/logo_nokia.gif") no-repeat 0 50px;
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  width: 200px;
+  height: 174px;
+  left: -50px;
+}
+.top-banner .copy {
+  line-height: 20px;
+}
+#content {
+  position: relative;
+  width: 850px;
+  margin: 0px auto;
+  z-index: 2;
+}
+#download {
+  background: url("../images/phones.png") no-repeat;
+  margin-top: 80px;
+  height: 355px;
+  position: relative;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  white-space: nowrap;
+}
+#download .content {
+  position: absolute;
+  z-index: 1;
+  left: 420px;
+}
+#download .content .logo {
+  width: 373px;
+  height: 30px;
+  background: url("../images/sprite-0.png");
+  background-position: 0 0;
+}
+#download .content a.btn {
+  display: block;
+  float: left;
+  margin: 50px 30px 50px 0px;
+}
+#download .content .download_preso {
+  width: 97px;
+  height: 94px;
+  background: url("../images/sprite-0.png");
+  background-position: -97px -30px;
+}
+#download .content .download_preso:hover {
+  background: url("../images/sprite-0.png");
+  background-position: 0 -30px;
+}
+#download .content .view_demo {
+  width: 97px;
+  height: 94px;
+  background: url("../images/sprite-0.png");
+  background-position: 0 -124px;
+}
+#download .content .view_demo:hover {
+  background: url("../images/sprite-0.png");
+  background-position: -97px -124px;
+}
+#download .content .download_rfp {
+  width: 97px;
+  height: 94px;
+  background: url("../images/sprite-0.png");
+  background-position: -194px -97px;
+}
+#download .content .download_rfp:hover {
+  background: url("../images/sprite-0.png");
+  background-position: -194px -191px;
+}
+#download .content .contact {
+  margin: 0px 0px 0px 10px;
+  font-family: MetaNormalRegular, Verdana, sans-serif;
+  font-size: 18px;
+  width: 300px;
+}
+#download .content .contact small,
+#download .content .contact small a {
+  font-family: verdana, sans-serif;
+  font-size: 11px;
+}
+#download .content .contact small a:hover {
+  color: #0cf;
+}
+#team {
+  background: url("../images/btn_our_team.png") no-repeat;
+  margin: 20px -100px 20px 0px;
+  padding: 0px 0px 0px 150px;
+  min-height: 97px;
+}
+#team ul {
+  float: left;
+  margin: 0px 35px 0px 0px;
+}
+#team ul li {
+  list-style-type: none;
+  padding: 0px 10px 0px 0px;
+  line-height: 16px;
+}
+#team ul li.first {
+  margin-bottom: 25px;
+}
+#team ul li.bob-lord {
+  background: url("../images/thumb-bob-lord.jpg") no-repeat;
+}
+#team ul li.brandon {
+  background: url("../images/thumb-brandon-geary.jpg") no-repeat;
+}
+#team ul li.garrick {
+  background: url("../images/thumb-garrick-schmitt.jpg") no-repeat;
+}
+#team ul li.christian {
+  background: url("../images/thumb-christian-juhl.jpg") no-repeat;
+}
+#team ul li.joe {
+  background: url("../images/thumb-joe-mele.jpg") no-repeat;
+}
+#team ul li.jennifer {
+  background: url("../images/thumb-jennifer-friese.jpg") no-repeat;
+}
+#team ul li a {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+#team ul li .bio {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+  border: 1px solid #666;
+  background: #000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  width: 400px;
+  color: #999;
+  -webkit-box-shadow: 0px 0px 10px #ccc;
+  -moz-box-shadow: 0px 0px 10px #ccc;
+  box-shadow: 0px 0px 10px #ccc;
+}
+#team ul li .bio br {
+  margin: 10px 0px;
+  display: block;
+  line-height: 35px;
+}
+#reels {
+  margin: 20px 0px;
+  padding: 0px 0px 0px 150px;
+  background: url("../images/btn_view_videos.png") no-repeat;
+  min-height: 97px;
+}
+#reels ul {
+  margin: 20px 0px 0px -3px;
+}
+#reels ul li a {
+  float: left;
+  white-space: nowrap;
+  display: block;
+  margin: 15px 70px 0px 0px;
+}
+#reels ul li a.takeover {
+  width: 117px;
+  height: 67px;
+  background: url("../images/sprite-0.png") no-repeat;
+  background-position: -194px -30px;
+}
+#reels ul li a.tiles {
+  width: 117px;
+  height: 67px;
+  background: url("../images/sprite-0.png") no-repeat;
+  background-position: 0 -218px;
+}
+#links {
+  background: url("../images/btn_more_info.png") no-repeat;
+  margin: 20px 0px;
+  padding: 0px 0px 0px 150px;
+  min-height: 97px;
+}
+#links h3 {
+  margin: 30px 0px 10px 0px;
+}
+#links #sites,
+#links #published {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+#links #sites ul li,
+#links #published ul li {
+  list-style-type: none;
+  padding-left: 15px;
+  background: url("../images/right-arrow.gif") no-repeat 0px 2px;
+  margin: 4px 0px 0px 0px;
+}
+#bottom-banner {
+  height: 137px;
+  position: absolute;
+  z-index: 1;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+}
+.bottom-banner {
+  margin: 50px 0px;
+  text-align: center;
+}
+.bottom-banner .bg {
+  height: 75px;
+  background: url("../images/logo_nokia_razorfish.png") no-repeat 50% 0;
+}
