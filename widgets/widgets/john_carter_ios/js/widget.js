@@ -363,6 +363,6 @@ function newSound( file ){
 	shipPass  = newSound( 'resources/sounds/ship_pass.mp3' );
 
 	bgSound1.play();
-	$( bgSound1 ).bind( 'ended', function(){ bgSound2.play(); this.currentTime = 0; this.stop(); } );
-	$( bgSound2 ).bind( 'ended', function(){ bgSound1.play(); this.currentTime = 0; this.stop(); } );
+	$( bgSound1 ).bind( 'ended', function(){ bgSound2.play(); this.currentTime = 0; this.pause(); } );
+	$( bgSound2 ).bind( 'ended', function(){ bgSound1.play(); this.currentTime = 0; this.pause(); } );
 }());
