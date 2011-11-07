@@ -2,7 +2,7 @@ var   $widget = $( '#widget' )
   ,   $window = $( window )
   , cylinders = []
   , bgCyl, spriteCyl1, crystal, i, l
-  , bgSound, alienYell, shipPass;
+  , bgSound1, bgSound2, alienYell, shipPass;
 
 /**
  * Control the size of the view
@@ -336,10 +336,12 @@ function newSound( file ){
  * Add sounds
  **/
 (function(){
-	bgSound   = newSound( 'resources/sounds/desert_loop.mp3' );
+	bgSound1  = newSound( 'resources/sounds/loop.mp3' );
+	bgSound2  = newSound( 'resources/sounds/loop.mp3' );
 	alienYell = newSound( 'resources/sounds/alien_yell.mp3' );
 	shipPass  = newSound( 'resources/sounds/ship_pass.mp3' );
 
-	bgSound.setAttribute( 'loop', 'loop' );
-//	bgSound.play();
+	bgSound1.play();
+	$( bgSound1 ).bind( 'ended', function(){ bgSound2.play(); this.currentTime = 0; this.stop(); } );
+	$( bgSound2 ).bind( 'ended', function(){ bgSound1.play(); this.currentTime = 0; this.stop(); } );
 }());
