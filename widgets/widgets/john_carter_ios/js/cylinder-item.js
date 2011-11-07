@@ -1,4 +1,6 @@
 ( function( $ ){
+	var locationRx = /^(?:([tlbr])(?::))?([tlbr])?([-+]?\d+)(?:(?::)([tlbr])?([-+]?\d+))?(?:(?::)([tlbr])?([-+]?\d+))?(?:(?::)([tlbr])?([-+]?\d+))?$/i;
+
 	$.Klass.add( 'Cylinder.Item', $.Klass.MVC.View.Mutable, {
 		/**
 		 * Split a location string into pieces
@@ -23,9 +25,7 @@
 		 * 100:200       100-200 px from left
 		 * L:L-100:R+100 Coming from the left 100px around the viewport
 		 **/
-		locationRx : /^(?:([tlbr])(?::))?([tlbr])?([-+]?\d+)(?:(?::)([tlbr])?([-+]?\d+))?(?:(?::)([tlbr])?([-+]?\d+))?(?:(?::)([tlbr])?([-+]?\d+))?$/i
-
-		, init : function init( config ){
+		init : function init( config ){
 			// this just calls _super with options tacked on to the existing arguments
 			this._super.apply( this, [].slice.call( arguments, 0 ).concat(
 				'parallaxMultiplier', 'xDeg', 'yPos', 'zPos', 'scale', 'speed'
@@ -126,11 +126,11 @@
 		}
 
 		, parseLocStr : function parseLocStr( locStr ){
-			if( !this.locationRx.test( locStr ) ){
+			if( !locationRx.test( locStr ) ){
 				throw new Error( 'Location string ' + locStr + ' does not match pattern, e.g. L:L-100:R-100' );
 			}
 
-			var locInfo = this.locationRx.exec( locStr )
+			var locInfo = locationRx.exec( locStr )
 			  ,  compat = {T:1,B:1,L:2,R:2}
 			  ,    fill = { 1: ['L','R'], 2: ['T','B'] }
 			  ,    grp1 = compat[ locInfo[2] ] || compat[ locInfo[4] ]
