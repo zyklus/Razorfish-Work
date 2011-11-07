@@ -25,13 +25,13 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 	function loaded( img ){
 		++nLoaded;
 
-		$progress.css( 'width', nLoaded / loading * 242 );
+		// $progress.css( 'width', nLoaded / loading * 242 );
 
 		if( nLoaded === loading ){
 			setTimeout( function(){
-				$( '#loading' ).fadeOut( function(){
-					$widget.css({ opacity: 1 });
-				} );
+				// $( '#loading' ).fadeOut( function(){
+				// 	$widget.css({ opacity: 1 });
+				// } );
 				
 				console.log( bgCyl.$domNode.height() );
 			}, 500 );
@@ -43,7 +43,7 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 		bgHeight = img[0].height;
 	}
 
-	$.Util.imageLoader( 'images/alien.png'               , loaded ); loading++;
+//	$.Util.imageLoader( 'images/alien.png'               , loaded ); loading++;
 	$.Util.imageLoader( 'images/dead_guy.png'            , loaded ); loading++;
 	$.Util.imageLoader( 'images/john_carter.png'         , loaded ); loading++;
 	$.Util.imageLoader( 'images/left_ship.png'           , loaded ); loading++;
@@ -55,10 +55,10 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 	$.Util.imageLoader( 'images/panarama-4.jpg'          , loaded ); loading++;
 	$.Util.imageLoader( 'images/right_ship.png'          , loaded ); loading++;
 	$.Util.imageLoader( 'images/right_ship_shadow.png'   , loaded ); loading++;
-	$.Util.imageLoader( 'images/sword.png'               , loaded ); loading++;
+//	$.Util.imageLoader( 'images/sword.png'               , loaded ); loading++;
 	$.Util.imageLoader( 'images/textures/crystal_200.png', loaded ); loading++;
 	$.Util.imageLoader( 'images/textures/box.jpg'        , loaded ); loading++;
-	$.Util.imageLoader( 'images/woman.png'               , loaded ); loading++;
+//	$.Util.imageLoader( 'images/woman.png'               , loaded ); loading++;
 }());
 
 /**
@@ -359,12 +359,13 @@ addItemToCylinder( $( '<div></div>' ).css({
 
 
 // sword
+/*
 addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/sword.png' ) no-repeat"
 	,    width : 109
 	,   height : 237
 }), spriteCyl1, { xDeg: 18.6, yPos: 512 } );
-
+*/
 
 function newSound( file ){
 	return $('<audio preload="auto"><source src="' + file + '"></audio>')

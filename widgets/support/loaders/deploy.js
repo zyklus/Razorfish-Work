@@ -13,10 +13,10 @@
 	  ,    jQVersion = jQExists ? jQuery.fn.jquery : undefined
 	  , minjQVersion = config.minJQueryVersion || '0'
 	  , incJQVersion = config.bundledJQueryVersion
-	  ,  querystring = {}
+	  ,  queryString = {}
 	  ,   allowJQCDN = false
 	  ,        jqRef = jQuery
-	  , qs, jQueryPath, jQueryVersion;
+	  , qs, jQueryPath, jQueryVersion, scripts;
 
 	/**
 	 * Parse querystring
@@ -99,7 +99,7 @@
 	 * gets the path to a script included on the current page that matches `file`
 	 **/
 	function getScriptPath( file ){
-		scripts || ( scripts = d.getElementsByTagName( 'script' ) );
+		scripts || ( scripts = document.getElementsByTagName( 'script' ) );
 		
 		var src, filename;
 
