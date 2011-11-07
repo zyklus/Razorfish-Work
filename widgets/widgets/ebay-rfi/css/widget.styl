@@ -1,0 +1,257 @@
+/*************************************
+ * Include equivalent of a reset.css *
+ *************************************/
+global-reset()
+
+.clear
+	clearfix()
+
+/**********************************
+ * Define sizes & other variables *
+ * ( Yes, Stylus has Variables )  *
+ **********************************/
+
+linkColor = #AEB0B3
+
+body
+	position    relative
+	color       #444
+	font-family verdana, sans-serif
+	font-size   11px
+
+hr
+	border     0px
+	height     1px
+	margin     0px
+	background sprite( '../images/h-dotted-line.gif' ) repeat-x
+
+h1
+	font-size   34px
+	font-family MetaNormalRegular, Verdana, sans-serif
+	
+h3
+	font-size      16px
+	font-family    MetaBoldCaps, verdana, sans-serif
+	text-transform uppercase
+
+h4
+	font-weight bold
+
+em
+	font-style italic
+
+
+a, a:active, a:visited
+	color           #444
+	text-decoration none
+
+a:hover
+	color linkColor
+
+
+.video
+	overflow hidden
+
+
+#site
+	position relative
+
+
+
+#top-banner
+	background url( '../images/top-banner-bg.gif' ) repeat-x
+	height     174
+	position   absolute
+	top        0px
+	left       0px
+	width      100%
+
+.top-banner
+	height        174px
+	margin-bottom 20px
+	font-family   MetaNormalRegular, Verdana, sans-serif
+	padding       30px 50px 0 150px
+	font-size     14px
+
+	.bg
+		spriteSize()
+		background sprite( '../images/top-banner.png' )
+		position   absolute
+		top        0px
+		left       -50px
+
+	.copy
+		line-height 20px
+
+
+#content
+	position relative
+	width    850px
+	margin   0 auto
+	z-index  2
+
+
+#download
+	height     355
+	background sprite( '../images/stuff.png' ) no-repeat
+	position   relative
+	top        0
+	left       0
+
+	.content
+		position       absolute
+		top            80
+		left           420
+		
+		.agency-copy
+			spriteSize()
+			background sprite( '../images/agency-copy.gif' )
+			margin     0 0 0 10px
+
+		.download
+			spriteSize()
+			background sprite( '../images/download-grey.gif' )
+			display    block
+			margin     30px 0 5px 0
+
+		.download:hover
+			spriteSize()
+			background sprite( '../images/download-green.gif' )
+
+		.contact
+			margin      100px 0 0 10px
+			font-family MetaNormalRegular, Verdana, sans-serif
+			font-size   14px
+
+
+#team
+	margin 20px 0 50px 0
+
+	.group1, .group2
+		width          50%
+		display        inline-block
+		vertical-align top
+
+	ul
+		margin 0 0 0 -3px
+
+		li
+			list-style-type none
+			padding         0 10px 0 85px
+			margin          10px 0 20px 0
+			min-height      60px
+			line-height     16px
+
+			&.bob-lord
+				background url( '../images/thumb-bob-lord.jpg' ) no-repeat
+				a
+					z-index 6
+
+			&.brandon
+				background url( '../images/thumb-brandon-geary.jpg' ) no-repeat
+
+			&.garrick
+				background url( '../images/thumb-garrick-schmitt.jpg' ) no-repeat
+				a
+					z-index 4
+
+			&.christian
+				background url( '../images/thumb-christian-juhl.jpg' ) no-repeat
+				a
+					z-index 5
+
+			&.joe
+				background url( '../images/thumb-joe-mele.jpg' ) no-repeat
+				a
+					z-index 2
+
+			&.jennifer
+				background url( '../images/thumb-jennifer-friese.jpg' ) no-repeat
+				a
+					z-index 3
+
+			a
+				position relative
+				background #FFF
+				display    block
+
+			.bio
+				display       none
+				position      absolute
+				top           20px
+				left          20px
+				border        1px solid #EEE
+				background    #FFF
+				border-radius 5px
+				padding       10px
+				width         400px
+				color         #444
+				box-shadow    0px 0px 5px #999
+				
+				br
+					margin      10px 0
+					display     block
+					line-height 35px
+
+
+#reels
+	margin 20px 0 50px 0
+
+	ul
+		margin 20px 0 0 -3px
+
+		li
+
+			a
+				float       left
+				white-space nowrap
+				display     block
+				width       124
+				height      100
+				padding     75px 0 0 3px
+				margin      0 70px 0 0
+
+				&.ideas
+					background url( '../images/thumb-rf-ideas.jpg' ) no-repeat
+				
+				&.bing
+					background url( '../images/thumb-bing.jpg' ) no-repeat
+
+				&.mercedes
+					background url( '../images/thumb-tweet-race.jpg' ) no-repeat
+
+				&.lynx
+					background url( '../images/thumb-lynx.jpg' ) no-repeat
+
+
+#links
+	h3
+		margin 30px 0 10px 0
+
+	#sites, #published
+		display        inline-block
+		width          50%
+		vertical-align top
+
+		ul
+			li
+				list-style-type none
+				padding-left    15px
+				background      url( '../images/right-arrow.gif' ) no-repeat 0px 2px
+				margin          4px 0 0 0
+
+
+#bottom-banner
+	background url( '../images/bottom-banner-bg.gif' ) repeat-x
+	height     137
+	position   absolute
+	bottom     0px
+	left       0px
+	width      100%
+
+.bottom-banner
+	margin-top 20px
+
+	.bg
+		spriteSize()
+		background sprite( '../images/bottom-banner.png' )
