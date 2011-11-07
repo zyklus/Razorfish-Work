@@ -1,7 +1,7 @@
 var   $widget = $( '#widget' )
   ,   $window = $( window )
   , cylinders = []
-  , bgCyl, spriteCyl1, crystal, i, l
+  , bgCyl, spriteCyl1, crystal, i, l, bgHeight, widgetHeight
   , bgSound1, bgSound2, alienYell, shipPass;
 
 /**
@@ -10,7 +10,7 @@ var   $widget = $( '#widget' )
 $window.bind( 'viewportResize', function( ev, w, h ){
 	$widget.css({
 		   width : w
-		, height : h
+		, height : widgetHeight = h
 	});
 });
 
@@ -38,13 +38,18 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 		}
 	}
 
+	function bgLoad( img ){
+		loaded( img );
+		bgHeight = img[0].height;
+	}
+
 	$.Util.imageLoader( 'images/alien.png'               , loaded ); loading++;
 	$.Util.imageLoader( 'images/dead_guy.png'            , loaded ); loading++;
 	$.Util.imageLoader( 'images/john_carter.png'         , loaded ); loading++;
 	$.Util.imageLoader( 'images/left_ship.png'           , loaded ); loading++;
 	$.Util.imageLoader( 'images/logo.png'                , loaded ); loading++;
 	$.Util.imageLoader( 'images/moons.png'               , loaded ); loading++;
-	$.Util.imageLoader( 'images/panarama-1.jpg'          , loaded ); loading++;
+	$.Util.imageLoader( 'images/panarama-1.jpg'          , bgLoad ); loading++;
 	$.Util.imageLoader( 'images/panarama-2.jpg'          , loaded ); loading++;
 	$.Util.imageLoader( 'images/panarama-3.jpg'          , loaded ); loading++;
 	$.Util.imageLoader( 'images/panarama-4.jpg'          , loaded ); loading++;
@@ -63,11 +68,23 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 	var orient = new $.Klass.HTML5.Orientation()
 	  , mousedown, lastX, lastY;
 
-	orient.bind( 'heading', function( deg ){
-		for( i=0, l=cylinders.length; i<l; i++ ){
-			cylinders[i].rotateTo( deg );
-		}
-	} );
+	orient
+		.bind( 'heading', function( deg ){
+			for( i=0, l=cylinders.length; i<l; i++ ){
+				cylinders[i].rotateTo( deg );
+			}
+		} )
+		.bind( 'angle', function( angle ){
+			var  middle = 90
+			  ,   pitch = 20
+			  ,    maxY = bgHeight - widgetHeight
+			  , targetY = Math.min( maxY, Math.max( 0, ( middle + pitch - angle ) / ( 2 * pitch ) * maxY ) )
+			  , i, l;
+
+			for( i=0, l=cylinders.length; i<l; i++ ){
+				cylinders[i].panTo( -targetY );
+			}
+		} );
 
 	$( document.body )
 		.bind( 'mousedown touchstart', function( ev ){

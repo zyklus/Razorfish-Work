@@ -18,8 +18,8 @@
 
 			this.$cylinder = $( '<div></div>' )
 				.css({
-					                      width : '100%'
-					,                    height : '100%'
+					                    'width' : '100%'
+					,                  'height' : '100%'
 					, '-webkit-transform-style' : 'preserve-3d' 
 				})
 				.appendTo( this.$domNode );
@@ -29,7 +29,7 @@
 					 '-webkit-transform-style': 'preserve-3d'
 					,                'margin' : '0 auto'
 					,                 'width' : 0
-					,    '-webkit-transition' : '-webkit-transform .5s linear'
+					,    '-webkit-transition' : '-webkit-transform .2s linear'
 					
 				})
 				.appendTo( this.$cylinder );
@@ -60,12 +60,24 @@
 			);
 		}
 
-		, rotateTo : function rotateTo( deg ){
+		, setTransform : function setTransform(){
 			this.$container.css({
-				'-webkit-transform' : 'rotateY( ' + ( this.degrees = deg ) + 'deg )'
+				'-webkit-transform' : 'rotateY( %sdeg ) translateY( %spx )'.sprintf( this.degrees, this.topOffset || 0 )
 			});
 
+			return this;
+		}
+
+		, rotateTo : function rotateTo( deg ){
+			this.degrees = deg;
+			this.setTransform();
+
 			return this.trigger( 'rotate-to', this.degrees );
+		}
+
+		, panTo : function panTo( offset ){
+			this.topOffset = offset;
+			return this.setTransform();
 		}
 
 		, getContentNode : function(){
