@@ -11,3 +11,61 @@ html, body
 	overflow hidden
 	width    100%
 	height   100%
+
+#loading
+	width      100%
+	height     100%
+	background #777
+	display    table
+	text-align center
+
+.wrapper
+	display        table-cell
+	vertical-align middle
+	text-align     center
+
+.logo
+	background url( '../images/logo.png' )
+	size       914 671
+	margin     0 auto
+
+@-webkit-keyframes slide
+	0%
+		background-position-x 0px
+	100%
+		background-position-x 40px
+
+.progress_bar
+	background-color   #191919
+	height             36px
+	width              250px
+	border-radius      18px
+	position           relative
+	-webkit-box-shadow inset 0 1px 2px black, 0 1px 0 #2B2B2B
+	margin             0 auto
+	top                -180px
+
+	.progress
+		position            absolute;
+		top                 4px;
+		left                4px;
+		width               10%;
+		height              28px;
+		background-size     40px 40px;
+		background-position 0px 0px;
+		border-radius       18px;
+		box-shadow          inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 3px rgba(0, 0, 0, 0.4), 0 1px 1px black;
+		background-image    -webkit-gradient(linear, 0 0, 100% 100%, from(#A20000), color-stop(0.25, #A20000), color-stop(0.25, #8A0000), color-stop(0.5, #8A0000), color-stop(0.5, #A20000), color-stop(0.75, #A20000), color-stop(0.75, #8A0000), to( #8A0000));
+		-webkit-animation   slide 0.7s linear infinite
+		-webkit-transition  width 1s
+
+	label
+		color       white
+		position    absolute
+		top         10px
+		font-size   12px
+		left        14px
+		text-shadow 1px 1px rgba(0, 0, 0, 1)
+
+#widget
+	-webkit-transition opacity 1s

@@ -11,6 +11,7 @@
 		, { "name" : "mvc/view/mutable"            }
 		, { "name" : "mobile-webkit/viewport-size" }
 		, { "name" : "sprite-animation"            }
+		, { "name" : "3d-model"                    }
 		, { "name" : "util/image-loader"           }
 	]
 
@@ -22,6 +23,7 @@
 		, "js/cylinder.js"
 		, "js/cylinder-item.js"
 		, "js/cylinder-background.js"
+		, "resources/models.json"
 		, "js/widget.js"
 	]
 

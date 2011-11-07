@@ -15,6 +15,43 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 });
 
 /**
+ * Splash Screen
+ **/
+(function(){
+	var   loading = 0
+	  , $progress = $( '.progress' )
+	  ,   nLoaded = 0;
+
+	function loaded(){
+		++nLoaded;
+
+		$progress.css( 'width', nLoaded / loading * 242 );
+
+		if( nLoaded === loading ){
+			setTimeout( function(){
+				$( '#loading' ).fadeOut( function(){
+					$widget.css({ opacity: 1 });
+				} );
+			}, 500 );
+		}
+	}
+
+	$.Util.imageLoader( 'images/alien.png'               , loaded ); loading++;
+	$.Util.imageLoader( 'images/dead_guy.png'            , loaded ); loading++;
+	$.Util.imageLoader( 'images/john_carter.png'         , loaded ); loading++;
+	$.Util.imageLoader( 'images/left_ship.png'           , loaded ); loading++;
+	$.Util.imageLoader( 'images/logo.png'                , loaded ); loading++;
+	$.Util.imageLoader( 'images/moons.png'               , loaded ); loading++;
+	$.Util.imageLoader( 'images/panarama.jpg'            , loaded ); loading++;
+	$.Util.imageLoader( 'images/right_ship.png'          , loaded ); loading++;
+	$.Util.imageLoader( 'images/right_ship_shadow.png'   , loaded ); loading++;
+	$.Util.imageLoader( 'images/sword.png'               , loaded ); loading++;
+	$.Util.imageLoader( 'images/textures/crystal_200.png', loaded ); loading++;
+	$.Util.imageLoader( 'images/textures/box.jpg'        , loaded ); loading++;
+	$.Util.imageLoader( 'images/woman.png'               , loaded ); loading++;
+}());
+
+/**
  * Control rotation
  **/
 (function(){
@@ -304,5 +341,5 @@ function newSound( file ){
 	shipPass  = newSound( 'resources/sounds/ship_pass.mp3' );
 
 	bgSound.setAttribute( 'loop', 'loop' );
-	bgSound.play();
+//	bgSound.play();
 }());

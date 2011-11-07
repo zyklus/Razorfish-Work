@@ -6,5 +6,4 @@
 	, "uri"          : "http://www.razorfish.com"
 
 	, "files"        : [ "3d-model.js" ]
-	, "dependencies" : [ "util/imageLoader" ]
 }

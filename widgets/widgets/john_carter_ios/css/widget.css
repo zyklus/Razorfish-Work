@@ -101,3 +101,76 @@ body {
   width: 100%;
   height: 100%;
 }
+#loading {
+  width: 100%;
+  height: 100%;
+  background: #777;
+  display: table;
+  text-align: center;
+}
+.wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.logo {
+  background: url("../images/logo.png");
+  width: 914px;
+  height: 671px;
+  margin: 0 auto;
+}
+@-webkit-keyframes slide {
+  0% {
+    background-position-x: 0px;
+  }
+
+  100% {
+    background-position-x: 40px;
+  }
+}
+.progress_bar {
+  background-color: #191919;
+  height: 36px;
+  width: 250px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  border-radius: 18px;
+  position: relative;
+  z-index: 1;
+  -webkit-box-shadow: inset 0 1px 2px #000, 0 1px 0 #2b2b2b;
+  margin: 0 auto;
+  top: -180px;
+}
+.progress_bar .progress {
+  position: absolute;
+  z-index: 1;
+  top: 4px;
+  left: 4px;
+  width: 10%;
+  height: 28px;
+  -webkit-background-size: 40px 40px;
+  -moz-background-size: 40px 40px;
+  background-size: 40px 40px;
+  background-position: 0px 0px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  border-radius: 18px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.30), inset 0 -1px 3px rgba(0,0,0,0.40), 0 1px 1px #000;
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.30), inset 0 -1px 3px rgba(0,0,0,0.40), 0 1px 1px #000;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.30), inset 0 -1px 3px rgba(0,0,0,0.40), 0 1px 1px #000;
+  background-image: -webkit-gradient(linear, 0 0, 100% 100%, from(#a20000), color-stop(0.25, #a20000), color-stop(0.25, #8a0000), color-stop(0.5, #8a0000), color-stop(0.5, #a20000), color-stop(0.75, #a20000), color-stop(0.75, #8a0000), to(#8a0000));
+  -webkit-animation: slide 0.7s linear infinite;
+  -webkit-transition: width 1s;
+}
+.progress_bar label {
+  color: #fff;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  font-size: 12px;
+  left: 14px;
+  text-shadow: 1px 1px #000;
+}
+#widget {
+  -webkit-transition: opacity 1s;
+}
