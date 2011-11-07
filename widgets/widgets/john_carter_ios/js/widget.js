@@ -218,7 +218,7 @@ function addItemToCylinder( node, cylinder, conf ){
 	alien.bindLocation( '273', function(){
 		if( triggered ){ return; }
 
-		alien.set({ yPos: 235 });
+		alien.set({ yPos: 445, zPos : 200 });
 		alienYell.play();
 
 		triggered = true;

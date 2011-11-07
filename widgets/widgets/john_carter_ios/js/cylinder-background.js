@@ -71,7 +71,7 @@
 				face.append(
 					$( '<div></div>' )
 						.css({
-							background : "url( '%s' ) %spx 0px".sprintf( this.$images[ imgIx ][0].src, i * faceWidth )
+							background : "url( '%s' ) %spx 0px".sprintf( this.$images[ imgIx ][0].src, imgX )
 							,    width : 0|faceWidth
 							,   height : faceHeight
 						})
