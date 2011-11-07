@@ -57,6 +57,7 @@
 			}
 
 			faceWidth = imgWidth / this.faces;
+			console.log( faceWidth, imgWidth, this.faces );
 
 			this.set({ 'radius': imgWidth / Math.PI / 2 });
 
@@ -71,14 +72,16 @@
 				face.append(
 					$( '<div></div>' )
 						.css({
-							background : "url( '%s' ) %spx 0px".sprintf( this.$images[ imgIx ][0].src, imgX )
+							background : "url( '%s' ) %spx 0px".sprintf( this.$images[ imgIx ][0].src, imgX + faceWidth )
 							,    width : 0|faceWidth
 							,   height : faceHeight
 						})
 				).appendTo( this );
 
 				imgX += faceWidth;
-				if( imgX >= this.$images[ imgIx ][0].width ){
+				console.log( imgX, this.$images[ imgIx ][0].width );
+				// .1 is for floating point errors
+				if( (imgX+.1) >= this.$images[ imgIx ][0].width ){
 					imgIx++;
 					imgX = 0;
 				}

@@ -78,7 +78,7 @@
 					)
 
 				// this is here, not above, so that the initial load doesn't move the sprite
-				, '-webkit-transition' : '-webkit-transform %ss'.sprintf( this.speed || 0.5 )
+				, '-webkit-transition' : '-webkit-transform %ss linear'.sprintf( this.speed || 0.5 )
 			});
 		}
 

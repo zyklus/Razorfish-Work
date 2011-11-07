@@ -106,8 +106,8 @@ $window.bind( 'viewportResize', function( ev, w, h ){
  * Add the background
  **/
 bgCyl = new $.Klass.Cylinder.Background({
-	       images : [ 'images/panarama-1.jpg', 'images/panarama-2.jpg', 'images/panarama-3.jpg', 'images/panarama-4.jpg' ]
-	,       faces : 52
+	       images : [ 'images/panarama-4.jpg', 'images/panarama-3.jpg', 'images/panarama-2.jpg', 'images/panarama-1.jpg' ]
+	,       faces : 48
 	, perspective : 500
 });
 bgCyl.appendTo( $widget );
@@ -218,7 +218,7 @@ function addItemToCylinder( node, cylinder, conf ){
 	alien.bindLocation( '273', function(){
 		if( triggered ){ return; }
 
-		alien.set({ yPos: 445, zPos : 200 });
+		alien.set({ yPos: 425, zPos : 200 });
 		alienYell.play();
 
 		triggered = true;
@@ -239,7 +239,7 @@ addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/woman.png' ) no-repeat"
 	,    width : 694
 	,   height : 643
-}), spriteCyl1, { xDeg: -17, yPos: 377 } );
+}), spriteCyl1, { xDeg: -17, yPos: 567, zPos : 200 } );
 
 
 // flag
@@ -257,7 +257,7 @@ addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/john_carter.png' ) no-repeat"
 	,    width : 609
 	,   height : 725
-}), spriteCyl1, { xDeg: 106, yPos: 267 } );
+}), spriteCyl1, { xDeg: 106, yPos: 467, zPos : 200 } );
 
 
 // left ship
