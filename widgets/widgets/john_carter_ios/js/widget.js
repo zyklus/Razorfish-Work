@@ -22,7 +22,7 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 	  , $progress = $( '.progress' )
 	  ,   nLoaded = 0;
 
-	function loaded(){
+	function loaded( img ){
 		++nLoaded;
 
 		$progress.css( 'width', nLoaded / loading * 242 );
@@ -32,6 +32,8 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 				$( '#loading' ).fadeOut( function(){
 					$widget.css({ opacity: 1 });
 				} );
+				
+				console.log( bgCyl.$domNode.height() );
 			}, 500 );
 		}
 	}
@@ -42,7 +44,10 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 	$.Util.imageLoader( 'images/left_ship.png'           , loaded ); loading++;
 	$.Util.imageLoader( 'images/logo.png'                , loaded ); loading++;
 	$.Util.imageLoader( 'images/moons.png'               , loaded ); loading++;
-	$.Util.imageLoader( 'images/panarama.jpg'            , loaded ); loading++;
+	$.Util.imageLoader( 'images/panarama-1.jpg'          , loaded ); loading++;
+	$.Util.imageLoader( 'images/panarama-2.jpg'          , loaded ); loading++;
+	$.Util.imageLoader( 'images/panarama-3.jpg'          , loaded ); loading++;
+	$.Util.imageLoader( 'images/panarama-4.jpg'          , loaded ); loading++;
 	$.Util.imageLoader( 'images/right_ship.png'          , loaded ); loading++;
 	$.Util.imageLoader( 'images/right_ship_shadow.png'   , loaded ); loading++;
 	$.Util.imageLoader( 'images/sword.png'               , loaded ); loading++;
@@ -55,28 +60,44 @@ $window.bind( 'viewportResize', function( ev, w, h ){
  * Control rotation
  **/
 (function(){
-	var mousedown, lastX;
+	var orient = new $.Klass.HTML5.Orientation()
+	  , mousedown, lastX, lastY;
+
+	orient.bind( 'heading', function( deg ){
+		for( i=0, l=cylinders.length; i<l; i++ ){
+			cylinders[i].rotateTo( deg );
+		}
+	} );
 
 	$( document.body )
 		.bind( 'mousedown touchstart', function( ev ){
+//			ev.preventDefault();
 			mousedown = ev;
 
 			lastX = ev.pageX;
+			lastY = ev.pageY;
 		} )
-		.bind( 'mouseup touchend', function(){
+		.bind( 'mouseup touchend', function( ev ){
+			ev.preventDefault();
 			mousedown = false;
 		} )
 		.bind( 'mousemove touchmove', function( ev ){
 			if( !mousedown ){ return; }
-			
-			var deg = ( ev.pageX - lastX ) / 20
-			  , i, l;
 
-			for( i=0, l=cylinders.length; i<l; i++ ){
-				cylinders[i].rotateBy( -deg );
+			// only do horizontal
+			if( Math.abs( ev.pageX - lastX ) > Math.abs( ev.pageY - lastY ) ){
+				ev.preventDefault();
+
+				var deg = ( ev.pageX - lastX ) / 10
+				  , i, l;
+
+				for( i=0, l=cylinders.length; i<l; i++ ){
+					cylinders[i].rotateBy( -deg );
+				}
 			}
 
 			lastX = ev.pageX;
+			lastY = ev.pageY;
 		} );
 }());
 
@@ -85,8 +106,8 @@ $window.bind( 'viewportResize', function( ev, w, h ){
  * Add the background
  **/
 bgCyl = new $.Klass.Cylinder.Background({
-	        image : 'images/panarama.jpg'
-	,       faces : 50
+	       images : [ 'images/panarama-1.jpg', 'images/panarama-2.jpg', 'images/panarama-3.jpg', 'images/panarama-4.jpg' ]
+	,       faces : 52
 	, perspective : 500
 });
 bgCyl.appendTo( $widget );

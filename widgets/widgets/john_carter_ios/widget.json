@@ -10,6 +10,7 @@
 		  { "name" : "string"                      }
 		, { "name" : "mvc/view/mutable"            }
 		, { "name" : "mobile-webkit/viewport-size" }
+		, { "name" : "mobile-webkit/orientation"   }
 		, { "name" : "sprite-animation"            }
 		, { "name" : "3d-model"                    }
 		, { "name" : "util/image-loader"           }

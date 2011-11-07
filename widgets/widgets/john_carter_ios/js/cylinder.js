@@ -29,7 +29,7 @@
 					 '-webkit-transform-style': 'preserve-3d'
 					,                'margin' : '0 auto'
 					,                 'width' : 0
-					,    '-webkit-transition' : '-webkit-transform .5s'
+					,    '-webkit-transition' : '-webkit-transform .5s linear'
 					
 				})
 				.appendTo( this.$cylinder );

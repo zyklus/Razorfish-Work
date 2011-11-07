@@ -3,22 +3,34 @@
 		init : function init(){
 			this._super.apply( this, [].slice.call( arguments, 0 ).concat(
 				// allow specification of exact view & model to use
-				'image', 'faces'
+				'images', 'faces'
 			) );
 
 			this.bindEvents(
-				  'set:image', 'setImage'
+				  'set:images', 'setImages'
 				, 'set:faces', 'build'
 			);
 		}
 
-		, setImage : function setImage( src ){
-			$.Util.imageLoader( src, this.bindMethod( 'imageLoaded' ) );
-		}
+		, setImages : function setImage( imgs ){
+			var loading = 0
+			  ,    self = this
+			  , i, l;
 
-		, imageLoaded : function imageLoaded( $node ){
-			this.$image = $node;
-			this.build();
+			this.$images = [];
+
+			for( i=0, l=imgs.length; i<l; i++ ){
+				$.Util.imageLoader( imgs[i], ( function( i ){
+					return function( $img ){
+						self.$images[i] = $img;
+						if( --loading ){ return; }
+
+						self.build();
+					};
+				} ( i ) ) );
+
+				loading++;
+			}
 		}
 
 		, removeFaces : function removeFaces(){
@@ -32,12 +44,19 @@
 		}
 
 		, build : function build(){
-			if( !this.$image || !this.faces ){ return; }
+			if( !this.$images || !this.$images.length || !this.faces ){ return; }
 
-			var   imgWidth = this.$image[0].width
-			  ,  faceWidth = imgWidth / this.faces
-			  , faceHeight = this.$image[0].height
-			  , i, l, face;
+			var   imgWidth = 0
+			  , faceHeight = this.$images[0][0].height
+			  ,      imgIx = 0
+			  ,       imgX = 0
+			  , i, l, face, faceWidth;
+
+			for( i=0, l=this.$images.length; i<l; i++ ){
+				imgWidth += this.$images[i][0].width;
+			}
+
+			faceWidth = imgWidth / this.faces;
 
 			this.set({ 'radius': imgWidth / Math.PI / 2 });
 
@@ -52,11 +71,17 @@
 				face.append(
 					$( '<div></div>' )
 						.css({
-							background : "url( '%s' ) %spx 0px".sprintf( this.image, i * faceWidth )
+							background : "url( '%s' ) %spx 0px".sprintf( this.$images[ imgIx ][0].src, i * faceWidth )
 							,    width : 0|faceWidth
 							,   height : faceHeight
 						})
 				).appendTo( this );
+
+				imgX += faceWidth;
+				if( imgX >= this.$images[ imgIx ][0].width ){
+					imgIx++;
+					imgX = 0;
+				}
 
 				this.faceKlss.push( face );
 			}
