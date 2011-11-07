@@ -19,8 +19,7 @@
 	, "testJQueryVersion" : "1.6.4"
 
 	, "files" : [
-		  "css/widget.css"
-		, "js/cylinder.js"
+		  "js/cylinder.js"
 		, "js/cylinder-item.js"
 		, "js/cylinder-background.js"
 		, "resources/models.json"
