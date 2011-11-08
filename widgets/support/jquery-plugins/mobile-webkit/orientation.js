@@ -27,7 +27,7 @@
 
 			// ignore bad data
 			if( oEv.webkitCompassAccuracy == -1 ){ this.trigger( 'bad-compass' ); return; }
-			if( oEv.webkitCompassAccuracy >= 30 ){ this.trigger( 'inaccurate-compass' ); return; }
+//			if( oEv.webkitCompassAccuracy >= 30 ){ this.trigger( 'inaccurate-compass' ); return; }
 
 			// I think this means it's warming up :)
 			if( oEv.webkitCompassAccuracy == 0  ){ return; }
