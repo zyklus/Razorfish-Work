@@ -1,6 +1,7 @@
 var   $widget = $( '#widget' )
   ,   $window = $( window )
   ,     $menu = $widget.find( '.menu' )
+  ,  $badComp = $widget.find( '.bad-compass' )
   ,   menuTop = -$menu.outerHeight() + 25
   , cylinders = []
   ,  minWidth = 500
@@ -112,7 +113,11 @@ $menu
 	var    orient = new $.Klass.HTML5.Orientation({ zeroDeg: zeroDeg })
 	  , rotOffset = 0
 	  , enableRot = false
-	  , mousedown, lastX, lastY;
+	  , mousedown, lastX, lastY, betterCompass;
+
+	function compassFixed(){
+		$badComp.fadeOut();
+	}
 
 	orient
 		.bind( 'heading', function( deg ){
@@ -141,7 +146,13 @@ $menu
 			for( i=0, l=cylinders.length; i<l; i++ ){
 				cylinders[i].panTo( -targetY );
 			}
-		} );
+		} )
+		.bind( 'bad-compass inaccurate-compass', function(){
+			$badComp.fadeIn();
+			if( betterCompass ){ clearTimeout( betterCompass ); }
+
+			betterCompass = setTimeout( compassFixed, 2000 );
+		});
 
 	$( document.body )
 		.bind( 'mousedown touchstart', function( ev ){

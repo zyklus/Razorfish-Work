@@ -1,4 +1,5 @@
 ( function( $ ){
+	var logged = false;
 	// interface to the compass that gets normalized
 	$.Klass.add( 'HTML5.Orientation', $.Klass.Observable, {
 		init : function( config ){
@@ -23,6 +24,13 @@
 			  ,  orient = window.orientation
 			  , aOrient = window.orientation % 180
 			  ,   angle = ( aOrient ? gamma : beta );
+
+			// ignore bad data
+			if( oEv.webkitCompassAccuracy == -1 ){ this.trigger( 'bad-compass' ); return; }
+			if( oEv.webkitCompassAccuracy >= 30 ){ this.trigger( 'inaccurate-compass' ); return; }
+
+			// I think this means it's warming up :)
+			if( oEv.webkitCompassAccuracy == 0  ){ return; }
 
 			// normalize left or bottom being up
 			if( ( 90 === orient ) || ( 180 === orient ) ){

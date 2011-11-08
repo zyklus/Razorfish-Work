@@ -20,6 +20,10 @@
 				$.log('Observable klass not properly instantiated.  Did you forget to call _super() from a subclass constructor?');
 				return;
 			}
+
+			if( 'string' === typeof( events    ) ){    events = events   .split( ' ' ); }
+			if( 'string' === typeof( reqEvents ) ){ reqEvents = reqEvents.split( ' ' ); }
+
 			events    = events    ? [].concat(events)    : [];
 			reqEvents = reqEvents ? [].concat(reqEvents) : [];
 

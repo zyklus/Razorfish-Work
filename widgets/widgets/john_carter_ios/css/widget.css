@@ -234,3 +234,14 @@ body {
 #widget .menu.open .arrow {
   background: url("../images/icon_up.png") no-repeat 50% 50%;
 }
+#widget .bad-compass {
+  width: 119px;
+  height: 59px;
+  background: url("../images/sprite-0.png");
+  position: absolute;
+  z-index: 1;
+  bottom: 5px;
+  right: 5px;
+  display: none;
+  background-position: 0 -50px;
+}
