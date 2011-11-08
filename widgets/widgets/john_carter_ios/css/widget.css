@@ -206,7 +206,10 @@ body {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
 }
 #widget .menu .box {
-  display: none;
+  width: 50px;
+  height: 60px;
+  background: url("../images/sprite-0.png");
+  background-position: 0 -50px;
 }
 #widget .menu .crystal {
   width: 42px;
@@ -243,5 +246,5 @@ body {
   bottom: 5px;
   right: 5px;
   display: none;
-  background-position: 0 -50px;
+  background-position: -88px 0;
 }

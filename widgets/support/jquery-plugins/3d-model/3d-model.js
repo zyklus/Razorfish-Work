@@ -9,7 +9,7 @@
 			this.$domNode.css({
 				                 'position' : 'absolute'
 				, '-webkit-transform-style' : 'preserve-3d'
-				,       '-webkit-transform' : 'rotateY( 20deg ) rotateX( 20deg ) rotateZ( 20deg )'
+				,       '-webkit-transform' : 'rotateY( 0deg ) rotateX( 0deg ) rotateZ( 0deg )'
 			});
 
 			this.bindEvents(
@@ -36,13 +36,13 @@
 			this.$faces = [];
 
 			for( i=0, l=vertices.length; i<l; i+=12 ){
-				this.addFace( vertices.slice( i, i+12 ) );
+				this.addFace( vertices.slice( i, i+12 ), i/12 );
 			}
 
 			return this;
 		}
 
-		, addFace : function addFace( points ){
+		, addFace : function addFace( points, ix ){
 			var     mult = 100
 			  , radToDeg = 180 / Math.PI
 			  , p1, p2, p3, p4
@@ -81,6 +81,16 @@
 			}
 			rotZ = Math.atan2( Math.cos( rotX ), Math.sin( rotX ) * Math.sin( rotY ) );
 
+			var tStr;
+			// 1:  90 180 -90 0 0 0
+			// 3: 0 0 90 0 0 -100
+			// 4: 90 0 90 -100 0 -100
+			switch( ix ){
+				case 1: tStr = 'rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'.sprintf( 90, 180, -90, 0, 0, 0 ); break;
+				case 3: tStr = 'rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'.sprintf( 0, 0, 90, 0, 0, -100 ); break;
+				case 4: tStr = 'rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'.sprintf( 90, 0, 90, -100, 0, -100 ); break;
+			}
+
 			this.$faces.push(
 				$( '<div></div>' )
 					.css({
@@ -89,9 +99,9 @@
 						,                     'left' : 0
 						,                    'width' : mult*this.distanceBetween( p1, p2 )
 						,                   'height' : mult*this.distanceBetween( p2, p3 )
-						,        '-webkit-transform' : 'rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'
-							.sprintf( rotX*radToDeg, rotY*radToDeg, rotZ*radToDeg, mult*p1[0], mult*p1[1], mult*p1[2] )
-						, '-webkit-transform-origin' : '0 0'
+						,        '-webkit-transform' : tStr || ('rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'
+							.sprintf( rotX*radToDeg, rotY*radToDeg, rotZ*radToDeg, mult*p1[0], mult*p1[1], mult*p1[2] ) )
+						, '-webkit-transform-origin' : '0% 0%'
 						,          'background-size' : '100% 100%'
 					})
 					.appendTo( this.$domNode )
@@ -126,7 +136,7 @@
 
 		, setTransform : function setTransform(){
 			this.$domNode.css({
-				'-webkit-transform' : 'rotateX( %s ) rotateY( %s ) rotateZ( %s ) translateX( %s ) translateY( %s ) translateZ( %s )'.sprintf(
+				'-webkit-transform' : 'rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'.sprintf(
 					this.rotX, this.rotY, this.rotZ, this.posX, this.posY, this.posZ
 				)
 			});

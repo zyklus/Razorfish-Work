@@ -6,7 +6,7 @@ var   $widget = $( '#widget' )
   , cylinders = []
   ,  minWidth = 500
   ,   zeroDeg = 16.2
-  , bgCyl, spriteCyl1, crystal, i, l, bgHeight, widgetHeight
+  , bgCyl, spriteCyl1, crystal, box, i, l, bgHeight, widgetHeight
   , bgSound1, bgSound2, alienYell, shipPass;
 
 /**
@@ -48,6 +48,17 @@ $menu
 				crystal.stop().fadeOut();
 			}else{
 				crystal.start().fadeIn();
+			}
+			$this.toggleClass( 'active' );
+		} )
+		.end()
+	.find( '.icon.box' )
+		.bind( 'click', function(){
+			var $this = $( this );
+			if( $this.hasClass( 'active' ) ){
+				box.hide();
+			}else{
+				box.fadeIn();
 			}
 			$this.toggleClass( 'active' );
 		} )
@@ -292,12 +303,34 @@ function addItemToCylinder( node, cylinder, conf ){
 /**
  * Add the box
  **/
-/*
-addItemToCylinder(
-	new $.Klass.Model3D( widgetSettings.json[ 'resources/models.json' ].box )
-	, spriteCyl1, { xDeg: 180, yPos: 500 }
-);
-*/
+(function(){
+	box = new $.Klass.Model3D( widgetSettings.json[ 'resources/models.json' ].box );
+
+	var angle = 0
+	  , lastMouse;
+
+	addItemToCylinder( box.hide(), spriteCyl1, { xDeg: 180, yPos: 650 } );
+
+	box.$domNode
+		.bind( 'mousedown touchstart', function( ev ){
+			lastMouse = ev;
+		} );
+
+	$widget
+		.bind( 'mouseup touchend', function(){
+			lastMouse = null;
+		} )
+		.bind( 'mousemove touchmove', function( ev ){
+			if( lastMouse == null ){ return; }
+
+			ev.stopPropagation();
+			ev.preventDefault();
+
+			box.rotateBy( ev.pageX - lastMouse.pageX, ev.pageY - lastMouse.pageY );
+			lastMouse = ev;
+		} );
+}());
+
 
 /**
  * Add the other sprites
