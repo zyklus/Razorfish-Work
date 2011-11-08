@@ -55,7 +55,7 @@
 		}
 
 		, restart : function restart(){
-			this.stop().setFrame( -1 ).start();
+			return this.stop().setFrame( -1 ).start();
 		}
 
 		, prevFrame: function prevFrame(){

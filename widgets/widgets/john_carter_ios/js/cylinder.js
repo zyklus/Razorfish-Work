@@ -1,9 +1,9 @@
 ( function( $ ){
-	$.Klass.add( 'Cylinder', $.Klass.MVC.View, {
+	$.Klass.add( 'Cylinder', $.Klass.MVC.View.Mutable, {
 		init : function( config ){
 			// this just calls _super with options tacked on to the existing arguments
 			this._super.apply( this, [].slice.call( arguments, 0 ).concat(
-				'perspective', 'parallaxMultiplier', 'radius'
+				'perspective', 'parallaxMultiplier', 'radius', 'scale'
 			) );
 
 			this.$domNode
@@ -14,6 +14,7 @@
 					,                       'left' : 0
 					,                      'right' : 0
 					, '-webkit-perspective-origin' : '50% 50%'
+					,         '-webkit-transition' : 'scale .5s'
 				});
 
 			this.$cylinder = $( '<div></div>' )
@@ -37,6 +38,8 @@
 			this.bindEvents(
 				'set:perspective', 'onSetPerspective'
 				,    'set:radius', 'onSetRadius'
+				,     'set:scale', 'onSetScale'
+				,  'dom:modified', 'fixFirstItem'
 			);
 
 			this.degrees = 0;
@@ -52,12 +55,26 @@
 			return this.$cylinder.css( '-webkit-transform', 'translateZ(' + r + 'px)' );
 		}
 
+		, fixFirstItem : function fixFirstItem(){
+			if( this.firstItemTimeout ){ clearTimeout( this.firstItemTimeout ); }
+			this.firstItemTimeout = setTimeout( this.bindMethod( 'fixFirstItemCall' ), 1 );
+		}
+
+		, fixFirstItemCall : function fixFirstItemCall(){
+			var $item = this.$domNode.find( '.view-Cylinder-Item:first' ), $parent = $item.parent();
+			$item.prependTo( $parent );
+		}
+
 		, rotateBy : function rotateBy( deg ){
 			return (
 				this
 					.rotateTo( this.degrees + deg )
 					.trigger( 'rotate-by', deg )
 			);
+		}
+
+		, onSetScale : function( s ){
+			this.$domNode.css({ '-webkit-transform': 'scale( ' + s + ' )' });
 		}
 
 		, setTransform : function setTransform(){

@@ -6,6 +6,7 @@
 
 			$( window ).bind( 'deviceorientation', this.bindMethod( 'orientationChange' ) );
 			this.degrees = 0;
+			this.config  = config;
 		}
 
 		, orientationChange : function( ev ){
@@ -16,7 +17,7 @@
 			 * In portrait only: if gamma closer to 0, pointing back.  If closer to +- 180, pointing forward
 			 **/
 			var     oEv = ev.originalEvent
-			  , heading = oEv.webkitCompassHeading
+			  , heading = oEv.webkitCompassHeading - ( this.config.zeroDeg || 0 )
 			  ,    beta = oEv.beta
 			  ,   gamma = oEv.gamma
 			  ,  orient = window.orientation

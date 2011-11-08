@@ -1,6 +1,10 @@
 var   $widget = $( '#widget' )
   ,   $window = $( window )
+  ,     $menu = $widget.find( '.menu' )
+  ,   menuTop = -$menu.outerHeight() + 25
   , cylinders = []
+  ,  minWidth = 500
+  ,   zeroDeg = 16.2
   , bgCyl, spriteCyl1, crystal, i, l, bgHeight, widgetHeight
   , bgSound1, bgSound2, alienYell, shipPass;
 
@@ -8,11 +12,51 @@ var   $widget = $( '#widget' )
  * Control the size of the view
  **/
 $window.bind( 'viewportResize', function( ev, w, h ){
+	var ratio = w / minWidth
+	  , i, l;
+
 	$widget.css({
 		   width : w
 		, height : widgetHeight = h
 	});
+
+	// for( i=0, l=cylinders.length; i<l; i++ ){
+	// 	cylinders[i].set({ scale: ratio });
+	// }
 });
+
+/**
+ * drop-down menu
+ **/
+$menu
+	.css({ top: menuTop })
+	.show()
+	.find( '.arrow' )
+		.bind( 'click', function(){
+			if( $menu.hasClass( 'open' ) ){
+				$menu.removeClass( 'open' ).css({ top : menuTop });
+			}else{
+				$menu.addClass( 'open' ).css({ top : 0 });
+			}
+		})
+		.end()
+	.find( '.icon.crystal' )
+		.bind( 'click', function(){
+			var $this = $( this );
+			if( $this.hasClass( 'active' ) ){
+				crystal.stop().fadeOut();
+			}else{
+				crystal.start().fadeIn();
+			}
+			$this.toggleClass( 'active' );
+		} )
+		.end()
+	.find( '.icon.music' )
+		.bind( 'click', function(){
+			var $this = $( this );
+			bgSound1[ $this.hasClass( 'active' ) ? 'pause' : 'play' ]();
+			$this.toggleClass( 'active' );
+		} );
 
 /**
  * Splash Screen
@@ -33,7 +77,7 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 				// 	$widget.css({ opacity: 1 });
 				// } );
 				
-				console.log( bgCyl.$domNode.height() );
+//				console.log( bgCyl.$domNode.height() );
 			}, 500 );
 		}
 	}
@@ -44,11 +88,11 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 	}
 
 //	$.Util.imageLoader( 'images/alien.png'               , loaded ); loading++;
-	$.Util.imageLoader( 'images/dead_guy.png'            , loaded ); loading++;
-	$.Util.imageLoader( 'images/john_carter.png'         , loaded ); loading++;
-	$.Util.imageLoader( 'images/left_ship.png'           , loaded ); loading++;
+//	$.Util.imageLoader( 'images/dead_guy.png'            , loaded ); loading++;
+//	$.Util.imageLoader( 'images/john_carter.png'         , loaded ); loading++;
+//	$.Util.imageLoader( 'images/left_ship.png'           , loaded ); loading++;
 	$.Util.imageLoader( 'images/logo.png'                , loaded ); loading++;
-	$.Util.imageLoader( 'images/moons.png'               , loaded ); loading++;
+//	$.Util.imageLoader( 'images/moons.png'               , loaded ); loading++;
 	$.Util.imageLoader( 'images/panarama-1.jpg'          , bgLoad ); loading++;
 	$.Util.imageLoader( 'images/panarama-2.jpg'          , loaded ); loading++;
 	$.Util.imageLoader( 'images/panarama-3.jpg'          , loaded ); loading++;
@@ -65,11 +109,24 @@ $window.bind( 'viewportResize', function( ev, w, h ){
  * Control rotation
  **/
 (function(){
-	var orient = new $.Klass.HTML5.Orientation()
+	var    orient = new $.Klass.HTML5.Orientation({ zeroDeg: zeroDeg })
+	  , rotOffset = 0
+	  , enableRot = false
 	  , mousedown, lastX, lastY;
 
 	orient
 		.bind( 'heading', function( deg ){
+			if( !enableRot && deg ){
+				if( !rotOffset ){
+					setTimeout( function(){ enableRot = true; }, 1000 );
+				}
+
+				rotOffset = deg;
+			}
+				
+			if( !enableRot ){ return; }
+			deg -= rotOffset - zeroDeg;
+
 			for( i=0, l=cylinders.length; i<l; i++ ){
 				cylinders[i].rotateTo( deg );
 			}
@@ -125,7 +182,7 @@ $window.bind( 'viewportResize', function( ev, w, h ){
 bgCyl = new $.Klass.Cylinder.Background({
 	       images : [ 'images/panarama-4.jpg', 'images/panarama-3.jpg', 'images/panarama-2.jpg', 'images/panarama-1.jpg' ]
 	,       faces : 48
-	, perspective : 500
+	, perspective : 400
 });
 bgCyl.appendTo( $widget );
 cylinders.push( bgCyl );
@@ -135,7 +192,7 @@ cylinders.push( bgCyl );
  **/
 spriteCyl1 = new $.Klass.Cylinder({
 	       radius : 1222
-	, perspective : 500
+	, perspective : 400
 }).appendTo( $widget );
 cylinders.push( spriteCyl1 );
 
@@ -143,7 +200,7 @@ cylinders.push( spriteCyl1 );
  * set default rotation
  **/
 for( i=0, l=cylinders.length; i<l; i++ ){
-	cylinders[i].rotateTo( 15 );
+	cylinders[i].rotateTo( zeroDeg );
 }
 
 
@@ -216,6 +273,8 @@ function addItemToCylinder( node, cylinder, conf ){
 			ev.preventDefault();
 		} );
 
+	crystal.stop().hide();
+
 	addItemToCylinder( crystal, spriteCyl1, { xDeg: -130, yPos: 442 } );
 }());
 
@@ -245,12 +304,13 @@ function addItemToCylinder( node, cylinder, conf ){
 */
 
 // dead guy
+/*
 addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/dead_guy.png' ) no-repeat"
 	,    width : 477
 	,   height : 83
 }), spriteCyl1, { xDeg: -171, yPos: 675, scale: 0.9 } );
-
+*/
 
 // woman
 /*
@@ -272,14 +332,16 @@ addItemToCylinder( $( '<div></div>' ).css({
 
 
 // john carter
+/*
 addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/john_carter.png' ) no-repeat"
 	,    width : 609
 	,   height : 725
 }), spriteCyl1, { xDeg: 106, yPos: 467, zPos : 200 } );
-
+*/
 
 // left ship
+/*
 (function(){
 	var shipDom = $( '<div></div>' ).css({
 		background : "url( 'images/left_ship.png' ) no-repeat"
@@ -299,38 +361,41 @@ addItemToCylinder( $( '<div></div>' ).css({
 		triggered = true;
 	});
 }());
+* */
 
 // logo
 addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/logo.png' ) no-repeat"
 	,    width : 914
 	,   height : 671
-}), spriteCyl1, { xDeg: -196, yPos: 275, zPos: 250, scale: 1.15 } );
+}), spriteCyl1, { xDeg: -196, yPos: 275, zPos: 250, scale: 0.8 } );
 
 
 // moons
+/*
 addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/moons.png' ) no-repeat"
 	,    width : 415
 	,   height : 359
 }), spriteCyl1, { xDeg: -55, yPos: -55, parallaxMultiplier: 1.35 } );
-
+*/
 
 // right ship #1 + shadow
 addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/right_ship.png' ) no-repeat"
 	,    width : 734
 	,   height : 273
-}), spriteCyl1, { xDeg: 53, yPos: -125, zPos: 300, scale: 2 } );
+}), spriteCyl1, { xDeg: 53, yPos: 75, zPos: 150, scale: 0.6 } );
 
 addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/right_ship_shadow.png' ) no-repeat"
 	,    width : 657
 	,   height : 186
-}), spriteCyl1, { xDeg: 53, yPos: 495, zPos: 300, scale: 1.6 } );
+}), spriteCyl1, { xDeg: 53, yPos: 555, zPos: 150, scale: 0.6 } );
 
 
 // right ship #2 + shadow
+/*
 addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/right_ship.png' ) no-repeat"
 	,    width : 734
@@ -342,9 +407,10 @@ addItemToCylinder( $( '<div></div>' ).css({
 	,    width : 657
 	,   height : 186
 }), spriteCyl1, { xDeg: 86, yPos: 455, zPos: 400, scale: 0.8 } );
-
+*/
 
 // right ship #3 + shadow
+/*
 addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/right_ship.png' ) no-repeat"
 	,    width : 734
@@ -356,7 +422,7 @@ addItemToCylinder( $( '<div></div>' ).css({
 	,    width : 657
 	,   height : 186
 }), spriteCyl1, { xDeg: 14, yPos: 443, zPos: 500 } );
-
+*/
 
 // sword
 /*
@@ -378,11 +444,12 @@ function newSound( file ){
  **/
 (function(){
 	bgSound1  = newSound( 'resources/sounds/loop.mp3' );
-	bgSound2  = newSound( 'resources/sounds/loop.mp3' );
-	alienYell = newSound( 'resources/sounds/alien_yell.mp3' );
-	shipPass  = newSound( 'resources/sounds/ship_pass.mp3' );
+	bgSound1.setAttribute( 'loop', 'loop' );
+//	bgSound2  = newSound( 'resources/sounds/loop.mp3' );
+//	alienYell = newSound( 'resources/sounds/alien_yell.mp3' );
+//	shipPass  = newSound( 'resources/sounds/ship_pass.mp3' );
 
-	bgSound1.play();
-	$( bgSound1 ).bind( 'ended', function(){ bgSound2.play(); this.currentTime = 0; this.pause(); } );
-	$( bgSound2 ).bind( 'ended', function(){ bgSound1.play(); this.currentTime = 0; this.pause(); } );
+//	bgSound1.play();
+//	$( bgSound1 ).bind( 'ended', function(){ bgSound2.play(); this.currentTime = 0; this.pause(); } );
+//	$( bgSound2 ).bind( 'ended', function(){ bgSound1.play(); this.currentTime = 0; this.pause(); } );
 }());

@@ -32,6 +32,7 @@
 
 			// trigger an event on all possible mutable events
 			if( node ){ this.trigger( 'dom:' + cmd, oNode ); }
+			if( oNode && oNode.trigger ){ oNode.trigger( 'dom:modified' ); }
 
 			// if jQuery returns a non-jQuery object, return that object (e.g. offset)
 			return res.jquery ? this : res;
@@ -69,5 +70,9 @@
 		,     position : function position    ( node ){ return this.runjQCmd  ( 'position'    , node ); }
 		,   scrollLeft : function scrollLeft  ( node ){ return this.runjQCmd  ( 'scrollLeft'  , node ); }
 		,    scrollTop : function scrollTop   ( node ){ return this.runjQCmd  ( 'scrollTop'   , node ); }
+		,         hide : function hide        ( node ){ return this.runjQCmd  ( 'hide'        , node ); }
+		,         show : function show        ( node ){ return this.runjQCmd  ( 'show'        , node ); }
+		,       fadeIn : function fadeIn      ( node ){ return this.runjQCmd  ( 'fadeIn'      , node ); }
+		,      fadeOut : function fadeOut     ( node ){ return this.runjQCmd  ( 'fadeOut'     , node ); }
 	});
 }( jQuery ));

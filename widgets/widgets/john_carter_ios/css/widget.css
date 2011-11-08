@@ -174,3 +174,63 @@ body {
 #widget {
   -webkit-transition: opacity 1s;
 }
+#widget .menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 5px;
+  border: 1px solid #000;
+  border-top-width: 0px;
+  background: #5980ac;
+  opacity: 0.8;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  -webkit-box-shadow: 0px 0px 10px #000;
+  -moz-box-shadow: 0px 0px 10px #000;
+  box-shadow: 0px 0px 10px #000;
+  padding: 0px 5px 30px 5px;
+  -webkit-transition: top 0.5s;
+}
+#widget .menu .icon {
+  margin: 5px auto;
+  opacity: 0.5;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  cursor: pointer;
+  -webkit-transition: opacity 0.5s;
+}
+#widget .menu .icon.active {
+  opacity: 1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+}
+#widget .menu .box {
+  display: none;
+}
+#widget .menu .crystal {
+  width: 42px;
+  height: 50px;
+  background: url("../images/sprite-0.png");
+  background-position: 0 0;
+}
+#widget .menu .music {
+  width: 46px;
+  height: 50px;
+  background: url("../images/sprite-0.png");
+  background-position: -42px 0;
+}
+#widget .menu .arrow {
+  background: url("../images/icon_down.png") no-repeat 50% 50%;
+  position: absolute;
+  z-index: 1;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 25px;
+  border-top: 1px solid #000;
+  cursor: pointer;
+}
+#widget .menu.open .arrow {
+  background: url("../images/icon_up.png") no-repeat 50% 50%;
+}

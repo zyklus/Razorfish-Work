@@ -69,26 +69,27 @@
 					, xPatch : i ? 0 : ( -360 / this.faces / 2 )
 				});
 
-				canvas = $( '<canvas width="%s" height="%s"></canvas>'.sprintf( 0|faceWidth, 0|faceHeight ) );
+				canvas = $( '<canvas width="%s" height="%s"></canvas>'.sprintf( 0|faceWidth + 0.99, 0|faceHeight ) );
 				ctx    = canvas[0].getContext( '2d' );
 
-				// drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-				ctx.drawImage( this.$images[ imgIx ][0], imgX ? this.$images[ imgIx ][0].width - imgX : 0, 0, 0|faceWidth, faceHeight, 0, 0, 0|faceWidth, faceHeight );
+				// drawImage( image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight )
+				ctx.drawImage(
+					  this.$images[ imgIx ][0]
+					, imgX ? this.$images[ imgIx ][0].width - imgX : 0
+					, 0
+					, 0|faceWidth + 0.99
+					, faceHeight
+					, 0
+					, 0
+					, 0|faceWidth
+					, faceHeight
+				);
 
 				face.append( canvas ).appendTo( this );
-				// 
-				// face.append(
-				// 	$( '<div></div>' )
-				// 		.css({
-				// 			background : "url( '%s' ) %spx 0px".sprintf( this.$images[ imgIx ][0].src, imgX )
-				// 			,    width : 0|faceWidth
-				// 			,   height : faceHeight
-				// 		})
-				// ).appendTo( this );
 
 				imgX += faceWidth;
 				// .1 is for floating point errors
-				if( (imgX+.1) >= this.$images[ imgIx ][0].width ){
+				if( ( imgX + 0.1 ) >= this.$images[ imgIx ][0].width ){
 					imgX = 0;
 				}
 
@@ -101,10 +102,6 @@
 
 				this.faceKlss.push( face );
 			}
-
-			// fix a safari bug where the first item shows up in the wrong place for some reason
-			var $item = this.$domNode.find( '.view-Cylinder-Item:first' ), $parent = $item.parent();
-			$item.prependTo( $parent );
 		}
 	} );
 }( jQuery ) );
