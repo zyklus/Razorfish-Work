@@ -389,7 +389,7 @@ addItemToCylinder( $( '<div></div>' ).css({
 	background : "url( 'images/logo.png' ) no-repeat"
 	,    width : 914
 	,   height : 671
-}), spriteCyl1, { xDeg: -196, yPos: 275, zPos: 250, scale: 0.8 } );
+}), spriteCyl1, { xDeg: -196, yPos: 275, zPos: 250, scale: 0.6 } );
 
 
 // moons
