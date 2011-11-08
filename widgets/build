@@ -81,7 +81,7 @@ var           fs = require( 'fs' )
 	, "Unexpected dangling '_' in '_super'."                                   : 1 // observable library
 	, "Unescaped '-'."                                                         : 1 // Allow `-` character at start/end of regex groups (I don't WANT to escape them!)
 	, "Expected 'String' and instead saw ''''."                                : 1 // Empty string ARE allowed, wtf.
-
+	, "Mixed spaces and tabs."                                                 : 1 // Would leave it except that it complains about comments
   }
 
   ,   watchFiles = {}
@@ -682,7 +682,7 @@ function createWidgetBundle( widget, dir ){
 				.replace( 'putWidgetSettingsHere()', JSON.stringify( config ) )
 				.replace( 'doOtherJSStuffs()'      , compJS );
 
-			fs.writeFileSync( path.join( dir, widget, 'js' , 'bundle.js'  ), compJS );
+			fs.writeFileSync( path.join( dir, widget, 'js' , 'loader.js'  ), compJS );
 			fs.writeFileSync( path.join( dir, widget, 'css', 'bundle.css' ), compCSS );
 
 			success( 'Bundle widget "' + widget + '"' );
