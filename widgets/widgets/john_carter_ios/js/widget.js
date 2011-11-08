@@ -290,6 +290,16 @@ function addItemToCylinder( node, cylinder, conf ){
 }());
 
 /**
+ * Add the box
+ **/
+/*
+addItemToCylinder(
+	new $.Klass.Model3D( widgetSettings.json[ 'resources/models.json' ].box )
+	, spriteCyl1, { xDeg: 180, yPos: 500 }
+);
+*/
+
+/**
  * Add the other sprites
  **/
 
