@@ -69,9 +69,9 @@
 			}
 
 			// normalize to assume p1 is at 0,0,0
-			x = p2[0] - p1[0];
-			y = p2[1] - p1[1];
-			z = p2[2] - p1[2];
+			x = p3[0] - p1[0];
+			y = p3[1] - p1[1];
+			z = p3[2] - p1[2];
 
 			rotX = Math.atan2( x, z );
 			if (z >= 0) {
@@ -81,15 +81,7 @@
 			}
 			rotZ = Math.atan2( Math.cos( rotX ), Math.sin( rotX ) * Math.sin( rotY ) );
 
-			var tStr;
-			// 1:  90 180 -90 0 0 0
-			// 3: 0 0 90 0 0 -100
-			// 4: 90 0 90 -100 0 -100
-			switch( ix ){
-				case 1: tStr = 'rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'.sprintf( 90, 180, -90, 0, 0, 0 ); break;
-				case 3: tStr = 'rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'.sprintf( 0, 0, 90, 0, 0, -100 ); break;
-				case 4: tStr = 'rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'.sprintf( 90, 0, 90, -100, 0, -100 ); break;
-			}
+			console.log( x, y, z, rotX, rotY, rotZ );
 
 			this.$faces.push(
 				$( '<div></div>' )
@@ -99,8 +91,8 @@
 						,                     'left' : 0
 						,                    'width' : mult*this.distanceBetween( p1, p2 )
 						,                   'height' : mult*this.distanceBetween( p2, p3 )
-						,        '-webkit-transform' : tStr || ('rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'
-							.sprintf( rotX*radToDeg, rotY*radToDeg, rotZ*radToDeg, mult*p1[0], mult*p1[1], mult*p1[2] ) )
+						,        '-webkit-transform' : 'rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'
+							.sprintf( rotX*radToDeg, rotY*radToDeg, rotZ*radToDeg, mult*p1[0], mult*p1[2], mult*p1[1] )
 						, '-webkit-transform-origin' : '0% 0%'
 						,          'background-size' : '100% 100%'
 					})

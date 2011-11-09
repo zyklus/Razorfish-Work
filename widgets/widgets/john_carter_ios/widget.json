@@ -24,6 +24,7 @@
 		, "js/cylinder-item.js"
 		, "js/cylinder-background.js"
 		, "resources/models.json"
+		, "js/normal.js"
 		, "js/widget.js"
 	]
 

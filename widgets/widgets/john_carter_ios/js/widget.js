@@ -331,6 +331,36 @@ function addItemToCylinder( node, cylinder, conf ){
 		} );
 }());
 
+/**
+ * Add stone wall
+ **/
+(function(){
+	var wallDeg = 200
+	  , normal;
+
+	addItemToCylinder( $( '<canvas id="stoneWall"></canvas>' ).css({
+		   width : 128
+		, height : 128
+	}), spriteCyl1, { xDeg: wallDeg, yPos: 567, scale: .6 } )
+	
+
+	$.Util.Normals.normalmap( 'stoneWall', 'images/textures/stone_wall_sm.jpg', 'images/textures/stone_wall_normal_map_sm.jpg', function( obj ){
+		normal = obj;
+	} );
+
+	spriteCyl1.bind( 'rotate-to', function( deg ){
+		if( !normal ){ return; }
+ 		var angle = 180 - wallDeg - deg
+		  , xPos;
+
+		while( angle >  180 ){ angle -= 360; }
+		while( angle < -180 ){ angle += 360; }
+
+		xPos = 15*angle + 256;
+
+		$.Util.Normals.drawLight( normal.canvas, normal.ctx, normal.normals, normal.textureData, 1, 1, xPos, 200, 300 );
+	});
+}());
 
 /**
  * Add the other sprites
