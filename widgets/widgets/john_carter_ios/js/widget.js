@@ -341,7 +341,7 @@ function addItemToCylinder( node, cylinder, conf ){
 	addItemToCylinder( $( '<canvas id="stoneWall"></canvas>' ).css({
 		   width : 128
 		, height : 128
-	}), spriteCyl1, { xDeg: wallDeg, yPos: 567, scale: .6 } )
+	}), spriteCyl1, { xDeg: wallDeg, yPos: 567, scale: 1.6 } )
 	
 
 	$.Util.Normals.normalmap( 'stoneWall', 'images/textures/stone_wall_sm.jpg', 'images/textures/stone_wall_normal_map_sm.jpg', function( obj ){
