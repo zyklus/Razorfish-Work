@@ -5,7 +5,7 @@
 	, "email"        : "mark.kahn@razorfish.com"
 	, "uri"          : "http://www.razorfish.com"
 
-	, "dependencies" : [ "observable" ]
+	, "dependencies" : [ "observable/configurable" ]
 	, "files"        : [ "mvc.js" ]
 
 	, "subPlugins" : [

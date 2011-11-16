@@ -1,62 +1,10 @@
 (function( $ ){
-	$.Klass.add( 'MVC', $.Klass.Observable, {
-		init : function( config, optName /*, optName, optName, optName*/ ){
-			var self = this
-			  , i, l;
-
-			// call Observable constructor
-			this._super();
-
-			this.allowedConfigParameters = {};
-			this.config                  = config || {};
+	$.Klass.add( 'MVC', $.Klass.Configurable, {
+		init : function(){
+			this.supper.apply( this, arguments );
 
 			// add known config options
 			this.addConfigParameters( 'controller' );
-
-			// every extra argument is considered a valid config parameter
-			this.addConfigParameters.apply( this, [].slice.call( arguments, 1 ) );
-
-			// now apply all options in config
-			self.set( config );
-		}
-
-		, addConfigParameters : function(){
-			var opts = [].slice.call( arguments, 0 )
-			  , i, l;
-
-			for( i=0, l=opts.length; i<l; i++ ){
-				if( 'string' !== typeof( opts[i] ) ){ continue; }
-
-				this.allowedConfigParameters[ opts[i] ] = 1;
-			}
-
-			return this;
-		}
-
-		// takes all known options from config and applies to self
-		, set : function( config ){
-			var opt;
-
-			for( opt in config ){
-				// Sanity check for Object.prototype idiocy
-				if( !config.hasOwnProperty( opt ) ){ continue; }
-
-				this.config[ opt ] = config[ opt ];
-
-				// to prevent accidental function replacement
-				if( !this.allowedConfigParameters[ opt ] ){ continue; }
-
-				// convienience method -- set this.opt
-				this[ opt ] = config[ opt ];
-
-				this.triggerAndCache( 'set:' + opt, config[ opt ] );
-			}
-
-			return this;
-		}
-
-		, get: function get( param ){
-			return this.config[ param ];
 		}
 
 		, destroy : function(){

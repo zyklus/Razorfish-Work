@@ -358,7 +358,7 @@ function addItemToCylinder( node, cylinder, conf ){
 
 		xPos = 15*angle + 256;
 
-		$.Util.Normals.drawLight( normal.canvas, normal.ctx, normal.normals, normal.textureData, 1, 1, xPos, 200, 300 );
+		$.Util.Normals.drawLight( normal.canvas, normal.ctx, normal.normals, normal.textureData, 0, 1, xPos, 200, 300 );
 	});
 }());
 

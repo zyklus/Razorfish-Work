@@ -7,4 +7,8 @@
 
 	, "dependencies" : [ "klass" ]
 	, "files"        : [ "observable.js" ]
+
+	, "subPlugins" : [
+		  { "name" : "configurable", "files" : [ "configurable.js" ], "dependencies" : [ "observable" ] }
+	]
 }
