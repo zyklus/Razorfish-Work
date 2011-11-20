@@ -8,14 +8,14 @@
  * Querystring params allowed
  * - allowJQCDN
  **/
-( function( config, cb ){
-	var     jQExists = !!jQuery
+( function( window, config, cb ){
+	var     jQExists = !!window.jQuery
 	  ,    jQVersion = jQExists ? jQuery.fn.jquery : undefined
 	  , minjQVersion = config.minJQueryVersion || '0'
 	  , incJQVersion = config.bundledJQueryVersion
 	  ,  queryString = {}
 	  ,   allowJQCDN = false
-	  ,        jqRef = jQuery
+	  ,        jqRef = window.jQuery
 	  , qs, jQueryPath, jQueryVersion, scripts;
 
 	/**
@@ -47,7 +47,7 @@
 	 **/
 	function getWidgetSettings( conf ){
 		var settings = conf.settings
-		  ,      out = []
+		  ,      out = {}
 		  , n, val, type;
 
 		// walk each setting, sanitizing & setting defaults
@@ -56,20 +56,19 @@
 			type = settings[ n ].type;
 
 			if( val ){
-				out.push( '"' + n + '": ' +
-					    ( type === 'checkbox'     ) ? !!val
-					  : ( type === 'multi-select' ) ? '["' + val.split( ',' ).join( '", "' ) + '"]'
-					  : '"' + val + '"'
-				);
+				out[ n ] = 
+					  ( type === 'checkbox'     ) ? !!val
+					: ( type === 'multi-select' ) ? val.split( ',' )
+				 	: val;
 			}
 		}
 
 		// pass along any JSON files
 		if( conf.json ){
-			out.push( '"json": ' + JSON.stringify( conf.json ) );
+			out.json = conf.json;
 		}
 
-		return '{' + out.join( ', ' ) + '}';
+		return out;
 	}
 
 	/**
@@ -146,11 +145,24 @@
 	}
 
 	/**
+	 * Loads a specific CSS file
+	 **/
+	function loadCSS( path ){
+		var link = document.createElement( 'link' );
+		link.setAttribute( 'rel', 'stylesheet' );
+		link.setAttribute( 'href', path );
+
+		document.getElementsByTagName( 'HEAD' )[0].appendChild( link );
+	}
+		
+
+	/**
 	 * jQuery is loaded, store a reference and remove it from the page
 	 **/
 	function jqLoaded(){
 		// remove new version of jQuery from the page and return the original (if it exists)
 		jqRef = jQuery.noConflict( true );
+		loadCSS( 'css/bundle.css' );
 		triggerCB();
 	}
 
@@ -158,9 +170,9 @@
 	 * Run all the other codes!
 	 **/
 	function triggerCB(){
-		cb( jqRef );
+		cb( jqRef, getWidgetSettings( config ) );
 	}
-} )( putWidgetSettingsHere(), function( jQuery, widgetSettings ){
+} )( this, putWidgetSettingsHere(), function( jQuery, widgetSettings ){
 	var $ = jQuery;
 
 	// the following line is searched for and replaced.  DO NOT CHANGE

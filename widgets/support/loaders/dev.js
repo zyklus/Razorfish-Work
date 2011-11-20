@@ -23,8 +23,8 @@
 	 * Executes code in a private scope with all properties of params exposed
 	 * as local variables
 	 **/
-	function executeJS( code, paramStr, useStrict, file ){
-		var paramVars = 'var widgetSettings = ' + paramStr + ';';
+	function executeJS( code, params, useStrict, file ){
+		var paramVars = 'var widgetSettings = ' + JSON.stringify( params ) + ';';
 
 		try{
 			eval(
@@ -359,7 +359,7 @@
 		 **/
 		function getWidgetSettings( conf ){
 			var settings = conf.settings
-			  ,      out = []
+			  ,      out = {}
 			  , n, val, type;
 
 			// walk each setting, sanitizing & setting defaults
@@ -368,21 +368,22 @@
 				type = settings[ n ].type;
 
 				if( val ){
-					out.push( '"%s": %s'.sprintf(
-						  n
-						,   ( type === 'checkbox'     ) ? !!val
-						  : ( type === 'multi-select' ) ? '["' + val.split( ',' ).join( '", "' ) + '"]'
-						  : '"' + val + '"'
-					) );
+					out[ n ] = 
+						  ( type === 'checkbox'     ) ? !!val
+						: ( type === 'multi-select' ) ? val.split( ',' )
+					 	: val;
 				}
 			}
 
+			// set `file` to the current file name or `index` if no name exists
+			out.file = ( /\/([^\/]+)\.[^\.\/]+$/.exec(location.href) || '' )[1] || 'index';
+
 			// pass along any JSON files
 			if( conf.json ){
-				out.push( '"%s": %s'.sprintf( 'json', JSON.stringify( conf.json ) ) );
+				out.json = conf.json;
 			}
 
-			return '{' + out.join( ', ' ) + '}';
+			return out;
 		}
 
 
@@ -390,20 +391,47 @@
 		 * Load each file and inject it into the document
 		 **/
 		function loadAndExecFiles( err, fileList, widgetConfig ){
-			var i;
+			var widgetSettings = getWidgetSettings( widgetConfig )
+			  , i, n, triggers;
 
-			// remove image resources from file list
+			/**
+			 * Remove from file list:
+			 * - images
+			 * - files whose trigger does not match
+			 **/
+
 			for( i=fileList.length - 1; i>=0; i--) {
+				triggers = null;
+
+				// remove the triggers from the fileList and return it to a normal string
+				if( fileList[i].splice ){
+					triggers = '|' + fileList[i][1].join( '|' ) + '|';
+					fileList[i] = fileList[i][0];
+				}
+
 				if( imgRx.test( fileList[i] ) ){
 					fileList.splice( i, 1 );
+					continue;
+				}
+
+				if( triggers ){
+					for( n in widgetSettings ){
+						if( 'string' !== typeof( widgetSettings[n] ) ){ continue; }
+
+						triggers = triggers.replace( n + ':' + widgetSettings[n], '' );
+					}
+
+					// none of the triggers matched
+					if( !~triggers.replace( /[\s,]+/, '' ).indexOf( '||' ) ){
+						fileList.splice( i, 1 );
+						continue;
+					}
 				}
 			}
 
 			loadFiles( fileList, function(){
 				var args = arguments
 				  , widgetSettings, i, l, json;
-
-				widgetSettings = getWidgetSettings( widgetConfig );
 
 				for( i=1, l=args.length; i<l; i++ ){
 					if( 'string' === typeof( args[i] ) ){
@@ -443,15 +471,15 @@
 			/**
 			 * Initial config files -- widget, jQuery versions, file list
 			 **/
-			configLoaded : function( err, w, j, f ){
+			configLoaded : function configLoaded( err, w, j, f ){
 				this.widgetConf   = w;
 				this.jqVersions   = j;
 				this.pluginFiles  = {};
 				this.fileList     = [];
 				this.minJQVersion = j.versions[0]; // set default lowest jQuery version to lowest available
 
-				this.parseWidgetConf( w );
-				this.parseFileList  ( f, '' );
+				this.parseWidgetConf( w )
+				    .parseFileList  ( f, '' );
 
 				var plugins = w[ 'jqueryPlugins' ] || []
 				  ,  toLoad = []
@@ -462,20 +490,65 @@
 					this.addPlugin( plugins[i].name.split( '/' )[0] );
 				}
 
-				this.getPlugins();
-
-				return this;
+				return this.getPlugins();
 			}
 
 
 			/**
 			 * Parses widget config
 			 **/
-			, parseWidgetConf : function( obj ){
+			, parseWidgetConf : function parseWidgetCon( obj ){
 				var  minjQ = obj.minJQueryVersion
-				  , testjQ = obj.testJQueryVersion;
+				  , testjQ = obj.testJQueryVersion
+				  ,  views = obj.views
+				  ,  files = obj.files
+				  , i, j, k, l, m, n, file, fileIx;
 
 				this.requireJQVersion( ( devMode ? testjQ : minjQ ) || '' );
+
+				for( i in views ){ // i == view name
+
+					// default the trigger to the current file name
+					if( !views[i].trigger ){
+						views[i].trigger = "file:" + i;
+					}
+
+					// ensure that certain properties are arrays
+					views[i].files   = [].concat( views[i].files   );
+
+					// loop all required files
+					for( j=0, m=views[i].files.length; j<m; j++ ){
+						file   = views[i].files[j];
+						fileIx = -1;
+
+						// find the file 
+						for( k=0, n=files.length; k<n; k++ ){
+							if( file === ( files[k].splice ? files[k][0] : files[k] ) ){
+								fileIx = k;
+								break;
+							}
+						}
+
+						// file is not already included
+						if( !~fileIx ){
+							fileIx = files.length;
+							files.push( file );
+						}
+
+						// In the widget config, make sure this file an array
+						file = files[ fileIx ] = [].concat( files[ fileIx ] );
+
+						// if this is the first view added for this file
+						if( 1 === file.length ){
+							file.push( [] );
+						}
+
+						// the current trigger activates this file
+						file[1].push( views[i].trigger );
+					}
+				}
+
+				return this;
 			}
 
 
@@ -494,6 +567,8 @@
 						this.parseFileList( obj[file], root + '/' + file );
 					}
 				}
+
+				return this;
 			}
 
 
@@ -541,6 +616,7 @@
 					if( this.pluginConfs[p] ){ continue; }
 
 					// the split is so that we load the json from the root plugin
+					// e.g. 'foo/bar' should load 'foo/plugin.json'
 					files.push( pluginDir + p.split('/')[0] + '/plugin.json' );
 				}
 				this.pluginQueue = {};
@@ -764,7 +840,6 @@
 				  , i, rFile;
 
 				this.widgetConf.json = jsonConf;
-
 				for( i=this.reqFiles.length-1; i>=0; i-- ){
 					rFile = this.reqFiles[i];
 					if( !jsonRx.test( rFile ) ){ continue; }

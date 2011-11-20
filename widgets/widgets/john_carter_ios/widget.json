@@ -25,8 +25,17 @@
 		, "js/cylinder-background.js"
 		, "resources/models.json"
 		, "js/normal.js"
-		, "js/widget.js"
 	]
+
+	, "views" : {
+		"index" : {
+			"files" : "js/widget.js"
+		}
+
+		, "model-viewer" : {
+			"files" : [ "js/model-viewer.js" ]
+		}
+	}
 
 	, "settings" : {
 		"size" : {
