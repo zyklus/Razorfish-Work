@@ -6,7 +6,7 @@
 	$.Klass.add( 'File.Dependency', $.Klass.Configurable, {
 		init : function init( config ){
 			this._super.apply( this, arguments );
-			this.addConfigParameters( 'path', 'fileData', 'lineComment' );
+			this.addConfigParameters( 'file', 'fileData', 'lineComment' );
 
 			this.bindEvents(
 				'set:file', 'setFile'

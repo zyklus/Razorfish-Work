@@ -7,23 +7,24 @@
 	,         "uri" : "http://www.razorfish.com"
 
 	, "jqueryPlugins" : [
-		  { "name" : "string"                      }
-		, { "name" : "mvc/view/mutable"            }
-		, { "name" : "mobile-webkit/viewport-size" }
-		, { "name" : "mobile-webkit/orientation"   }
-		, { "name" : "sprite-animation"            }
-		, { "name" : "3d-model"                    }
-		, { "name" : "util/image-loader"           }
+		  "string"
+		, "mvc/view/mutable"
+		, "mobile-webkit/viewport-size"
+		, "mobile-webkit/orientation"
+		, "sprite-animation"
+		, "3d-files/dot-mtl"
+		, "3d-files/dot-obj"
+		, "3d-model"
+		, "css3d/environment"
+		, "css3d/cylinder"
+		, "util/image-loader"
 	]
 
 	,  "minJQueryVersion" : "1.6.0"
 	, "testJQueryVersion" : "1.6.4"
 
 	, "files" : [
-		  "js/cylinder.js"
-		, "js/cylinder-item.js"
-		, "js/cylinder-background.js"
-		, "resources/models.json"
+		  "resources/models.json"
 		, "js/normal.js"
 	]
 
@@ -33,7 +34,10 @@
 		}
 
 		, "model-viewer" : {
-			"files" : [ "js/model-viewer.js" ]
+			"files" : [
+				  "js/model-viewer.js"
+				, "css/model-viewer.css"
+			]
 		}
 	}
 

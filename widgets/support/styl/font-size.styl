@@ -1,6 +1,6 @@
 font-size( args... )
 	params = ()
 	for n in args
-		push( params, unit( n, unit( n ) || 'px' ) )
+		push( params, ( 'unit' != typeof( n ) ) ? n : unit( n, unit( n ) || 'px' ) )
 
 	font-size params

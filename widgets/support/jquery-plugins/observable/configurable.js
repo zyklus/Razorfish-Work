@@ -9,13 +9,13 @@
 
 			this.allowedConfigParameters = {};
 			this.config                  = config || {};
+			this.baseConfig              = this.config;
 
 			// every extra argument is considered a valid config parameter
 			this.addConfigParameters.apply( this, [].slice.call( arguments, 1 ) );
 
 			// now apply all options in config
 			self.set( config );
-			this.baseConfig = config;
 		}
 
 		, addConfigParameters : function addConfigParameters(){
@@ -30,7 +30,7 @@
 
 				// copy any config params that are defined as valid after initial load
 				if( !this.config[ opts[i] ] && this.baseConfig[ opts[i] ] ){
-					conf[ opts[i] = this.baseConfig[ opts[i] ];
+					conf[ opts[i] ] = this.baseConfig[ opts[i] ];
 				}
 			}
 			return this.set( conf );

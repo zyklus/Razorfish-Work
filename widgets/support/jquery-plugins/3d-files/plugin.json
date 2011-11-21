@@ -1,0 +1,12 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "Classes that read in 3D model file formats"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "subPlugins" : [
+		  { "name" : "dot-mtl", "files" : "dot-mtl.js", "dependencies" : "file-dependency/config-reader" }
+		, { "name" : "dot-obj", "files" : "dot-obj.js", "dependencies" : [ "file-dependency/config-reader", "3d-files/dot-mtl" ] }
+	]
+}

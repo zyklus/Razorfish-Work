@@ -1,0 +1,53 @@
+!!! 5
+html
+	head
+		meta( name='viewport', content='user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0' )
+		script( type='text/javascript', src='js/loader.js' )
+		link( href="css/widget.css", rel="stylesheet", type="text/css" )
+	body
+		#menu
+			select#model-chooser
+				option( value="" ) Select A Model
+				option( value="" ) ----------
+				option( value="jcShip2" ) Ship
+			select#shader-chooser
+				option( value="none" ) No Shading
+				option( value="flat" ) Flat
+			select#ambient-chooser
+				option( value="" ) Ambient Light
+				option( value="" ) -------------
+				option 0%
+				option 5%
+				option 10%
+				option 15%
+				option 20%
+				option( selected ) 25%
+				option 30%
+				option 34%
+				option 40%
+				option 45%
+				option 50%
+				option 55%
+				option 60%
+				option 65%
+				option 70%
+				option 75%
+				option 80%
+				option 85%
+				option 90%
+				option 95%
+				option 100%
+			select#texture-chooser
+				option( value="solid" ) Solid-Color
+				option( value="texture" ) Texture Mapping
+				option( value="none" ) None
+			input#wireframe-option( type="checkbox" )
+			|  Show Wireframe 
+			span#spec-mask-option
+				input#apply-spec-mask( type="checkbox" )
+				|  Apply Specular Mask 
+			input#checkerboard-option( type="checkbox" )
+			|  Show Checkerboard
+			button( type='button' ) Generate Texture
+		#model
+		#texture

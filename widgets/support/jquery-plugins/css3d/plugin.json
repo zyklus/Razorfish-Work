@@ -1,0 +1,12 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "Pure CSS3 3D environment"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "subPlugins" : [
+		  { "name" : "environment", "files" : [ "environment.js" ] }
+		, { "name" : "cylinder"   , "files" : [ "cylinder.js", "cylinder-item.js", "cylinder-background.js" ] }
+	]
+}

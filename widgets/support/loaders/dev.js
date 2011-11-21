@@ -11,10 +11,70 @@
  * - exec widget
  **/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*****************************************************
  * DO NOT TOUCH THIS FILE -- IT WILL GET OVERWRITTEN *
- *         (unless you're looking at dev.js)         *
+ * (unless you're looking at support/loaders/dev.js) *
  *****************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (function(){
 	// NON-STRICT MODE
@@ -23,8 +83,8 @@
 	 * Executes code in a private scope with all properties of params exposed
 	 * as local variables
 	 **/
-	function executeJS( code, params, useStrict, file ){
-		var paramVars = 'var widgetSettings = ' + JSON.stringify( params ) + ';';
+	function executeJS( code, paramStr, useStrict, file ){
+		var paramVars = 'var widgetSettings = ' + paramStr + ';';
 
 		try{
 			eval(
@@ -392,6 +452,7 @@
 		 **/
 		function loadAndExecFiles( err, fileList, widgetConfig ){
 			var widgetSettings = getWidgetSettings( widgetConfig )
+			  ,  wJSONSettings = JSON.stringify( widgetSettings )
 			  , i, n, triggers;
 
 			/**
@@ -431,12 +492,12 @@
 
 			loadFiles( fileList, function(){
 				var args = arguments
-				  , widgetSettings, i, l, json;
+				  , i, l, json;
 
 				for( i=1, l=args.length; i<l; i++ ){
 					if( 'string' === typeof( args[i] ) ){
 						if( jsRx.test( fileList[ i-1 ] ) ){
-							executeJS( args[i], widgetSettings, !~fileList[ i-1 ].indexOf( supportDir ), fileList[ i-1 ] );
+							executeJS( args[i], wJSONSettings, !~fileList[ i-1 ].indexOf( supportDir ), fileList[ i-1 ] );
 						}
 
 					}
@@ -486,6 +547,11 @@
 				  , i, l;
 
 				for( i=0, l=plugins.length; i<l; i++ ){
+					// allow plugins to be defined by just their name
+					if( 'string' === typeof( plugins[i] ) ){
+						plugins[i] = { name: plugins[i] };
+					}
+
 					// name is split so we can pull base plugin config
 					this.addPlugin( plugins[i].name.split( '/' )[0] );
 				}
@@ -649,7 +715,7 @@
 				thisConf = this.pluginConfs[ pConf.name ] = this.getPluginFiles( pConf );
 
 				if( val = pConf.dependencies ){
-					thisConf.dependencies = val;
+					thisConf.dependencies = [].concat( val );
 
 					for( i=0, l=val.length; i<l; i++ ){
 						this.addPlugin( val[i] );
@@ -700,7 +766,7 @@
 			 **/
 			, getPluginFiles : function( pConf ){
 				var versions = pConf.versions
-				  ,    files = pConf.files || []
+				  ,    files = [].concat( pConf.files || [] )
 				  ,      out = []
 				  ,    isVer = versions && versions.length
 				  ,   verStr = pluginDir + pConf.root + ( isVer ? '/#{version}' : '' )

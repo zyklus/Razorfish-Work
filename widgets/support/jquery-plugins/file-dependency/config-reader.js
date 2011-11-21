@@ -13,7 +13,7 @@
 			var lines = this.getLines()
 			  , i, l;
 
-			for( i=0, l=
+//			for( i=0, l=
 		}
 	} );
 }( jQuery ));

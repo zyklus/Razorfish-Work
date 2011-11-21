@@ -1,6 +1,6 @@
 ( function( $ ){
 	$.Klass.add( 'Cylinder', $.Klass.MVC.View.Mutable, {
-		init : function( config ){
+		init : function cylinder( config ){
 			// this just calls _super with options tacked on to the existing arguments
 			this._super.apply( this, [].slice.call( arguments, 0 ).concat(
 				'perspective', 'parallaxMultiplier', 'radius', 'scale'
@@ -46,12 +46,12 @@
 		}
 
 		// private -- do not call
-		, onSetPerspective : function( p ){
+		, onSetPerspective : function onSetPerspective( p ){
 			return this.$domNode .css( '-webkit-perspective', '' + p );
 		}
 
 		// private -- do not call
-		, onSetRadius : function( r ){
+		, onSetRadius : function onSetRadius( r ){
 			return this.$cylinder.css( '-webkit-transform', 'translateZ(' + r + 'px)' );
 		}
 
@@ -73,7 +73,7 @@
 			);
 		}
 
-		, onSetScale : function( s ){
+		, onSetScale : function onSetScale( s ){
 			this.$domNode.css({ '-webkit-transform': 'scale( ' + s + ' )' });
 		}
 
@@ -97,7 +97,7 @@
 			return this.setTransform();
 		}
 
-		, getContentNode : function(){
+		, getContentNode : function getContentNode(){
 			return this.$container;
 		}
 	} );

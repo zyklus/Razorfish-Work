@@ -1,10 +1,14 @@
 {
 	  "version"      : "0.0.1"
-	, "description"  : "Helper class that binds to a single file"
+	, "description"  : "Helper classes that bind to a single file"
 	, "author"       : "Mark Kahn"
 	, "email"        : "mark.kahn@razorfish.com"
 	, "uri"          : "http://www.razorfish.com"
 
 	, "dependencies" : [ "observable/configurable" ]
 	, "files"        : [ "file-dependency.js" ]
+
+	, "subPlugins" : [
+		{ "name" : "config-reader", "files" : [ "config-reader.js" ], "dependencies" : [ "file-dependency" ] }
+	]
 }

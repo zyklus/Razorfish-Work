@@ -28,7 +28,10 @@
 		}
 
 		, useMaterialLib : function useMaterialLib( data ){
-			
+			this.materials[ data ] = new $.Klass.FileStyles.MTL({
+				// prepend the parent folder of the current .obj file
+				file: ( ( /(.*\/)[^\/]+$/.exec( this.file || '' ) || '' )[1] || '' ) + data
+			});
 		}
 
 		, newVertex : function newVertex( data ){
@@ -44,6 +47,7 @@
 			  , i, l;
 
 			for( i=0, l=points.length; i<l; i++ ){
+			}
 		}
 
 		, useMaterial : function useMaterial( data ){

@@ -1,0 +1,38 @@
+global-reset()
+
+body
+	font-family verdana, sans-serif
+	font-size   12px
+
+select
+	font-size 12px
+
+#menu
+	position   absolute
+	top        0
+	left       0
+	right      0
+	height     25px
+	background #006
+	color      #FFF
+	text-align center
+
+#model
+	position   absolute
+	box        25 0 0 0
+	transition right 0.5s
+	z-index    2
+
+#model.checkerboard
+	background url( '../images/checkerboard.png' )
+
+#texture
+	display    none
+	position   absolute
+	box        25 0 0 auto 300
+
+body.show-texture
+	#model
+		right 300
+	#texture
+		display block

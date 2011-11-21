@@ -11,13 +11,13 @@
 				, '-webkit-transform-style' : 'preserve-3d'
 				,       '-webkit-transform' : 'rotateY( 0deg ) rotateX( 0deg ) rotateZ( 0deg )'
 			});
-
+			
 			this.bindEvents(
 				  'set:vertices'      , 'onSetVertices'
 				, 'set:textures'      , 'onSetTextures'
 				, 'set:faceTextureMap', 'resetTextures'
 			);
-
+			
 			this.rotX = this.rotY = this.rotZ = this.posX = this.posY = this.posZ = 0;
 		}
 
@@ -127,12 +127,22 @@
 		}
 
 		, setTransform : function setTransform(){
+			this.stopSpinning();
 			this.$domNode.css({
 				'-webkit-transform' : 'rotateX( %sdeg ) rotateY( %sdeg ) rotateZ( %sdeg ) translateX( %spx ) translateY( %spx ) translateZ( %spx )'.sprintf(
 					this.rotX, this.rotY, this.rotZ, this.posX, this.posY, this.posZ
 				)
 			});
 
+			return this;
+		}
+
+		// Spins the model indefinitely
+		, spin : function spin( sec ){
+			return this;
+		}
+
+		, stopSpinning : function stopSpinning(){
 			return this;
 		}
 

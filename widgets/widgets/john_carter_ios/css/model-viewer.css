@@ -1,0 +1,142 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+body {
+  font-family: verdana, sans-serif;
+  font-size: 12px;
+}
+select {
+  font-size: 12px;
+}
+#menu {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 25px;
+  background: #006;
+  color: #fff;
+  text-align: center;
+}
+#model {
+  position: absolute;
+  top: 25px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  -webkit-transition-property: right;
+  -moz-transition-property: right;
+  transition-property: right;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  z-index: 2;
+}
+#model.checkerboard {
+  background: url("../images/checkerboard.png");
+}
+#texture {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  right: 0px;
+  bottom: 0px;
+  left: auto;
+  width: 300px;
+}
+body.show-texture #model {
+  right: 300px;
+}
+body.show-texture #texture {
+  display: block;
+}
