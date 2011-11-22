@@ -3,7 +3,7 @@
 		init : function init( config ){
 			this._super.apply( this, [].slice.call( arguments, 0 ).concat(
 				// allow specification of exact view & model to use
-				'vertices', 'textures', 'faceTextureMap'
+				'vertices', 'textures', 'faceTextureMap', 'obj'
 			) );
 
 			this.$domNode.css({
@@ -11,13 +11,14 @@
 				, '-webkit-transform-style' : 'preserve-3d'
 				,       '-webkit-transform' : 'rotateY( 0deg ) rotateX( 0deg ) rotateZ( 0deg )'
 			});
-			
+
 			this.bindEvents(
 				  'set:vertices'      , 'onSetVertices'
 				, 'set:textures'      , 'onSetTextures'
 				, 'set:faceTextureMap', 'resetTextures'
+				, 'set:obj'           , 'onSetObj'
 			);
-			
+
 			this.rotX = this.rotY = this.rotZ = this.posX = this.posY = this.posZ = 0;
 		}
 
@@ -28,6 +29,16 @@
 
 		, onSetTextures : function onSetTextures( textures ){
 			return this.resetTextures();
+		}
+
+		, onSetObj : function onSetObj( obj ){
+			var kls = $.Klass.get( 'File.Types.OBJ' );
+
+			if( !kls ){
+				throw new Error( 'File.Types.OBJ klass is not loaded' );
+			}
+
+			this.objFile = new kls({ file: obj });
 		}
 
 		, parseVertices : function parseVertices( vertices ){

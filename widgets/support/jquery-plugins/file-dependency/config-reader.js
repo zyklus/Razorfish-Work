@@ -9,10 +9,10 @@
 			this.addConfigParameters( 'lineExpressions' );
 		}
 
-		, dataReady : function dataReady(){
+		, readConfigData : function readConfigData(){
 			var lines = this.getLines()
 			  , i, l;
-
+console.log( this.lineExpressions );
 //			for( i=0, l=
 		}
 	} );

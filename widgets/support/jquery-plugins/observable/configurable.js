@@ -1,21 +1,20 @@
 (function( $ ){
 	$.Klass.add( 'Configurable', $.Klass.Observable, {
-		init : function init( config, optName /*, optName, optName, optName*/ ){
-			var self = this
-			  , i, l;
+		init : function init( config /*, optName, optName, optName, optName*/ ){
+			var i, l;
 
 			// call Observable constructor
 			this._super();
 
 			this.allowedConfigParameters = {};
-			this.config                  = config || {};
-			this.baseConfig              = this.config;
+			this.config                  = {};
+			this.baseConfig              = config || {};
 
 			// every extra argument is considered a valid config parameter
 			this.addConfigParameters.apply( this, [].slice.call( arguments, 1 ) );
 
 			// now apply all options in config
-			self.set( config );
+			this.set( config );
 		}
 
 		, addConfigParameters : function addConfigParameters(){
@@ -27,7 +26,7 @@
 				if( 'string' !== typeof( opts[i] ) ){ continue; }
 
 				this.allowedConfigParameters[ opts[i] ] = 1;
-
+//console.log( opts[i], JSON.stringify( this.config ) );
 				// copy any config params that are defined as valid after initial load
 				if( !this.config[ opts[i] ] && this.baseConfig[ opts[i] ] ){
 					conf[ opts[i] ] = this.baseConfig[ opts[i] ];
@@ -56,10 +55,10 @@
 				// Sanity check for Object.prototype idiocy
 				if( !config.hasOwnProperty( opt ) ){ continue; }
 
-				this.config[ opt ] = config[ opt ];
-
 				// to prevent accidental function replacement
 				if( !this.allowedConfigParameters[ opt ] ){ continue; }
+
+				this.config[ opt ] = config[ opt ];
 
 				// convienience method -- set this.opt
 				this[ opt ] = config[ opt ];

@@ -154,6 +154,10 @@
 	 * @param {Object} klass Class definition
 	 **/
 	$.Klass.add = function( ns, toExtend, klass ){
+		if( !toExtend ){
+			throw new Error( ns + ' is trying to extend an undefined klass' );
+		}
+
 		var path = ns.split( '.' )
 		  ,   nm = path.pop()
 		  ,  obj = ( function walk( root, ary ){

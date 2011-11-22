@@ -3,7 +3,7 @@
  ***********************************/
 
 (function( $ ){
-	$.Klass.add( 'FileTypes.MTL', $.Klass.ConfigReader, {
+	$.Klass.add( 'File.Types.MTL', $.Klass.File.ConfigReader, {
 		init : function init( config ){
 			this._super.apply( this, arguments );
 			this.addConfigParameters( 'Name', 'specularExponent', 'diffuseMap' );

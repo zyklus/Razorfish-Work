@@ -3,8 +3,8 @@
  **********************************/
 
 (function( $ ){
-	$.Klass.add( 'FileTypes.OBJ', $.Klass.ConfigReader, {
-		init : function init( config ){
+	$.Klass.add( 'File.Types.OBJ', $.Klass.File.ConfigReader, {
+		init : function init(){
 			this._super.apply( this, arguments );
 			this.addConfigParameters( 'materialLib' );
 

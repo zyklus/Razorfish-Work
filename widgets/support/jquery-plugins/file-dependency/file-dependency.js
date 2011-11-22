@@ -17,18 +17,21 @@
 			var self = this;
 
 			$.get( path, function( contents ){
-				this.set( 'fileData', contents );
+				self.set( 'fileData', contents );
 			} );
 		}
 
 		, getLines : function getLines(){
-			var data = this.data;
+			var data = this.fileData;
 
 			if( this.lineComment ){
 				data = data.replace( new RegExp( this.lineComment + '.*', 'g' ), '' );
 			}
 
-			data = data.split( /[\\n\\r]+/ );
+			data = data
+				.replace( /\s*[\n\r]+|[\n\r]+\s*/gm, '\n' ) // remove whitespace & multiple empty lines
+				.replace( /^\n|\n$/gm, '' )                 // remove leading & trailing line-breaks
+				.split  ( '\n' );
 
 			return data;
 		}
