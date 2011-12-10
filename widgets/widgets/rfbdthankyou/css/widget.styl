@@ -1,0 +1,163 @@
+/**
+ * README:
+ * 
+ * There are 4 class-names that are used to determine the position of parallax elements on-screen:
+ * - start  : When a section starts to appear on screen (from bottom)
+ * - (base) : state when section first locks
+ * - anim   : state to animate to while section is locked
+ * - end    : When a section leaves screen (going up)
+ * 
+ * So if you had all four of these, the animation sequence would be as follows:
+ * .foo.start --> .foo      ( section locks )
+ * .foo       --> .foo.anim ( section unlocks )
+ * .foo.anim  --> .foo.end  ( section off-screen )
+ **/
+
+/*************************************
+ * Include equivalent of a reset.css *
+ *************************************/
+global-reset()
+
+html, body
+	margin   0px
+	padding  0px
+	width    100%
+	height   100%
+	overflow hidden
+
+section, .section-bg
+	width  100%
+	height 100%
+
+.parallax
+	position absolute
+
+#content
+	position absolute
+	width    100%
+	height   100%
+	top      0px
+	left     0px
+
+#scroller
+	position absolute
+	top      0px
+	right    0px
+	bottom   0px
+	width    50px
+	z-index  1000
+	overflow auto
+
+section
+	position absolute
+	overflow hidden
+	top      0px
+	left     0px
+
+	.section-bg
+		position absolute
+		top      0
+		left     0
+		height   100%
+		z-index  -1
+	&#bestbuy
+		#employee
+			right 100px
+
+		.present1
+			background sprite( '../images/present_horiz2.png' )
+			spriteSize();
+		.present2
+			background sprite( '../images/present_horiz.png' )
+			spriteSize();
+		.present3, .present5, .present9, .present13, .present16, .present17
+			background sprite( '../images/present_vert.png' )
+			spriteSize();
+		.present4, .present6, .present7, .present8, .present10, .present11, .present12, .present14, .present15
+			background sprite( '../images/present_sq.png' )
+			spriteSize();
+		.present1
+			&.start
+				left -430px
+			bottom -10px
+			left   20px
+		.present2
+			&.start
+				left -39px
+			bottom -10px
+			left   221px
+		.present3
+			&.start
+				left 236px
+			bottom -10px
+			left   386px
+		.present4
+			&.start
+				left 514px
+			bottom -10px
+			left   464px
+		.present5
+			&.start
+				left 694px
+			bottom -10px
+			left   544px
+		.present6
+			&.start
+				left 872px
+			bottom -10px
+			left   622px
+		.present7
+			&.start
+				left 1053px
+			bottom -10px
+			left   703px
+		.present8
+			&.start
+				left -209px
+			bottom 63px
+			left   141px
+		.present9
+			&.start
+				left -29px
+			bottom 63px
+			left   221px
+		.present10
+			&.start
+				left 156px
+			bottom 63px
+			left   306px
+		.present11
+			&.start
+				left 514px
+			bottom 63px
+			left   464px
+		.present12
+			&.start
+				left 872px
+			bottom 63px
+			left   622px
+		.present13
+			&.start
+				left 157px
+			bottom 130px
+			left   307px
+		.present14
+			&.start
+				left 514px
+			bottom 130px
+			left   464px
+		.present15
+			&.start
+				left 334px
+			bottom 190px
+			left   384px
+		.present16
+			&.start
+				left 515px
+			bottom 200px
+			left   465px
+		.present17
+			&.start
+				left 336px
+			bottom 260px
+			left   386px

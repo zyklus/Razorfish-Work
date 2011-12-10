@@ -1,0 +1,315 @@
+/**
+ * README:
+ * 
+ * There are 4 class-names that are used to determine the position of parallax elements on-screen:
+ * - start  : When a section starts to appear on screen (from bottom)
+ * - (base) : state when section first locks
+ * - anim   : state to animate to while section is locked
+ * - end    : When a section leaves screen (going up)
+ * 
+ * So if you had all four of these, the animation sequence would be as follows:
+ * .foo.start --> .foo      ( section locks )
+ * .foo       --> .foo.anim ( section unlocks )
+ * .foo.anim  --> .foo.end  ( section off-screen )
+ **/
+/*************************************
+ * Include equivalent of a reset.css *
+ *************************************/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0px;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+section,
+.section-bg {
+  width: 100%;
+  height: 100%;
+}
+.parallax {
+  position: absolute;
+  z-index: 1;
+}
+#content {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+#scroller {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 50px;
+  z-index: 1000;
+  overflow: auto;
+}
+section {
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+  top: 0px;
+  left: 0px;
+}
+section .section-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+}
+section#bestbuy #employee {
+  right: 100px;
+}
+section#bestbuy .present1 {
+  background: url("../images/sprite-0.png");
+  width: 207px;
+  height: 82px;
+  background-position: 0 0;
+}
+section#bestbuy .present2 {
+  background: url("../images/sprite-0.png");
+  width: 170px;
+  height: 81px;
+  background-position: 0 -82px;
+}
+section#bestbuy .present3,
+section#bestbuy .present5,
+section#bestbuy .present9,
+section#bestbuy .present13,
+section#bestbuy .present16,
+section#bestbuy .present17 {
+  background: url("../images/sprite-0.png");
+  width: 82px;
+  height: 206px;
+  background-position: -207px 0;
+}
+section#bestbuy .present4,
+section#bestbuy .present6,
+section#bestbuy .present7,
+section#bestbuy .present8,
+section#bestbuy .present10,
+section#bestbuy .present11,
+section#bestbuy .present12,
+section#bestbuy .present14,
+section#bestbuy .present15 {
+  background: url("../images/sprite-0.png");
+  width: 85px;
+  height: 77px;
+  background-position: 0 -163px;
+}
+section#bestbuy .present1 {
+  bottom: -10px;
+  left: 20px;
+}
+section#bestbuy .present1.start {
+  left: -430px;
+}
+section#bestbuy .present2 {
+  bottom: -10px;
+  left: 221px;
+}
+section#bestbuy .present2.start {
+  left: -39px;
+}
+section#bestbuy .present3 {
+  bottom: -10px;
+  left: 386px;
+}
+section#bestbuy .present3.start {
+  left: 236px;
+}
+section#bestbuy .present4 {
+  bottom: -10px;
+  left: 464px;
+}
+section#bestbuy .present4.start {
+  left: 514px;
+}
+section#bestbuy .present5 {
+  bottom: -10px;
+  left: 544px;
+}
+section#bestbuy .present5.start {
+  left: 694px;
+}
+section#bestbuy .present6 {
+  bottom: -10px;
+  left: 622px;
+}
+section#bestbuy .present6.start {
+  left: 872px;
+}
+section#bestbuy .present7 {
+  bottom: -10px;
+  left: 703px;
+}
+section#bestbuy .present7.start {
+  left: 1053px;
+}
+section#bestbuy .present8 {
+  bottom: 63px;
+  left: 141px;
+}
+section#bestbuy .present8.start {
+  left: -209px;
+}
+section#bestbuy .present9 {
+  bottom: 63px;
+  left: 221px;
+}
+section#bestbuy .present9.start {
+  left: -29px;
+}
+section#bestbuy .present10 {
+  bottom: 63px;
+  left: 306px;
+}
+section#bestbuy .present10.start {
+  left: 156px;
+}
+section#bestbuy .present11 {
+  bottom: 63px;
+  left: 464px;
+}
+section#bestbuy .present11.start {
+  left: 514px;
+}
+section#bestbuy .present12 {
+  bottom: 63px;
+  left: 622px;
+}
+section#bestbuy .present12.start {
+  left: 872px;
+}
+section#bestbuy .present13 {
+  bottom: 130px;
+  left: 307px;
+}
+section#bestbuy .present13.start {
+  left: 157px;
+}
+section#bestbuy .present14 {
+  bottom: 130px;
+  left: 464px;
+}
+section#bestbuy .present14.start {
+  left: 514px;
+}
+section#bestbuy .present15 {
+  bottom: 190px;
+  left: 384px;
+}
+section#bestbuy .present15.start {
+  left: 334px;
+}
+section#bestbuy .present16 {
+  bottom: 200px;
+  left: 465px;
+}
+section#bestbuy .present16.start {
+  left: 515px;
+}
+section#bestbuy .present17 {
+  bottom: 260px;
+  left: 386px;
+}
+section#bestbuy .present17.start {
+  left: 336px;
+}

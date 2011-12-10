@@ -1,0 +1,22 @@
+{
+	      "version" : "0.0.1"
+	,        "name" : "Widget Foo"
+	, "description" : "Some widget"
+	,      "author" : "Razorfish"
+	,       "email" : "nobody@razorfish.com"
+	,         "uri" : "http://www.razorfish.com"
+
+	, "jqueryPlugins" : [
+		  { "name" : "alpha-jpeg" }
+		, { "name" : "fn-limiter" }
+		, { "name" : "mousewheel" }
+	]
+
+	,  "minJQueryVersion" : "1.6.0"
+	, "testJQueryVersion" : "1.6.0"
+
+	, "files" : [
+		  "css/widget.css"
+		, "js/widget.js"
+		, "js/parallax.js"
+	]}
