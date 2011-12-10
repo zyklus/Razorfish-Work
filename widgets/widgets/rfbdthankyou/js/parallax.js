@@ -15,12 +15,13 @@ var    $sections = $( 'section' )
   ,  firstScroll = false;
 
 window.animations = animations;
-$sections.each( function(){
+$sections.each( function( ix ){
 	var $this = $( this )
 	  , anim1 = {
-		    $node : $this
-		,   pause : sectionPause
-		, scrProp : 'height'
+		     $node : $this
+		,    pause : sectionPause
+		,  scrProp : 'height'
+		, noScroll : true // scroll-in doesn't take space
 	}
 	  , anim2 = {
 		    $node : $this
@@ -36,7 +37,8 @@ $sections.each( function(){
 	anim2.start = diff2.start;
 	anim2.end   = diff2.end;
 
-	animations.push( anim1 );
+	// don't scroll into the first section
+	if( ix ){ animations.push( anim1 ); }
 
 	$this.find( '.parallax' ).each( function(){
 		var $this = $( this )
@@ -45,13 +47,25 @@ $sections.each( function(){
 		
 	} );
 
-	animations.push( anim2 );
+	// don't scroll out of the last section
+	if( ix < ( $sections.length - 1 ) ){
+		animations.push( anim2 );
+	}
 } );
 
 function propVal( $elem, prop ){
 	var val = $elem.css( prop );
 
 	return ( ~floatProps.indexOf( ' ' + prop + ' ' ) ) ? parseFloat( val ) : val;
+}
+
+function nodeVal( $elem, prop ){
+	switch( prop ){
+		case 'height':
+			return $elem.outerHeight();
+		case 'width':
+			return $elem.outerWidth();
+	}
 }
 
 // returns start/end properties of element with/without a given class name
@@ -63,7 +77,11 @@ function CSSDiff( $elem, cls ){
 	$elem.removeClass( cls );
 
 	for( i=0, l=animProps.length; i<l; i++ ){
-		start[ animProps[i] ] = propVal( $elem, animProps[i] );
+		start[ animProps[i] ] = prop = propVal( $elem, animProps[i] );
+
+		if( isNaN( prop ) ){
+			delete start[ animProps[i] ];
+		}
 	}
 
 	$elem.addClass( cls );
@@ -72,7 +90,7 @@ function CSSDiff( $elem, cls ){
 		prop = propVal( $elem, animProps[i] );
 
 		// if start & end are the same, no animation needed
-		if( start[ animProps[i] ] === prop ){
+		if( isNaN( prop ) || ( start[ animProps[i] ] === prop ) ){
 			delete start[ animProps[i] ];
 		}else{
 			end[ animProps[i] ] = prop;
@@ -91,7 +109,7 @@ $scroller.bind( 'scroll', function(){
 		anim = animations[i];
 
 		if ( !firstScroll || ( ( anim.top < ( scrTop + winHeight + overflow ) ) && ( ( anim.top + anim.height + overflow ) > scrTop ) ) ) {
-
+			
 		}
 	}
 	firstScroll = true;
@@ -106,11 +124,12 @@ $( window )
 		scrHeight = 0;
 
 		for( i=0, l=animations.length; i<l; i++ ){
-			anim        = animations[i];
-			anim.top    = top;
-			anim.height = anim.$node.css( anim.scrProp );
+			anim           = animations[i];
+			anim.top       = top;
+			anim.height    = nodeVal( anim.$node, anim.scrProp ) / ( anim.speed || 1 );
+			anim.scrHeight = anim.height;
 
-			top += ( anim.scrHeight || 0 ) + ( anim.pause || 0 );
+			top += ( anim.noScroll ? 0 : ( anim.scrHeight || 0 ) ) + ( anim.pause || 0 );
 		}
 
 		$mockHeight.css( 'height', top );

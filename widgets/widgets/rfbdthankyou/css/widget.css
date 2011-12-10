@@ -147,6 +147,12 @@ section {
   top: 0px;
   left: 0px;
 }
+section.start {
+  top: -100%;
+}
+section.end {
+  top: 100%;
+}
 section .section-bg {
   position: absolute;
   top: 0;
@@ -178,7 +184,7 @@ section#bestbuy .present17 {
   background: url("../images/sprite-0.png");
   width: 82px;
   height: 206px;
-  background-position: -207px 0;
+  background-position: 0 -163px;
 }
 section#bestbuy .present4,
 section#bestbuy .present6,
@@ -192,7 +198,7 @@ section#bestbuy .present15 {
   background: url("../images/sprite-0.png");
   width: 85px;
   height: 77px;
-  background-position: 0 -163px;
+  background-position: -207px 0;
 }
 section#bestbuy .present1 {
   bottom: -10px;
