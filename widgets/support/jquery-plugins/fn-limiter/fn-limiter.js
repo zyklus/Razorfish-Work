@@ -3,8 +3,8 @@ Function.prototype.limiter = function( ms ){
 	  , lastCall, timeout;
 
 	function fn(){
-		lastCall = +new Date();
 		func();
+		lastCall = +new Date();
 	}
 
 	return function(){
