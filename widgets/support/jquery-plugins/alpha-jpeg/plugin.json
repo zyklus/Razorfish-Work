@@ -1,0 +1,10 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "Creates an HTML5 canvas that renders a jpg with an alpha mask"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+	, "uri"          : "http://www.razorfish.com"
+
+	, "dependencies" : [ "flash-canvas" ]
+	, "files"        : [ "alpha-jpeg.js" ]
+}
