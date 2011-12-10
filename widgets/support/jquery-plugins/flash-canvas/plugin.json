@@ -1,0 +1,8 @@
+{
+	  "version"      : "1.5"
+	, "description"  : "Mimics the Canvas API in Flash for IE < 9"
+	, "author"       : "Tim Cameron Ryan, Shinya Muramatsu"
+	, "uri"          : "http://flashcanvas.net/"
+
+	, "files"        : [ "flashcanvas.js" ]
+}
