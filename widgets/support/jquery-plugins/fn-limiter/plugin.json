@@ -1,0 +1,8 @@
+{
+	  "version"      : "0.0.1"
+	, "description"  : "Limits a function to only being called once every N ms"
+	, "author"       : "Mark Kahn"
+	, "email"        : "mark.kahn@razorfish.com"
+
+	, "files"        : [ "fn-limiter.js" ]
+}
