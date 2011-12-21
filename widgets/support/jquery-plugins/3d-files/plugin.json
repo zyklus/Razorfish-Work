@@ -6,7 +6,7 @@
 	, "uri"          : "http://www.razorfish.com"
 
 	, "subPlugins" : [
-		  { "name" : "dot-mtl", "files" : "dot-mtl.js", "dependencies" : "file-dependency/config-reader" }
-		, { "name" : "dot-obj", "files" : "dot-obj.js", "dependencies" : [ "file-dependency/config-reader", "3d-files/dot-mtl" ] }
+		  { "name" : "dot-mtl", "files" : "dot-mtl.js", "dependencies" : [ "file-dependency/config-reader", "util/image-loader" ] }
+		, { "name" : "dot-obj", "files" : "dot-obj.js", "dependencies" : [ "file-dependency/config-reader", "3d-files/dot-mtl", "fn-prototype/defer-callback" ] }
 	]
 }

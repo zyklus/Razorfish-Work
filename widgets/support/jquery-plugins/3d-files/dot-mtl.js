@@ -6,22 +6,30 @@
 	$.Klass.add( 'File.Types.MTL', $.Klass.File.ConfigReader, {
 		init : function init( config ){
 			this._super.apply( this, arguments );
-			this.addConfigParameters( 'Name', 'specularExponent', 'diffuseMap' );
+			this.addConfigParameters( 'name', 'specularExponent', 'diffuseMap', 'diffuseMapNode' );
 
 			this.set( {
 				      lineComment : '#'
 				, lineExpressions : [
-					  [ 'newmtl', 'set:Name'             ]
+					  [ 'newmtl', 'set:name'             ]
 					, [ 'Ns'    , 'set:specularExponent' ]
-					, [ 'map_Kd', 'set:diffuseMap'       ]
+					, [ 'map_Kd', 'setDiffuseMap'       ]
 				]
 			} );
 
-			this.bindEvents( 'set:fileData', 'dataReady' );
+			this.bind( 'set:name', this.bindMethod( 'trigger', 'ready', this ), 'set:diffuseMapNode' );
 		}
 
-		, dataReady : function dataReady(){
-			this.readConfigData();
+		, isReady : function isReady(){
+			return this.get( 'name' ) && this.get( 'diffuseMapNode' );
+		}
+
+		, setDiffuseMap : function setDiffuseMap( map ){
+			var self = this;
+
+			$.Util.imageLoader( this.parentFolder() + map, function( $img ){
+				self.set( 'diffuseMapNode', $img );
+			} );
 		}
 	} );
 }( jQuery ));

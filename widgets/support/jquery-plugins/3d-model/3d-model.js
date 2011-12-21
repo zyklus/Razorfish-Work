@@ -1,10 +1,7 @@
 (function( $ ){
 	$.Klass.add( 'Model3D', $.Klass.MVC.View, {
 		init : function init( config ){
-			this._super.apply( this, [].slice.call( arguments, 0 ).concat(
-				// allow specification of exact view & model to use
-				'vertices', 'textures', 'faceTextureMap', 'obj'
-			) );
+			this._super.apply( this, arguments );
 
 			this.$domNode.css({
 				                 'position' : 'absolute'
@@ -12,50 +9,21 @@
 				,       '-webkit-transform' : 'rotateY( 0deg ) rotateX( 0deg ) rotateZ( 0deg )'
 			});
 
-			this.bindEvents(
-				  'set:vertices'      , 'onSetVertices'
-				, 'set:textures'      , 'onSetTextures'
-				, 'set:faceTextureMap', 'resetTextures'
-				, 'set:obj'           , 'onSetObj'
-			);
-
+			this.$faces = [];
 			this.rotX = this.rotY = this.rotZ = this.posX = this.posY = this.posZ = 0;
 		}
 
-		, onSetVertices : function onSetVertices( vertices ){
-			this.parseVertices( vertices );
-			return this.resetTextures();
-		}
+		, mixins : [
+			  $.Klass.Mixins.Model3D.Shader.Flat
+			, $.Klass.Mixins.Model3D.Shader.None
+			, $.Klass.Mixins.Model3D.Texture.Solid
+			, $.Klass.Mixins.Model3D.Texture.Map
+		]
 
-		, onSetTextures : function onSetTextures( textures ){
-			return this.resetTextures();
-		}
-
-		, onSetObj : function onSetObj( obj ){
-			var kls = $.Klass.get( 'File.Types.OBJ' );
-
-			if( !kls ){
-				throw new Error( 'File.Types.OBJ klass is not loaded' );
-			}
-
-			this.objFile = new kls({ file: obj });
-		}
-
-		, parseVertices : function parseVertices( vertices ){
-			var i, l;
-
-			this.$faces = [];
-
-			for( i=0, l=vertices.length; i<l; i+=12 ){
-				this.addFace( vertices.slice( i, i+12 ), i/12 );
-			}
-
-			return this;
-		}
-
-		, addFace : function addFace( points, ix ){
+		, addFace : function addFace( points, texture ){
 			var     mult = 100
 			  , radToDeg = 180 / Math.PI
+			  , face
 			  , p1, p2, p3, p4
 			  , width, height
 			  , rotX, rotY, rotZ
@@ -95,7 +63,7 @@
 			console.log( x, y, z, rotX, rotY, rotZ );
 
 			this.$faces.push(
-				$( '<div></div>' )
+				face = $( '<div></div>' )
 					.css({
 						                  'position' : 'absolute'
 						,                      'top' : 0
@@ -109,6 +77,8 @@
 					})
 					.appendTo( this.$domNode )
 			);
+
+			face.data( 'texture', texture );
 		}
 
 		, distanceBetween : function distanceBetween( p1, p2 ){
@@ -117,24 +87,6 @@
 			  , l3 = p2[2] - p1[2];
 
 			return Math.sqrt( l1*l1 + l2*l2 + l3*l3 );
-		}
-
-		, resetTextures : function resetTextures(){
-			var   $faces = this.$faces
-			  , textures = this.textures
-			  ,      map = this.faceTextureMap
-			  , i, l, face;
-
-			if( !$faces || !$faces.length || !textures || !map ){ return this; }
-
-			for( i=0, l=map.length; i<l; i+=2 ){
-				face = this.$faces[i>>1];
-				if( !face ){ continue; }
-
-				face.css({ 'background-image' : "url( '%s' )".sprintf( textures[ map[ i+1 ] ] ) });
-			}
-
-			return this;
 		}
 
 		, setTransform : function setTransform(){

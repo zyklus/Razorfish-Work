@@ -5,6 +5,10 @@
 	, "email"        : "mark.kahn@razorfish.com"
 	, "uri"          : "http://www.razorfish.com"
 
-	, "files"        : [ "3d-model.js" ]
+	, "files"        : [ "shader-none.js", "shader-flat.js", "shader-spec-mask.js", "texture-solid.js", "texture-map.js", "texture-wireframe.js", "3d-model.js" ]
 	, "dependencies" : [ "string" ]
+
+	, "subPlugins" : [
+		{ "name": "3d-model-obj", "files": "3d-model-obj.js", "dependencies": [ "3d-model", "3d-files/dot-obj" ] }
+	]
 }

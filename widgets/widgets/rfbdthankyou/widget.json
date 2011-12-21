@@ -8,7 +8,7 @@
 
 	, "jqueryPlugins" : [
 		  { "name" : "alpha-jpeg" }
-		, { "name" : "fn-limiter" }
+		, { "name" : "fn-prototype/limiter" }
 		, { "name" : "mousewheel" }
 	]
 

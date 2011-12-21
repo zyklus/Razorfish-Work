@@ -26,7 +26,7 @@
 				if( 'string' !== typeof( opts[i] ) ){ continue; }
 
 				this.allowedConfigParameters[ opts[i] ] = 1;
-//console.log( opts[i], JSON.stringify( this.config ) );
+
 				// copy any config params that are defined as valid after initial load
 				if( !this.config[ opts[i] ] && this.baseConfig[ opts[i] ] ){
 					conf[ opts[i] ] = this.baseConfig[ opts[i] ];

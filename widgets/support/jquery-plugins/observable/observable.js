@@ -1,3 +1,5 @@
+// TODO: reqEvents deferring doesn't work ATM if the reqEvent is triggered first :/
+
 (function( $ ){
 	$.Klass.Observable = $.Klass.extend({
 		init : function(){
@@ -10,7 +12,7 @@
 		 * - callback to fire
 		 * - events that have to have already fired for this to occur (can be an array)
 		 *
-		 * In english (I hope): You're trying to observe an event, but another event MUST be run first (it gets data, etc).  Observe the event normally, and add the required event to the 3rd arg
+		 * In english (I hope): You're trying to observe an event, but another event MUST be run first (it gets data, etc).  Observe the event normally, and add the required event(s) to the 3rd arg
 		 */
 
 		, bind : function(events, callback, reqEvents){
@@ -36,7 +38,15 @@
 			}
 
 			for( i=0, l=events.length; i<l; i++ ){
-				(this.observing[events[i]] = this.observing[events[i]] || []).push(obj = {cb:callback, req:reqEvents});
+				(this.observing[events[i]] = this.observing[events[i]] || []).push(obj = {
+					cb: ( 'string' === typeof callback )
+						// TODO: this logic shouldn't be in this file since the `set` method is from `configurable`
+						? ~callback.indexOf( ':' )
+							? this.bindMethod( 'set', callback.substr( callback.indexOf( ':' ) + 1 ) )
+							: this.bindMethod( callback )
+						: callback
+					, req:reqEvents
+				});
 
 				// check to see if we already have data for this event in the cache
 				if(this.cache[events[i]]){

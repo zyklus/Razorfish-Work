@@ -21,6 +21,10 @@
 			} );
 		}
 
+		, parentFolder : function parentFolder(){
+			return ( ( /(.*\/)[^\/]+$/.exec( this.file || '' ) || '' )[1] || '' );
+		}
+
 		, getLines : function getLines(){
 			var data = this.fileData;
 

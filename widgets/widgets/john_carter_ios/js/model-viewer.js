@@ -15,7 +15,7 @@ function selectModel( model ){
 		currentModel.remove().destroy();
 	}
 
-	currentModel = new $.Klass.Model3D({
+	currentModel = new $.Klass.Model3D.Obj({
 		obj : 'resources/models/%s/%s.obj'.sprintf( model, model )
 	});
 
@@ -29,6 +29,8 @@ function updateModel(){
 
 	currentModel.set( modelOptions );
 }
+
+selectModel( 'jcShip2' );
 
 // Bind events to top menu
 $( '#model-chooser'       ).bind( 'change', function(){ selectModel( $( this ).val() ); } );

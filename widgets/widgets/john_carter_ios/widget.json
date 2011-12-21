@@ -14,7 +14,7 @@
 		, "sprite-animation"
 		, "3d-files/dot-mtl"
 		, "3d-files/dot-obj"
-		, "3d-model"
+		, "3d-model/3d-model-obj"
 		, "css3d/environment"
 		, "css3d/cylinder"
 		, "util/image-loader"

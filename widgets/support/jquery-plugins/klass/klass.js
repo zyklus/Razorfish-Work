@@ -6,8 +6,9 @@
 	$.Klass = function(){};
 
 	// Create a new klass that inherits from this class
-	$.Klass.extend = function( prop, appendProp ){
-		var _super = this.prototype;
+	$.Klass.extend = function( prop ){
+		var _super = this.prototype
+		  , name, mixins, mixin, method, n, i, l;
 
 		// Instantiate a base class (but only create the instance,
 		// don't run the init constructor)
@@ -16,18 +17,32 @@
 		initializing  = false;
 
 		// move special before and after cases
-		for(var name in {before:1, after:1}){
+		for( name in {before:1, after:1} ){
 			if(!prop[name]){ continue; }
 
-			for(var n in prop[name]){
+			for( n in prop[name] ){
 				prop['__' + name + '-' + n] = prop[name][n];
 			}
 
 			delete prop[name];
 		}
 
+		mixins = prop.mixins;
+		if( mixins ){
+			for( i=0, l=mixins.length; i<l; i++ ){
+				mixin = mixins[ i ];
+				for( method in mixin ){
+					if( prop[ method ] && ( prop[ method ] !== mixin[ method ] ) ){
+						throw new Error( 'Mixin attempting to over-write existing method -- inheritance collisions not supported' );
+					}
+
+					prop[ method ] = mixin[ method ];
+				}
+			}
+		}
+
 		// Copy the properties over onto the new prototype
-		for( var name in prop ){
+		for( name in prop ){
 			// TODO: pass straight functions through when there is no before or after.
 			//       to do this, we need to retroactively wrap protptype functions if
 			//       a before or after function is in an inheriting class.
@@ -62,19 +77,9 @@
 
 							return ret;
 						};
-					})(name, prop[name])
+					}( name, prop[name] ))
 
 					: prop[name];
-		}
-
-		// Copy append properties onto the new prototype, preserving existing properties
-		appendProp || ( appendProp = {} );
-		for( var name in appendProp ){
-			prototype[ name ] =
-				// if an array
-				( ( null != appendProp[name].length ) && ( appendProp[name].splice ) )
-					? ( _super[ name ] || [] ).concat( appendProp[ name ] )
-					: $.extend( {}, _super[ name ], appendProp[ name ] );
 		}
 
 		// The dummy class constructor
@@ -122,11 +127,11 @@
 				}
 
 				return this;
-			}
+			};
 
-			this['get' + pC] = function(){
+			this[ 'get' + pC ] = function(){
 				return get ? get.call(self, value) : value;
-			}
+			};
 
 			// call the old set function if there is a default value
 			if(set && value){ set.call(self, value); }
@@ -138,7 +143,10 @@
 			    self = this;
 
 			return function(){
-				return self[name].apply(self, args.concat( [].slice.apply(arguments) ));
+				if( !self[ name ] ){
+					throw new Error( 'function ' + name + ' does not exist' );
+				}
+				return self[ name ].apply(self, args.concat( [].slice.apply(arguments) ));
 			};
 		}
 
@@ -184,10 +192,11 @@
 	 * @return {undefined}
 	 **/
 	$.Klass.get = function( /*ns, name, name, ...*/ ){
-		var path = [].slice.apply( arguments ).join( '.' ).split( '.' );
+		var path = [].slice.apply( arguments ).join( '.' ).split( '.' )
+		  , i;
 
 		// trim empty arguments
-		for( var i=path.length-1; i>=0; i-- ){
+		for( i=path.length-1; i>=0; i-- ){
 			if( !path[i] ){ path.splice( i, 1 ); }
 		}
 
@@ -201,6 +210,27 @@
 					? walk( root[ next ], ary )
 					: root
 			);
-		})( $.Klass, path );
+		}( $.Klass, path ));
 	};
-})( jQuery );
+
+	$.Klass.Mixins = {};
+
+	/**
+	 * Adds a new mixin to the class library
+	 **/
+	$.Klass.Mixins.add = function( ns, mixin ){
+		var path = ns.split( '.' )
+		  ,   nm = path.pop()
+		  ,  obj = ( function walk( root, ary ){
+			var next = ary.shift();
+
+			return (
+				next
+					? walk( root[ next ] || ( root[ next ] = {} ), ary )
+					: root
+			);
+		}( $.Klass.Mixins, path.slice() ) );
+
+		obj[ nm ] = mixin;
+	};
+}( jQuery ));
